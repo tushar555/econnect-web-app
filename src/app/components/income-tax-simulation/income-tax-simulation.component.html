@@ -1,0 +1,129 @@
+<div class="card-margin" *ngIf="typeofSelection !== 'taxRegime';else taxRegimeSelection">
+ <section *ngIf="!processing">
+  <div class="paymentListing col-lg-12">
+    <div class="col-md-6">
+      <p class="title">
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p class="section-title">
+        As Per Old Regime
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p class="section-title">
+        As Per New Regime
+      </p>
+
+    </div>
+  </div>
+  <section class="scrollableContainer">
+
+    <ng-container *ngFor="let salary of modifiedSimulationComponents">
+
+      <div class="row" *ngIf="salary.Section_Name !== '80EE' && salary.Section_Name !== '80EEB'">
+        <div class="paymentListing col-lg-12 section-name">
+
+          <p class="section-title">
+            {{salary.Section_Name}}
+          </p>
+        </div>
+        <div class="paymentListing col-lg-12" *ngFor="let obj of salary?.Section_Details">
+          <div class="col-md-6">
+
+            <p class="title">
+              {{ obj.DisplayName}}
+            </p>
+          </div>
+          <div class="col-md-3">
+
+            <input autocomplete="off" readonly autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+              maxlength="10" (keypress)="isNumber($event,obj)" [ngModel]="getAmount(obj.Old_Amount) |  number : '1.2-2'"
+              (ngModelChange)="obj.Old_Amount =getAmount( $event) " (focusin)="onInFocus(obj.Old_Amount)"
+              (focusout)="saveAmount(obj,'fromNormal')" class="form-control  font-14 input-size">
+          </div>
+          <div class="col-md-3">
+
+            <input autocomplete="off" readonly autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+              maxlength="10" (keypress)="isNumber($event,obj)"
+              [ngModel]="getAmount(obj.New_Amount)  |  number : '1.2-2'"
+              (ngModelChange)="obj.New_Amount =getAmount(obj.New_Amount)" (focusin)="onInFocus(obj.New_Amount)"
+              (focusout)="saveAmount(obj,'fromNormal')" class="form-control  font-14 input-size">
+          </div>
+          <!-- ****************START******************
+
+          **************************************** -->
+        </div>
+      </div>
+    </ng-container>
+
+
+  </section>
+</section>
+<div *ngIf="processing" class="loading">
+  <i class="fa fa-spinner fa-spin"></i>
+</div>
+</div>
+
+<ng-template #taxRegimeSelection>
+  <div class="col-md-12 padding0">
+    <div class="noFound-container">
+      <div class="noDataBlock">
+        <div class="imgDataBlock">
+          <!-- <img class="" src='assets/img/no-record.png'> -->
+          <ul class="note">
+            <li>You can update entries in the IT Declaration and do the Tax Simulation any number of times before
+              selecting the Tax
+              Regime</li>
+            <li>Once the Tax Regime is selected you will not be able to make any changes in the IT Declaration, Tax
+              Simulation and Tax
+              Regime Selection</li>
+            <li>This Regime Selection once exercised, will be applicable for the entire F.Y. 2020-21 and can be changed
+              only by you at
+              the time of filing of your personal Income Tax Return</li>
+          </ul>
+        </div>
+        <div class="textDataBlock font-14">
+          <p *ngIf="this.selectedRegimeType==='new'">You have selected <b> New Income tax regime</b>, So you cannot
+            make
+            declaration
+            in weconnect.</p>
+          <p *ngIf="this.selectedRegimeType==='old'">You have selected <b>Old Income tax regime </b>, Actual investments declaration completed in weconnect.</p>
+        </div>
+        <div class="textDataBlock font-14" *ngIf="this.selectedRegimeType===null">
+          <!-- <app-income-tax-simulation [incomeTaxData]='this.schemedeclarationsList'></app-income-tax-simulation> -->
+          <button (click)="setSelectedRegimeType('old','confirmation')" class="btn regimeSelection"
+            type="submit">Continue
+            with
+            Old Tax Regime</button>
+          <button (click)="setSelectedRegimeType('new','confirmation')" class="btn regimeSelection" type="submit">Select
+            New
+            Tax
+            Regime</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="newFormatModal modal fade" id="successModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title">
+          Confirm Regime Selection
+        </h5>
+      </div>
+
+      <div class="modal-body rejectionModal" id="modal-body1">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-yes" data-dismiss="modal"
+          (click)="setSelectedRegimeType('','')">OK</button>
+        <button type="button" class="btn btn-deny" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

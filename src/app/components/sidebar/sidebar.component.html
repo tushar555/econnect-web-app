@@ -1,0 +1,136 @@
+<div class="main">
+  <aside>
+    <div
+      class="sidebar left"
+      #sidebar
+      [ngClass]="{ sidebar: true, left: true, fliph: showSideBar }">
+      <button
+        class="button-left burger-menu button-pointer"
+        (click)="onClickMenuButton()"
+      >
+        <span class="fa fa-fw fa-bars"></span>
+      </button>
+      <ul class="list-sidebar bg-defoult" id="test">
+        <li id="user_info" *ngIf="this.localUserData">
+          <div class="parent">
+            <span class="helper"></span>
+            <div class="child child1" (click)='openMyProfile()'>
+              <img src="assets/img/default-image-small.svg" />
+            </div>
+            <div
+              class="child child2"
+              *ngIf="
+                this.localUserData.FirstName !== null ||
+                this.localUserData.LastName !== null
+              "
+            >
+              {{ this.localUserData.FirstName }} {{ this.localUserData.LastName }}
+            </div>
+            <div
+              class="child child2"
+              *ngIf="
+                this.localUserData.FirstName === null ||
+                this.localUserData.LastName === null
+              "
+            >
+              Welcome User
+            </div>
+            <!-- <div class="child child3" (click)="Userlogout()">
+                    <img src="../assets/img/logout.png" />
+              </div> -->
+          </div>
+        </li>
+        <ng-container *ngFor="let list of sidemenu; let i = index; let last = last">
+          <li
+          *ngIf="checkVisibility(list)"
+            (mouseover)="changeIcon(list, i)"
+            (mouseleave)="changeLeaveIcon(list, i)"
+            (mouseenter)="comingSoon(list)"
+            (click)="openLink(list)"
+            class="sidemenu-class"
+            [class.last-item]="last"
+            [ngClass]="list.isactive == 0 ? 'no-active' : ''"
+          >
+            <a
+              *ngIf="index == list.index"
+              [routerLink]="routeLink(list)"
+              [routerLinkActive]="
+                list.isactive === 1 && list.isExternal === 0 ? 'active-link' : ''
+              "
+              [ngClass]="list.isactive == 0 ? 'no-active' : ''"
+            >
+              <div class="icon-section">
+                <img
+                  [src]="sourceImage"
+                  class="img-thumbnail side-icon"
+                  [attr.id]="'imageId' + i"
+                  name="{{ list.name }}"
+                />
+                <!-- <i [ngClass]="list.icon"></i> -->
+              </div>
+              <div class="nav-label">{{ list.name }}</div>
+            </a>
+            <a
+              *ngIf="index != list.index"
+              [routerLink]="routeLink(list)"
+              [routerLinkActive]="
+                list.isactive === 1 && list.isExternal === 0 ? 'active-link' : ''
+              "
+              [ngClass]="list.isactive == 0 ? 'no-active' : ''"
+            >
+              <div class="icon-section">
+                <img
+                  [src]="list.icon"
+                  class="img-thumbnail side-icon"
+                  [attr.id]="'imageId' + i"
+                  name="{{ list.name }}"
+                />
+                <!-- <i [ngClass]="list.icon"></i> -->
+              </div>
+              <div class="nav-label">{{ list.name }}</div>
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </aside>
+  <div class="newFormatModal modal" id="confirmationModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Logout</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body font-14">
+          <p>Are you sure you want to logout?</p>
+        </div>
+        <div class="modal-footer">
+
+          <button
+            type="button"
+            class="btn btn-deny"
+            data-dismiss="modal"
+            (click)="logout()"
+          >
+            No
+          </button>
+          <button
+          type="button"
+          class="btn btn-yes"
+          data-dismiss="modal"
+          (click)="logout()"
+        >
+          Yes
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

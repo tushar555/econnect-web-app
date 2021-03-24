@@ -1,0 +1,153 @@
+<div class="continer dashboard" id="dashboard_id">
+  <div class="login-header">
+    <img src="assets/mfss/mahindra-ridge.png" />
+  </div>
+  <!--
+  <div class="pull-right logout-icon dashboardLogout" (click)="openlogs(e)" style="right:25px">
+    <img  src="../assets/img/alarm.svg" data-toggle="tooltip" title="Logout" />
+  </div> -->
+
+  <div class="pull-right logout-icon dashboardLogout" (click)="Userlogout()">
+    <!-- <i class="fas fa-sign-out-alt"></i> -->
+    <img src="../assets/img/logout2.png" data-toggle="tooltip" title="Logout" />
+  </div>
+  <div class="userInfo" id="userDetails"></div>
+  <div class="dashboard-menu-section" *ngIf="showInfo">
+    <div class="dashboard-info">
+      <div class="text-center userInfo font-14">
+        <div class="imgOuterBox" (click)="openMyProfile()">
+          <img src="{{ imgLocation }}" class="img-thumbnail" />
+        </div>
+        <div class="user-name">
+          {{ this.userInfo?.FirstName | titlecase }}
+          {{ this.userInfo?.LastName | titlecase }}
+        </div>
+        <div class="margin-bottom">
+          <span>{{ companyName }}, {{ location }}</span>&nbsp;
+          <span>{{ TokenId }}</span>
+        </div>
+      </div>
+      <div class="row dashboard-menu padding-top">
+        <ng-container *ngFor="let list of menuList; let last = last">
+          <div style="word-break: break-word;" class="col col-xs-4 col-sm-4 col-md-2 col-lg-2 button-pointer"
+            (mouseenter)="comingSoon(list)" (click)="openLink(list)" [routerLink]="routeLink(list)"
+            *ngIf="checkVisibility(list)" [class.last-item]="last" [ngClass]="list.isactive == 0 && list.isBalnk !== true? 'no-active' : list.isBalnk === true &&  list.isactive == 0 ? 'blank':'on-hover'
+              ">
+
+            <div class="text-center">
+              <img *ngIf="list.imgSrc !== ''" [src]="list.imgSrc" class="imgsize" />
+            </div>
+            <div class="text-center">
+              <span class="text">{{ list.title }}</span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="newFormatModal modal" id="confirmationModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Logout</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body font-14">
+          <p>Are you sure you want to logout?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">
+            No
+          </button>
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="logout()">
+            Yes
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!------------ Pin Warning Modal Start---------------->
+
+
+
+  <div class="newFormatModal modal" id="warningModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <div class="alert-image">
+            <img height=100% width=100% src="assets/img/danger.svg">
+          </div>
+
+          <div class="alert-message">
+            Warning
+          </div>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body font-14">
+          <p *ngIf="isPinPresent === 'false';else passwordChanged">Seems like you have not set pin. Are you sure you
+            want to set now?</p>
+          <ng-template #passwordChanged>
+            Your pin is disabled, kindly reset it from profile section.
+          </ng-template>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="setPin()">
+            Set Pin
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!------------ Pin Warning Modal End---------------->
+
+  <!--Status Details  box Done -->
+  <div class="newFormatModal modal fade " id="userNotif" role="dialog">
+    <div class="modal-dialog modal-lg NotifAlignMain" role="document">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"> User Notification</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div> -->
+
+        <div class="loader" *ngIf="!responseArr">
+          Loading ...
+        </div>
+
+        <div class="modal-body" *ngIf="responseArr">
+
+          <div class="MainNotifContain" *ngFor="let notif of responseArr,let i=index">
+            <div class="Header">
+              {{notif.Status}}
+            </div>
+            <div class="bodyHeader">
+              {{notif.Notification}}
+            </div>
+          </div>
+          <div class="loader" *ngIf="responseArr?.length===0">
+            No Notification
+          </div>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-deny">No</button> -->
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="responseArr=''">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,952 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+  <div class="container tax-summary-page main-content" *ngIf="!contentProcessing">
+    <div class="incometaxHeaderBlock col-md-2" *ngIf="isAdminIT">
+      <div class="outerMainBlock">
+        <div class="block">Employee</div>
+        <div class="block">
+          <label class="switch">
+            <input type="checkbox" [checked]="false" [disabled]="false"
+              (change)="DeclartionAdminView('Active');$event.target.checked = false">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="block alignContent">Admin</div>
+      </div>
+    </div>
+
+    <app-modal *ngIf="flag" (CloseModalEvent)="closeModal()"></app-modal>
+
+    <!-- New Design Layout Start -->
+
+    <div class="container incomeTaxMainPage">
+      <div class="row no-margin fullHeight" *ngIf="salaryDetails.length">
+
+        <div
+          [ngClass]="(selectedSection === 'taxProjection' || salaryDetails[0].value == 0 ||  (selectedSection ==='simulation'))?'col-md-12':'col-md-9'"
+          class="paddingLeft0 lefttabdiv">
+          <div class="gird" id="tabs">
+            <nav>
+              <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+
+                <a *ngIf="selectedRegimeType !== 'new'" (click)="setSelectedSection('declaration')"
+                  [ngClass]="getNgClass()" class="nav-item nav-link border-radius1 col-md-2" id="nav-profile-tab"
+                  data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">IT
+                  Declaration</a>
+
+                <a *ngIf="selectedRegimeType !== 'new'" [ngClass]="(selectedSection=='declarationStatus')?'active1':''"
+                  (click)="setSelectedSection('declarationStatus')" class="col-md-2 nav-item nav-link no-border"
+                  id="nav-declarationStatus-tab" data-toggle="tab" href="#nav-declarationStatus" role="tab"
+                  aria-controls="nav-declarationStatus" aria-selected="false">Declaration Status</a>
+
+                <a (click)="setSelectedSection('simulation')"
+                  [ngClass]="{ 'active1': (selectedSection=='simulation' && typeofSelection !=='taxRegime' ),'no-border':(selectedRegimeType !== 'new'),'border-radius1':(selectedRegimeType === 'new')}"
+                  class="nav-item nav-link no-border col-md-2" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                  role="tab" aria-controls="nav-profile" aria-selected="false">Tax Simulator </a>
+
+                <a (click)="setSelectedSection('simulation','taxRegime')"
+                  [ngClass]="(typeofSelection=='taxRegime' && selectedSection==='simulation' )?'active1':''"
+                  class="nav-item nav-link border-radius3 col-md-2" id="nav-profile-tab" data-toggle="tab"
+                  href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Regime Selection</a>
+
+                <ng-template class="ngb" #rt let-r="result" let-t="term">
+                  <ngb-highlight class="font-12 ngb" [result]="r.SchemeName" [term]="t">
+                  </ngb-highlight>
+                </ng-template>
+
+                <!-- <a (click)="setSelectedSection('taxProjection')"
+                  [ngClass]="(selectedSection=='taxProjection')?'active1 col-md-2':'col-md-3'" class="nav-item nav-link "
+                  id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile"
+                  aria-selected="false">Tax Projection</a> -->
+                <!-- Default switch -->
+
+                <div class="example" *ngIf="selectedSection==='declaration'">
+                  <input placeholder="Search scheme name here.." id="typeahead-format"
+                    type="text" class="form-control" [(ngModel)]="model" (ngModelChange)="onChange()"
+                    [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" />
+                  <!-- <span class="search-icon"><i class="fa fa-search icon"></i></span> -->
+
+                  <!-- <button [disabled]='checkDisabled()' (click)="confirmationBox('discard_sim')" class="btn tabBtn m-r-5"
+                    type="submit">Import From Calculator</button> -->
+                  <!-- <button [disabled]='checkDisabled()' (click)="confirmationBox('discard_new')" class="btn tabBtn"
+                    type="submit">New Declaration</button> -->
+                </div>
+
+                <div class="tabButtonBlock" *ngIf="selectedSection==='declaration' && !isDeclartionmade">
+
+                  <!-- <button  (click)="getTaxableAmount('declaration',true)"
+                    class="btn tabBtn m-r-5" type="submit">Get Last
+                    Year's Declaration</button> -->
+
+                  <button (click)="getTaxableAmount('declaration','')" class="btn tabBtn m-r-5" type="submit">Add New
+                    Declaration</button>
+                </div>
+
+                <div class="tabButtonBlock" *ngIf="selectedSection==='taxProjection'">
+                  <span class="font-12 select-div">Financial Year : {{year}}</span> <select
+                    class="form-control select-div" (change)="getTaxProjection($event)">
+                    <!-- <option style="padding:20px" disabled [ngValue]="null">Select FY</option> -->
+                    <option value="" disabled selected>Select FY</option>
+                    <option style="padding:20px" *ngFor="let year of yearsArray;let i=index" [value]="year">
+                      {{yearsArray[i]}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </nav>
+            <div *ngIf="selectedSection" class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+
+              <div class="tab-pane show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                <div *ngIf="selectedSection !== 'taxProjection' && selectedSection !=='simulation'"
+                  class="col-md-2 floatLeft padding0">
+                  <div
+                    [ngStyle]="{'height':(selectedSection === 'declarationStatus' && selectedRegimeType !== null)?'75vh':'70vh'}"
+                    class="card generalDetailCard">
+                    <ul class="list-group list-group-flush"
+                      *ngFor="let scheme of schemedeclarationsList.Schemes;let i=index;">
+
+                      <li (click)='setSelectedCategory(scheme,i)' class="list-group-item"
+                        [ngClass]="{'activeLink':getIsSelected(scheme)}">{{scheme.Section}}
+
+                      <i class="fas fa-circle declared-scheme" *ngIf='selectedSection ==="declaration" && scheme.declaredAmount!==0'></i>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div *ngIf="selectedSection == 'taxProjection' &&  shownorecord"
+                  class="col-md-10 floatLeft paddingRight0 innerlefttabdiv">
+                  <div class="card centerConatiner">
+
+                    <div class="row scrollableContainer">
+                      <object [data]='fileURL' class='modal-open' type="application/pdf"></object>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div *ngIf="selectedSection !== 'taxProjection'" class="floatLeft paddingRight0 "
+                  [ngClass]="(selectedSection ==='simulation' || typeofSelection === 'taxRegime')?'col-md-8 no-left-padding':'innerlefttabdiv col-md-10'">
+                  <div class="card centerConatiner"
+                    [ngStyle]="{'height':(selectedSection==='declaration')?'70vh':(typeofSelection === 'taxRegime' || selectedRegimeType !== null)?'75vh':(selectedSection==='simulation')?'67vh':''}">
+                    <ng-container *ngIf="selectedSection !=='simulation';else simulationComp">
+                      <div class="m-b-10"
+                        *ngIf="selectedSection!=='declarationStatus' && selectedSection!=='taxProjection'">
+
+                        <div [ngClass]="(selectedSection=='simulation')?'col-md-4':'col-md-6'" class="padding0 floatLeft">
+                          <div class="card infoCard">
+                            <div class="card-body ">
+                              <h6 class="card-subtitle mb-1 text-muted">Section Limit</h6>
+                              <h5 class="card-title">
+                                <span *ngIf="selectedScheme.SectionLimit!==0 && (selectedScheme.Section !== '80D' ||
+                                    selectedScheme.Section == '80DDB')">
+                                  ₹ </span>
+                                {{(selectedScheme.SectionLimit !== 0 && (selectedScheme.Section !== '80D' || selectedScheme.Section == '80DDB')) ? (   selectedScheme.SectionLimit|  number : '1.2-2'): '--' }}
+                              </h5>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 padding0 floatLeft" *ngIf="selectedSection==='simulation'">
+                          <div class="card infoCard">
+                            <div class="card-body ">
+                              <h6 class="card-subtitle mb-1 text-muted">Amt. Considered</h6>
+                              <h5 class="card-title">₹ {{selectedScheme.amountConsider  |  number : '1.2-2' }}</h5>
+                            </div>
+                          </div>
+                        </div>
+                        <div [ngClass]="(selectedSection=='simulation')?'col-md-4':'col-md-6'" class="padding0 floatLeft">
+                          <div class="card infoCard">
+                            <div class="card-body ">
+                              <h6 class="card-subtitle mb-1 text-muted">Amt. Declared</h6>
+                              <h5 class="card-title">₹ {{selectedScheme.declaredAmount  |  number : '1.2-2' }}</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="this.schemedeclarationsList?.Schemes" class=" scrollableContainer">
+                        <div class="paymentListing col-lg-12"
+                          *ngFor="let subScheme of this.schemedeclarationsList.Schemes[this.schemeNo]?.subSectiondetails"
+                          [ngStyle]="getStyle(subScheme.SchemeName)">
+
+                            <div
+                            [ngClass]="(selectedSection=='declarationStatus')?'col-md-6':(selectedSection=='declaration')?'col-md-8':'col-md-10'"
+                            class="floatLeft padding0">
+
+                            <p class="title">{{ subScheme.SchemeName}}
+                              <small *ngIf="checkStatus(subScheme, 'Approved')" [class.status-approved]="checkStatus(subScheme, 'Approved')"> Approved </small>
+                              <small *ngIf="checkStatus(subScheme, 'Pending')" [class.status-pending]="checkStatus(subScheme, 'Pending')"> Submitted </small>
+                              <small *ngIf="checkStatus(subScheme, 'Rejected')" [class.status-rejected]="checkStatus(subScheme, 'Rejected')"> Rejected </small>
+
+                            </p>
+
+                            <span class="required" *ngIf="selectedSection=='declarationStatus' && subScheme.OfflineProof">
+                              Proofs needs to be submitted offline.
+                            </span>
+                          </div>
+                          <div class="col-md-2 floatLeft padding0">
+                            <!-- [disabled]="(selectedSection=='declaration' && subScheme.ProofRequired ) || selectedSection=='declarationStatus'" -->
+                            <input
+                              ngClass="{'margin-up':(withDisability || withSeverDisability || !isSeniorMedicalValid || !isNonSeniorMedicalValid)}"
+                              autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                              [disabled]="isDisabled(subScheme)" maxlength="10" (keypress)="isNumber($event,
+                              subScheme)" (keyup)="checkValue($event?.target?.value, subScheme.SchemeID)"
+                              id="{{'proof-amt'+subScheme.SchemeID}}" [(ngModel)]="subScheme.Amount"
+                              (focusin)="onInFocus(subScheme)" (focusout)="saveAmount(subScheme,'fromNormal')"
+                              class="form-control">
+                          </div>
+                          <div [ngClass]="(selectedSection==='declarationStatus')?'col-md-4':'col-md-2'"
+                            class="floatLeft padding0 iconBox text-right"
+                            *ngIf="  selectedSection=='declaration' || selectedSection=='declarationStatus' ">
+                            <div
+                              *ngIf="subScheme.Status !==null && selectedSection=='declarationStatus' && subScheme.Status !=='Save'">
+
+                              <span class="declaration-status">
+                                <span class="float-right statusTag"
+                                  [ngClass]="{'status-approved':(subScheme.Status == 'Approved'),'status-rejected':(subScheme.Status == 'Rejected'),
+                                    'status-pending':(subScheme.Status == 'Pending')}">{{subScheme.Status==='Pending'?'Submitted':subScheme.Status}}
+                                  <span *ngIf="subScheme.Status == 'Rejected'" class="badge badge-light badge2"
+                                    (click)="openRejectionModal(subScheme)">!</span>
+                                </span>
+
+                              </span>
+                            </div>
+
+                            <span style="visibility: hidden;" id="{{'save-btn'+subScheme.SchemeID}}"
+                              *ngIf="selectedSection =='declaration'" (click)="saveAmount(subScheme,'fromStatus')"><img
+                                src="../assets/img/incometaxIcons/save(1).svg" data-toggle="tooltip" title="Save">
+                              <!-- <p class="tooltiptext">Save</p>  -->
+                            </span>
+                            <span style="visibility: hidden;" id="{{'cancel-btn'+subScheme.SchemeID}}"
+                              *ngIf="selectedSection =='declaration'" (click)="cancel(subScheme)"><img
+                                src="../assets/img/incometaxIcons/close(1).svg" data-toggle="tooltip" title="Cancel">
+                              <!-- <p class="tooltiptext">Cancel</p> -->
+                            </span>
+                            <span class="posRel" *ngIf="selectedSection =='declaration' && subScheme.Amount !== 0 &&
+                                subScheme.DeclarationDetails?.length !==0 && subScheme.Status !== 'Approved' ">
+                              <i class="fa fa-trash ticon" style="cursor: pointer;" aria-hidden="true"
+                                (click)="openDeleteConfirm('confirmation',subScheme )" data-toggle="tooltip"
+                                title="Delete Declaration Details"></i>
+                            </span>
+                            <span class="posRel " *ngIf="selectedSection =='declaration'"
+                              (click)="openInfoModal(subScheme)"><img src="../assets/img/incometaxIcons/information.svg"
+                                data-toggle="tooltip" title="Information">
+                              <!-- <p class="tooltiptext">Upload</p> -->
+                              <!-- <span class="badge badge-light badge1">{{subScheme.ProofCount}}</span> -->
+                            </span>
+
+                            <span class="posRel " *ngIf="isEditEnabled(subScheme)"
+                              (click)="openModalComponent(subScheme)"><img src="../assets/img/incometaxIcons/edit3.svg"
+                                data-toggle="tooltip" title="Add Details">
+                              <!-- <p class="tooltiptext">Upload</p> -->
+                              <!-- <span class="badge badge-light badge1">{{subScheme.ProofCount}}</span> -->
+                            </span>
+                          </div>
+
+
+                      </div>
+
+
+                        <ng-container *ngIf="schemeNo === 3">
+                          <p *ngIf="!isSevereDisabilityValid" class="required"> *Amount must be less than
+                            125000 for 'Deduction For Dependent With Severe Disability (Disability 80% or more)' </p>
+                          <p *ngIf="!isNonSevereDisabilityValid" class="required"> *Amount must be less
+                            than 75000 for 'Deduction for dependent with disability'</p>
+                        </ng-container>
+
+                        <ng-container *ngIf="schemeNo === 9">
+                          <p *ngIf="withDisability" class="required"> *Amount must be less than 75000 for 'Deduction For
+                            Self Non-Severe Disability'</p>
+                          <p *ngIf="withSeverDisability" class="required">*Amount must be less
+                            than 125000 for 'Deduction For Self Severe Disability'</p>
+                        </ng-container>
+
+                        <ng-container *ngIf="schemeNo === 4" class="required">
+                          <p *ngIf="!isSeniorMedicalValid" class="required"> *Amount must be less than
+                            100000 for 'Medical Treatment For (Self Senior Citizen)' </p>
+                          <p *ngIf="!isNonSeniorMedicalValid" class="required"> *Amount must be less
+                            than 40000 for 'Medical Treatment For (Self Non-Senior Citizen)'</p>
+                        </ng-container>
+
+                      </div>
+                    </ng-container>
+                    <ng-template #simulationComp>
+                      <app-income-tax-simulation [schemedeclarationsList]="this.originalschemedeclarationsList"
+                        [typeofSelection]="typeofSelection" (taxEvent)="onTaxEventEmit($event)"
+                        (regimeSelectionEvent)="onRegimeSelect()" #taxSimulation
+                        style="height: 100%;">
+                      </app-income-tax-simulation>
+                    </ng-template>
+                    <div *ngIf="selectedSection === 'declarationStatus' && !isDeclartionmade">
+                      <div class="noFound-container">
+                        <div class="noDataBlock">
+                          <div class="imgDataBlock"><img class="" src="assets/img/no-record.png"></div>
+                          <div class="textDataBlock font-14">
+                            <p>No declarations made yet</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="selectedSection=='declaration' && DeclarationPeriod">
+
+                    <div *ngIf='this.selectedRegimeType === null || this.selectedRegimeType === "old"' (click)="confirmationBox('sendApproval')"
+                      class="col-md-12 floatLeft padding0">
+                      <div class="buttonBlock">
+                        <span>Make Declaration</span>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div *ngIf="selectedSection=='declarationStatus'">
+
+                    <div class="col-md-12 floatLeft padding0">
+                      <div class="message">
+                        <span> *Note: Please click on
+                          Tax
+                          Simulator
+                          tab to compare your Tax liability as per the
+                          Old & New Tax Regime</span>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div
+                    *ngIf="selectedSection==='simulation' && typeofSelection !=='taxRegime' && this.selectedRegimeType === null "
+                    (click)="simulateDetails()">
+                    <div class="col-md-12 floatLeft padding0">
+                      <div class="buttonBlock">
+                        <span> Simulate</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div *ngIf="selectedSection ==='simulation' || typeofSelection === 'taxRegime' "
+                  class="col-md-4 floatLeft paddingRight0 innerlefttabdiv">
+                  <ng-container [ngTemplateOutlet]="simulationTaxSummary"></ng-container>
+                </div>
+
+                <div class="noFound-container" *ngIf="selectedSection == 'taxProjection' && !year ">
+                  <div class="noDataBlock">
+                    <div class="imgDataBlock"><img class="" src='assets/img/no-record.png'></div>
+                    <div class="textDataBlock">
+                      <p>Please select year to view your Tax Projection</p>
+                    </div>
+                  </div>
+                  <!-- <div class="innernoFound">
+                    <img class="noFound" src='assets/img/no-record.png'>
+                    <div class="noFound-text"> Please select year to view your  Tax Projection</div>
+                    </div> -->
+                </div>
+
+                <div class="noFound-container" *ngIf="selectedSection == 'taxProjection' && year &&  !shownorecord">
+                  <div class="noDataBlock">
+                    <div class="imgDataBlock"><img class="" src='assets/img/no-record.png'></div>
+                    <div class="textDataBlock">
+                      <p>No record found</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="selectedSection!=='taxProjection'" class="col-md-3 paddingLeft0 paddingRight0">
+
+          <div class="taxSummary" *ngIf="salaryDetails[0].value !== 0 && selectedSection !=='simulation'">
+            <div class="card taxSummaryDetailCard">
+              <div class="card-header">
+                <!-- <span *ngIf="selectedSection == 'simulation'"> Tax Calculation Summary </span>
+                  <span  *ngIf="selectedSection == 'declaration' || selectedSection == 'declarationStatus'"> CTC Components </span> -->
+                <span>Tax Calculation Summary </span> &nbsp;&nbsp; ({{fiscalYear}} - {{fiscalYear+1}})
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let salary of salaryDetails">
+                  <div class="width60 text-left taxBlockRow" style="font-weight: bold"> {{salary.title }}
+                  </div>
+                  <div class="width40 text-right taxBlockRow text-right"><i class="fa fa-inr m-r-5"
+                      aria-hidden="true"></i>{{salary.value? (salary.value |  number : '1.2-2'): '0'}}</div>
+                  <div *ngFor="let obj of salary?.subSections">
+                    <div class="width60 taxBlockRow"> {{obj.sectionName}} </div>
+                    <div class="width40 taxBlockRow text-right"> <i class="fa fa-inr m-r-5"
+                        aria-hidden="true"></i>{{obj.value? (obj.value |  number : '1.2-2'): '0'}}</div>
+
+                  </div>
+
+                </li>
+              </ul>
+            </div>
+            <div class="card taxableAmountCard">
+              <!-- <div class="card-body borderBottom">
+                  <h6 class="card-subtitle mb-1 text-muted"> Net Income </h6>
+                <h5 class="card-title">{{originalTaxableSalary | number : '1.2-2' }}</h5>
+              </div> -->
+              <div class="card-body borderBottom">
+                <h6 class="card-subtitle mb-1 text-muted">Total Taxable Income </h6>
+                <h5 class="card-title">₹ {{totalTaxableSalary | number : '1.2-2' }}</h5>
+              </div>
+              <!-- <div class="card-body">
+                <h6 class="card-subtitle mb-1 text-muted">Income Tax</h6>
+                <h5 class="card-title">₹ {{totalTaxableAmount |  number : '1.2-2' }}</h5>
+              </div> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <ng-template #simulationTaxSummary>
+        <div class="taxSummary">
+          <div class="card taxSummaryDetailCard height-50">
+            <div class="card-header">
+              <!-- <span *ngIf="selectedSection == 'simulation'"> Tax Calculation Summary </span>
+                        <span  *ngIf="selectedSection == 'declaration' || selectedSection == 'declarationStatus'"> CTC Components </span> -->
+              <span>Tax Calculation Summary </span> &nbsp;&nbsp; ({{displayFY}})
+            </div>
+            <ul class="list-group list-group-flush" *ngIf='this.simulatedDetails?.taxSummary;else noTaxSummary'>
+              <li class="row list-group-item">
+                <div class="width60 text-left taxBlockRow col-md-4" style="font-weight: bold">
+                  Details
+                </div>
+                <div class="width60 text-right taxBlockRow col-md-4" style="font-weight: bold">
+                  As per Old regime
+                </div>
+                <div class="width60 text-right taxBlockRow col-md-4" style="font-weight: bold">
+                  As per New regime
+                </div>
+              </li>
+
+              <ng-container *ngIf="this.simulatedDetails?.taxSummary?.length !==0;else noValues">
+                <li class="row list-group-item" *ngFor="let salary of this.simulatedDetails?.taxSummary">
+                  <div class="width60 text-left taxBlockRow col-md-4" style="font-weight: bold"> {{salary.DisplayName }}
+                  </div>
+                  <div class="width40 text-right taxBlockRow text-right col-md-4"><i class="fa fa-inr m-r-5"
+                      aria-hidden="true"></i>{{salary.Old_Amount? (salary.Old_Amount |  number : '1.2-2'): '0'}}</div>
+                  <div class="width40 text-right taxBlockRow text-right col-md-4"><i class="fa fa-inr m-r-5"
+                      aria-hidden="true"></i>{{salary.New_Amount? (salary.New_Amount |  number : '1.2-2'): '0'}}</div>
+                </li>
+              </ng-container>
+
+              <ng-template #noValues>
+                <span class="no-tax-summary"> No data to show </span>
+              </ng-template>
+            </ul>
+
+            <ng-template #noTaxSummary>
+              <div class="no-tax-summary"> Please click on Simulate to get Tax Details. </div>
+            </ng-template>
+          </div>
+          <div class="card taxableAmountCard">
+
+            <div class="card-body borderBottom">
+              <h6 class="card-subtitle mb-1 text-muted">Total Tax Payable as per Old Regime</h6>
+              <h5 class="card-title">₹ {{simulatedTax.Old_Amount | number : '1.2-2' }}</h5>
+            </div>
+
+          </div>
+          <div class="card taxableAmountCard margin-top-10">
+
+            <div class="card-body borderBottom">
+              <h6 class="card-subtitle mb-1 text-muted">Total Tax Payable as per New Regime</h6>
+              <h5 class="card-title">₹ {{simulatedTax.New_Amount | number : '1.2-2' }}</h5>
+            </div>
+
+          </div>
+        </div>
+      </ng-template>
+
+
+      <!-- New Design Layout End -->
+
+      <!-- end of HRA Modal -->
+
+      <!-- Start of LIC Modal-->
+
+      <!--Status Details  box -->
+      <div class="newFormatModal modal fade" id="statusDetails" role="dialog">
+        <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{subScheme?.SchemeName}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" *ngIf="!subScheme?.DeclarationDetails">
+
+              You have not submitted any proofs.
+
+            </div>
+            <div *ngIf="subScheme?.DeclarationDetails" class="modal-body new-modal-body">
+
+              <span *ngFor="let proof of subScheme?.DeclarationDetails[0]; let i=index">
+                <span *ngFor="let key of subSchemeKeys; let j=index">
+
+                  <div class="col-md-12" *ngIf='key !== "Proofs"'>
+                    <div class="col col-md-6 details">
+                      {{key}}
+                    </div>
+                    <div class="col col-md-6 details">
+                      {{proof[key]==="" ? '-': proof[key]}}
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-12" *ngIf='key === "Proofs"'>
+                    <div class="col col-md-3 imgBlock" *ngFor="let imgproof of proof[key]">
+                      <img *ngIf="fileExt(imgproof.Path) == 'image'; noImage" [src]="imgproof.Path">
+                      <ng-template #noImage>
+                        {{getFileName(proof.Path)}}
+                      </ng-template>
+                    </div>
+                  </div>
+                  <!-- {{imgproof.Path}}  -->
+
+                </span>
+              </span>
+
+
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-deny">No</button> -->
+              <button type="button" class="btn btn-yes" data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--   Details  box  end -->
+
+
+      <!--Status Details  box Done -->
+      <div class="newFormatModal modal fade " id="logDetails" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> Log Details For {{subScheme?.SchemeName}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" *ngIf="schemeLogs?.Schemes.length === 0">
+              No logs found for this scheme.
+            </div>
+
+            <div class="modal-body" *ngIf="schemeLogs?.Schemes.length!==0">
+              <div class="tableFixHead">
+                <table class="table ">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">Timestamp</th>
+                      <th scope="col" class="text-center">Amount</th>
+                      <!-- <th scope="col" class="text-center">Offline/Online</th> -->
+                      <th scope="col" class="text-center">Status</th>
+                      <th scope="col">Created By</th>
+                      <th scope="col" class="text-center">Proofs uploaded</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let log of schemeLogs?.Schemes; let i=index">
+                      <td *ngIf='log.Timestamp!==null;' scope="row" class="text-center"> {{log.Timestamp}} </td>
+                      <td *ngIf='log.Timestamp===null;' scope="row" class="text-center"> NA </td>
+                      <td class="text-center"> {{log.Amount}}</td>
+                      <!-- <td class="text-center">
+                        <span *ngIf='log.OfflineProof;else Online'> Offline </span>
+                        <ng-template #Online>
+                          Online
+                        </ng-template>
+                      </td> -->
+                      <td class="text-center">{{log.Status}}</td>
+                      <td>{{log.CreatedBy}}</td>
+
+                      <td class="text-center">
+                        {{getImageCount(log)}}
+                        <!-- <div *ngIf='getimages(log).length !==0;else noFiles'>
+                        <span *ngFor="let img of getimages(log)">
+                          <a style="cursor:  context-menu" [href]='img.filePath' target="_blank">  <img class="proofImg" *ngIf="img.fileExt === 'image'"  [src]='img.filePath'> </a>
+
+                            <label style="cursor:  context-menu"  *ngIf="img.fileExt === 'pdf'">{{img.fileName}}</label>
+                        </span>
+                      </div>
+                      <ng-template #noFiles>
+                        NA
+                      </ng-template> -->
+                        <!-- {{getProofs(log)}} -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-deny">No</button> -->
+              <button type="button" class="btn btn-yes" data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Status Details  box  end -->
+    <!-- Done -->
+
+    <div class="newFormatModal modal fade " id="conformationModal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog " [ngClass]="yesAction !== 'sendApproval'?'modal-md':'modal-lg'" role="document" ngClass>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 *ngIf="yesAction === 'sendApproval'" class="modal-title" id="exampleModalLabel">
+              Declaration Submission
+            </h5>
+            <h5 *ngIf="yesAction !== 'sendApproval' && ValueChanged" class="modal-title" id="exampleModalLabel"> Discard
+              current changes?
+            </h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div class="smallTableFixHead" *ngIf="yesAction === 'sendApproval'">
+              <table class="table font-14">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">Sr. No.</th>
+                    <th scope="col">Scheme Name</th>
+                    <th scope="col" class="text-center">Amount</th>
+                    <th scope="col" class="text-center">Status</th>
+                    <!-- <th scope="col" class="text-center">Proof Details</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let log of declaredSchmes; let i=index">
+                    <td scope="row" class="text-center"> {{i+1}} </td>
+                    <!-- <th *ngIf='log.Timestamp===null;' scope="row"> NA </th> -->
+                    <td> {{log.SchemeName}}</td>
+                    <td class="text-center">
+                      {{log.Amount}}
+                    </td>
+                    <td class="text-center"
+                      [ngStyle]="{'background':((log.Status==='Pending' && this.ActualsPeriod)?'#FEF200':log.Status==='Deleted'?'#ff8a8a':'')} ">
+                      <span *ngIf="log.Status==='Pending' && !this.ActualsPeriod;else noActual"> - </span>
+                      <ng-template #noActual>
+                        {{log.Status}}
+                      </ng-template>
+                    </td>
+                    <!-- <td class="text-center">{{log.isProofsAttched}}</td> -->
+                    <!-- <td>{{log.CreatedBy}}</td> -->
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-md-7"> <span class="confirmMsg"> {{getAlertMessage()}} </span></div>
+              <div class="col-md-5">
+                <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="onYesAction()">Yes</button>
+                <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade " id="informationModal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md" role="document" ngClass>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              {{selectedInfoIcon?.SchemeName}}
+            </h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div class="smallTableFixHead1" *ngIf='infoScheme'>
+              <ul *ngFor="let obj of infoScheme?.description">
+                <li>{{obj?.desc}}</li>
+              </ul>
+
+
+            </div>
+            <div class="smallTableFixHead1" *ngIf='!infoScheme'>
+              <ul>
+                <li>No information available for this scheme.</li>
+              </ul>
+            </div>
+
+          </div>
+          <!-- <div class="modal-footer">
+            <div class="row">
+              <div class="col-md-7"></div>
+              <div class="col-md-5">
+                <button type="button" class="btn btn-yes info-btn" data-dismiss="modal">OK</button>
+
+
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade" id="successMessageModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 *ngIf='successFromDeclaration !== undefined && !saveClicked' class="modal-title">Submitted Successfully
+            </h5>
+            <h5 *ngIf='successFromDeclaration === undefined' class="modal-title">
+              Details Added
+            </h5>
+            <h5 *ngIf='saveClicked' class="modal-title">
+              Saved Successfully
+            </h5>
+
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+          </div>
+          <div *ngIf='(successFromDeclaration !== undefined && !saveClicked) && this.ActualsPeriod'
+            class="modal-body rejectionModal">
+            Please wait for admin approval.
+          </div>
+          <div *ngIf='(successFromDeclaration !== undefined && !saveClicked) && !this.ActualsPeriod'
+            class="modal-body rejectionModal">
+            Details saved successfully. Kindly check in 'Declaration Status'
+          </div>
+          <div *ngIf='successFromDeclaration === undefined' class="modal-body rejectionModal">
+            Please click on Make declaration to submit your details.
+          </div>
+          <div *ngIf='saveClicked' class="modal-body rejectionModal">
+            Your details saved successfully.
+          </div>
+          <div class="modal-footer">
+
+            <button *ngIf="!saveClicked" type="button" class="btn btn-yes" data-dismiss="modal"
+              (click)=" successFromDeclaration !==undefined? setSelectedSection('declarationStatus'):''">OK</button>
+            <button *ngIf="saveClicked" type="button" class="btn btn-yes" data-dismiss="modal"
+              (click)="setSelectedSection('declaration')">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade" id="rejectionModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Reason for Rejection</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div *ngIf='subScheme' class="modal-body rejectionModal">
+            <!-- <p class="fw-600">{{subScheme.SchemeName}}</p>
+            -->
+            <p class="fw-600" *ngIf='subScheme.AdminRemarks!==null'>{{subScheme.AdminRemarks}}</p>
+            <p class="fw-600" *ngIf='subScheme.AdminRemarks==null'>
+              No Remarks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade" id="toggleConfirmation" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Action</h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseModalEvent.emit('data')">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+          </div>
+          <div class="modal-body">
+            Do you want switch to Admin View?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-yes" data-dismiss="modal"
+              (click)="DeclartionAdminView('changeView')">Yes</button>
+            <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade" id="noHRAIncomePresentModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title">
+              No Details Added
+            </h5>
+
+
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+          </div>
+
+          <div class="modal-body rejectionModal">
+            No details updated in HRA or Income/loss from house Property.
+          </div>
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-yes" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade" id="deleteConfirmation" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Details</h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseModalEvent.emit('data')">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+          </div>
+          <div class="modal-body">
+            This action will delete all your proof Details, Do you want to delete all Records?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-yes" data-dismiss="modal"
+              (click)="openDeleteConfirm('final_delete')">Yes</button>
+            <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade" id="successModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title">
+              Saved Successfully
+            </h5>
+          </div>
+
+          <div class="modal-body rejectionModal" id="modal-body1">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-yes" data-dismiss="modal"
+              (click)=" this.getTaxableAmount(this.selectedSection)">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade" id="warningSimulationModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title">
+              Alert
+            </h5>
+          </div>
+
+          <div class="modal-body rejectionModal">
+            Please select the Tax Regime mandatorily in the Regime Selection Tab
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-yes" data-dismiss="modal">Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade" id="warningModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Warning
+            </h5>
+          </div>
+          <div class="modal-body rejectionModal">
+            Kindly make sure that you have submitted all the details before making declaration.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-deny" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade" id="notSubmittedModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Alert
+            </h5>
+          </div>
+          <div class="modal-body rejectionModal">
+            Below schemes are not yet submitted. Kindly submit from details section.
+            <ul *ngFor="let s of notSubmittedSchemes">
+              <li>
+              <b> {{s.SchemeName}} </b>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-deny" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="newFormatModal modal fade" id="regimeNotAllowed" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title">
+              Warning
+            </h5>
+          </div>
+
+          <div class="modal-body rejectionModal">
+            Kindly make sure you have done tax simulation first.
+          </div>
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-deny" data-dismiss="modal">OK</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+<div *ngIf="contentProcessing" class="initial-loading">
+  <i class="fa fa-spinner fa-spin"></i>
+  <span>{{ loadingText }}</span>
+</div>

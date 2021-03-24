@@ -1,0 +1,198 @@
+<div class="container">
+  <app-modal *ngIf="flag"></app-modal>
+  <div class="incometaxHeaderBlock col-md-2">
+    <div class="outerMainBlock">
+      <div class="block">Employee</div>
+      <div class="block">
+        <label class="switch" style="margin: 4px 0 0 0;">
+          <input type="checkbox" [checked]="true" [disabled]="false" (change)="
+              DeclartionAdminView('Active'); $event.target.checked = true
+            " />
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="block alignContent">Admin</div>
+    </div>
+  </div>
+
+  <div>
+    <span class="pull-right img-icon icon-right" [routerLink]="'/mfss/income-tax'">
+      <!-- <span data-toggle="tooltip" title="Back to Declaration">
+        <i class="fas fa-percent admin-icon"></i>
+      </span> -->
+    </span>
+  </div>
+  <!--Kavita New code Start-->
+
+  <div class="row infoBlockRow">
+    <div class="col-md-3  floatLeft">
+      <div class="card infoCard">
+        <div class="card-body ">
+          <h6 class="card-subtitle mb-1">Total Declarations</h6>
+          <h5 class="card-title">{{ recordSummary?.TotalDeclarations }}</h5>
+        </div>
+      </div>
+    </div>
+    <div id='approved' class="col-md-3  floatLeft" (click)="getUsers('approved')">
+      <div class="card infoCard">
+        <div class="card-body ">
+          <h6 class="card-subtitle mb-1">Approved</h6>
+          <h5 class="card-title">{{ recordSummary?.ApprovedDeclarations }}</h5>
+        </div>
+      </div>
+    </div>
+    <div id='pending' class="col-md-3  floatLeft" (click)="getUsers('pending')">
+      <div class="card infoCard">
+        <div class="card-body ">
+          <h6 class="card-subtitle mb-1">Pending</h6>
+          <h5 class="card-title">{{ recordSummary?.PendingDeclarations }}</h5>
+        </div>
+      </div>
+    </div>
+    <div id='rejected' class="col-md-3  floatLeft"  (click)="getUsers('rejected')">
+      <div class="card infoCard">
+        <div class="card-body ">
+          <h6 class="card-subtitle mb-1">Rejected</h6>
+          <h5 class="card-title">{{ recordSummary?.RejectedDeclarations }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row adminITTable">
+    <div class="adminTblHdr">
+      <div class="col-md-6 selectBlock">
+        <select class="form-control" [(ngModel)]="status" (change)="getRecords()">
+          <option value=''>All</option>
+          <option *ngFor="let type of reportTypes" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+        <i *ngIf="!mainStatus.includes(status)" (click)="downloadAsExcel()"
+             class="fa fa-download fa-lg" aria-hidden="true"></i>
+      </div>
+
+      <!-- <div class="col-md-3 pull-left"></div> -->
+      <div class="col-md-6 pull-left searchBlock">
+
+      <div class="tabButtonBlock">
+        <button (click)="configure()" class="btn tabBtn" type="submit">Configure Period</button>
+      </div>
+
+        <input [(ngModel)]="searchItem" class="form-control  search-input input-field someinput" type="search"
+          placeholder="Search by Employee name or SAP code." (ngModelChange)="searchInput()" aria-label="Search" />
+        <img src="../../../assets/img/throbber.gif" *ngIf="loaderSearch" class="loader-search" />
+
+        <i *ngIf="this.searchItem !=='' && !loaderSearch" (click)="clear()" class="fas fa-times"></i>
+
+      </div>
+
+    </div>
+    <div class="tableFixHead" *ngIf="employeeRecords">
+      <table>
+        <thead>
+          <tr>
+            <th>Company Code</th>
+            <th>SAP Code</th>
+
+            <th>Employee Name</th>
+
+            <th>Location</th>
+            <th>Grade</th>
+
+            <th class="text-center">No. of Declarations</th>
+            <th> Regime Type </th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of employeeRecords; let i = index">
+            <td>{{ e.CompanyID ? e.CompanyID : "-" }}</td>
+            <td>{{ e.TokenId ? e.TokenId : "-" }}</td>
+
+            <td>{{ e.EmpName ? e.EmpName : "-" }}</td>
+
+            <td>{{ e.Location ? e.Location : "-" }}</td>
+            <td>{{ e.EmpGrade ? e.EmpGrade : "-" }}</td>
+
+            <td class="text-center">{{ e.TotalDeclarations }}</td>
+            <td>{{ e.regimetype?.toUpperCase() || '-' }} </td>
+            <td class="text-center">
+
+                <!-- <i class="fa fa-eye"  (click)="sendDataUser(e)" ></i> -->
+                <a [ngStyle]="{'cursor': e.regimetype !== 'new'?'pointer':'not-allowed'}" (click)="e.regimetype !== 'new' ? sendDataUser(e):null"> View Details</a>  &nbsp; | &nbsp;
+                <a  [ngStyle]="{'cursor': e.regimetype ?'pointer':'not-allowed'}" (click)="e.regimetype ? confirmReset(e): null"> Reset Regime </a>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="!employeeRecords" class="notfound">
+      <img [src]="recordnotfound" />
+    </div>
+  </div>
+</div>
+
+
+<div class="newFormatModal modal fade" id="successMessage" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ titlemessage }}</h5>
+      </div>
+      <div class="modal-body rejectionModal">
+        {{ bodyMessage }}
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="this.getRecords()">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="newFormatModal modal fade" id="toggleConfirmation" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Action</h5>
+      </div>
+      <div class="modal-body">
+        Do you want switch to Employee View?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="DeclartionAdminView('changeView')">
+          Yes
+        </button>
+        <button type="button" class="btn btn-deny" data-dismiss="modal">
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="newFormatModal modal fade" id="RegimeModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="modal-title1">
+
+        </h5>
+      </div>
+
+      <div class="modal-body rejectionModal" id="modal-body1">
+
+      </div>
+      <div class="modal-footer" id="modal-footer1">
+        <button type="button" (click)="resetRegime()" class="btn btn-yes" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-deny" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

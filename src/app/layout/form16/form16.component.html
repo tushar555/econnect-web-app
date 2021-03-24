@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+      <div class="headerBlock col-md-2" >
+          <select class="form-control select-div" [(ngModel)]="year" (change)="getForm16()">
+              <option style="padding:20px" selected="selected" [ngValue]="null">Select FY</option>
+              <option style="padding:20px" *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}
+              </option>
+            </select>
+          </div>
+    <div class="container-block" style="display: none;">
+      <select class="form-control select-div" [(ngModel)]="year" (change)="getForm16()">
+        <option style="padding:20px" selected="selected" [ngValue]="null">Select FY</option>
+        <option style="padding:20px" *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-12">
+      <div class="card salarycardBlok" style="height:85vh;" *ngIf="shownorecord">
+        <div class="card-header yearDetails">
+          <h5><span class="lstick"></span> Financial Year : {{year}}</h5>
+        </div>
+        <object [data]='fileURL' class='modal-open' type="application/pdf"></object>
+      </div>
+      <!-- {{year}} -->
+      <div class="card defaultBlock" *ngIf="!shownorecord && year">
+        <div class="text-center errorBlock">
+          <img src="assets/img/no-record.png" height="100vh" width="100vw;">
+          <div class="total-text">
+            No Records Found
+          </div>
+        </div>
+      </div>
+
+      <div class="card defaultBlock" *ngIf="!year">
+        <div class="text-center errorBlock">
+          <img src="assets/img/no-record.png" height="100vh" width="100vw;">
+          <div class="total-text">
+            Please select year to view your form 16
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  <div class="row" style="display: none;">
+    <div class="col col-md-12 salarycardBlok">
+      <div class="col-md-3 p-l-0">
+        <div class="card">
+          <div class="card-header yearDetails">
+            <h5><span class="lstick"></span>Year</h5>
+            <select class="form-control" [(ngModel)]="year" (change)="getForm16()">
+              <option style="padding:20px" selected="selected" [ngValue]="null">-Select-</option>
+              <option style="padding:20px" *ngFor="let year of yearsArray;let i=index" [value]="year">
+                {{yearsArray[i]}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 p-r-0 p-l-0">
+        <div class="card">
+          <div class="col-md-12">
+            <object [data]='fileURL' class='modal-open' type="application/pdf"></object>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+  <!--<div [ngStyle]="{'display':showModal}" class="backdrop">
+    <div class="modal-dialog">
+      <div class="modal-content" (click)="closeModal()">
+        <div>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <object [data]='fileURL' class='modal-open' type="application/pdf"></object>
+          &lt;!&ndash; <object data='https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf' class='modal-open' type="application/pdf"></object> &ndash;&gt;
+        </div>
+      </div>
+    </div>
+  </div>-->
+</div>

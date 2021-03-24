@@ -1,0 +1,82 @@
+.lstick {
+  margin-left: -20px;
+  margin-right: 17px;
+}
+.content-wrapper {
+  padding-top: 4rem;
+}
+.no-record {
+  text-align: center;
+}
+
+.card-view {
+  margin: 8px 0px; //   padding: 8px;
+  .padding-top-3 {
+    padding: 0.3rem 0rem;
+  }
+  .color-gray {
+    color: gray;
+  }
+}
+
+.travel-info {
+  border: none;
+  .card-block {
+    padding: 0.5rem 2rem;
+  }
+  .padding-top-3 {
+    padding: 0.3rem 2rem;
+  }
+  .red-color {
+    font-weight: bold;
+    color: #dd1b1c;
+  }
+}
+
+.userInfo {
+  color: #dd1b1c;
+  background-color: #fef200;
+  border-left: 1px solid #dd1b1c;
+  border-right: 1px solid #dd1b1c;
+  border-bottom: 0.1rem solid #dd1b1c;
+  .padding-top-3 {
+    padding: 0.3rem 2rem;
+  }
+  .right-border {
+    border-right: 2px solid #dd1b1c;
+  }
+  .financial-year {
+    margin: 0px;
+    border-bottom: 1px solid;
+  }
+  span {
+    font-weight: 500;
+  }
+}
+
+.right-border {
+  border-right: 2px solid lightgray;
+}
+
+.self {
+  border-left: 0.3rem solid #fed700;
+}
+
+.wife {
+  border-left: 0.3rem solid #dd1b1c;
+}
+
+.son {
+  border-left: 0.3rem solid gray;
+}
+
+.LTANewCard {
+  ul {
+    li {
+      .block {
+        width: 50%;
+        float: left;
+      }
+    }
+  }
+}

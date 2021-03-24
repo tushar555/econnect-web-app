@@ -1,0 +1,74 @@
+<div class="container attendance-page font-13">
+  <div class="row horizontal-padding">
+    <div class="col col-md-4 p-l-0">
+      <input [(ngModel)]="searchText" class="form-control mr-sm-2 search-input someinput font-13" type="search"
+        (ngModelChange)="searchFn($event)" placeholder="Search by Employee" aria-label="Search" />
+      <i class="fas fa-times" style="position: absolute;right: 5vh;top: 2vh;" *ngIf="showCross == true"
+        (click)="reset()"></i>
+    </div>
+    <div class="col col-md-4 selection">
+    </div>
+    <div class="col col-md-4 selection p-r-0">
+
+      <select class="form-control font-13 select2" [(ngModel)]="month"
+        (change)="attendanceApproveReject($event.target.value)">
+        <ng-container *ngFor="let mon of monthsArray;let i=index">
+          <option style="padding:20px" *ngIf="mon==''" disabled class="font-13" [value]="">Select Month</option>
+          <option style="padding:20px" *ngIf="mon!==''" class="font-13" [value]="i">{{mon}}</option>
+        </ng-container>
+      </select>
+
+      <select style="margin-right: 9px;" class="form-control font-13 select1" [(ngModel)]="year"
+        (change)="getMonths($event.target.value)">
+        <option style="padding:20px" class="font-13" *ngFor="let yr of yearsArray;let i=index" [value]="yr">{{yr}}
+        </option>
+      </select>
+      <!-- </div>
+        <div class="col col-md-4 selection"> -->
+
+    </div>
+  </div>
+
+  <div class="row horizontal-padding">
+    <div class="col col-md-12 p-0">
+      <div id="table-wrapper">
+        <div id="table-scroll">
+          <table class="table table-bordered">
+            <thead>
+              <tr *ngIf="this.empAttendance">
+                <th class="header-bg font-13-b">Employee Name</th>
+                <th class="header-bg font-13-b">Token Id</th>
+
+                <th *ngFor="let weeknumber of this.empAttendance[0]?.Weeks;let i=index"
+                  class="text-center header-bg2 font-13-b">W{{i+1}}</th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+
+              <tr class="emp-details " *ngFor="let emp of this.empAttendance;let i=index">
+                <td class="font-13">{{emp.EmployeeName}}</td>
+                <td class="font-13">{{emp.TokenID}}</td>
+                <td class="text-center week-td font-13 on-hover" *ngFor="let week of emp.Weeks"
+                  (click)='getDetails(week,emp.TokenID)'>
+                  <div class="attendaceApprovalTriangle" [ngClass]="'status'+week.ApprovalStatus"></div>
+                  <span *ngIf="week.WeeklyHours !==null;else nodata"> {{week.WeeklyHours}} </span>
+
+                  <ng-template #nodata>-</ng-template>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <div *ngIf="!this.empAttendance[0]">
+            <h5> No records for Approval</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

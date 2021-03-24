@@ -1,0 +1,172 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="headerBlock col-md-2">
+      <select class="form-control select-div" disabled [(ngModel)]="year" (change)="getAppraisalLetter()">
+        <option style="padding:20px" selected="selected" [ngValue]="null">Select FY</option>
+        <option style="padding:20px" *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}
+        </option>
+      </select>
+    </div>
+    <div class="container-block" style="display: none;">
+      <select class="form-control select-div" [(ngModel)]="year" (change)="getAppraisalLetter()">
+        <option style="padding:20px" selected="selected" [ngValue]="null">Select FY</option>
+        <option style="padding:20px" *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-12">
+      <div class="card salarycardBlok" style="height:85vh;" *ngIf="!shownorecord">
+        <div class="card-header yearDetails">
+          <h5 style='display: inline;'><span class="lstick"></span> Financial Year : {{year}}</h5>
+          <button (click)="backClick()" *ngIf="showPDF" class="btn back-btn tabBtn m-r-5" type="submit">Back</button>
+
+        </div>
+
+        <div class="document-list" *ngIf='!showPDF'>
+          <div *ngFor="let obj of responseData" (click)="openPdfFile(obj)">
+
+            <div class="row document-item">
+              <div class="col-4 font-14" *ngIf="obj.Type=='AP'"> Compensation letter</div>
+              <div class="col-4 font-14" *ngIf="obj.Type=='PP'"> Performance pay letter</div>
+            </div>
+          </div>
+        </div>
+
+        <object *ngIf='showPDF' [data]='fileURL' class='modal-open' type="application/pdf"></object>
+
+      </div>
+
+
+      <div class="card defaultBlock" *ngIf="shownorecord && year">
+        <div class="text-center errorBlock">
+          <img src="assets/img/no-record.png" height="100vh" width="100vw;">
+          <div class="total-text">
+            No Records Found
+          </div>
+        </div>
+      </div>
+
+      <div class="card defaultBlock" *ngIf="!year">
+        <div class="text-center errorBlock">
+          <img src="assets/img/no-record.png" height="100vh" width="100vw;">
+          <div class="total-text">
+            Please select year to view your form 16
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container attendance-page main-content">
+
+  <!-- <div class="year-div ">
+    <select class="form-control" [(ngModel)]="year" (change)="getMonths($event.target.value,'fromDOM')">
+      <option style="padding:20px" *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}</option>
+    </select>
+
+  </div> -->
+  <!-- kavita code start -->
+  <div class="row">
+    <div class="col col-md-12 salarycardBlok">
+      <div class="col-md-3 p-l-0">
+        <div class="card">
+          <div class="card-header yearDetails">
+            <h5><span class="lstick"></span> Year : {{year}}</h5>
+            <select class="form-control font-14" [(ngModel)]="year" (change)="getAppraisalLetter()">
+              <option style="padding:20px" *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h5><span class="lstick"></span>Personal Details</h5>
+          </div>
+          <div class="card-body">
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-user"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Name</p>
+                <p class="subContent">{{userDetails.FirstName | titlecase}} {{userDetails.LastName | titlecase}}</p>
+              </div>
+            </div>
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-id-badge"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Employee ID</p>
+                <p class="subContent">{{userDetails.TokenId}}</p>
+              </div>
+            </div>
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-briefcase"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Designation</p>
+                <p class="subContent">{{userDetails.JobTitle}}</p>
+              </div>
+            </div>
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-map-marker"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Location</p>
+                <p class="subContent">{{userDetails.LocationName | titlecase}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 p-r-0 p-l-0">
+        <div style='margin-left: 1px;' class="row margin-row" *ngIf="!shownorecord">
+          <div class="col col-md-3 detail-card" *ngFor="let obj of responseData" (click)="openPdfFile(obj)">
+            <!-- <span>{{month}}</span> -->
+            <span *ngIf="obj.Type=='AP'"> Compensation Letter</span>
+            <span *ngIf="obj.Type=='PP'"> Performance Pay Letter</span>
+            <span *ngIf="obj.Type=='HYPP'"> Half Yearly Performance Pay Letter</span>
+          </div>
+
+
+        </div>
+        <div *ngIf="shownorecord" class="document-list">
+          No record found.
+        </div>
+        <!-- <div *ngIf="documents.length>0" class="document-list">
+          <ng-container *ngFor="let document of documents">
+            <div *ngIf="document.Base64File" class="row document-item" (click)="showFile(document.Base64File)">
+              <div class="col-2">{{document.Type}}</div>
+              <div class="col-2">{{document.Date | date:'dd-MMM-yyyy'}}</div>
+            </div>
+          </ng-container>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- kavita code stop -->
+
+
+  <!-- <div class="row card-block">
+    <div class="col-sm-3 card " *ngFor="let month of monthsArray; let i=index">
+      {{month}}
+    </div>
+  </div> -->
+
+
+  <div [ngStyle]="{'display':showModal}" class="backdrop">
+    <div class="modal-dialog">
+      <div class="modal-content" (click)="closeModal()">
+        <div>
+          <button style='margin: -6px;' type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <object [data]='fileURL' class='modal-open' type="application/pdf"></object>
+
+          <!-- <object data='https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf' class='modal-open' type="application/pdf"></object> -->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>

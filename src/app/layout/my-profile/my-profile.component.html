@@ -1,0 +1,324 @@
+<div class="container profilePage">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-2 outerImgBlock">
+          <div class="profileImg">
+            <img src="../assets/img/profile-mobile/profile.png" />
+          </div>
+        </div>
+        <div class="col-md-6 personalDetails p-l-0">
+          <h5>{{ this.userInfo.FirstName }} {{ this.userInfo.LastName }}</h5>
+          <p>
+            <img src="../assets/img/profile-mobile/designation.svg" />{{
+              this.userInfo.CompanyName
+            }}
+            {{ this.userInfo.LocationName }} {{ this.userInfo.TokenId }}
+          </p>
+          <p>
+            <img src="../assets/img/profile-mobile/department.svg" />{{
+              this.userInfo.JobTitle
+            }}
+          </p>
+          <p>
+            <img src="../assets/img/profile-mobile/location.svg" />{{
+              this.userInfo.LocationName
+            }}
+          </p>
+        </div>
+
+
+        <div class="col-md-4 text-right">
+          <!-- <button
+            col-md-2
+            *ngIf="showdata"
+            [routerLink]="['/dashboard']"
+            class="btn btn-primary submit-button btn-md editProfile"
+          >
+            Skip to Dashboard
+          </button>
+          <button
+            col-md-2
+            type="submit"
+            class="btn btn-primary submit-button btn-md editProfile"
+            form="form1"
+            (click)="updateinfo()"
+          >
+            Update
+          </button> -->
+        </div>
+      </div>
+      <div class="divider"></div>
+      <form id="form1" class="form-horizontal" [formGroup]="ProfileForm" (ngSubmit)="updateinfo()">
+        <div class="row personalBlock">
+          <div class="col-md-5">
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-4">Aadhar No.</label>
+                <input formControlName="adharno" type="text" class="form-control col-md-8"
+                  [value]="this.userDetails?.Aadhar" readonly />
+              </div>
+              <div class="error-box" *ngIf="
+                  ProfileForm.controls['adharno'].hasError('required') &&
+                  ProfileForm.controls['adharno'].touched
+                ">
+                * Aadhar No. is required!
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-4">Mobile No.</label>
+                <input readonly formControlName="mobileno" type="text" class="form-control col-md-8" [value]="
+                    this.userDetails?.PhoneNo == null
+                      ? 'NA'
+                      : this.userDetails?.PhoneNo
+                  " placeholder="8966788788" />
+              </div>
+              <div class="error-box" *ngIf="
+                  ProfileForm.controls['mobileno'].hasError('required') &&
+                  ProfileForm.controls['mobileno'].touched
+                ">
+                * Mobile No. is required!
+              </div>
+              <div class="error-box" *ngIf="
+                  ProfileForm.controls['mobileno'].hasError('pattern') &&
+                  ProfileForm.controls['mobileno'].touched
+                ">
+                * Mobile No. not valid.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-4">Email ID</label>
+                <input readonly formControlName="emailid" type="text" class="form-control col-md-8" [value]="
+                    this.userDetails?.Email == null
+                      ? 'NA'
+                      : this.userDetails?.Email
+                  " />
+              </div>
+              <div class="error-box" *ngIf="
+                  ProfileForm.controls['emailid'].hasError('required') &&
+                  ProfileForm.controls['emailid'].touched
+                ">
+                * Email ID is required!
+              </div>
+              <div class="error-box" *ngIf="
+                  ProfileForm.controls['emailid'].hasError('pattern') &&
+                  ProfileForm.controls['emailid'].touched
+                ">
+                * Email ID not valid.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-4">PAN No.</label>
+                <input readonly formControlName="pannumber" type="text" class="form-control col-md-8" [value]="
+                    this.userDetails?.PAN == null ? 'NA' : this.userDetails?.PAN
+                  " />
+              </div>
+              <div class="error-box" *ngIf="
+                  ProfileForm.controls['pannumber'].hasError('required') &&
+                  ProfileForm.controls['pannumber'].touched
+                ">
+                * PAN no. is required!
+              </div>
+              <div class="error-box" *ngIf="
+                  ProfileForm.controls['pannumber'].hasError('pattern') &&
+                  ProfileForm.controls['pannumber'].touched
+                ">
+                * PAN no. not valid.
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row noMargin addressdiv">
+                <label for="exampleInputEmail1" class="col-sm-4">Address
+                </label>
+                <input readonly formControlName="addressfc1" type="text" class="form-control col-md-8" [value]="
+                    this.userDetails?.Address.address1 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address1
+                  " *ngIf="this.userDetails?.Address.address1" />
+
+                <input readonly formControlName="addressfc2" type="text" class="offset-md-4 form-control col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address2 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address2
+                  " *ngIf="this.userDetails?.Address.address2" />
+
+                <input readonly formControlName="addressfc3" type="text" class="form-control offset-md-4 col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address3 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address3
+                  " *ngIf="this.userDetails?.Address.address3" />
+
+                <input readonly formControlName="addressfc4" type="text" class="form-control offset-md-4 col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address4 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address4
+                  " *ngIf="this.userDetails?.Address.address4" />
+
+                <input readonly readonly formControlName="addressfc5" type="text"
+                  class="form-control offset-md-4 col-md-8" [value]="
+                    this.userDetails?.Address.address5 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address5
+                  " *ngIf="this.userDetails?.Address.address5" />
+
+                <input readonly formControlName="addressfc6" type="text" class="form-control offset-md-4 col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address6 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address6
+                  " *ngIf="this.userDetails?.Address.address6" />
+
+                <input readonly formControlName="addressfc7" type="text" class="form-control offset-md-4 col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address7 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address7
+                  " *ngIf="this.userDetails?.Address.address7" />
+
+                <input readonly formControlName="addressfc8" type="text" class="form-control offset-md-4 col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address8 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address8
+                  " *ngIf="this.userDetails?.Address.address8" />
+
+                <input readonly type="text" formControlName="addressfc9" class="form-control offset-md-4 col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address9 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address9
+                  " *ngIf="this.userDetails?.Address.address9" />
+
+                <input readonly formControlName="addressfc10" type="text" class="form-control offset-md-4 col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address10 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address10
+                  " *ngIf="this.userDetails?.Address.address10" />
+
+                <input readonly formControlName="addressfc11" type="text" class="form-control offset-md-4 col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address11 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address11
+                  " *ngIf="this.userDetails?.Address.address11" />
+
+                <input readonly formControlName="addressfc12" type="text" class="form-control offset-md-4 col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address12 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address12
+                  " *ngIf="this.userDetails?.Address.address12" />
+
+                <input readonly formControlName="addressfc13" type="text" class="form-control offset-md-4 col-md-8"
+                  [value]="
+                    this.userDetails?.Address.address13 == null
+                      ? 'NA'
+                      : this.userDetails?.Address.address13
+                  " *ngIf="this.userDetails?.Address.address13" />
+
+                <input readonly formControlName="zipcode" type="text" class="form-control offset-md-4 col-md-8" [value]="
+                    this.userDetails?.Address.zipCode == null
+                      ? 'NA'
+                      : this.userDetails?.Address.zipCode
+                  " />
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-7">
+
+
+
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-4">Emergency Contacts</label>
+                <div class="col-md-8 noPadding ProfileTbl">
+                  <table formArrayName="contacts" class="table table-bordered" *ngIf="
+                                  userDetails &&
+                                  userDetails?.emergencyContact &&
+                                  userDetails?.emergencyContact?.length > 0
+                                ">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Phone No.</th>
+                      </tr>
+                    </thead>
+                    <tbody [formGroupName]="i" *ngFor="
+                                    let emcontact of userDetails.emergencyContact;
+                                    let i = index
+                                  ">
+                      <tr>
+                        <td>
+                          <input readonly type="text" formControlName="name" class="form-control col-md-12"
+                            [value]="emcontact.Name" />
+                          <!-- <div class="error-box" *ngIf="
+                                                        ProfileForm.controls['name'].hasError('required') &&
+                                                        ProfileForm.controls['name'].touched
+                                                      ">
+                                        *Name is required!
+                                      </div> -->
+                        </td>
+                        <td>
+                          <input readonly type="text" formControlName="phone" class="form-control col-md-12"
+                            [value]="emcontact.PhoneNo" />
+                          <!-- <div class="error-box" *ngIf="
+                                                                                  ProfileForm.controls['name'].hasError('required') &&
+                                                                                  ProfileForm.controls['name'].touched
+                                                                                ">
+                                        *Number is required!
+                                      </div> -->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-4">Dependants</label>
+                <div class="col-md-8 noPadding ProfileTbl">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Relationship</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let dependant of this.userDetails?.dependants">
+                        <td>{{ dependant.Name }}</td>
+                        <td>{{ dependant.Relationship }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="form-group">
+            <div class="row noMargin">
+              <label for="exampleInputEmail1" class="col-sm-4">Zip Code</label>
+              <input type="text" class="form-control col-md-8" [value]="
+                              this.userDetails?.Address.zipCode == null
+                                ? 'NA'
+                                : this.userDetails?.Address.zipCode
+                            " />
+            </div>
+          </div> -->
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

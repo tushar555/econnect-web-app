@@ -1,0 +1,185 @@
+<div class="container profilePage">
+  <div class="card">
+    <div class="card-body card-height">
+
+      <!-- <img class="winner-img" src="../../../assets/img/undraw_winners.png" /> -->
+      <p class="font-14">We are pleased to announce that as a mark of <b style="font-size: 15px">"Completing 25 years of
+          Mahindra
+          Finance"</b>, you will
+        receive a silver plaque to thank you for your continuous support and contribution. Kindly acknowledge the same
+        by sharing the below information:</p>
+      <form class="form-horizontal" [formGroup]="ngForm">
+        <div class="row personalBlock">
+          <div class="col-md-5">
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-5">SAP Code</label>
+                <input formControlName="TokenId" disabled type="text" class="form-control col-md-7" />
+              </div>
+
+            </div>
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-5">Name</label>
+                <input formControlName="Name" disabled (keypress)="checkCharOnly($event)" type="text"
+                  class="form-control col-md-7" />
+              </div>
+              <div *ngIf="ngForm.controls['Name'].invalid && (ngForm.controls['Name'].dirty ||
+            ngForm.controls['Name'].touched)">
+
+                <div class="error-box" *ngIf="ngForm.controls['Name'].errors.required">
+                  *Name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-5"><span style="color: red">*</span> Mobile No.</label>
+                <input formControlName="MobileNo" (keypress)="checkMobileNo($event)" [readOnly]="GiftStatus"
+                  [maxlength]='20' type="text" class="form-control col-md-7" />
+              </div>
+              <!-- <div class="error-box" *ngIf="this.ngForm.get('MobileNo').value !== this.giftData.MobileNo &&
+                this.ngForm.get('MobileNo').value.length ===10 &&
+                this.ngForm.get('MobileNo').value
+                !==null && this.ngForm.get('MobileNo').value
+                !==''">
+                * Your Mobile No. doesn't match with our record
+              </div> -->
+              <div *ngIf="ngForm.controls['MobileNo'].invalid && (ngForm.controls['MobileNo'].dirty ||
+            ngForm.controls['MobileNo'].touched)">
+
+
+                <div class="error-box" *ngIf="ngForm.controls['MobileNo'].errors.required">
+                  *Mobile No is required.
+                </div>
+                <div class="error-box" *ngIf="ngForm.controls['MobileNo'].errors.pattern">
+                  *Enter valid Mobile No.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-5">Location</label>
+                <input formControlName="Location" disabled (keypress)="checkCharOnly($event)" [readOnly]="GiftStatus"
+                  type="text" class="form-control col-md-7" />
+              </div>
+              <div *ngIf="ngForm.controls['Location'].invalid && (ngForm.controls['Location'].dirty ||
+            ngForm.controls['Location'].touched)">
+
+                <div class="error-box" *ngIf="ngForm.controls['Location'].errors.required">
+                  *Location is required.
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-5">RHR.</label>
+                <input formControlName="RHR" (keypress)="checkCharOnly($event)" [readOnly]="GiftStatus ||
+                  this.giftData.RHR !== null" type="text" class="form-control col-md-7" />
+              </div>
+              <div class="error-box" *ngIf="
+                  ngForm.controls['RHR'].hasError('required') &&
+                  ngForm.controls['RHR'].touched
+                ">
+                *RHR is required!
+              </div>
+            </div>
+
+            <div *ngIf="!GiftStatus">
+              <span class="thank-you"> Thank you for your contribution, please click on <b>YES</b> if you received the
+                25 years
+                silver gift?</span>
+            </div>
+
+            <div style="margin-top: 14px;" class="form-group" *ngIf="!GiftStatus">
+              <div class="row noMargin">
+
+                <b for="exampleInputEmail1" class="col-sm-5">YES, I have received</b>
+                <input formControlName="Status" type="checkbox" class="col-md-8 check" />
+              </div>
+
+            </div>
+
+            <div class="form-group" *ngIf="ngForm.get('Status').value">
+              <div class="row noMargin">
+                <label for="exampleInputEmail1" class="col-sm-5"><span style="color: red"> * </span> Bank Account
+                  No.</label>
+                <input [readOnly]="GiftStatus" formControlName="BankAccountNo" type="text"
+                  class="form-control col-md-7" />
+              </div>
+              <div class="error-box1" *ngIf="this.ngForm.get('BankAccountNo').value !== this.giftData.BankAccountNo &&  this.ngForm.get('BankAccountNo').value.length ===12 &&
+                this.ngForm.get('BankAccountNo').value
+                !=='' ">
+                * Your Bank Account No. doesn't match with our record
+              </div>
+              <div *ngIf="ngForm.controls['BankAccountNo'].invalid && (ngForm.controls['BankAccountNo'].dirty ||
+            ngForm.controls['BankAccountNo'].touched)">
+
+                <div class="error-box1" *ngIf="ngForm.controls['BankAccountNo'].errors.required">
+                  *This is required.
+                </div>
+                <!--
+                <div class="error-box" *ngIf="ngForm.controls['PAN'].errors.pattern">
+                  *Enter valid PAN No.
+                </div> -->
+              </div>
+              <!-- <span *ngIf="ngForm.get('Status').value">
+                <b>Please confirm PAN No.</b>
+              </span> -->
+            </div>
+
+          </div>
+
+        </div>
+
+      </form>
+
+      <div class="tabButtonBlock" *ngIf="!GiftStatus">
+
+        <button (click)="submit(true)" [disabled]="!ngForm.get('Status').value || (this.ngForm.get('BankAccountNo').value !== this.giftData.BankAccountNo) ||
+          ngForm.invalid ||
+         (ngForm.get('TokenId').value == '' || ngForm.get('TokenId').value == null)" class="btn tabBtn"
+          type="submit">Submit</button>
+
+
+        <!-- <button (click)="submit()" [disabled]="!this.ngForm.valid" class="btn tabBtn" type="submit">Submit</button> -->
+      </div>
+
+
+      <div class="thank-you-text" *ngIf="GiftStatus">
+        <b class="rcv">Thank You!</b><br> <b class="received"> You have
+          acknowledged for receiving the gift as on:
+          {{giftData?.ReceivedDate | date : 'dd-MM-yyyy'}}.</b>
+      </div>
+
+
+    </div>
+
+
+  </div>
+</div>
+
+<div class="newFormatModal modal fade" id="saveSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Saved successfully</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseModalEvent.emit('data')">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+      </div>
+      <div class="modal-body">
+        Your details saved successfully.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="afterSubmission()">OK</button>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,843 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Mahindra_Finance documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Mahindra_Finance documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content pipe">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Pipes</li>
+  <li>securedLink</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/layout/salary-card/salary-card.component.ts</code>
+        </p>
+
+
+
+        <section>
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover">
+                <tbody>
+                    <tr>
+                        <td class="col-md-3">Name</td>
+                        <td class="col-md-9">securedLink</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="transform"></a>
+                    <span class="name">
+                        <b>
+                            transform
+                        </b>
+                        <a href="#transform"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>transform(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/layout/salary-card/salary-card.component.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sanitize"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            sanitize</b>
+                            <a href="#sanitize"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank" >DomSanitizer</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/layout/salary-card/salary-card.component.ts:41</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  NgZone,
+  ElementRef,
+  Pipe,
+  PipeTransform,
+  AfterViewInit,
+  OnDestroy,
+  ViewChild
+} from &quot;@angular/core&quot;;
+import { HttpClient } from &quot;@angular/common/http&quot;;
+import { LocalStorageService } from &quot;ngx-store&quot;;
+import { CommonService } from &quot;../../services/common.service&quot;;
+import { DomSanitizer } from &quot;@angular/platform-browser&quot;;
+declare var FileSaver: any;
+import * as $ from &quot;jquery&quot;;
+import { Ng4LoadingSpinnerService } from &quot;ng4-loading-spinner&quot;;
+import { Constant } from &quot;../../services/constant&quot;;
+const pdfMake &#x3D; require(&quot;pdfmake/build/pdfmake.js&quot;);
+const pdfFonts &#x3D; require(&quot;pdfmake/build/vfs_fonts.js&quot;);
+pdfMake.vfs &#x3D; pdfFonts.pdfMake.vfs;
+
+// import pdfMake from &#x27;pdfmake/build/pdfmake&#x27;;
+// import pdfFonts from &#x27;pdfmake/build/vfs_fonts&#x27;;
+@Pipe({
+  name: &quot;inrFormat&quot;
+})
+export class NewPipe implements PipeTransform {
+  transform(value: number) {
+    if (value &#x3D;&#x3D;&#x3D; undefined) {
+      return 0;
+    }
+    return value.toLocaleString(&quot;hi-IN&quot;);
+  }
+}
+@Pipe({
+  name: &quot;securedLink&quot;
+})
+export class securedLink implements PipeTransform {
+  constructor(public sanitize: DomSanitizer) {}
+  transform(value: any) {
+    return this.sanitize.bypassSecurityTrustResourceUrl(value);
+  }
+}
+
+@Component({
+  selector: &quot;app-salary-card&quot;,
+  templateUrl: &quot;./salary-card.component.html&quot;,
+  styleUrls: [&quot;./salary-card.component.scss&quot;]
+})
+export class SalaryCardComponent implements OnInit, AfterViewInit, OnDestroy {
+  totalArr: any &#x3D; [];
+  salaryCardList: any &#x3D; [];
+  localUserData: any;
+  tempFinalArray: any[];
+  finalArray: any[];
+  monthWiseArray: any[];
+  monthAmountArray: any[];
+  monthArray: any &#x3D; [];
+  shownorecord: any;
+
+  // empData: Array&lt;{ any }&gt; &#x3D; [];
+  empData: any &#x3D; [];
+
+  showcPay &#x3D; &quot;block&quot;;
+  showsStmt &#x3D; &quot;none&quot;;
+  showModal &#x3D; &quot;none&quot;;
+  fileURL: any;
+  pdfObj &#x3D; null;
+
+  date &#x3D; new Date();
+  salaryData: any;
+
+  reader: any;
+  yearsArray &#x3D; [];
+  year: any;
+  currentYear: any;
+  isselected: boolean;
+  tokenId: any;
+  pageheight: any;
+  totalEarnings &#x3D; 0;
+  totalDeductions &#x3D; 0;
+  userDetails: any &#x3D; {};
+  showInfo &#x3D; false;
+  counter &#x3D; [];
+  responseArr;
+  SalaryCardDataMonth;
+  total;
+  innerArr;
+
+  @ViewChild(&quot;widgetsContent&quot;, { read: ElementRef })
+  widgetsContent: ElementRef&lt;any&gt;;
+
+  scrollRight() {
+    console.log(&quot;right&quot;);
+    this.widgetsContent.nativeElement.scrollTo({
+      left: this.widgetsContent.nativeElement.scrollLeft + 350,
+      behavior: &quot;smooth&quot;
+    });
+  }
+
+  scrollLeft() {
+    console.log(&quot;left&quot;);
+    this.widgetsContent.nativeElement.scrollTo({
+      left: this.widgetsContent.nativeElement.scrollLeft - 350,
+      behavior: &quot;smooth&quot;
+    });
+  }
+
+  constructor(
+    private spinnerService: Ng4LoadingSpinnerService,
+    public sanitize: DomSanitizer,
+    public local: LocalStorageService,
+    private _zone: NgZone,
+    public http: HttpClient,
+    private _services: CommonService,
+    private _http: HttpClient
+  ) {
+    this.fileURL &#x3D; &quot;&quot;;
+    this.reader &#x3D; new FileReader();
+    this._services.getUserDetail().then(data &#x3D;&gt; {
+      this.localUserData &#x3D; data;
+      this.tokenId &#x3D; this.localUserData.TokenId;
+      this.userDetails &#x3D; this.localUserData;
+    });
+    // this.tokenId &#x3D; this.local.get(&#x27;username&#x27;).TokenId;
+    // this.userDetails &#x3D; this.local.get(&#x27;username&#x27;);
+    this._services.titleMessageSource.next(&quot;Salary Card&quot;);
+
+    this.getServerDate();
+    this.monthArray &#x3D; [
+      &quot;&quot;,
+      &quot;Jan&quot;,
+      &quot;Feb&quot;,
+      &quot;March&quot;,
+      &quot;Apr&quot;,
+      &quot;May&quot;,
+      &quot;June&quot;,
+      &quot;July&quot;,
+      &quot;Aug&quot;,
+      &quot;Sept&quot;,
+      &quot;Oct&quot;,
+      &quot;Nov&quot;,
+      &quot;Dec&quot;
+    ];
+  }
+
+  ngAfterViewInit() {
+    this.pageheight &#x3D; $(window).height();
+    const abc &#x3D; document.getElementById(&quot;test&quot;);
+    abc.style.height &#x3D; this.pageheight + &quot;px&quot;;
+    setTimeout(() &#x3D;&gt; {
+      $(document).ready(function() {
+        $(&quot;tbody&quot;).scroll(function(e) {
+          //detect a scroll event on the tbody
+          $(&quot;thead&quot;).css(&quot;left&quot;, -$(&quot;tbody&quot;).scrollLeft()); //fix the thead relative to the body scrolling
+          $(&quot;thead th:nth-child(1)&quot;).css(&quot;left&quot;, $(&quot;tbody&quot;).scrollLeft()); //fix the first cell of the header
+          $(&quot;tbody td:nth-child(1)&quot;).css(&quot;left&quot;, $(&quot;tbody&quot;).scrollLeft()); //fix the first column of tdbody
+          // $(&#x27;tbody tr.header-cell td:nth-child(1)&#x27;).css(&#x27;left&#x27;, $(&#x27;tbody&#x27;).scrollLeft()); //fix the first column of tdbody
+        });
+      });
+    }, 1000);
+  }
+  ngOnInit() {}
+
+  getServerDate(): any {
+    this.spinnerService.show();
+    this._zone.run(() &#x3D;&gt; {
+      this._services
+        .getService(Constant.getServerDateTime)
+        .then((getDate: any) &#x3D;&gt; {
+          this.spinnerService.hide();
+          this.date &#x3D; new Date(getDate);
+          this.currentYear &#x3D; this.date.getFullYear();
+
+          this.year &#x3D; this.date.getFullYear();
+
+          this.isselected &#x3D; true;
+          for (let i &#x3D; 0; i &lt;&#x3D; 2; i++) {
+            this.yearsArray.push(this.date.getFullYear() - i);
+          }
+
+          // this.getsalaryData();
+          this.getMonthwiseSalaryData();
+        });
+    });
+  }
+
+  changeTab(param: string) {
+    if (param &#x3D;&#x3D;&#x3D; &quot;c_pay&quot;) {
+      this.showsStmt &#x3D; &quot;none&quot;;
+      this.showcPay &#x3D; &quot;block&quot;;
+    } else if (param &#x3D;&#x3D;&#x3D; &quot;s_stmt&quot;) {
+      this.showsStmt &#x3D; &quot;block&quot;;
+      this.showcPay &#x3D; &quot;none&quot;;
+    }
+  }
+
+  downloadPDF() {
+    this.salaryCardList[0];
+    if (this.empData.length &gt; 0) {
+      const docDefinition &#x3D; {
+        content: [
+          { text: &quot;Pay Slip&quot;, style: &quot;header&quot; },
+          { text: new Date().toTimeString(), alignment: &quot;right&quot; },
+
+          { text: &quot;For the Year&quot;, style: &quot;subheader&quot; },
+          { text: this.year },
+
+          { text: &quot;Amount ₹&quot;, style: &quot;subheader&quot; },
+          (this.totalEarnings - this.totalDeductions).toLocaleString(&quot;hi-IN&quot;),
+
+          { text: &quot;Employee Details&quot;, style: &quot;subheader&quot; },
+          {
+            ul: [
+              &quot;Name:&quot; +
+                this.localUserData.FirstName +
+                &quot; &quot; +
+                this.localUserData.LastName,
+              // &#x27;Name:&#x27; + this.local.get(&#x27;username&#x27;).FirstName + &#x27; &#x27; + this.local.get(&#x27;username&#x27;).LastName,
+              &quot;ID  :&quot; + this.localUserData.TokenId,
+              // &#x27;ID  :&#x27; + this.local.get(&#x27;username&#x27;).TokenId,
+              &quot;Designation: &quot; + this.userDetails.JobTitle,
+              &quot;Location:&quot; + this.localUserData.LocationName
+              // &#x27;Location:&#x27; + this.local.get(&#x27;username&#x27;).LocationName
+            ],
+            margin: [0, 0, 0, 15]
+          },
+
+          {
+            table: {
+              // headers are automatically repeated if the table spans over multiple pages
+              // you can declare how many rows should be treated as headers
+              headerRows: 2,
+              widths: [&quot;*&quot;, &quot;*&quot;, &quot;*&quot;],
+              style: &quot;table&quot;,
+              body: this.gettable()
+            }
+          },
+          {
+            text:
+              &quot;Total Net Pay &quot; +
+              (this.totalEarnings - this.totalDeductions).toLocaleString(
+                &quot;hi-IN&quot;
+              ),
+            style: &quot;amount&quot;
+          }
+          // { text: &#x27;One Lakh three thousand one hundred and fifty&#x27;, style: &quot;amount_word&quot; }
+        ],
+        styles: {
+          amount_word: {
+            fontSize: 10,
+            alignment: &quot;center&quot;,
+            margin: [0, 5, 0, 0]
+          },
+          amount: {
+            fontSize: 15,
+            bold: true,
+            alignment: &quot;center&quot;,
+            margin: [0, 10, 0, 0]
+          },
+          header: {
+            fontSize: 18,
+            bold: true
+          },
+          subheader: {
+            fontSize: 14,
+            bold: true,
+            margin: [0, 15, 0, 0]
+          },
+          story: {
+            italic: true,
+            alignment: &quot;center&quot;,
+            width: &quot;50%&quot;
+          },
+          table: {
+            margin: [10, 10, 10, 10]
+          }
+        }
+      };
+      // this is the pdf file object which is important for all.
+      this.pdfObj &#x3D; pdfMake.createPdf(docDefinition);
+      if (this.pdfObj !&#x3D;&#x3D; null) {
+        this.pdfObj.open();
+      }
+    } else {
+      this._services.showSnackbar({ status: &quot;Record Not Found!&quot; });
+    }
+  }
+
+  getMyStyles(p) {
+    if (p &#x3D;&#x3D;&#x3D; &quot;showcPay&quot;) {
+      return {
+        display: this.showcPay,
+        &quot;border-bottom&quot;: this.showcPay ? &quot;1px solid blue&quot; : &quot;0px&quot;
+      };
+    } else {
+      return {
+        display: this.showsStmt,
+        &quot;border-bottom&quot;: this.showsStmt ? &quot;1px solid blue&quot; : &quot;0px&quot;
+      };
+    }
+  }
+
+  ngOnDestroy() {
+    this.spinnerService.hide();
+  }
+
+  closeModal() {
+    this.showModal &#x3D; &quot;none&quot;;
+  }
+
+  openModal() {
+    return { display: this.showModal };
+  }
+
+  // getMonthwiseSalaryData() {
+  //   this.empData &#x3D; [];
+  //   const data &#x3D; { &#x27;tokenId&#x27;: this.tokenId, &#x27;year&#x27;: parseInt(this.year) };
+  //   const link &#x3D; Constant.getMonthwiseSalaryCard;
+  //   this.shownorecord &#x3D; false;
+  //   this._services.postService(link, data).then((resp: any) &#x3D;&gt; {
+  //     console.log(&quot;data &quot;,resp);
+  //     let tempArray &#x3D; [];
+  //     let newtempArray &#x3D; [];
+  //     let test &#x3D; [];
+
+  //     tempArray &#x3D; resp.Months;
+  //     console.log(&quot;tempdqata&quot;,tempArray);
+  //    this.shownorecord &#x3D; tempArray.length &#x3D;&#x3D;&#x3D; 0 ? true : false;
+  //    this.totalEarnings &#x3D; 0;
+  //    this.totalDeductions &#x3D; 0;
+  //   let monthArray &#x3D; [];
+  //   this.monthWiseArray &#x3D; [];
+  //    this.monthAmountArray &#x3D; [];
+  //   this.finalArray &#x3D; [];
+  //  this.tempFinalArray &#x3D; []
+  // tempArray.forEach((obj, i) &#x3D;&gt; {
+
+  //     this.monthAmountArray &#x3D; [];
+  //       this.monthAmountArray[0] &#x3D; obj.WageTypeDescription;
+  //        this.monthAmountArray[new Date(obj.PeriodStart).getMonth() + 1] &#x3D; obj.Amount
+  //        this.finalArray[i] &#x3D; this.monthAmountArray
+
+  //      });
+
+  //     for (let obj of this.finalArray) {
+  //        for (let i &#x3D; 0; i &lt; 13; i++) {
+  //         obj[i] &#x3D; obj[i] &#x3D;&#x3D;&#x3D; undefined ? 0 : obj[i];
+  //        }
+  //      }
+
+  //     for (let i &#x3D; 0; i &lt; tempArray.length; ++i) {
+
+  //        if (newtempArray.indexOf(tempArray[i].WageType) &#x3D;&#x3D;&#x3D; -1) {
+  //          newtempArray.push(tempArray[i].WageType);
+  //          this.counter.push(this.countElement(tempArray, tempArray[i].WageType));
+  //         test.push(tempArray[i]);
+  //       }
+  //     }
+  //    for (let i &#x3D; 0; i &lt; newtempArray.length; i++) {
+
+  //       let getAmount &#x3D; this.getTotalAmountByID(newtempArray[i], tempArray);
+
+  //        this.empData.push({ &quot;wageType&quot;: newtempArray[i], &quot;amount&quot;: getAmount, &quot;description&quot;: test[i].WageTypeDescription, &#x27;wageIdentifier&#x27;: test[i].WageIdentifier })
+  //      }
+
+  //     //console.log(&#x27;Emap data  &#x27;, this.empData);
+  //     tempArray.forEach((item: any) &#x3D;&gt; {
+  //       this.totalEarnings +&#x3D; item.WageIdentifier.indexOf(&#x27;EARNING&#x27;) &gt; -1 ? item.Amount : 0;
+  //       this.totalDeductions +&#x3D; item.WageIdentifier.indexOf(&#x27;DEDUCTION&#x27;) &gt; -1 ? item.Amount : 0;
+  //     });
+
+  //     this.showInfo &#x3D; true;
+  //     this.spinnerService.hide();
+  //    })
+  // }
+
+  getMonthwiseSalaryData() {
+    this.empData &#x3D; [];
+    let data &#x3D; { tokenId: this.tokenId, year: parseInt(this.year) };
+    // const data &#x3D; { &#x27;tokenId&#x27;: 23105449, &#x27;year&#x27;: 2019 };
+    const link &#x3D; Constant.getSalaryCarddata;
+    console.log(&quot;my data : &quot;, data);
+    // this.spinnerService.show();
+    this.shownorecord &#x3D; false;
+    this._services.postService(link, data).then((resp: any) &#x3D;&gt; {
+      this.spinnerService.hide();
+      const tempArray &#x3D; [];
+      const newtempArray &#x3D; [];
+      const test &#x3D; [];
+      this.salaryCardList &#x3D; [];
+
+      this.responseArr &#x3D; resp.Months;
+      console.log(&quot;responseArr:&quot;, this.responseArr);
+
+      this.shownorecord &#x3D; this.responseArr.length &#x3D;&#x3D;&#x3D; 0 ? true : false;
+      // alert(&quot;recorStatus&quot; + this.shownorecord);
+      this.totalArr &#x3D; [];
+      this.responseArr.forEach((element, key) &#x3D;&gt; {
+        let total &#x3D; 0;
+        element.Data.forEach((innerElement, key1) &#x3D;&gt; {
+          console.log(&quot;key:&quot; + key + &quot;|&quot; + innerElement.Amount);
+          total +&#x3D; innerElement.Amount;
+        });
+        this.totalArr.push(total);
+      });
+      console.log(this.totalArr);
+
+      for (let i &#x3D; 0; i &lt; this.responseArr[0].Data.length; i++) {
+        const x &#x3D; [];
+        const wageTypeDesc &#x3D; this.responseArr[0].Data[i].WageTypeDescription;
+        for (let j &#x3D; 0; j &lt; this.responseArr.length; j++) {
+          x.push(this.responseArr[j].Data[i].Amount || &quot;-&quot;);
+        }
+        this.salaryCardList.push({ [wageTypeDesc]: x });
+      }
+      console.log(&quot;salaryCardList&quot;, this.salaryCardList[0]);
+      this.showInfo &#x3D; true;
+    });
+  }
+
+  getsalaryData() {
+    debugger;
+    this.empData &#x3D; [];
+    const data &#x3D; { tokenId: this.tokenId, year: parseInt(this.year) };
+    const link &#x3D; Constant.getSalaryCarddata;
+    this.spinnerService.show();
+    this.shownorecord &#x3D; false;
+    this._services.postService(link, data).then((data: any) &#x3D;&gt; {
+      let tempArray &#x3D; [];
+      const newtempArray &#x3D; [];
+      const test &#x3D; [];
+
+      tempArray &#x3D; data.SalaryCardItems;
+      // console.log(&quot;tempdqata&quot;,tempArray);
+      this.shownorecord &#x3D; tempArray.length &#x3D;&#x3D;&#x3D; 0 ? true : false;
+
+      this.totalEarnings &#x3D; 0;
+      this.totalDeductions &#x3D; 0;
+      //this.empData &#x3D; data.SalaryCardItems;
+
+      const monthArray &#x3D; [];
+      // let wageTypeArray &#x3D; [];
+      this.monthWiseArray &#x3D; [];
+      this.monthAmountArray &#x3D; [];
+      this.finalArray &#x3D; [];
+      this.tempFinalArray &#x3D; [];
+      //    monthArray &#x3D; tempArray.map(obj &#x3D;&gt; new Date(obj.PeriodStart).getMonth()).filter((obj, i, data) &#x3D;&gt; data.indexOf(obj) &#x3D;&#x3D;&#x3D; i);
+      //wageTypeArray &#x3D; tempArray.map(obj &#x3D;&gt; obj.WageTypeDescription).filter((obj, i, data) &#x3D;&gt; data.indexOf(obj) &#x3D;&#x3D;&#x3D; i)
+      tempArray.forEach((obj, i) &#x3D;&gt; {
+        // let temp &#x3D; tempArray.filter(innerobj &#x3D;&gt; innerobj.WageTypeDescription &#x3D;&#x3D; obj.WageTypeDescription);
+        // this.monthAmountArray.push(obj.WageTypeDescription);
+        this.monthAmountArray &#x3D; [];
+        this.monthAmountArray[0] &#x3D; obj.WageTypeDescription;
+        this.monthAmountArray[new Date(obj.PeriodStart).getMonth() + 1] &#x3D;
+          obj.Amount;
+        this.finalArray[i] &#x3D; this.monthAmountArray;
+
+        // this.monthWiseArray.push(obj.WageTypeDescription, this.monthAmountArray)
+      });
+
+      for (const obj of this.finalArray) {
+        for (let i &#x3D; 0; i &lt; 13; i++) {
+          obj[i] &#x3D; obj[i] &#x3D;&#x3D;&#x3D; undefined ? 0 : obj[i];
+        }
+      }
+
+      for (let i &#x3D; 0; i &lt; tempArray.length; ++i) {
+        if (newtempArray.indexOf(tempArray[i].WageType) &#x3D;&#x3D;&#x3D; -1) {
+          newtempArray.push(tempArray[i].WageType);
+          this.counter.push(
+            this.countElement(tempArray, tempArray[i].WageType)
+          );
+          test.push(tempArray[i]);
+        }
+      }
+
+      // get total amount
+      for (let i &#x3D; 0; i &lt; newtempArray.length; i++) {
+        const getAmount &#x3D; this.getTotalAmountByID(newtempArray[i], tempArray);
+
+        this.empData.push({
+          wageType: newtempArray[i],
+          amount: getAmount,
+          description: test[i].WageTypeDescription,
+          wageIdentifier: test[i].WageIdentifier
+        });
+      }
+
+      //console.log(&#x27;Emap data  &#x27;, this.empData);
+      tempArray.forEach((item: any) &#x3D;&gt; {
+        this.totalEarnings +&#x3D;
+          item.WageIdentifier.indexOf(&quot;EARNING&quot;) &gt; -1 ? item.Amount : 0;
+        this.totalDeductions +&#x3D;
+          item.WageIdentifier.indexOf(&quot;DEDUCTION&quot;) &gt; -1 ? item.Amount : 0;
+      });
+
+      this.showInfo &#x3D; true;
+      this.spinnerService.hide();
+    });
+  }
+
+  countElement(arr, key) {
+    return arr.reduce((n, x) &#x3D;&gt; n + (x.WageType &#x3D;&#x3D;&#x3D; key), 0);
+    // return arr.reduce(this.abcd);
+  }
+
+  checkamountType(wageIdentifier: string) {
+    // console.log(&#x27;DATA&#x27;, wageIdentifier);
+
+    if (wageIdentifier.indexOf(&quot;EARNING&quot;) &gt; -1) {
+      return &quot;earn&quot;;
+    } else if (wageIdentifier.indexOf(&quot;DEDUCTION&quot;) &gt; -1) {
+      return &quot;deduct&quot;;
+    }
+  }
+
+  getTotalAmountByID(nameKey, tempArray) {
+    let sum &#x3D; 0;
+    for (let i &#x3D; 0; i &lt; tempArray.length; i++) {
+      if (tempArray[i].WageType &#x3D;&#x3D;&#x3D; nameKey) {
+        sum +&#x3D; tempArray[i].Amount;
+      }
+    }
+
+    return sum;
+  }
+  loadTable() {
+    $(document).ready(function() {
+      $(&quot;tbody&quot;).scroll(function(e) {
+        //detect a scroll event on the tbody
+        $(&quot;thead&quot;).css(&quot;left&quot;, -$(&quot;tbody&quot;).scrollLeft()); //fix the thead relative to the body scrolling
+        $(&quot;thead th:nth-child(1)&quot;).css(&quot;left&quot;, $(&quot;tbody&quot;).scrollLeft()); //fix the first cell of the header
+        $(&quot;tbody td:nth-child(1)&quot;).css(&quot;left&quot;, $(&quot;tbody&quot;).scrollLeft()); //fix the first column of tdbody
+        // $(&#x27;tbody tr.header-cell td:nth-child(1)&#x27;).css(&#x27;left&#x27;, $(&#x27;tbody&#x27;).scrollLeft()); //fix the first column of tdbody
+      });
+    });
+  }
+
+  gettable() {
+    let tempObj &#x3D; [];
+    const bodyData &#x3D; [];
+    tempObj.push(
+      { text: &quot;Descriptions&quot;, bold: true, fillColor: &quot;#CCCCCC&quot; },
+      { text: &quot;Earnings&quot;, bold: true, fillColor: &quot;#CCCCCC&quot; },
+      { text: &quot;Deductions&quot;, bold: true, fillColor: &quot;#CCCCCC&quot; }
+    );
+
+    bodyData.push(tempObj);
+    tempObj &#x3D; [];
+    for (let i &#x3D; 0; i &lt; this.empData.length; i++) {
+      const arr &#x3D; [];
+
+      arr.push(this.empData[i].description);
+      if (this.checkamountType(this.empData[i].wageIdentifier) &#x3D;&#x3D;&#x3D; &quot;earn&quot;) {
+        arr.push(this.empData[i].amount.toLocaleString(&quot;hi-IN&quot;));
+        arr.push(&quot; &quot;);
+      }
+      if (this.checkamountType(this.empData[i].wageIdentifier) &#x3D;&#x3D;&#x3D; &quot;deduct&quot;) {
+        arr.push(&quot; &quot;);
+        arr.push(this.empData[i].amount.toLocaleString(&quot;hi-IN&quot;));
+      }
+
+      bodyData.push(arr);
+    }
+
+    tempObj.push(
+      { text: &quot;Total&quot;, bold: true, fillColor: &quot;#CCCCCC&quot; },
+      {
+        text: this.totalEarnings.toLocaleString(&quot;hi-IN&quot;),
+        bold: true,
+        fillColor: &quot;#CCCCCC&quot;
+      },
+      {
+        text: this.totalDeductions.toLocaleString(&quot;hi-IN&quot;),
+        bold: true,
+        fillColor: &quot;#CCCCCC&quot;
+      }
+    );
+    bodyData.push(tempObj);
+
+    return bodyData;
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'pipe';
+            var COMPODOC_CURRENT_PAGE_URL = 'securedLink.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

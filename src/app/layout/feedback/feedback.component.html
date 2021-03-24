@@ -1,0 +1,93 @@
+
+<!--<form class="incomeTaxForm" >
+    <div class="card-body font-14">
+      <div class="simulationCard">
+        <div class="row start-scheme">
+          <div class="row scheme-name">
+            <div class="col col-sm-10 font-14-b">
+              <label>abcd</label>
+            </div>
+          </div>
+          <div class="row scheme-name scheme-name-bottom">
+            <div class="col col-sm-4">
+              <label>
+                <span class="font-12">Section:</span>
+                <span class="font-14-b">abcd</span>
+              </label>
+            </div>
+            <div class="col col-sm-2">
+              <label>
+                <span class="font-12">Limit </span>
+                <span class="font-14-b"> abcd</span>
+              </label>
+            </div>
+            <div class="col col-sm-6 text-right" style="padding-right: 10px;">
+              <label for="">Amt:</label>
+              <input  min='0' type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                      name="declared{{j}}">
+            </div>
+          </div>
+        </div>
+        <div class="row" style="padding-right: 1rem;">
+          <div class="col text-right font-14-b">
+            <span>Total: abcd</span>
+          </div>
+        </div>
+      </div>
+
+    </div>-->
+<form formGroupName="feedBackForm" (ngSubmit)="onSubmit()">
+  <div class="container feedback-container">
+    <div class="card feedbackCard">
+      <div class="card-body">
+    <div class="col-md-12 outerfeedbackBlock">
+          <div class="col col-6 question-col" *ngFor="let que of questionList; let i=index">
+              <p class="font-14"><span style="color: red;">*</span>{{que.Question}} </p>
+              <!--Radio button-->
+              <div *ngIf="que.QuestionType == 'Yes-No'">
+                <input type="radio" value="Yes" [name]="'radio-'+que.QuestionId" (click)="radioGroup[que.QuestionId]='Yes'">
+                <span style="margin: 10px;">Yes</span>
+                <input type="radio" value="No" [name]="'radio-'+que.QuestionId" (click)="radioGroup[que.QuestionId]='No'">
+                <span style="margin: 10px;">No</span>
+              </div>
+      
+              <!--text-->
+              <textarea [(ngModel)]='inputArea[que.QuestionId]' [ngModelOptions]="{standalone: true}" class="form-control" *ngIf="que.QuestionType === 'Open-ended'"
+                rows="2" maxLength="500"></textarea>
+      
+              <!--Star rating-->
+              <div *ngIf="que.QuestionType == '5-Rating'">
+                <div *ngFor="let star of starRateArray; let i=index" class="rating">
+                  <i *ngIf="star.value" (click)='starRating(i)' class="fas fa-star"></i>
+                  <i *ngIf="!star.value" (click)='starRating(i)' class="far fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <div *ngIf='questionList' class="col-md-12 text-center m-t-20 m-b-20">
+                <button type="submit" class="btn btn-primary submit-button btn-md"> Submit</button>
+                 </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</form>
+
+<div class="newFormatModal modal fade" id="successMessage" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Submitted Successfully</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div  class="modal-body rejectionModal">
+          Thank you for your feedback!
+        </div>
+        <div class="modal-footer">
+           
+            <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="gotoPage()">OK</button>
+          </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,478 @@
+<div class="container">
+  <app-modal *ngIf="flag"></app-modal>
+  <div class="toggle" *ngIf="FlexiAdmin">
+    <span style="padding: 4px 7px 0 0px;">Employee</span>
+    <label class="switch" style="margin: 4px 0 0 0;">
+      <input type="checkbox" [checked]="true" [disabled]="false"
+        (change)="DeclartionAdminView('Active');$event.target.checked = true">
+      <span class="slider round"></span>
+    </label>
+    <span style="padding: 4px 0px 0 7px;">Admin</span>
+
+  </div>
+  <!-- <div>
+    <span class="pull-right img-icon icon-right" [routerLink]="'/mfss/income-tax'">
+      <span data-toggle="tooltip" title="Back to Declaration">
+        <i class="fas fa-percent admin-icon"></i>
+      </span>
+    </span>
+  </div> -->
+
+  <!--  Neha New Code Start-->
+
+  <div class="row infoBlockRow">
+    <div class="col-md-3  floatLeft">
+      <div class="card infoCard">
+        <div class="card-body ">
+          <h6 class="card-subtitle mb-1">Total Declarations</h6>
+          <h5 class="card-title">{{recordSummary?.TotalDeclarations}}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3  floatLeft">
+      <div class="card infoCard">
+        <div class="card-body ">
+          <h6 class="card-subtitle mb-1">Approved</h6>
+          <h5 class="card-title">{{recordSummary?.ApprovedDeclarations}}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3  floatLeft">
+      <div class="card infoCard">
+        <div class="card-body ">
+          <h6 class="card-subtitle mb-1">Pending</h6>
+          <h5 class="card-title">{{recordSummary?.PendingDeclarations}}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3  floatLeft">
+      <div class="card infoCard">
+        <div class="card-body ">
+          <h6 class="card-subtitle mb-1">Rejected</h6>
+          <h5 class="card-title">{{recordSummary?.RejectedDeclarations}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row adminITTable">
+    <div style="background: #fff;width: 100%;height: 60px;">
+      <div class="col-md-3" style="float: left;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            line-height: 100%;">
+        <select class="form-control" [(ngModel)]="status" (change)="getRecords('bload')">
+          <option style="padding:20px" *ngFor="let type of statusTypes;let i=index" [value]="type">{{type | titlecase}}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-5" style="float: left;">
+        <button (click)="EmployeeconformationModal()" class="buttonStyle"> Add Employee Flexi</button>
+      </div>
+      <div class="col-md-4" style=" float: left;
+          display: flex;
+          align-items: center;
+          height: 100%;
+          line-height: 100%;">
+
+        <div class="form-inline search-form input-container">
+          <input [(ngModel)]="searchItem" class="form-control mr-sm-2 search-input input-field" type="search"
+            placeholder="Search by Employee name.." (keyup)="searchInput()" aria-label="Search">
+          <i class="fa fa-search icon" (click)="getRecords('bload')"></i>
+          <!-- <button (click)="getRecords('bload')">Search</button> -->
+        </div>
+      </div>
+
+    </div>
+    <table class="fixed_headers" style="display: none;">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Location</th>
+          <th>No. of Declarations</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of employeeRecords; let i = index;">
+          <td>{{e.EmpName}}</td>
+          <td>{{e.Location}}</td>
+          <td>{{e.TotalDeclarations}}</td>
+          <td>
+            <i class="fa fa-percent" (click)="sendDataUser(e)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tableFixHead">
+      <table>
+
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Location</th>
+            <th class="text-center"><!--No. of Declarations--></th>
+            <th class="text-center width10">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of employeeRecords; let i = index;">
+            <td>{{e.EmpName}}</td>
+            <td>{{e.Location}}</td>
+            <td class="text-center"><!--{{e.TotalDeclarations}}--></td>
+            <td class="text-center">
+                <span class="custTooltip">
+                  <img  src="../assets/img/incometaxIcons/information.svg" (click)="openlogs(e)">
+                  <p class="tooltiptext">View Logs</p>
+                </span>  
+                <span class="custTooltipEdit">
+                  <i class="fa fa-eye" (click)="sendDataUser(e)" style="cursor: pointer;"></i>
+                  <p class="tooltiptext">Edit</p>
+                </span>        
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <div *ngIf="employeeRecords?.length < 1">
+        <div class="no-records">
+          <img [src]="recordnotfound" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Neha New Code End-->
+
+
+
+  <!--<h2>Accordion Example</h2>
+  <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements
+    under the specified parent will be closed when one of the collapsible item is shown.</p>-->
+  <div class="count-container" style="display: none;">
+    <div>
+      <div class="row  no-margin">
+        <div class="col-md-8">
+          <div class="row paddingAdjust">
+            <div class="col-md-3 padding0 floatLeft">
+              <div class="card infoCard">
+                <div class="card-body ">
+                  <h6 class="card-subtitle mb-1 text-muted">
+                    Total Declarations
+                    <span class="record-data">{{
+                      recordSummary?.TotalDeclarations
+                    }}</span>
+                  </h6>
+                  <!-- <h5 class="card-title">{{recordSummary?.TotalDeclarations}}</h5> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 padding0 floatLeft">
+              <div class="card infoCard">
+                <div class="card-body ">
+                  <h6 class="card-subtitle mb-1 text-muted">
+                    Approved
+                    <span class="record-data">{{
+                      recordSummary?.ApprovedDeclarations
+                    }}</span>
+                  </h6>
+                  <!-- <h5 class="card-title">{{recordSummary?.ApprovedDeclarations}}</h5> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 padding0 floatLeft">
+              <div class="card infoCard">
+                <div class="card-body ">
+                  <h6 class="card-subtitle mb-1 text-muted">
+                    Pending
+                    <span class="record-data">{{
+                      recordSummary?.PendingDeclarations
+                    }}</span>
+                  </h6>
+                  <!-- <h5 class="card-title">{{recordSummary?.PendingDeclarations}}</h5> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 padding0 floatLeft">
+              <div class="card infoCard">
+                <div class="card-body ">
+                  <h6 class="card-subtitle mb-1 text-muted">
+                    Rejected
+                    <span class="record-data">{{
+                      recordSummary?.RejectedDeclarations
+                    }}</span>
+                  </h6>
+                  <!-- <h5 class="card-title">{{recordSummary?.RejectedDeclarations}}</h5> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-inline search-form input-container">
+            <input [(ngModel)]="searchItem" class="form-control mr-sm-2 search-input input-field" type="search"
+              placeholder="Search by Employee name.." aria-label="Search" />
+            <i class="fa fa-search icon" (click)="getRecords('bload')"></i>
+            <!-- <button (click)="getRecords('bload')">Search</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row accordion-header no-margin text-center accordion-header-div">
+      <div class="col">Total Declarations12</div>
+      <div class="col">Approved</div>
+      <div class="col">Pending</div>
+      <div class="col">Rejected</div>
+    </div>
+    <div class="row count-list padding-vertical no-margin text-center padding-vertical-div">
+      <div class="col">{{employeeRecords.TotalDeclarations}}</div>
+      <div class="col">{{employeeRecords.ApprovedDeclarations}}</div>
+      <div class="col">{{employeeRecords.PendingDeclarations}}</div>
+      <div class="col">{{employeeRecords.RejectedDeclarations}}</div>
+    </div>
+  </div>
+  <br />
+  <div class="advanced-search padding-vertical float-right">
+    <div class="year-div form-inline search-form input-container">
+      <i class="fa fa-search icon"></i>
+      <input [(ngModel)]="searchItem" (ngModelChange)="searchEmployee()" class="form-control mr-sm-2 search-input input-field"
+        type="search" placeholder="Search by Employee name.." aria-label="Search">
+    </div>
+  </div> -->
+    <br />
+    <div class="AllRow">
+      <div class="accordion-header padding-horizontal accordionhdiv" style="padding: 7px 10px;">
+        <div class="row">
+          <div class="col-md-3">Employee Name</div>
+          <div class="col-md-3">Location</div>
+          <div class="col-md-3 text-center"><!--No. of Declarations--></div>
+          <div class="col-md-3 status-container">
+            <!-- <div class="form-group"> -->
+            <select class="form-control" [(ngModel)]="status" (change)="getRecords('bload')">
+              <option style="padding:20px" *ngFor="let type of statusTypes; let i = index" [value]="type">
+                {{ type | titlecase }}</option>
+            </select>
+            <!-- </div> -->
+          </div>
+          <!--<div class="col text-center">Actions</div>-->
+        </div>
+      </div>
+      <div id="accordion" *ngIf="employeeRecords?.length > 0" class="acc-list" infiniteScroll
+        (scrolled)="getRecords('scroll')" [scrollWindow]="false">
+        <div class="card acc-container borderBotm" *ngFor="let e of employeeRecords; let i = index">
+          <a class="card-link">
+            <div class="card-header">
+              <div class="row">
+                <!-- <div class="col-md-3 padding0">{{i}} record</div>  employeeRecords arraynum(100)-->
+                <div class="col-md-3 padding0">{{ e.EmpName }}</div>
+                <div class="col-md-3 padding0">{{ e.Location }}</div>
+                <div class="col-md-3 padding0 text-center">
+                  <!-- {{ e.TotalDeclarations }} -->
+                </div>
+                <span class=" accordion-toggle addArrow" (click)="sendDataUser(e)"></span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="employeeRecords?.length < 1">
+      <div class="no-records">
+        <img [src]="recordnotfound" />
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="offlineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Declaration Info</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Proof submitted offline. Please verify.
+        </div>
+        <div class="modal-footer">
+          <div class="row">
+            <div class="col-12">
+              <textarea rows="3" cols="40" placeholder="Remarks" [(ngModel)]="adminRemark"></textarea>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-12" style=" margin-left: -19px;">
+              <button type="button" [disabled]="
+                  offlineObj?.offlineObj.Status === 'Approved' ||
+                  offlineObj?.offlineObj.Status === 'Rejected'
+                " class="btn btn-danger" (click)="confirmationBox('reject')">
+                Reject
+              </button>
+              <button type="button" [disabled]="
+                  offlineObj?.offlineObj.Status === 'Approved' ||
+                  offlineObj?.offlineObj.Status === 'Rejected'
+                " style="float: right" class="btn btn-success" (click)="confirmationBox('approve')">
+                Approve
+              </button>
+              <div *ngIf="errMsg" class="err-msg">
+                Remarks is mandatory while rejecting.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="EmployeeconformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Employee Flexi Declaration By Admin {{ actionType }}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="EmpMain" style="position: relative;width: 250px;float: left;">
+            <input type="text" style="width:100%" placeholder="Search Employee" [(ngModel)]="SearchEmployee"
+              (keyup)="getEmpName('','')" (focusout)='blurEmployee()'>
+            <div class="searchul" style="position: absolute;z-index: 10;"
+              *ngIf="SearchEmployee && showDropdownListEmp!==false">
+              <div *ngFor="let type of dropdownListEmp;let i=index">
+                <div class="EmpHover" *ngIf="type.TokenName" (click)="getEmpName(type,'TN')">{{type.TokenName}}</div>
+                <div class="EmpHover" *ngIf="!type.TokenName && type.TokenId" (click)="getEmpName(type,'TI')">
+                  {{type.TokenId}}</div>
+                <div class="EmpHover" *ngIf="!type.TokenName && !type.TokenId ">Searching..</div>
+              </div>
+              <div class="EmpHover" *ngIf="dropdownListEmp.length==0"><span> No Data Found</span></div>
+            </div>
+          </div>
+          <div>
+            <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="SendEmpName()"
+              style="margin:10px 0 0 19px;">
+              Flexi Page
+            </button>
+          </div>
+
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">
+            No
+          </button>
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="adminApproveReject()">
+            Yes
+          </button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="modal fade" id="conformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Declaration {{ actionType }}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Are you sure to {{ actionType }} ?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">
+            No
+          </button>
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="adminApproveReject()">
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="modal fade" id="conformationModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Action</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Do you want switch to Flexi Declaration
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-yes" data-dismiss="modal"
+            (click)="DeclartionAdminView('changeView')">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Status Details  box Done -->
+  <div class="newFormatModal modal fade " id="logDetails" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Log Details For {{EmpName}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body loader" *ngIf="!employeeLogs" >
+          Loading ...
+        </div>
+
+        <div class="modal-body" *ngIf="employeeLogs">
+          <div class="tableFixHead">
+            <table class="table ">
+              <thead>
+                <tr>
+                  <!-- <th scope="col" class="text-center">TokenId</th>
+                  <th scope="col" class="text-center">EmployeeName</th> -->
+                  <th scope="col" class="text-center">FlexiComponent</th>
+                  <th scope="col" class="text-center">DeclaredAmount</th>
+                  <th scope="col" class="text-center">Status</th>
+                  <th scope="col" class="text-center">AdminRemarks</th>
+                  <th scope="col" class="text-center">Last Updated By</th>
+                  <th scope="col" class="text-center">Last Updated On</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let e of employeeLogs; let i = index;">
+                  <!-- <td scope="row" class="text-center"> {{e.TokenId}} </td>
+                  <td scope="row" class="text-center"> EmployeeName </td> -->
+                  <td class="text-center">{{e.FlexiComponent}}</td> 
+                  <td class="text-center">{{e.DeclaredAmount}}</td>
+                  <td class="text-center">{{e.Status}}</td>
+                  <td class="text-center"> {{e.AdminRemarks}} </td>
+                  <td class="text-center" style="width:100%">{{e.ModifiedName}}</td>
+                  <td class="text-center" style="width:100%">{{e.ModifiedOn | date:"dd-MM-yyyy"}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-deny">No</button> -->
+          <button type="button" class="btn btn-yes" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

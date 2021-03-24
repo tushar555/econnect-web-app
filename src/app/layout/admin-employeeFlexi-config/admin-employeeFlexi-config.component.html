@@ -1,0 +1,349 @@
+<div class="container ">
+  <div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Declaration {{ actionType }}
+          </h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+        </div>
+        <div class="modal-body">
+          Are you sure want to approve?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">
+            No
+          </button>
+          <button type="button" class="btn btn-yes" data-dismiss="modal" style="float:right"
+            (click)="adminApproveReject()">
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="count-container">
+    <div [ngStyle]="getListData.enable == false ?{'pointerEvents': 'none'} : {'pointerEvents': 'auto'}">
+      <div class="mainAllignComp">
+        <div class="allignItem" style="float: left">
+          <!-- <span>Date Range:</span>   -->
+          <div class="col-md-3 padding-right1 noPad"  style="padding: 10px 0 0 0;max-width: 21%;"><span>FY <span *ngIf="DateQuater">{{DateQuater.FiscalYear-1 }}-{{DateQuater.FiscalYear.toString().substr(2,2)}} </span>:</span></div>
+          <div class="col-md-9  flexAlign noPad" *ngIf="DateQuater" style="padding: 9px 0 0 0;"> 
+              <div class="box1">
+                <div class="quarterAlign">Q1</div>
+                  <div class="checkbox" style="width:30px">
+                    <label>
+                      <input type="checkbox" [checked]="DateQuater.Quarter1" (change)="DateQuater.Quarter1 = !DateQuater.Quarter1" [disabled]="getListData.enable == false" />
+                      <i class="input-helper"></i>
+                    </label>
+                  </div>
+                  
+              </div>
+               <div class="box1">
+                  <div class="quarterAlign">Q2</div>
+                    <div class="checkbox" style="width:30px"> 
+                      <label>
+                        <input type="checkbox" [checked]="DateQuater.Quarter2" (change)="DateQuater.Quarter2 = !DateQuater.Quarter2"
+                          [disabled]="getListData.enable == false" />
+                        <i class="input-helper"></i>
+                      </label>
+                    </div>
+                    
+                </div>
+               <div class="box1">
+                    <div class="quarterAlign">Q3</div>
+                      <div class="checkbox" style="width:30px"> 
+                        <label>
+                          <input type="checkbox" [checked]="DateQuater.Quarter3" (change)="DateQuater.Quarter3 = !DateQuater.Quarter3"
+                            [disabled]="getListData.enable == false" />
+                          <i class="input-helper"></i>
+                        </label>
+                      </div>
+                      
+                 </div>
+                <div class="box1">
+                      <div class="quarterAlign">Q4</div>
+                        <div class="checkbox" style="width:30px"> 
+                          <label>
+                            <input type="checkbox" [checked]="DateQuater.Quarter4" (change)="DateQuater.Quarter4 = !DateQuater.Quarter4"
+                              [disabled]="getListData.enable == false" />
+                            <i class="input-helper"></i>
+                          </label>
+                        </div>
+                        
+                </div>
+              <!-- Q1 <input type="checkbox"> -->
+          </div>
+          <!-- <div class="col-md-9 padding-left">
+            <input type="text" class="textAlignDate" autocomplete="off" matInput (change)="change(selectedDate)"
+              ngxDaterangepickerMd [locale]="{ applyLabel: 'ok', format: 'DD.MMM.YYYY' }" startKey="start" endKey="end"
+              placeholder="Select Date" [(ngModel)]="selectedDate" name="daterange" />
+          </div> -->
+        </div>
+
+        <div class="allignItem">
+          <!-- <span>Company Name:</span> -->
+          <div class="col-md-3 noAllig noPad" style="padding: 7px 0 0 0;">
+            <span style="padding: 0 0 0 12px;">Company Name :</span>
+          </div>
+          <div class="col-md-9 padding-left compDisable noPad">
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="dropdownListComp" [(ngModel)]="selectedItemsComp"
+              [settings]="dropdownSettingsComp" (click)="onItemSelectComp($event)" (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="row topAlign">
+        <div class="col-md-6 row">
+          <div class="col-md-3 padding-right"><span>Grade Select :</span></div>
+          <div class="col-md-9 padding-left">
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="dropdownListGrade"
+              [(ngModel)]="selectedItemsGrade" [settings]="dropdownSettingsGrade" (click)="onItemSelectGrade('')"
+              (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="col-md-6 row rightdiv empCode">
+          <div class="col-md-3 noAllign padding-right">
+            <span>Emp Id Exclude :</span>
+          </div>
+          <div class="col-md-9 padding-left">
+            <ng-multiselect-dropdown [placeholder]="'Select'" [data]="dropdownListEmp" [(ngModel)]="selectedItemsEmp"
+              [settings]="dropdownSettingsEmp" (click)="onItemSelectEmp($event)" (onFilterChange)="getEmpName($event)"
+              (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+            <img src="https://www.drupal.org/files/issues/throbber_12.gif" *ngIf="smallLoader" class="smallLoader"
+              width="25" />
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Declaration {{ actionType | titlecase }}
+            </h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+          </div>
+          <div class="modal-body">
+            <textarea name="admin-remarks" class="admin-remarks mandatory" placeholder="Remarks"
+              [(ngModel)]="adminRemark"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-deny" data-dismiss="modal">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-yes" data-dismiss="modal" style="float:right"
+              (click)="adminApproveReject()" [disabled]="!adminRemark">
+              Reject
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="approveModalAll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Declaration {{ actionType }}
+            </h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button> -->
+          </div>
+          <div class="modal-body">
+            Are you sure want to Submit?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-deny" data-dismiss="modal">
+              No
+            </button>
+            <button type="button" class="btn btn-yes" data-dismiss="modal" style="float:right"
+              (click)="adminApproveReject()">
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="rejectModalAll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Declaration {{ actionType | titlecase }}
+            </h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button> -->
+          </div>
+          <div class="modal-body">
+            <textarea name="admin-remarks" class="admin-remarks mandatory" placeholder="Remarks"
+              [(ngModel)]="adminRemark"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-deny" data-dismiss="modal">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-yes" data-dismiss="modal" style="float:right"
+              (click)="adminApproveRejectAll()" [disabled]="!adminRemark">
+              Reject
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <!-- <div class="text-center">
+      <span> Flexi Pay: {{FlexiPay}} | </span>
+      <span> Declared Amount: {{DeclaredAmount}} | </span>
+      <span> Balance Pay: {{BalanceFlexi}}</span>
+    </div> -->
+      <!-- <div class="info-header">
+      <table>
+        <tr>
+          <td width="25%">
+            <span class="label">Flexi Pay : </span> 
+            <span class="value">{{FlexiPay}}</span>
+          </td>
+          <td width="25%">
+            <span class="label">Declared Amount : </span> 
+            <span class="value">{{DeclaredAmount}}</span>
+          </td>
+          <td width="25%">
+            <span class="label">Balance Pay : </span>
+            <span class="value">{{BalanceFlexi}}</span>
+          </td>
+          <td width="25%">
+            <span class="label">Year : </span> 
+            <span class="value">{{FlexiYear}}</span>
+          </td>
+        </tr>
+      </table>
+    </div> -->
+      <div class="tableFixHead flexitable">
+        <table>
+          <thead>
+            <tr>
+              <th class="text-center thWidth-4">Sr. No.</th>
+              <th class="thWidth-15">Flexi Declaration</th>
+              <th class="thWidth-30"  style="z-index:10">Grade Select</th>
+              <th class="thWidth-7">Limit</th>
+              <!-- <th class="thWidth-25">DECLARATION AMOUNT</th> -->
+              <!-- <th class="thWidth-1" style="text-align: center;z-index: 10;">
+                ACTION
+              </th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fd of flexiDetails; let i = index">
+              <td class="text-center">{{ i + 1 }}</td>
+              <td>{{ fd.FlexiComponent }}</td>
+              <td>
+                <div class="col-md-12 row">
+                  <!-- <span style="padding: 0 0 0 16px;">Grade Selection:</span> -->
+                  <div class="col-md-12 padding-left tablemultiselect" [ngStyle]="getListData.enable == false ?{'pointerEvents': 'none'} : {'pointerEvents': 'auto'}">
+                    <ng-multiselect-dropdown [placeholder]="'Select '+fd.FlexiComponent +' Grade'" [data]="dropdownListGrade"
+                      [(ngModel)]="fd.GradeList" [settings]="dropdownSettingsGrade" (click)="onItemSelectGrade('')"
+                      (onSelectAll)="onSelectAll($event)">
+                    </ng-multiselect-dropdown>
+                  </div>
+                </div>
+
+              </td>
+              <td>{{ fd.LimitRule }}</td>
+
+              <!-- <td>
+
+                <div class="box">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" [checked]="fd.IsActive" (change)="fd.IsActive = !fd.IsActive"
+                        [disabled]="getListData.enable == 'false'" />
+                      <i class="input-helper"></i>
+                    </label>
+                  </div>
+                </div>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center flexiFooter">
+        <button class="btn btn-md back-btn" routerLink="../../admin-flexi-config">
+          Back
+        </button>
+        <button type="button" class="btn btn-md" style="float:left" *ngIf="getListData.enable !== 'false'" (click)="adminConfirmation('approveAll', 'subScheme')">
+          Submit
+        </button>
+        <!-- <button type="button" class="btn  btn-md" style="float:right" (click)="adminConfirmation('rejectAll','subScheme')">Reject All</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="conformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Submit Flexi Components
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure to submit Flexi Component ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">
+          No
+        </button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="submitFlexiDeclaration()">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="messageModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Submit Flexi Components
+        </h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        Your Flexi Declaration successfully submitted.
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>-->
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="getFlexiDetails()">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

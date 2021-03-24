@@ -1,0 +1,249 @@
+<div class="container">
+    <div class="toggle" *ngIf="FlexiAdmin">
+        <span style="padding: 4px 7px 0 0px;">Employee</span> 
+        <label class="switch" style="margin: 4px 0 0 0;">
+             <input *ngIf="!empToken" type="checkbox" [checked]="false" [disabled]="false" (change)="DeclartionAdminView(e,'Employee');$event.target.checked = false" >
+             <input *ngIf="empToken" type="checkbox" [checked]="true" [disabled]="false" (change)="DeclartionAdminView(e,'Admin');$event.target.checked = true" >
+             <span class="slider round"></span>
+           </label>
+         <span style="padding: 4px 0px 0 7px;">Admin</span>
+     </div>
+  <div *ngIf="empToken && FlexiPay == 0" style="margin: 0 0 6px 0;"><span class="Employee">Employee: </span><span class="EmployeeName">{{getEmpName}}</span></div>   
+  <div class="" *ngIf="FlexiPay !== 0">
+    <!-- <div class="text-center">
+      <span> Flexi Pay: {{FlexiPay}} | </span>
+      <span> Declared Amount: {{DeclaredAmount}} | </span>
+      <span> Balance Pay: {{BalanceFlexi}}</span>
+    </div> -->
+    <div *ngIf="empToken" style="margin: 0 0 6px 0;"><span class="Employee">Employee: </span><span class="EmployeeName">{{getEmpName}}</span></div>
+    <div class="info-header">
+      <table>
+        <tr>
+            
+        </tr>
+        <tr>
+          <td width="25%">
+            <span class="label">Flexi Pay : </span>
+            <span class="value">{{ FlexiPay }}</span>
+          </td>
+          <td width="25%">
+            <span class="label">Declared Amount : </span>
+            <span class="value">{{ DeclaredAmount }}</span>
+          </td>
+          <td width="25%">
+            <span class="label">Balance Pay : </span>
+            <span class="value">{{ BalanceFlexi }}</span>
+          </td>
+          <td width="25%">
+            <span class="label">Year : </span>
+            <span class="value">{{ FlexiYear - 1 + "-" + FlexiYear }}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="tableFixHead">
+      <table>
+        <thead>
+          <tr>
+            <th class="text-center thWidth-7">Sr. No.</th>
+            <th class="thWidth-50">Flexi Declaration</th>
+            <th class="text-center" style="z-index: 10">Description</th>
+            <th class="text-center" style="z-index: 10">Status</th>
+            <th class="text-center">Limit</th>
+            <th>Declaration Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fd of flexiDetails; let i = index" [ngClass]="{ uneditable: !fd.IsEditable }">
+            <td class="text-center srno">{{ i + 1 }}</td>
+            <td>{{ fd.FlexiComponent }}</td>
+            <td style="text-align: center">
+              <span class="custTooltip">
+                <img  src="../assets/img/incometaxIcons/information.svg" (click)="openDescriptionModal(fd)">
+                <p class="tooltiptext">Description</p>
+              </span>  
+            </td>
+            <td class="text-center">
+              <div class="col-md-12 padding0 iconBox" style="float: right;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <!-- asdf -->
+                    <span class="declaration-status">
+                      <span *ngIf="fd.Status !== null" class="float-right" [ngClass]="{
+                          'status-approved': fd.Status == 'Approved',
+                          'status-rejected': fd.Status == 'Rejected',
+                          'status-pending': fd.Status == 'Pending',
+                          'status-saved': fd.Status == 'Saved'
+                        }">{{ fd.Status }}
+                        <span *ngIf="fd.Status == 'Rejected'" class="badge badge-light badge2"
+                          (click)="openRejectionModal(fd.AdminRemarks)">!</span>
+                      </span>
+                      <span class="float-right" *ngIf="fd.Status == null || fd.Status == 'Disabled'"
+                        [ngClass]="{ 'status-pending': fd.Status == null }">N/A
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="text-center">{{ fd.Limit }}</td>
+            <!-- {{fd.Limit ? fd.Limit : '0'}} 'status-pending': fd.Status == 'Saved'-->
+            <td>
+              <input type="text" *ngIf="fd.FlexiId !== 6" class="form-control" (blur)="validateAmountKeyUp($event, fd.Limit, i)"
+                (keyup)="validateAmountKeyUp(event, fd.Limit, i)"
+                (keypress)="validateAmountKeyPress($event, fd.Limit, i)" placeholder="Enter Amt"
+                [disabled]="fd.IsEditable == false || fd.isOpted == false " [(ngModel)]="fd.DeclaredAmount" />
+                <select class="form-control" id="selectCEA" [value]='fd.DeclaredAmount' *ngIf="fd.FlexiId == 6"  [(ngModel)]="fd.DeclaredAmount" (change)="validateAmountKeyUp($event, fd.Limit, i)"  [disabled]="fd.IsEditable == false || fd.isOpted == false ">
+                  <option style="padding:20px"  [value]="0">0</option>
+                  <option style="padding:20px"  [value]="1200" *ngIf="fd.Limit >= 1200">1200</option>
+                  <option style="padding:20px"  [value]="2400" *ngIf="fd.Limit >= 2400">2400 </option>
+                </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="showSubmit == flexiDetails.length" class="text-center flexiFooterclosed">
+      <span>Flexi Declaration Closed From Admin</span>
+    </div>
+    <div class="text-center flexiFooter"  *ngIf="showSubmit !== flexiDetails.length">
+      <!-- <span *ngIf="showSubmit !== flexiDetails.length">Flexi Declaration Closed From Admin </span> -->
+      <button type="button" class="btn  btn-md leftButton" [ngClass]="empToken? 'buttonCenter':'leftButton'" (click)="showSubmitFlexi('submit')"
+         >Submit</button>
+      <button type="button" class="btn  btn-md rightButton"  (click)="showSubmitFlexi('save')"
+       *ngIf="!empToken">save</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="FlexiPay == 0" class="text-center flexiFooterclosed">
+    <span>Employee Had Not Opted For Flexi Pay.</span>
+  </div>
+
+<div class="newFormatModal modal fade" id="conformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Submit Flexi Declaration
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure to {{showMessageFlexi}} Flexi Component ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal"
+          (click)="submitFlexiDeclaration(showMessageFlexi)">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="newFormatModal modal fade" id="messageModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Submit Flexi Components
+        </h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        Your Flexi Declaration <span *ngIf="showMessageFlexi == 'save'">Saved</span><span *ngIf="showMessageFlexi == 'submit'">Submitted</span> successfully.
+       </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>-->
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="getFlexiDetails()">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="newFormatModal modal fade" id="rejectionModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Reason for Rejection</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body rejectionModal">
+        <p class="fw-600">{{ adminRemarks }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="newFormatModal modal fade" id="DescriptionModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Description</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body rejectionModal">
+        <p class="fw-600">{{ description }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">Ok</button>
+       </div>
+    </div>
+  </div>
+</div>
+<div class="newFormatModal modal fade" id="conformationModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Action</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         Do you want  switch to Admin-Flexi 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="DeclartionAdminView('e','changeView')">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="newFormatModal modal fade" id="conformationModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Action</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         Do you want  switch to Flexi
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="DeclartionAdminView('e','changeViewAdmin')">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>

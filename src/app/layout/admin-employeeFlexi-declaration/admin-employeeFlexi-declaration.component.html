@@ -1,0 +1,292 @@
+<div class="container">
+  <div class="count-container">
+    <div class="headerdiv">
+      <span>{{ EmployeeName }}</span>
+    </div>
+    <div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Declaration {{ actionType }}
+            </h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+          </div>
+          <div class="modal-body">
+            Are you sure want to approve?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-deny" data-dismiss="modal">
+              No
+            </button>
+            <button type="button" class="btn btn-yes" data-dismiss="modal" style="float:right"
+              (click)="adminApproveReject()">
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Declaration {{ actionType | titlecase }}
+            </h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+          </div>
+          <div class="modal-body">
+            <textarea name="admin-remarks" class="admin-remarks mandatory" placeholder="Remarks"
+              [(ngModel)]="adminRemarks"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-deny" data-dismiss="modal">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-yes" data-dismiss="modal" style="float:right"
+              (click)="adminApproveReject()" [disabled]="!adminRemarks">
+              Reject
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="approveModalAll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Declaration {{ actionType }}
+            </h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button> -->
+          </div>
+          <div class="modal-body">
+            Are you sure want to approve All?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-deny" data-dismiss="modal">
+              No
+            </button>
+            <button type="button" class="btn btn-yes" data-dismiss="modal" style="float:right"
+              (click)="adminApproveReject()">
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="rejectModalAll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Declaration {{ actionType | titlecase }}
+            </h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button> -->
+          </div>
+          <div class="modal-body">
+            <textarea name="admin-remarks" class="admin-remarks mandatory" placeholder="Remarks"
+              [(ngModel)]="adminRemarks"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-deny" data-dismiss="modal">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-yes" data-dismiss="modal" style="float:right"
+              (click)="adminApproveReject()" [disabled]="!adminRemarks">
+              Reject
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <!-- <div class="text-center">
+      <span> Flexi Pay: {{FlexiPay}} | </span>
+      <span> Declared Amount: {{DeclaredAmount}} | </span>
+      <span> Balance Pay: {{BalanceFlexi}}</span>
+    </div> -->
+      <div class="info-header">
+        <table>
+          <tr>
+            <td width="25%">
+              <span class="label">Flexi Pay : </span>
+              <span class="value">{{ FlexiPay }}</span>
+            </td>
+            <td width="25%">
+              <span class="label">Declared Amount : </span>
+              <span class="value">{{ DeclaredAmount }}</span>
+            </td>
+            <td width="25%">
+              <span class="label">Balance Pay : </span>
+              <span class="value">{{ BalanceFlexi }}</span>
+            </td>
+            <td width="25%">
+              <span class="label">Year : </span>
+              <span class="value">{{ FlexiYear - 1 + "-" + FlexiYear }}</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="tableFixHead">
+        <table>
+          <thead>
+            <tr>
+              <th class="text-center thWidth-10">SR. No.</th>
+              <th class="thWidth-25">FLEXI DECLARATION</th>
+              <th class="thWidth-15">LIMIT</th>
+              <th class="thWidth-25">DECLARATION AMOUNT</th>
+              <th class="thWidth-25" style="z-index: 10">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fd of flexiDetailsAdmin; let i = index" [ngClass]="{ uneditable: !fd.IsEditable }">
+              <td class="text-center">{{ i + 1 }}</td>
+              <td>{{ fd.FlexiComponent }}</td>
+              <td>{{ fd.Limit }}</td>
+              <!-- {{fd.Limit ? fd.Limit : '0'}} -->
+              <!-- <td><input type="text" class="form-control" (blur)="validateAmountKeyUp($event,fd.Limit,i)" (keyup)="validateAmountKeyUp(event,fd.Limit,i)"
+                (keypress)="validateAmountKeyPress($event,fd.Limit,i)" placeholder="Enter Amt" [disabled]="true"
+                [(ngModel)]="fd.DeclaredAmount"></td> -->
+              <td>{{ fd.DeclaredAmount }}</td>
+              <td>
+                <div class="floatLeft padding0 iconBox" *ngIf="'declaration' == 'declaration'">
+                  <!-- <div *ngIf="null ==null"> -->
+                  <!-- <span *ngIf="fd.Status === 'Approved' || fd.Status === 'Pending'">
+                    <img style="margin: 0 0 0px 20px;" src="../assets/img/incometaxIcons/rejected.svg" data-toggle="tooltip" data-placement="top"
+                      title="Reject" class="IconImg" (click)="adminConfirmation('reject', fd)" />
+                  </span>
+                  <span *ngIf="fd.Status === 'Rejected' || fd.Status === 'Pending'">
+                    <img style="margin: 0 0 0px 27px;"  src="../assets/img/incometaxIcons/accepted.svg" data-toggle="tooltip" data-placement="top"
+                      title="Approve" class="IconImg" (click)="adminConfirmation('approve', fd)" />
+                  </span> -->
+                  <span class="declaration-status">
+                    <span class="float-left" [ngClass]="{
+                        'status-approved':
+                          fd.Status == 'Approved' || fd.Status == 'approveall',
+                        'status-rejected':
+                          fd.Status == 'Rejected' || fd.Status == 'rejectall',
+                        'status-pending': fd.Status == 'Pending'
+                      }">{{ fd.Status }}
+                      <span *ngIf="
+                          fd.Status == 'Rejected' || fd.Status == 'rejectall'
+                        " class="badge badge-light badge2" (click)="openRejectionModal(fd.AdminRemarks)">!</span>
+                    </span>
+                  </span>
+                  <!-- </div> -->
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center flexiFooter" *ngIf="showSubmit == 'rejected'" style="float:right">
+        <button type="button" class="btn  btn-md" (click)="adminConfirmation('approveAll', 'subScheme')">
+          Approve All
+        </button>
+      </div>
+      <div class="text-center flexiFooter" *ngIf="showSubmit == 'approved'" style="float:right">
+        <button type="button" class="btn  btn-md"  (click)="adminConfirmation('rejectAll', 'subScheme')">
+          Reject All
+        </button>
+      </div>
+      <div class="text-center flexiFooter" *ngIf="showSubmit !== 'rejected' && showSubmit !== 'approved'">
+        <button type="button" class="btn  btn-md" style="float:left"
+          (click)="adminConfirmation('approveAll', 'subScheme')">
+          Approve All
+        </button>
+        <button type="button" class="btn  btn-md" style="float:right"
+          (click)="adminConfirmation('rejectAll', 'subScheme')">
+          Reject All
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="conformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Submit Flexi Components
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure to submit Flexi Component ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">
+          No
+        </button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="submitFlexiDeclaration()">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Rejection modal start -->
+<div class="modal fade" id="rejectionModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Reason for Rejection</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body rejectionModal">
+        <!-- <p class="fw-600">{{subScheme.SchemeName}}</p> -->
+        <p *ngIf="subScheme !== null; else noRemarks">{{ subScheme }}</p>
+        <p *ngIf="subScheme == null">
+          No Remarks.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- New Rejection modal End -->
+
+<div class="modal fade" id="messageModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Submit Flexi Components
+        </h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        Your Flexi Declaration successfully submitted.
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>-->
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="getFlexiDetails()">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

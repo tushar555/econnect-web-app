@@ -1,0 +1,156 @@
+<!-- <div class="profileImg">
+  <img  src="../assets/img/profile-mobile/profile.png">
+</div> -->
+<div class="container" *ngIf='showDetails'>
+  <div class="card">
+    <div class="card-body">
+      <div class="row uppersec">
+        <div class="col-md-2 outerImgBlock">
+          <div *ngIf="attendanceDetail.length!==0" class="profileImg">
+            <img src="../assets/img/profile-mobile/profile.png" />
+          </div>
+        </div>
+        <div class="col-md-10 personalDetails p-l-0" *ngIf="attendanceDetail.length!==0;else noContent">
+          <h5>{{attendanceDetail[0]?.EmployeeName}}</h5>
+          <p>
+            <img src="../assets/img/profile-mobile/designation.svg" />
+            {{attendanceDetail[0]?.CompanyName}}
+          </p>
+          <p>
+            <img src="../assets/img/profile-mobile/department.svg" />
+
+            {{attendanceDetail[0]?.Department}}
+          </p>
+          <!-- <p>
+        <img src="../assets/img/profile-mobile/location.svg" />
+        {{attendanceDetail[0].location}}
+      </p> -->
+        </div>
+      </div>
+      <ng-template #noContent>
+
+        <div class="noFound-container">
+          <div class="innernoFound">
+            <img class="noFound" src='assets/img/no-record.png'>
+            <div class="noFound-text">No record found</div>
+          </div>
+        </div>
+      </ng-template>
+      <div class="divider" *ngIf="attendanceDetail.length!==0"></div>
+      <div class="row lowersec" *ngIf="attendanceDetail.length!==0">
+        <div class="outersec">
+          <div class="row">
+            <div class="col-md-1 checkBox">
+              <input type="checkbox" *ngIf="isAllApproved()" id="selectAll" name="selectAll" value="selectAll"
+                [(ngModel)]="isAll" (change)="checkValue()">
+              <label for="selectAll"></label>
+            </div>
+            <div class="col-md-9">
+              <h1 class="font-14"> Week {{params.WeekDesc}} ({{params.WeekStartDate | date:"dd-MMM-yyyy"}} to
+                {{params.WeekEndDate | date:"dd-MMM-yyyy"}} )</h1>
+            </div>
+          </div>
+
+        </div>
+        <div class="innersec">
+          <div class="row" *ngFor="let item of attendanceDetail;let i=index">
+            <div class="col-md-1 checkBox"
+              *ngIf="item.ApprovalStatus=='Pending' || item.ApprovalStatus=='pending'  || item.ApprovalStatus==null || item.ApprovalStatus==undefined">
+              <input type="checkbox" [(ngModel)]="item.IsChecked" (change)="checkinnerValue(item)" [id]="i" [name]="i"
+                [value]="i">
+              <label [for]="i"></label>
+            </div>
+            <div class="col-md-1 checkBox" *ngIf="item.ApprovalStatus=='Approved' || item.ApprovalStatus=='approved'">
+              <img src="assets/img/incometaxIcons/accepted.svg" class="approveImg" />
+            </div>
+            <div class="col-md-1 checkBox" *ngIf="item.ApprovalStatus=='Rejected'  || item.ApprovalStatus=='rejected'">
+              <img src="assets/img/incometaxIcons/rejected.svg" class="approveImg" />
+            </div>
+            <div class="col-md-3 title"><span class="head">Date:</span><span
+                class="text">{{item.AttendanceDate | date: 'dd-MMM-yyyy'}}</span></div>
+            <div class="col-md-3 title"><span class="head">Punch in:</span><span
+                class="text">{{(item.TimeIn == null?'-': item.TimeIn | date: 'hh:mm:ss')  }}</span></div>
+            <div class="col-md-3 title"><span class="head">Punch out:</span><span
+                class="text">{{item.TimeOut == null?'-': item.TimeOut | date: 'hh:mm:ss'}}</span></div>
+            <div class="col-md-1 title"><span class="head">Hrs:</span><span
+                class="text">{{(item.TimeOut == null || item.TimeIn == null)?'-': (getHours(item.TimeOut,item.TimeIn))}}</span>
+            </div>
+            <div class="col-md-1" [ngClass]="(!item.LatLongIn && !item.LatLongOut) ? 'disableddata' : ''"
+              (click)="formatlatlong(item.LatLongIn,item.LatLongOut,'in')"><span class="head"><button type="button"
+                  class="btn btn-yes">Details</button></span></div>
+          </div>
+        </div>
+        <div class="row btnrow">
+          <button type="button" *ngIf="isAllApproved()" (click)="openModal()" class="btn btn-no">
+            Reject
+          </button>
+
+          <button type="button" *ngIf="isAllApproved()" (click)="submitData('approved')" class="btn btn-yes">
+            Approve
+          </button>
+
+          <button type="button" (click)="pageBack()" class="btn btn-no">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="newFormatModal modal fade" id="attaendancemapModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header" id="attendance_header">
+          <div class="punch" (click)='getLatLong(latitudein,longitudein,"in")'
+            [ngClass]="punchin === true ? 'punchactive' : ''"> Punch IN </div>
+          <div class="punch" [ngClass]="punchout === true ? 'punchactive' : ''"
+            (click)='getLatLong(latitudeout,longitudeout,"out")'> Punch Out </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          <!-- <div *ngIf="noMapAvailable" class="nomap">No Location Available</div> -->
+          <div id="attendancemap" style="height:22rem;min-width: 500px;width: 100%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="newFormatModal modal fade" id="remarksModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Give Remarks</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <textarea rows="3" cols="40" placeholder="Remarks" [(ngModel)]="adminRemark"></textarea>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="row">
+            <div class="col-12" style=" margin-left: -19px;">
+              <button type="button" class="btn btn-danger" (click)="hideModal()">Cancel</button>
+              <button type="button" style="float: right" class="btn btn-success"
+                (click)="submitData('rejected')">Reject</button>
+              <!-- <div *ngIf="errMsg" class="err-msg">Remarks is mandatory while rejecting.</div> -->
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

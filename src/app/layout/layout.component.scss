@@ -1,0 +1,48 @@
+.wrapper {
+  height: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.wrapper:before,
+.wrapper:after {
+  content: " ";
+  display: table;
+}
+
+::-webkit-scrollbar {
+  width: 0px !important;
+  background: transparent !important;
+  /* make scrollbar transparent */
+}
+
+.wrapper:after {
+  clear: both;
+}
+
+
+.layout-boxed .wrapper {
+  max-width: 1250px;
+  margin: 0 auto;
+  min-height: 100%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.side-bar-menu {
+  float: left;
+  overflow-y: auto;
+  // height: 100vh;
+  padding-right: 0px;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.content-section {
+  // margin-left: 210px;
+  padding-left: 0px;
+  width: 100%;
+  height: 100vh;
+  // background-color: #ffff;
+   background-color: #f4f6f9;
+}

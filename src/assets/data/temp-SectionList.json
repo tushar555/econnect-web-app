@@ -1,0 +1,1006 @@
+{
+  "Schemes": [{
+      "SchemeID": 1,
+      "SchemeName": "Taxable Income From Previous Employer",
+      "SchemeCategory": "General",
+      "Limit": null,
+      "Amount": 0.00,
+      "Section": "General",
+      "SectionLimit": null,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 2,
+      "SchemeName": "Rent Paid- HRA exemption",
+      "SchemeCategory": "General",
+      "Limit": null,
+      "Amount": 4000.00,
+      "Section": "General",
+      "SectionLimit": 312000.0,
+      "ProofRequired": true,
+      "Status": "Approved",
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": [{
+        "Id": 9,
+        "Address": "hgjhg",
+        "Pincode": 765577,
+        "LandLordName": "hjgjhg",
+        "LandLordAddress": "jhhjgjhg",
+        "LandLordPincode": 678677,
+        "LandLordPanNo": "FDGPS7878A",
+        "FromDate": "2018-09-05T01:59:00",
+        "ToDate": "2018-12-31T23:59:00",
+        "HousingType": "Rent",
+        "RentPerMonth": 4000.00,
+        "Remarks": "",
+        "IsMetroCity": false,
+        "Proofs": [{
+          "Id": 39,
+          "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018924657393.png"
+        }]
+      }],
+      "DeclarationDetailsIds": null,
+      "DeclarationId": 1,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 3,
+      "SchemeName": "Non Taxable Driver Salary",
+      "SchemeCategory": "General",
+      "Limit": null,
+      "Amount": 0.00,
+      "Section": "General",
+      "SectionLimit": null,
+      "ProofRequired": null,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 4,
+      "SchemeName": "Non Taxable Children Education Allowance (Max 2 Children Only)",
+      "SchemeCategory": "General",
+      "Limit": 2400.0,
+      "Amount": 0.00,
+      "Section": "General",
+      "SectionLimit": null,
+      "ProofRequired": null,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 5,
+      "SchemeName": "Non Taxable Vehicle Maintenance Allowance - Annexure III",
+      "SchemeCategory": "General",
+      "Limit": null,
+      "Amount": 0.00,
+      "Section": "General",
+      "SectionLimit": null,
+      "ProofRequired": null,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 6,
+      "SchemeName": "Income/Loss from House Property",
+      "SchemeCategory": "General",
+      "Limit": null,
+      "Amount": 0.00,
+      "Section": "General",
+      "SectionLimit": null,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 7,
+      "SchemeName": "Other Income (Int, Dividend, ST/LT CapGain)",
+      "SchemeCategory": "General",
+      "Limit": null,
+      "Amount": 0.00,
+      "Section": "General",
+      "SectionLimit": null,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 8,
+      "SchemeName": "Medical Insurance Prem. (Non-Senior Clz)",
+      "SchemeCategory": "80D",
+      "Limit": 25000.0,
+      "Amount": 0.00,
+      "Section": "80D",
+      "SectionLimit": 40000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 9,
+      "SchemeName": "Medical Insurance Prem. (Senior Citizen)",
+      "SchemeCategory": "80D",
+      "Limit": 50000.0,
+      "Amount": 0.00,
+      "Section": "80D",
+      "SectionLimit": 40000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 10,
+      "SchemeName": "Medical Insr Premium (Payment on behalf of Parents non-senior Ctz)",
+      "SchemeCategory": "80D",
+      "Limit": 25000.0,
+      "Amount": 0.00,
+      "Section": "80D",
+      "SectionLimit": 40000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 11,
+      "SchemeName": "Medical Insr Premium (Payment on behalf of Parents senior citizen)",
+      "SchemeCategory": "80D",
+      "Limit": 50000.0,
+      "Amount": 0.00,
+      "Section": "80D",
+      "SectionLimit": 40000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 12,
+      "SchemeName": "Preventive Health Check up (Self) - Annexure VI",
+      "SchemeCategory": "80D",
+      "Limit": 5000.0,
+      "Amount": 0.00,
+      "Section": "80D",
+      "SectionLimit": 40000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 13,
+      "SchemeName": "Preventive Health Check up (Parents) - Annexure VI",
+      "SchemeCategory": "80D",
+      "Limit": 5000.0,
+      "Amount": 0.00,
+      "Section": "80D",
+      "SectionLimit": 40000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 14,
+      "SchemeName": "Deduction For Self Non-Severe Disability",
+      "SchemeCategory": "80U",
+      "Limit": 75000.0,
+      "Amount": 0.00,
+      "Section": "80U",
+      "SectionLimit": 100000.0,
+      "ProofRequired": false,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 15,
+      "SchemeName": "Deduction For Self Severe Disability",
+      "SchemeCategory": "80U",
+      "Limit": 125000.0,
+      "Amount": 0.00,
+      "Section": "80U",
+      "SectionLimit": 100000.0,
+      "ProofRequired": false,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 16,
+      "SchemeName": "Deduction for dependent with disability",
+      "SchemeCategory": "80DD",
+      "Limit": 75000.0,
+      "Amount": 0.00,
+      "Section": "80DD",
+      "SectionLimit": 100000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 17,
+      "SchemeName": "Deduction for dependent with severe disability",
+      "SchemeCategory": "80DD",
+      "Limit": 125000.0,
+      "Amount": 0.00,
+      "Section": "80DD",
+      "SectionLimit": 100000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 18,
+      "SchemeName": "Repayment of Interest on Loan for Higher Education",
+      "SchemeCategory": "80E",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80E",
+      "SectionLimit": null,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 19,
+      "SchemeName": "Contribution to pension scheme - NPS",
+      "SchemeCategory": "80CCD",
+      "Limit": 200000.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 20,
+      "SchemeName": "Contribution to Certain Pension Funds",
+      "SchemeCategory": "80CCC",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": false,
+      "Status": "Pending",
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": [
+        [{
+          "Id": 3,
+          "CompanyName": "nbvn",
+          "EmployeeName": "mbm",
+          "PaymentDate": "2018-01-01T00:00:00",
+          "PRANNo": "mbmn",
+          "NPSAmount": 0.00,
+          "Remarks": "",
+          "Proofs": [{
+              "Id": 5,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922616733.png"
+            },
+            {
+              "Id": 10,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/201892272010.png"
+            },
+            {
+              "Id": 28,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/201892211894.png"
+            },
+            {
+              "Id": 30,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018924550803.png"
+            }
+          ]
+        }]
+      ],
+      "DeclarationDetailsIds": null,
+      "DeclarationId": 7,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 21,
+      "SchemeName": "Medical Treatment For (Self Senior Citizen)",
+      "SchemeCategory": "80DDB",
+      "Limit": 100000.0,
+      "Amount": 0.00,
+      "Section": "80DDB",
+      "SectionLimit": 40000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 22,
+      "SchemeName": "Medical Treatment For (Self Non-Senior Ctz)",
+      "SchemeCategory": "80DDB",
+      "Limit": 40000.0,
+      "Amount": 0.00,
+      "Section": "80DDB",
+      "SectionLimit": 40000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 23,
+      "SchemeName": "Interest from savings bank account (Sec 80TTA)",
+      "SchemeCategory": "80TTA",
+      "Limit": 10000.0,
+      "Amount": 0.00,
+      "Section": "80TTA",
+      "SectionLimit": 10000.0,
+      "ProofRequired": null,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 24,
+      "SchemeName": "Rajiv Gandhi Equity Savings Scheme",
+      "SchemeCategory": "80CCG",
+      "Limit": 25000.0,
+      "Amount": 0.00,
+      "Section": "80CCG",
+      "SectionLimit": 25000.0,
+      "ProofRequired": false,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 25,
+      "SchemeName": "Payment Towards Life Insurance Policy",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 26,
+      "SchemeName": "Subscription To Notified Central Government security (NSS)",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": false,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 27,
+      "SchemeName": "Contribution to ULIP",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 28,
+      "SchemeName": "Contribution to Public Provident Fund",
+      "SchemeCategory": "80C",
+      "Limit": 150000.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": "Rejected",
+      "OfflineProof": false,
+      "AdminRemarks": "asas",
+      "DeclarationDetails": [
+        [{
+            "Id": 3,
+            "AccountHolderName": "ANS",
+            "Relationship": "hgjhg",
+            "PaymentDate": "2018-12-31T22:59:00",
+            "PFAccountNo": "68768",
+            "BankPostOfficeName": "hjgjhg",
+            "Amount": 0.00,
+            "Remarks": "",
+            "Proofs": [{
+                "Id": 5,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922616733.png"
+              },
+              {
+                "Id": 10,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/201892272010.png"
+              },
+              {
+                "Id": 28,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/201892211894.png"
+              },
+              {
+                "Id": 30,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018924550803.png"
+              }
+            ]
+          },
+          {
+            "Id": 4,
+            "AccountHolderName": "hkjkh",
+            "Relationship": "khkjh",
+            "PaymentDate": "2018-12-01T23:59:00",
+            "PFAccountNo": "8687687",
+            "BankPostOfficeName": "gjhgjh",
+            "Amount": 0.00,
+            "Remarks": "",
+            "Proofs": [{
+                "Id": 6,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/201892263995.jpeg"
+              },
+              {
+                "Id": 11,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189227551.png"
+              },
+              {
+                "Id": 31,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018924549617.jpeg"
+              }
+            ]
+          }
+        ]
+      ],
+      "DeclarationDetailsIds": null,
+      "DeclarationId": 2,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 29,
+      "SchemeName": "Subscr to notified Central Govt Savings certificate (NSC VIII issue)",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": "Pending",
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": 3,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 30,
+      "SchemeName": "Interest on NSC VIII issue",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 31,
+      "SchemeName": "Repayment of Housing loan - Annexure IV",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 32,
+      "SchemeName": "Subscription to Notified Mutual Fund",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": "Pending",
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": [
+        [{
+          "Id": 1,
+          "DepositerName": "bvnbv",
+          "NameOfMutualFund": "bmvb",
+          "DetailsOfPayment": "nbvnb",
+          "CertificateApplicationNo": "bvn",
+          "ChequeNo": "nbvnb",
+          "DateOfPaymentBankDebit": "2018-01-01T00:00:00",
+          "Amount": 0.00,
+          "Remarks": "",
+          "Proofs": [{
+              "Id": 1,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189211225150.png"
+            },
+            {
+              "Id": 2,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922514979.png"
+            },
+            {
+              "Id": 8,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922748272.png"
+            },
+            {
+              "Id": 12,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922836702.png"
+            },
+            {
+              "Id": 15,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922950376.png"
+            },
+            {
+              "Id": 20,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221045161.png"
+            },
+            {
+              "Id": 21,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221049794.png"
+            },
+            {
+              "Id": 25,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221112483.jpeg"
+            },
+            {
+              "Id": 29,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221119361.png"
+            },
+            {
+              "Id": 40,
+              "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018924839865.png"
+            }
+          ]
+        }]
+      ],
+      "DeclarationDetailsIds": null,
+      "DeclarationId": 5,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 33,
+      "SchemeName": "Subscription to Notified Pension Fund",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": false,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 34,
+      "SchemeName": "Subn. to Notified Deposit Scheme of the National Housing Bank",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": null,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 35,
+      "SchemeName": "Tuition fee - Child 1",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": "Pending",
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": 4,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 36,
+      "SchemeName": "Tuition Fee - Child 2",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 37,
+      "SchemeName": "Section 80C - Sukanya Samriddhi Scheme",
+      "SchemeCategory": "80C",
+      "Limit": 150000.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": "Pending",
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": [
+        [{
+            "Id": 1,
+            "DepositerName": "ghfhgfh",
+            "DaughterName": "hgfhg",
+            "CertificateNo": "hgfgh",
+            "PaymentDate": "2018-01-01T00:00:00",
+            "Amount": 0.00,
+            "Remarks": "",
+            "Proofs": [{
+                "Id": 1,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189211225150.png"
+              },
+              {
+                "Id": 2,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922514979.png"
+              },
+              {
+                "Id": 8,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922748272.png"
+              },
+              {
+                "Id": 12,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922836702.png"
+              },
+              {
+                "Id": 15,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922950376.png"
+              },
+              {
+                "Id": 20,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221045161.png"
+              },
+              {
+                "Id": 21,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221049794.png"
+              },
+              {
+                "Id": 25,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221112483.jpeg"
+              },
+              {
+                "Id": 29,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221119361.png"
+              },
+              {
+                "Id": 40,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018924839865.png"
+              }
+            ]
+          },
+          {
+            "Id": 2,
+            "DepositerName": "hgjh",
+            "DaughterName": "hjgjh",
+            "CertificateNo": "hjgjh",
+            "PaymentDate": "2018-01-01T00:00:00",
+            "Amount": 0.00,
+            "Remarks": "",
+            "Proofs": [{
+                "Id": 3,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/201892254739.png"
+              },
+              {
+                "Id": 9,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922737407.jpeg"
+              },
+              {
+                "Id": 19,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221033239.jpeg"
+              },
+              {
+                "Id": 22,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922108972.jpeg"
+              },
+              {
+                "Id": 27,
+                "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221122446.png"
+              }
+            ]
+          }
+        ]
+      ],
+      "DeclarationDetailsIds": null,
+      "DeclarationId": 6,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 38,
+      "SchemeName": "Sec 80C 5Year Deposit Under Post Office",
+      "SchemeCategory": "80C(2)(xxiii)",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 39,
+      "SchemeName": "5 yrs Scheduled Bank Term Deposits (Sec 80C)",
+      "SchemeCategory": "80C",
+      "Limit": 9999999.0,
+      "Amount": 0.00,
+      "Section": "80C",
+      "SectionLimit": 150000.0,
+      "ProofRequired": true,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 40,
+      "SchemeName": "Deduction for Interest on Home Loan (First time Home buyer)",
+      "SchemeCategory": "80EE",
+      "Limit": 50000.0,
+      "Amount": 0.00,
+      "Section": "80EE",
+      "SectionLimit": 50000.0,
+      "ProofRequired": true,
+      "Status": "Pending",
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": [{
+        "Id": 1,
+        "SanctionDate": "2018-09-06T00:00:00",
+        "CloserDate": "2018-09-05T00:00:00",
+        "ResiHomeValue": 0.00,
+        "LenderName": null,
+        "Remarks": "",
+        "Proofs": [{
+            "Id": 1,
+            "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189211225150.png"
+          },
+          {
+            "Id": 2,
+            "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922514979.png"
+          },
+          {
+            "Id": 8,
+            "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922748272.png"
+          },
+          {
+            "Id": 12,
+            "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922836702.png"
+          },
+          {
+            "Id": 15,
+            "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018922950376.png"
+          },
+          {
+            "Id": 20,
+            "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221045161.png"
+          },
+          {
+            "Id": 21,
+            "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221049794.png"
+          },
+          {
+            "Id": 25,
+            "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221112483.jpeg"
+          },
+          {
+            "Id": 29,
+            "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/20189221119361.png"
+          },
+          {
+            "Id": 40,
+            "Path": "https://mmfss-econnectweb.azurewebsites.net/ITDeclarationProofs/2018924839865.png"
+          }
+        ]
+      }],
+      "DeclarationDetailsIds": null,
+      "DeclarationId": 8,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 41,
+      "SchemeName": "Eligible Donations",
+      "SchemeCategory": "80G",
+      "Limit": null,
+      "Amount": 0.00,
+      "Section": "80G",
+      "SectionLimit": null,
+      "ProofRequired": false,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    },
+    {
+      "SchemeID": 42,
+      "SchemeName": "House Rent (for self-employed and emp. Who have not received HRA)",
+      "SchemeCategory": "80GG",
+      "Limit": null,
+      "Amount": 0.00,
+      "Section": "80GG",
+      "SectionLimit": null,
+      "ProofRequired": false,
+      "Status": null,
+      "OfflineProof": false,
+      "AdminRemarks": null,
+      "DeclarationDetails": null,
+      "DeclarationDetailsIds": null,
+      "DeclarationId": null,
+      "Timestamp": null
+    }
+  ],
+  "CalculatedTax": 0.00,
+  "Message": "Success",
+  "Taxable": 2400000.0,
+  "PF": 132000.0,
+  "Basic": 780000.0,
+  "Age": null,
+  "Location": "VASAI",
+  "Sex": "M",
+  "authtoken": null
+}

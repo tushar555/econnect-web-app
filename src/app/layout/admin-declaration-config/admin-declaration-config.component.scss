@@ -1,0 +1,35 @@
+.config-card{
+  margin: 10px;
+  padding: 10px 0px;
+  background: #ffffff;
+  border-radius: 2px;
+  .caption{
+    font-size: 14px;
+    font-weight: 500;
+    padding: 13px 15px;
+    text-transform: capitalize;
+    text-align: left;
+    border-bottom: 1px dotted #dadde2;
+  }
+}
+.submit-btn{
+  background: #6D6E72;
+  font-size: 1rem;
+  color: #fff;
+  width: 10rem;
+  margin-right: 18px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url('../../../assets/img/select-date.png') no-repeat;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+  margin-left: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+}

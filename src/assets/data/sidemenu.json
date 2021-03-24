@@ -1,0 +1,393 @@
+{
+  "prodsidemenu": [
+    {
+      "name": "Home",
+      "targetBlank": 0,
+      "routerLink": "/dashboard",
+      "icon": "assets/svgIcon/home.svg",
+      "iconhover": "assets/svgIcon/homeh.svg",
+      "isactive": 1,
+      "index": 1,
+      "isExternal": 0
+    },
+    {
+      "name": "Attendance",
+      "targetBlank": 0,
+      "routerLink": "/mfss/attendance",
+      "icon": "assets/svgIcon/attendance.svg",
+      "iconhover": "assets/svgIcon/attendanceh.svg",
+      "isactive": 1,
+      "index": 2,
+      "isExternal": 0
+    },
+    {
+      "name": "Attendance Approval",
+      "targetBlank": 0,
+      "routerLink": "/mfss/admin-attendance-approval",
+      "icon": "assets/svgIcon/policy.svg",
+      "iconhover": "assets/svgIcon/policyh.svg",
+      "isactive": 1,
+      "index": 17,
+      "isExternal": 0
+    },
+    {
+      "name": "Attendance Report",
+      "targetBlank": 0,
+      "routerLink": "/mfss/admin-list-view",
+      "icon": "assets/svgIcon/attendance.svg",
+      "iconhover": "assets/svgIcon/attendanceh.svg",
+      "isactive": 1,
+      "index": 18,
+      "isExternal": 0
+    },
+    {
+      "name": "Attendance Admin",
+      "targetBlank": 0,
+      "routerLink": "/mfss/admin-attendance",
+      "icon": "assets/svgIcon/policy.svg",
+      "iconhover": "assets/svgIcon/policyh.svg",
+      "isactive": 1,
+      "index": 16,
+      "isExternal": 0
+    },
+    {
+      "name": "Holiday List",
+      "targetBlank": 0,
+      "routerLink": "/mfss/holiday",
+      "icon": "assets/svgIcon/holiday.svg",
+      "iconhover": "assets/svgIcon/holidayh.svg",
+      "isactive": 1,
+      "index": 9,
+      "isExternal": 0
+    },
+    {
+      "name": "My Payslip",
+      "targetBlank": 0,
+      "routerLink": "/mfss/currentpayslip",
+      "icon": "assets/svgIcon/payslip.svg",
+      "iconhover": "assets/svgIcon/paysliph.svg",
+      "isactive": 1,
+      "index": 3,
+      "isExternal": 0
+    },
+    {
+      "name": "Income Tax",
+      "targetBlank": 0,
+      "routerLink": "/mfss/income-tax",
+      "icon": "assets/svgIcon/incometax.svg",
+      "iconhover": "assets/svgIcon/incometaxh.svg",
+      "isactive": 1,
+      "index": 5,
+      "isExternal": 0
+    },
+    {
+      "name": "Flexi Declaration",
+      "targetBlank": 0,
+      "routerLink": "/mfss/flexi",
+      "icon": "assets/svgIcon/income-summary.svg",
+      "iconhover": "assets/svgIcon/income-summaryh.svg",
+      "isactive": 0,
+      "index": 7,
+      "isExternal": 0
+    },
+    {
+      "name": "Appraisal",
+      "targetBlank": 0,
+      "routerLink": "/mfss/Appraisal",
+      "icon": "assets/svgIcon/payslip.svg",
+      "iconhover": "assets/svgIcon/paysliph.svg",
+      "isactive": 1,
+      "index": 21,
+      "isExternal": 0
+    },
+    {
+      "name": "Salary Card",
+      "targetBlank": 0,
+      "routerLink": "/mfss/salary-card",
+      "icon": "assets/svgIcon/salarycard.svg",
+      "iconhover": "assets/svgIcon/salarycardh.svg",
+      "isactive": 0,
+      "index": 4,
+      "isExternal": 0
+    },
+    {
+      "name": "Form16",
+      "targetBlank": 0,
+      "routerLink": "/mfss/form16",
+      "icon": "assets/svgIcon/form16.svg",
+      "iconhover": "assets/svgIcon/form16h.svg",
+      "isactive": 1,
+      "index": 6,
+      "isExternal": 0
+    },
+    {
+      "name": "LTA",
+      "targetBlank": 0,
+      "routerLink": "/mfss/lta",
+      "icon": "assets/svgIcon/lta-summary.svg",
+      "iconhover": "assets/svgIcon/lta-summaryh.svg",
+      "isactive": 0,
+      "index": 8,
+      "isExternal": 0
+    },
+    {
+      "name": "Hospitals List",
+      "targetBlank": 0,
+      "routerLink": "/mfss/hospital",
+      "icon": "assets/svgIcon/hospital.svg",
+      "iconhover": "assets/svgIcon/hospitalh.svg",
+      "isactive": 1,
+      "index": 10,
+      "isExternal": 0
+    },
+    {
+      "name": "Emergency Contacts",
+      "targetBlank": 0,
+      "routerLink": "/mfss/emergency",
+      "icon": "assets/svgIcon/emergency.svg",
+      "iconhover": "assets/svgIcon/emergencyh.svg",
+      "isactive": 1,
+      "index": 11,
+      "isExternal": 0
+    },
+    {
+      "name": "Employee Offers",
+      "routerLink": "https://www.m2all.com/offers",
+      "icon": "assets/svgIcon/offer.svg",
+      "iconhover": "assets/svgIcon/offerh.svg",
+      "isactive": 1,
+      "index": 12,
+      "isExternal": 1
+    },
+    {
+      "name": "CSR",
+      "routerLink": "",
+      "icon": "assets/svgIcon/csr.svg",
+      "iconhover": "assets/svgIcon/csrh.svg",
+      "isactive": 1,
+      "index": 15,
+      "isExternal": 1
+    },
+    {
+      "name": "Feedback",
+      "targetBlank": 0,
+      "routerLink": "/mfss/feedback",
+      "icon": "assets/svgIcon/policy.svg",
+      "iconhover": "assets/svgIcon/policyh.svg",
+      "isactive": 1,
+      "index": 14,
+      "isExternal": 0
+    },
+    {
+      "name": "25 years gift acknowledgement",
+      "targetBlank": 0,
+      "routerLink": "/mfss/gift-acknowldge",
+      "icon": "assets/svgIcon/25_Years_h.svg",
+      "iconhover": "assets/svgIcon/25_Years.svg",
+      "isactive": 1,
+      "index": 20,
+      "isExternal": 0
+    }
+  ],
+  "uatsidemenu": [
+    {
+      "name": "Home",
+      "targetBlank": 0,
+      "routerLink": "/dashboard",
+      "icon": "assets/svgIcon/home.svg",
+      "iconhover": "assets/svgIcon/homeh.svg",
+      "isactive": 1,
+      "index": 1,
+      "isExternal": 0
+    },
+    {
+      "name": "Attendance",
+      "targetBlank": 0,
+      "routerLink": "/mfss/attendance",
+      "icon": "assets/svgIcon/attendance.svg",
+      "iconhover": "assets/svgIcon/attendanceh.svg",
+      "isactive": 1,
+      "index": 2,
+      "isExternal": 0
+    },
+    {
+      "name": "Attendance Approval",
+      "targetBlank": 0,
+      "routerLink": "/mfss/admin-attendance-approval",
+      "icon": "assets/svgIcon/policy.svg",
+      "iconhover": "assets/svgIcon/policyh.svg",
+      "isactive": 1,
+      "index": 17,
+      "isExternal": 0
+    },
+    {
+      "name": "Attendance Report",
+      "targetBlank": 0,
+      "routerLink": "/mfss/admin-list-view",
+      "icon": "assets/svgIcon/attendance.svg",
+      "iconhover": "assets/svgIcon/attendanceh.svg",
+      "isactive": 1,
+      "index": 18,
+      "isExternal": 0
+    },
+    {
+      "name": "Attendance Admin",
+      "targetBlank": 0,
+      "routerLink": "/mfss/admin-attendance",
+      "icon": "assets/svgIcon/policy.svg",
+      "iconhover": "assets/svgIcon/policyh.svg",
+      "isactive": 1,
+      "index": 16,
+      "isExternal": 0
+    },
+    {
+      "name": "Holiday List",
+      "targetBlank": 0,
+      "routerLink": "/mfss/holiday",
+      "icon": "assets/svgIcon/holiday.svg",
+      "iconhover": "assets/svgIcon/holidayh.svg",
+      "isactive": 1,
+      "index": 9,
+      "isExternal": 0
+    },
+    {
+      "name": "My Payslip",
+      "targetBlank": 0,
+      "routerLink": "/mfss/currentpayslip",
+      "icon": "assets/svgIcon/payslip.svg",
+      "iconhover": "assets/svgIcon/paysliph.svg",
+      "isactive": 1,
+      "index": 3,
+      "isExternal": 0
+    },
+    {
+      "name": "Income Tax",
+      "targetBlank": 0,
+      "routerLink": "/mfss/income-tax",
+      "icon": "assets/svgIcon/incometax.svg",
+      "iconhover": "assets/svgIcon/incometaxh.svg",
+      "isactive": 1,
+      "index": 5,
+      "isExternal": 0
+    },
+    {
+      "name": "Flexi Declaration",
+      "targetBlank": 0,
+      "routerLink": "/mfss/flexi",
+      "icon": "assets/svgIcon/income-summary.svg",
+      "iconhover": "assets/svgIcon/income-summaryh.svg",
+      "isactive": 1,
+      "index": 7,
+      "isExternal": 0
+    },
+    {
+      "name": "Appraisal/Compensation",
+      "targetBlank": 0,
+      "routerLink": "/mfss/Appraisal",
+      "icon": "assets/svgIcon/payslip.svg",
+      "iconhover": "assets/svgIcon/paysliph.svg",
+      "isactive": 1,
+      "index": 21,
+      "isExternal": 0
+    },
+    {
+      "name": "Salary Card",
+      "targetBlank": 0,
+      "routerLink": "/mfss/salary-card",
+      "icon": "assets/svgIcon/salarycard.svg",
+      "iconhover": "assets/svgIcon/salarycardh.svg",
+      "isactive": 1,
+      "index": 4,
+      "isExternal": 0
+    },
+    {
+      "name": "Form16",
+      "targetBlank": 0,
+      "routerLink": "/mfss/form16",
+      "icon": "assets/svgIcon/form16.svg",
+      "iconhover": "assets/svgIcon/form16h.svg",
+      "isactive": 1,
+      "index": 6,
+      "isExternal": 0
+    },
+    {
+      "name": "LTA",
+      "targetBlank": 0,
+      "routerLink": "/mfss/lta",
+      "icon": "assets/svgIcon/lta-summary.svg",
+      "iconhover": "assets/svgIcon/lta-summaryh.svg",
+      "isactive": 1,
+      "index": 8,
+      "isExternal": 0
+    },
+    {
+      "name": "Hospitals List",
+      "targetBlank": 0,
+      "routerLink": "/mfss/hospital",
+      "icon": "assets/svgIcon/hospital.svg",
+      "iconhover": "assets/svgIcon/hospitalh.svg",
+      "isactive": 1,
+      "index": 10,
+      "isExternal": 0
+    },
+    {
+      "name": "Emergency Contacts",
+      "targetBlank": 0,
+      "routerLink": "/mfss/emergency",
+      "icon": "assets/svgIcon/emergency.svg",
+      "iconhover": "assets/svgIcon/emergencyh.svg",
+      "isactive": 1,
+      "index": 11,
+      "isExternal": 0
+    },
+    {
+      "name": "Employee Offers",
+      "routerLink": "https://www.m2all.com/offers",
+      "icon": "assets/svgIcon/offer.svg",
+      "iconhover": "assets/svgIcon/offerh.svg",
+      "isactive": 1,
+      "index": 12,
+      "isExternal": 1
+    },
+    {
+      "name": "CSR",
+      "routerLink": "",
+      "icon": "assets/svgIcon/csr.svg",
+      "iconhover": "assets/svgIcon/csrh.svg",
+      "isactive": 1,
+      "index": 15,
+      "isExternal": 1
+    },
+    {
+      "name": "Feedback",
+      "targetBlank": 0,
+      "routerLink": "/mfss/feedback",
+      "icon": "assets/svgIcon/policy.svg",
+      "iconhover": "assets/svgIcon/policyh.svg",
+      "isactive": 1,
+      "index": 14,
+      "isExternal": 0
+    },
+    {
+      "name": "HR Policies",
+      "targetBlank": 0,
+      "routerLink": "/mfss/hr-policies",
+      "icon": "assets/svgIcon/lta-summary.svg",
+      "iconhover": "assets/svgIcon/lta-summaryh.svg",
+      "isactive": 1,
+      "index": 22,
+      "isExternal": 0
+    },
+    {
+      "name": "25 years gift acknowledgement",
+      "targetBlank": 0,
+      "routerLink": "/mfss/gift-acknowldge",
+      "icon": "assets/svgIcon/25_Years_h.svg",
+      "iconhover": "assets/svgIcon/25_Years.svg",
+      "isactive": 1,
+      "index": 20,
+      "isExternal": 0
+    }
+  ]
+
+}

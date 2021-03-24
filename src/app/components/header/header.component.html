@@ -1,0 +1,99 @@
+<header class="header font-14">
+  <div class="header-card">
+    <div class="font-16 f-w-500 headerInfo">{{ Title }}</div>
+    <!-- <div class="NotifIcon"  (click)="openlogs()" data-toggle="tooltip" title="Logout">
+      <img  src="../assets/img/alarm-grey1.svg"  />
+    </div> -->
+    <div class="logoutIcon"  (click)="Userlogout()" data-toggle="tooltip" title="Logout">
+        <img  src="../assets/img/logout.png"  />
+    </div>
+    <div class="logout-button" (click)="Userlogout()" style="display: none;">
+      <img class="logout" src="../assets/img/logout.png" data-toggle="tooltip" title="Logout" />
+    </div>
+  </div>
+  <!-- <nav aria-label="breadcrumb" class="breadcrum-padding col-md-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/dashboard">Home</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">{{Title}}</li>
+    </ol>
+  </nav> -->
+</header>
+
+<div class="newFormatModal modal" id="confirmationModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Logout</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body font-14">
+        <p>Are you sure you want to logout?</p>
+      </div>
+      <div class="modal-footer">
+          <button
+          type="button"
+          class="btn btn-deny"
+          data-dismiss="modal"
+          (click)="logout(0)"
+        >
+          No
+        </button>
+        <button
+          type="button"
+          class="btn btn-yes"
+          data-dismiss="modal"
+          (click)="logout(1)"
+        >
+          Yes
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!--Status Details  box Done -->
+    <div class="newFormatModal modal fade " id="userNotif" role="dialog">
+      <div class="modal-dialog modal-lg NotifAlignMain" role="document">
+        <div class="modal-content">
+          <!-- <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"> User Notification</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div> -->
+          
+          <div class="loader" *ngIf="!responseArr" >
+            Loading ...
+          </div>
+  
+          <div class="modal-body" *ngIf="responseArr">
+
+            <div class="MainNotifContain" *ngFor="let notif of responseArr,let i=index">
+              <div class="Header">
+                {{notif.Status}}
+              </div>
+              <div class="bodyHeader">
+                {{notif.Notification}}
+              </div>
+          </div> 
+            <div class="loader" *ngIf="responseArr?.length===0">
+                No Notification
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-deny">No</button> -->
+            <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="responseArr=''">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>

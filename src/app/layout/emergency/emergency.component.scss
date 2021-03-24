@@ -1,0 +1,238 @@
+.emergency-page {
+  .nopadding{
+    padding: 0px;
+  }
+  .headerBlock{
+    position: absolute;
+    top: 9px;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    .nopaddingleft{
+      padding-left: 0px;
+    }
+
+    .outerMainBlock{
+      border: 1px solid #c1c2c3;
+      height: 2rem;
+      border-radius: 3px;
+
+
+    }
+  }
+  .someinput::-ms-clear {
+    display: none;
+  }
+
+  .self-contact {
+    position: relative;
+    left: 31rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  //margin: 1rem 0rem 0rem 0rem;
+  .mr-sm-2 {
+    // margin-right: 0 !important;
+    margin-right: 35 !important;
+    width: 100%;
+    height: 2rem;
+  }
+  .year-div {
+    // margin-top: 10px;
+    // margin-bottom: 10px;
+    // margin-left: -9px;
+    // margin-right: 1.9px;
+    position: absolute;
+    right: 2rem;
+    top: 0.7rem;
+    width: 30%;
+  }
+  .search-section {
+    background-color: #e9ebef;
+    font-size: 14px; // margin-bottom: 1rem;
+    width: 100%;
+    .search-form {
+      margin: 5px;
+    }
+    .search-input {
+      width: 100%;
+      height: 2rem;
+    }
+    #search-employee::-ms-clear {
+      display: none !important;
+    }
+
+    .search-icon {
+      width: 1.5rem;
+      margin: 0px 6px;
+      cursor: pointer;
+    }
+  }
+  .card {
+     .card-body{
+      padding: 0px;
+      .emergencyTableFixHead {
+        overflow-y: auto;
+        height: 87vh;
+      }
+
+      .emergencyTableFixHead table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      .emergencyTableFixHead th {
+        position: sticky;
+        top: -1px;
+        background: #cbcdd2;
+        border-bottom: 0px !important;
+        font-weight: 500 !important;
+        color: #4a4848 !important;
+        font-size: 13px !important;
+        height: 50px;
+        padding: 0;
+        vertical-align: middle !important;
+        border-top: 0px !important;
+        padding: 10px;
+      }
+      .emergencyTableFixHead table td {
+        font-size: 13px !important;
+
+      }
+      .emergencyTableFixHead tbody tr{
+        border-bottom: 1px solid #eee;
+      }
+      .emergencyTableFixHead td i{
+        cursor: pointer;
+      }
+    }
+  }
+  .navbar {
+    padding: 0.5rem 0.4rem 0.5rem 1rem;
+  }
+  .contact-div {
+    // height: 80%;
+    // overflow-y: auto;
+    // overflow-x: hidden;
+    // padding: 8px;
+    // background: #fff;
+  }
+  .row {
+    // height: 3.8rem;
+    // line-height: 3.7rem;
+    // text-align: center;
+    // border-bottom: 1px dotted #dad8d8;
+  }
+  .row:hover {
+    background-color: #eee;
+    border-left: 2px solid #e91e63;
+  }
+  .to-do {
+    line-height: 3rem; // font-size: 1rem;
+  }
+  .col {
+    // border-right: 1px solid gray;
+    // border-bottom: 1px solid gray;
+  }
+  .col:last-child {
+    // border-right: 0px solid gray;
+  }
+  .no-records {
+    text-align: center;
+    /* margin-top: 140px; */
+    justify-content: center;
+    vertical-align: middle;
+    position: relative;
+    top: 130px;
+  }
+  .icon-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+  }
+  .font-width-bold {
+    padding-left: 10px;
+  }
+}
+.m-l-10 {
+  margin-left: 10px;
+}
+.font-15 {
+  font-size: 15px;
+}
+#employeeContacts {
+  .modal-body {
+    padding: 0px 1rem !important;
+    min-height: 150px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .row {
+    text-align: left;
+  }
+  .contactBlock{
+    padding: 10px 10px;
+    border: 1px solid #eee;
+    margin-bottom: 5px;
+
+  }
+  .phone-icon {
+    // padding-top: 21px;
+    cursor: pointer;
+  }
+  .no-contacts {
+    margin: 50px;
+    text-align: center;
+  }
+}
+.loader-search {
+  width: 20px;
+  position: absolute;
+  /* right: 23px; */
+  left: -27px;
+  top: 6px;
+}
+.search-cross {
+  position: absolute;
+  right: 13px;
+  top: 9px;
+}
+.fa-phone {
+  transform: scaleX(-1);
+}
+
+.form-control {
+  font-size: 13px;
+}
+.hospitalTblData {
+  height: 577px;
+  table {
+    margin-bottom: 0px !important;
+    margin-top: 50px;
+    thead {
+      position: fixed;
+      width: 1125px;
+      table-layout: fixed;
+      display: table;
+      top: 60px;
+      tr {
+        // display: block;
+        th {
+          //display: inline-block;
+        }
+      }
+    }
+    tbody {
+      // display: block;
+      overflow: auto;
+      height: 490px;
+    }
+  }
+}
+.tableHover:hover {
+  background: #eee;
+}
+.searchTbl{
+  table tbody tr{
+    cursor: pointer;
+  }
+}

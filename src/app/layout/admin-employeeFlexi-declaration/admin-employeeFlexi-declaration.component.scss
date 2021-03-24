@@ -1,0 +1,218 @@
+.card {
+  //border: 1px solid #e4dfdf !important;
+  box-shadow: none;
+
+  .info-header {
+    margin-bottom: 20px;
+    border: 1px solid #e4dfdf !important;
+  }
+
+  .tableFixHead {
+    overflow-y: auto;
+    height: 60vh;
+    border: 1px solid #e4dfdf;
+    border-bottom: none;
+  }
+
+  .flexiFooter {
+    padding: 10px;
+    border: 1px solid #e4dfdf;
+  }
+}
+.tableFixHead {
+  overflow-y: auto;
+  height: 60vh;
+}
+.tableFixHead th {
+  position: sticky;
+  top: -1px;
+  padding: 13px;
+  font-weight: 500;
+}
+
+/* Just common table stuff. Really. */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  padding: 7px 16px;
+  font-size: 13px;
+  border-right: 1px solid #e4dfdf;
+}
+th {
+  background: #edeff1;
+}
+
+th:nth-child(1) {
+  background: #cbcdd2;
+}
+td:nth-child(1) {
+  background: #edeff1;
+}
+.thWidth-7 {
+  width: 7%;
+}
+.thWidth-10 {
+  width: 10%;
+}
+.thWidth-50 {
+  width: 60%;
+}
+.thWidth-25 {
+  width: 25%;
+}
+.thWidth-15 {
+  width: 15%;
+}
+.flexiFooter {
+  padding: 15px;
+  border-top: 1px solid #e4dfdf;
+
+  button {
+    background: #6d6e72;
+    color: #fff;
+    // width: 100px;
+    padding: 5px 20px;
+    border-radius: 4px;
+  }
+}
+.uneditable {
+  background-color: #f7f7f7 !important;
+  color: #bbbbbb;
+  input {
+    color: #bbbbbb;
+  }
+}
+.paymentListing {
+  margin: 9px 0px;
+  // height: 45px;
+  .title {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #565151;
+  }
+  .subtitle {
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 400;
+    color: gray;
+    input {
+      position: relative;
+      top: 2px;
+    }
+    span {
+      margin-left: 6px;
+    }
+  }
+  .iconBox {
+    span {
+      display: block;
+      //  width: 35%;
+      float: left;
+      text-align: center;
+      height: 37px;
+      float: right;
+      padding: 5px;
+      img {
+        height: 25px;
+        width: 25px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.status-approved {
+  border: 1px solid #87e1ab;
+  color: #87e1ab;
+  border-radius: 4px;
+  font-size: 10px;
+}
+.status-rejected {
+  border: 1px solid #f1968d;
+  color: #f1968d;
+  border-radius: 4px;
+  font-size: 10px;
+  position: relative;
+}
+.status-pending {
+  border: 1px solid #82b3d5;
+  color: #82b3d5;
+  border-radius: 4px;
+  font-size: 10px;
+}
+.IconImg {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+.admin-remarks {
+  width: 25em;
+  height: 5em;
+}
+.modal-dialog {
+  margin: auto;
+  top: 100px;
+  max-width: 650px;
+}
+.modal-footer .btn-deny {
+  height: 5%;
+  width: 15%;
+  font-size: 13px;
+  float: left;
+}
+.modal-footer {
+  display: block;
+  justify-content: center;
+}
+.badge2 {
+  top: 13px;
+  height: 13px !important;
+  width: 13px !important;
+  line-width: 0.7px;
+  line-height: 0.9;
+  right: -3px;
+  background: #e74c3c;
+  font-size: 10px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+}
+.iconBox span {
+  padding: 2px 5px;
+  height: unset !important;
+  width: unset !important;
+}
+.info-header {
+  td {
+    background: none;
+    padding: 15px;
+    .label {
+      color: gray;
+    }
+    .value {
+      font-weight: 600;
+    }
+  }
+}
+
+//Neha
+.count-container {
+  background: #ffffff;
+  padding: 10px;
+  height: 100%;
+  font-size: 14px;
+  //border-radius: 5px;
+}
+
+.headerdiv {
+  margin-bottom: 10px;
+  span {
+    font-size: 15px;
+    font-weight: 500;
+  }
+}

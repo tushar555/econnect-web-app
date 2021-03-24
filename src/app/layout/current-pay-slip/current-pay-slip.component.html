@@ -1,0 +1,174 @@
+<div class="container attendance-page main-content" *ngIf="showInfo">
+
+  <!-- <div class="year-div ">
+    <select class="form-control" [(ngModel)]="year" (change)="getMonths($event.target.value,'fromDOM')">
+      <option style="padding:20px" *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}</option>
+    </select>
+
+  </div> -->
+  <!-- kavita code start -->
+  <div class="row">
+    <div class="col col-md-12 salarycardBlok">
+      <div class="col-md-3 p-l-0">
+        <div class="card">
+          <div class="card-header yearDetails">
+            <h5><span class="lstick"></span>Year : {{year}}</h5>
+            <select class="form-control" [(ngModel)]="year" (change)="getMonths($event.target.value,'fromDOM')">
+              <option style="padding:20px" *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h5><span class="lstick"></span>Personal Details</h5>
+          </div>
+          <div class="card-body">
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-user"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Name</p>
+                <p class="subContent">{{userDetails.FirstName | titlecase}} {{userDetails.LastName | titlecase}}</p>
+              </div>
+            </div>
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-id-badge"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Employee ID</p>
+                <p class="subContent">{{userDetails.TokenId}}</p>
+              </div>
+            </div>
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-briefcase"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Designation</p>
+                <p class="subContent">{{userDetails.JobTitle}}</p>
+              </div>
+            </div>
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-map-marker"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Location</p>
+                <p class="subContent">{{userDetails.LocationName | titlecase}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 p-r-0 p-l-0">
+        <div class="row margin-row">
+          <div (click)="getPaySlipMulti(month)" class="col col-md-3 detail-card"
+            *ngFor="let month of monthsArray; let i=index">
+            <span>{{month}}</span>
+          </div>
+          <div *ngIf="monthsArray.length===0" class="col col-md-3 detail-card">
+            <span>No Payslips available.</span>
+          </div>
+
+        </div>
+        <div *ngIf="documents.length<1 && showPaySlips" class="document-list">
+          No payslip available for this month.
+        </div>
+        <div *ngIf="documents.length>0" class="document-list">
+          <ng-container *ngFor="let document of documents">
+            <div *ngIf="document.Base64File" class="row document-item" (click)="showFile(document.Base64File)">
+              <div class="col-2">{{document.Type}}</div>
+              <div class="col-2">{{document.Date | date:'dd-MMM-yyyy'}}</div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- kavita code stop -->
+  <div class="info-detail-table" style="display: none;">
+    <table class="table">
+      <thead class="info-table-header">
+        <tr class="sub-section-part1">
+          <th class="part0-th">
+            <!-- <span class="year"> Year&nbsp;:&nbsp;{{year}} </span> -->
+          </th>
+          <th class="part1-th">
+            <!-- <span class="year">  Year&nbsp;:&nbsp;{{year}} </span> -->
+          </th>
+          <th class="part2-th">
+            <!-- Total Net Pay: &nbsp;&nbsp; ₹ {{totalEarnings-totalDeductions |inrFormat}} -->
+            <span class="year"> Year&nbsp;:&nbsp;{{year}} </span>
+          </th>
+          <th class="part3-th">
+          </th>
+        </tr>
+        <tr class="sub-section-part2">
+          <th class="part0-th">
+
+            <div class="font-14 w-500">Name:</div>
+            <div class="value font-12"> {{userDetails.FirstName | titlecase}} {{userDetails.LastName | titlecase}}</div>
+
+          </th>
+          <th class="part1-th">
+
+            <div class="font-14 w-500">Employee ID:</div>
+            <div class="value font-12"> {{userDetails.TokenId}}</div>
+
+          </th>
+          <th class="part2-th">
+
+            <div class="font-14 w-500">Designation:</div>
+            <div class="value font-12"> {{userDetails.JobTitle}}</div>
+
+          </th>
+          <th class="part3-th">
+
+            <div class="font-14 w-500">Location:</div>
+            <div class="value font-12"> {{userDetails.LocationName | titlecase}}</div>
+
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+
+
+
+
+
+  <div class="row margin-row" style="display: none;">
+    <div (click)="getPaySlipMulti(month)" class="col col-md-3 detail-card"
+      *ngFor="let month of monthsArray; let i=index">
+      <span>{{month}}</span>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- <div class="row card-block">
+    <div class="col-sm-3 card " *ngFor="let month of monthsArray; let i=index">
+      {{month}}
+    </div>
+  </div> -->
+
+
+  <div [ngStyle]="{'display':showModal}" class="backdrop">
+    <div class="modal-dialog">
+      <div class="modal-content" (click)="closeModal()">
+        <div>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <object [data]='fileURL' class='modal-open' type="application/pdf"></object>
+
+          <!-- <object data='https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf' class='modal-open' type="application/pdf"></object> -->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>

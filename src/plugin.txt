@@ -1,0 +1,42 @@
+
+
+npm install bootstrap@next --save
+npm i bootstrap-material-design-icons
+npm install --save font-awesome angular-font-awesome
+npm i simple-line-icon
+
+
+//google map
+
+npm install @agm/core --save
+npm install @types/googlemaps --save-dev
+
+//moment js 
+
+npm install moment --save
+
+npm install moment-range --save
+
+//Localstorage and Idle
+
+npm install angular-web-storage --save
+npm install @ng-idle/core @ng-idle/keepalive
+npm install file-saver --save
+
+//loader
+
+npm i ng4-loading-spinner --save
+
+//pollyfill ts file for IE9
+
+npm install --save core-js
+npm install --save classlist.js
+
+//While Building 
+
+ng build --aot --output-hashing=all
+
+//Updating Angular Cli Globally and locally
+
+npm install -g @angular/cli@latest          - for global
+npm install --save-dev @angular/cli@latest  - for local

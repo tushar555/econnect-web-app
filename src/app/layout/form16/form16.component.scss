@@ -1,0 +1,117 @@
+.lstick {
+    margin-left: -20px;
+    margin-right: 17px;
+  }
+  .salarycardBlok .card-header {
+    background-color: #fef20040 !important;
+    border-bottom: 0px !important;
+    padding: 1rem 1.25rem !important;
+    h5{
+      font-size: 16px !important; 
+      margin-bottom: 0px !important; 
+    }
+}
+  .modal-backdrop.am-fade.ng-leave,
+.aside-backdrop.am-fade.ng-leave {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+.modal-open {
+  height: 550px;
+  width: 100%;
+}
+
+  .modal-dialog {
+    max-width: 70rem !important;
+    margin: 0.60rem auto !important;
+  }
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    .modal-content {
+      width: auto !important;
+      text-align: center !important;
+      background: #fff !important;
+      cursor: pointer;
+      .modal-header {
+        padding: 1px !important;
+        padding-right: 5px !important;
+      }
+    }
+  }
+  .container-block {
+    float: right;
+    position: absolute;
+    top: 0.5rem;
+    right: 2rem;
+    .select-div {
+      width: 110px;
+      height: 30px;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+      padding: 1px 5px;
+      vertical-align: middle;
+      margin-right: 7px;
+      font-size: 13px;
+    }
+    .div-box:hover {
+      background: rgba(12, 12, 12, 0.07);
+      border-radius: 50%;
+    }
+    .div-box {
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+      padding: 10px 5px;
+      vertical-align: middle;
+      i{
+        font-size: 15px;
+      color: #013c3c;
+      }
+      img {
+        width: 20px;
+        vertical-align: middle;
+        border-style: none;
+        height: 34px;
+        margin-left: 1rem;
+        height: 1.7rem;
+      }
+    }
+  }
+  .defaultBlock{
+    height: 85vh;
+    display: table;
+    width: 100%;
+    border: 2px dashed #f69c55;
+    .errorBlock{
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  select {
+    width: 8rem !important;
+    font-size: 12px;
+    margin-left: 1rem;
+    height: 35px !important;
+  }
+  .headerBlock{
+    position: absolute;
+    top: 9px;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    .nopaddingleft{
+      padding-left: 0px;
+    }
+    .nopadding{
+      padding: 0px;
+    }
+   
+  }

@@ -1,0 +1,57 @@
+<div class="configuration-container">
+  <div class="config-card row">
+    <div class="caption col-md-12">
+      <span class="lstick"></span>Actual Period
+    </div>
+    <div class="form-group col-md-4">
+      <label for="actualFrom">From</label>
+      <input type="date" class="form-control" [(ngModel)]="configDetails.actualFrom" [max]="configDetails.actualTill" id="actualFrom">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="actualTill">To</label>
+      <input type="date" class="form-control" [(ngModel)]="configDetails.actualTill" id="actualTill">
+    </div>
+  </div>
+  <div class="config-card row">
+    <div class="caption col-md-12">
+      <span class="lstick"></span>Declaration Period
+    </div>
+    <div class="form-group col-md-4">
+      <label for="declarationFrom">From</label>
+      <input type="date" class="form-control" [(ngModel)]="configDetails.declarationFrom" [max]="configDetails.declarationTill" id="declarationFrom">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="declarationTill">To</label>
+      <input type="date" class="form-control" [(ngModel)]="configDetails.declarationTill" id="declarationTill">
+    </div>
+  </div>
+  <div class="text-center">
+    <button class="btn submit-btn" (click)="updateAdminDeclarationConfig()">
+      Update
+    </button>
+    <button class="btn submit-btn" (click)="location.back()">
+      Back
+    </button>
+  </div>
+</div>
+
+<div class="newFormatModal modal fade" id="successModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title">
+          Saved Successfully
+        </h5>
+      </div>
+
+      <div class="modal-body rejectionModal" id="modal-body1">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-yes" data-dismiss="modal"
+          (click)=" this.getAdminDeclarationConfig()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

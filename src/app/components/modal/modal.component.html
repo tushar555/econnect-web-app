@@ -1,0 +1,438 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js">
+
+
+</script>
+<!-- *ngIf="clickFrom=='employee'" -->
+<div>
+  <div class="modal fade" id="ProofModal" role="dialog">
+    <div class="modal-dialog" role="document">
+
+      <!-- Start of modal body for Mutiple Entries -->
+      <div class="modal-content" *ngIf="entryType=='multiple'">
+        <div class="modal-header">
+          <p class="modal-title" id="exampleModalLabel">{{modalHeader}}</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            (click)="CloseModalEvent.emit('data')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body ">
+          <form [formGroup]="ngForm" class="form-horizontal">
+
+            <div class="parent-row" formArrayName="items"
+              *ngFor="let item of ngForm.get('items')['controls']; let i=index;">
+
+              <div style="cursor: pointer;" class="row multiple-row">
+                <div class="col-md-8 pf1" (click)="toggle(i)">
+                  <span id="{{'title'+i}}" *ngIf='modalSchemeId!==2'> Please fill below Details </span>
+                  <span id="{{'title'+i}}" *ngIf='modalSchemeId===2'> Rented Accommodation: <b> {{i+1}} </b> </span>
+                </div>
+                <div class="col-md-4 pf2">
+                  <i class="fa fa-trash ticon" aria-hidden="true" (click)="openDeleteConfirm(i)"
+                    *ngIf="ngForm.get('items')['length']>1" style="float: right;"></i>
+                </div>
+
+              </div>
+              <div style="margin: 10px;" [ngClass]="{collapse: modalSchemeId===2}" id="{{'innerproofDetails'+i}}"
+                [formGroupName]="i">
+
+                <span class="required"> * fields are mandatory. </span>
+                <div class="row">
+                    <div
+                      [ngClass]="{'no-show':(modalSchemeId == 6 && typeForIncomeHouse!== undefined && typeForIncomeHouse[i] ==obj.editable)}"
+                      class="col-md-6 form-group" *ngFor="let obj of fieldDetailsArray ;let j=index;">
+                      <label>
+                        <!-- obj.isRequired -->
+                        <span *ngIf=" checkIsRequired(i, obj.name)  && modalSchemeId !=6" class="required"> * </span>
+                        <span *ngIf="modalSchemeId ==6 && obj.isRequired && typeForIncomeHouse!==undefined &&
+                        typeForIncomeHouse[i] !== obj.editable" class="required"> * </span>
+
+                        <span>{{obj.label}}</span>
+                      </label>
+
+                      <input autocomplete="off" autocorrect="off" autocapitalize="off"
+                        [ngClass]="{'checkbox-style':  obj.type=='checkbox'}"
+                        *ngIf="obj.type !== 'select' && obj.type !== 'date' && obj.type !=='hraMonth' && modalSchemeId!=6"
+                        [type]="obj.type" [name]="obj.name" class="form-control" [formControlName]="obj.name"
+                        [maxlength]="obj.maxLength" (keypress)="numberOnly($event, obj,
+                      j,i)" (blur)="inputBlur(obj)" (keyup)="onKeyupEvent(i,obj.name)"
+                        (focusout)="onFocusOutCheckHRA()">
+
+                      <input autocomplete="off" autocorrect="off" autocapitalize="off"
+                        [readonly]="modalSchemeId == 6 && (typeForIncomeHouse!==undefined && typeForIncomeHouse[i] === obj.editable)"
+                        [ngClass]="{'checkbox-style':  obj.type=='checkbox'}"
+                        *ngIf="obj.type !== 'select' && obj.type !== 'date'  && modalSchemeId==6" [type]="obj.type"
+                        [name]="obj.name" class="form-control" [formControlName]="obj.name" [maxlength]="obj.maxLength"
+                        (change)="checkBoxClick(obj, $event, i)" (keypress)="numberOnly($event, obj)">
+
+                      <span class="checkbox-title" *ngIf="obj.type == 'checkbox'">{{obj.title}}</span>
+
+                      <input *ngIf="obj.type == 'date'" class="form-control date-picker" placeholder="Select Date"
+                        autocomplete="off" [readOnly]='true' autocorrect="off" autocapitalize="off" [name]="obj.name"
+                        [formControlName]="obj.name" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                        [minDate]="getMinDate(obj)" [maxDate]="getmaxDate(obj)" (dateSelect)="onDateChanged(i,'')">
+
+                      <div class="outerBlockIcon">
+                        <img *ngIf="obj.type == 'date'" class="calender-img"
+                          src="../../../assets/img/incometaxIcons/calender.png">
+                      </div>
+
+                      <select autocomplete="off" autocorrect="off" autocapitalize="off"
+                        *ngIf="obj.type === 'select'" [name]="obj.name" class="form-control"
+                        [formControlName]="obj.name" (change)="checkFields($event?.target?.value, i,obj)">
+
+                        <option value="" *ngIf="obj.name !== 'House Co-Owner'" disabled selected>Select your option
+                        </option>
+                        <option value=false *ngIf="obj.name === 'House Co-Owner'" disabled selected>Select your option
+                        </option>
+
+                        <option *ngFor="let innerObj of obj.options" [value]="innerObj.value">{{innerObj.label}}
+                        </option>
+                      </select>
+                      <!-- </div> -->
+
+                      <select autocomplete="off" autocorrect="off" autocapitalize="off" *ngIf="obj.type === 'hraMonth'"
+                        [id]="obj.name+i" [name]="obj.name" class="form-control hra-select" [formControlName]="obj.name"
+                        (change)="hraMonthChange(i,$event,obj.name)">
+                        <option value="" disabled selected>Select Month</option>
+                        <option *ngFor="let month of hraMonths; let k=index;"
+                          [disabled]="hraMonthOptionsCheck(i,obj.name,k)" [value]="month.value">{{month.label}}
+                        </option>
+                      </select>
+
+                      <span class="required" *ngIf="this.isSelfSelected && (obj.name === 'Type' ) ">
+                        You cannot select 2 Self Occupied Property.
+                      </span>
+                      <span class="required" *ngIf="inValidPaymentDate[i] && (obj.name === 'PolicyDate' ) ">
+                        Select valid Payment date & Policy date.
+                      </span>
+                      <span class="required" *ngIf="inValidDate[i] && obj.name === 'ToDate'  ">
+                        Select valid date.
+                      </span>
+                      <span style="white-space: nowrap;" class="required"
+                        *ngIf="(FromDateArray[i] || ToDateArray[i] )&& obj.name === 'FromDate'">
+                        Please select another date range.
+                      </span>
+
+                      <span class="required" *ngIf="obj.name === 'LandLordPanNo'">
+                        PAN No required if annual rent exceeds 1 Lac.
+                      </span>
+                      <span
+                        *ngIf="item.controls[obj.name].invalid && (item.controls[obj.name].dirty || item.controls[obj.name].touched)">
+                        <span class="required" *ngIf="item.controls[obj.name].errors.required">
+                          This is required.
+                        </span>
+                        <span class="required" *ngIf="ageArray[i]">
+                          Age cannot be 0.
+                        </span>
+
+                        <span class="required" *ngIf="item.controls[obj.name].errors.max">
+                          {{obj.label}} should not be greater than {{obj.maxValue}}
+                        </span>
+                        <span class="required" *ngIf="item.controls[obj.name].errors.min">
+                          {{obj.label}} should not be smaller than {{obj.minValue}}
+                        </span>
+                        <span class="required" *ngIf="item.controls[obj.name].errors.pattern">
+                          Enter valid entry.
+                        </span>
+                      </span>
+                    </div>
+                    <section id="file-upload">
+                        <h6>Upload Documents</h6>
+                       <br/>
+                      <input type="file" multiple (change)="onFilechanged($event,i)">
+                      <ul *ngFor="let file of displayFiles[i]; let k=index">
+                        <li>
+                          <label> {{file.name}}</label>
+                          <span *ngIf="file.isUploaded">
+                            <i class="fa fa-file" aria-hidden="true" (click)="OpenFile(file)"></i>
+                            <img height="15" width="15" src="assets/img/check.svg">
+                          </span>
+                          <span class="delete-icon" (click)="deleteFile(file,i)">
+                            <i class="fas fa-trash"></i>
+                          </span>
+                        </li>
+                      </ul>
+
+                      <div *ngIf="this.warningMessage[i]" class="error">
+                        {{ this.warningMessage[i]}}
+                         <span (click)="this.warningMessage[i]=undefined">
+                           <i class="fa fa-times-circle fa-lg" aria-hidden="true"></i>
+                         </span>
+                       </div>
+                    </section>
+
+                </div>
+
+              </div>
+
+            </div>
+            <div class=" confirmPopupMsg" [hidden]="confirmHiddenBlock">
+              <div class="col-md-7">
+                <p>Are you sure you want to submit?</p>
+              </div>
+              <div class="col-md-5">
+                <button type="button" class="btn btn-deny pull-left" (click)="closeblock()">No</button>
+                <button type="button" class="btn btn-yes pull-right" (click)="onProofSubmit()">Yes</button>
+              </div>
+            </div>
+            <div class="confirmPopupMsg" [hidden]="deleteHiddenBlock">
+              <div class="col-md-7">
+                <p> Are you sure you want to delete Attachment {{selectedAttachment}} ?</p>
+              </div>
+              <div class="col-md-5">
+                <button type="button" class="btn btn-deny pull-left" (click)="closeDeleteBlock()">No</button>
+                <button type="button" class="btn btn-yes pull-right" (click)="deleteProof()">Yes</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="!isEachFileUploaded" class="error">
+          Please upload documents.
+         <span (click)="dismissMessage()">
+           <i class="fa fa-times-circle fa-lg" aria-hidden="true"></i>
+         </span>
+        </div>
+        <div class="modal-footer" *ngIf="(this.DeclarationPeriod || clickFrom==='admin') && (clickFrom==='admin'||clickFrom==='employee') &&
+          SchemeStatus !== 'Approved'">
+
+          <div>
+            <div class="col-md-6 floatLeft padding0 borderRght">
+              <button type="button" [disabled]='processing' class="btn customBtns" (click)="addProof('')">
+                <span style="color: #fff;">Add New </span>
+
+              </button>
+            </div>
+            <div class="col-md-6 floatLeft padding0">
+              <button data-toggle="tooltip" [disabled]="checkConditions()" type="button" class="btn customBtns"
+                (click)="employeeConfirmationBox()">
+                <i class="fa fa-spinner fa-spin" *ngIf="processing"></i>
+                 {{ processing ? 'Submiting...': 'Submit'}}
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End of of modal for Multiple Entry -->
+
+      <!-- Start of modal body for Single Entries -->
+      <div class="modal-content" *ngIf="entryType=='single'">
+        <div class="modal-header">
+          <p class="modal-title" id="exampleModalLabel">{{modalHeader}}</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            (click)="CloseModalEvent.emit('data')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form [formGroup]="ngForm" class="form-horizontal">
+
+            <div formArrayName="items" *ngFor="let item of ngForm?.get('items')['controls']; let i=index;">
+              <div [formGroupName]="i">
+                <!-- <div class="required"> * All fields are required. </div> -->
+                <span class="required"> * fields are mandatory. </span>
+
+                <div class="row">
+
+
+                  <div class="col-md-6 form-group" *ngFor="let obj of fieldDetailsArray ;let j=index;">
+
+                    <label> <span *ngIf="obj.isRequired" class="required"> * </span> {{obj.label}}</label>
+
+
+                    <input [ngClass]="getNgclassForSingleinp(obj)"
+                      [readOnly]="obj.name === 'PF' || obj.name ==='MedicalExemption' || obj.name === 'LoanSanctioned'"
+                      *ngIf="obj.type !== 'select' && obj.type !== 'date'" [type]="obj.type" [name]="obj.name"
+                      class="form-control" [formControlName]="obj.name" [maxlength]="obj.maxLength"
+                      (change)="onValueChange(obj, $event, i)" (keypress)="numberOnly($event, obj)">
+
+
+                    <!-- <input *ngIf="obj.type == 'date'" autocomplete="off" autocorrect="off" autocapitalize="off"
+                      spellcheck="false" type="text" [name]="obj.name"
+                      class="form-control mydatepicker  datepicker_recurring_start" [formControlName]="obj.name"
+                      (blur)="setValue(obj.name,$event,0, id)"> -->
+
+
+
+                    <input *ngIf="obj.type == 'date'" class="form-control" placeholder="Select  Date" [name]="obj.name"
+                      [formControlName]="obj.name" [minDate]="getMinDate(obj)" [maxDate]="getmaxDate(obj)"
+                      [readOnly]='true' [disabled]="obj.name === 'LoanTakenDate'"
+                      [ngClass]="{'loan-taken':obj.name==='LoanTakenDate'}" ngbDatepicker #d="ngbDatepicker"
+                      (click)="d.toggle()" (dateSelect)="onDateChanged(0,'')">
+                    <div class="outerBlockIcon">
+                      <img *ngIf="obj.type == 'date'" class="calender-img"
+                        src="../../../assets/img/incometaxIcons/calender.png">
+                    </div>
+                    <select (change)="selectedOption($event,0)" *ngIf="obj.type === 'select'" [name]="obj.name"
+                      class="form-control" [formControlName]="obj.name">
+                      <option value="" disabled selected>Select your option</option>
+                      <option *ngFor="let innerObj of obj.options" [value]="innerObj.value">{{innerObj.label}}</option>
+                    </select>
+
+                    <!-- (ngModelChange)="previousDeclarationDetails?.length && previousDeclarationDetails[0][obj.name]=$event" -->
+                    <div class="required" *ngIf="obj.name == 'OtherInterest'">
+                      Interest should be from Bank FD or Other Bank Interest.
+                    </div>
+
+                    <span class="required" *ngIf="inValidDate[i] &&   obj.name === 'PossessionDate'  ">
+                      Select valid date.
+                    </span>
+                    <div
+                      *ngIf="item.controls[obj.name].invalid && (item.controls[obj.name].dirty || item.controls[obj.name].touched)">
+
+                      <div class="required" *ngIf="item.controls[obj.name].errors.required">
+                        *This is required.
+                      </div>
+                      <div class="required" *ngIf="item.controls[obj.name].errors.max">
+                        *{{obj.label}} should not be greater than {{obj.maxValue}}
+                      </div>
+                      <div class="required" *ngIf="item.controls[obj.name].errors.min">
+                        *{{obj.label}} should not be less than {{obj.minValue}}
+                      </div>
+                      <div class="required" *ngIf="item.controls[obj.name].errors.pattern">
+                        *Enter valid entry.
+                      </div>
+
+                    </div>
+                  </div>
+                  <section id="file-upload">
+                    <h6>Upload Documents</h6>
+                    <input type="file" multiple (change)="onFilechanged($event,i)">
+
+                    <ul *ngFor="let file of displayFiles[0]; let k=index">
+                      <li>
+                        <label> {{file.name}}</label>
+                        <span *ngIf="file.isUploaded">
+                          <i class="fa fa-file" aria-hidden="true" (click)="OpenFile(file)"></i>
+                          <img height="15" width="15" src="assets/img/check.svg">
+                        </span>
+                        <span class="delete-icon" (click)="deleteFile(file,i)">
+                          <i class="fas fa-trash"></i>
+                        </span>
+                      </li>
+                    </ul>
+
+                        <div *ngIf="this.warningMessage[i]" class="error">
+                          {{ this.warningMessage[i]}}
+                           <span (click)="this.warningMessage[i]=undefined">
+                             <i class="fa fa-times-circle fa-lg" aria-hidden="true"></i>
+                           </span>
+                         </div>
+
+                     <!-- <button  (click)="uploadFiles()">
+                      {{ !this.uploadButton[i] || this.uploadButton[i]?.length===0 ? "Upload": this.uploadButton[i] }}
+
+                    </button> -->
+                  </section>
+
+                </div>
+                <div class=" confirmPopupMsg" [hidden]="confirmHiddenBlock">
+                  <div class="col-md-7">
+                    <p>Are you sure you want to submit?</p>
+                  </div>
+                  <div class="col-md-5">
+                    <button type="button" class="btn btn-deny pull-left" (click)="closeblock()">No</button>
+                    <button type="button" class="btn btn-yes pull-right" (click)="onProofSubmit()">Yes</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+
+        <div *ngIf="!isEachFileUploaded" class="error">
+          Please upload documents.
+         <span (click)="dismissMessage()">
+           <i class="fa fa-times-circle fa-lg" aria-hidden="true"></i>
+         </span>
+        </div>
+
+        <div class="modal-footer" *ngIf="(this.DeclarationPeriod || clickFrom==='admin') && (clickFrom==='admin'||clickFrom==='employee') &&
+          SchemeStatus !== 'Approved'">
+          <div class="col-md-12  padding0">
+            <button data-toggle="tooltip" type="button" class="btn customBtns" [disabled]="checkConditions()"
+              (click)="employeeConfirmationBox()">
+              <i class="fa fa-spinner fa-spin" *ngIf="processing"></i>
+              {{ processing ? 'Submiting...': 'Submit'}}
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End of of modal body for Single Entry -->
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="adminconformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Declaration {{actionType}}</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseModalEvent.emit('data')">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        Are you sure you want to {{actionType}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="adminApproveReject()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="employeeConformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Declaration Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="CloseModalEvent.emit('data')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        Are you sure you want to submit ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="onProofSubmit()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteConformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Declaration Confirmation</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseModalEvent.emit('data')">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete Attachment {{selectedAttachment}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="deleteProof()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,775 @@
+.lstick {
+  margin-left: -20px;
+  margin-right: 17px;
+  display: inline;
+}
+
+.detail-card {
+  background-color: #fff;
+  // border: 1px solid #e0e2e7;
+  box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
+  border-radius: 2px; // margin: 2px;
+  // margin-left: 1rem;
+  padding: 12px;
+  // margin-top: 25px; // font-size: 1rem;
+  //  font-weight: 500;
+  border-left: .2rem solid #fed700;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px; // max-width: 17rem;
+  // margin: 5px;
+  cursor: pointer;
+  max-width: calc(25% - 0.38rem);
+  margin: 0 0.5rem 0.5rem 0;
+  font-size: 13px;
+}
+
+
+.back-btn {
+  float: right;
+  display: inline;
+  font-size: 14px;
+  /* padding-left: 18px; */
+  width: 19vh;
+}
+
+.document-list {
+  background: white;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 14px;
+
+  .document-item {
+    cursor: pointer;
+    border: 1px solid #eee;
+    margin: 11px;
+    border-radius: 4px;
+    padding: 5px;
+  }
+}
+
+.salarycardBlok .card-header {
+  background-color: #fef20040 !important;
+  border-bottom: 0px !important;
+  padding: 1rem 1.25rem !important;
+
+
+
+  h5 {
+    font-size: 16px !important;
+    margin-bottom: 0px !important;
+  }
+}
+
+.modal-backdrop.am-fade.ng-leave,
+.aside-backdrop.am-fade.ng-leave {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.modal-open {
+  height: 550px;
+  width: 100%;
+}
+
+.modal-dialog {
+  max-width: 70rem !important;
+  margin: 0.60rem auto !important;
+}
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .modal-content {
+    width: auto !important;
+    text-align: center !important;
+    background: #fff !important;
+    cursor: pointer;
+
+    .modal-header {
+      padding: 1px !important;
+      padding-right: 5px !important;
+    }
+  }
+}
+
+.container-block {
+  float: right;
+  position: absolute;
+  top: 0.5rem;
+  right: 2rem;
+
+  .select-div {
+    width: 110px;
+    height: 30px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    padding: 1px 5px;
+    vertical-align: middle;
+    margin-right: 7px;
+    font-size: 13px;
+  }
+
+  .div-box:hover {
+    background: rgba(12, 12, 12, 0.07);
+    border-radius: 50%;
+  }
+
+  .div-box {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 5px;
+    vertical-align: middle;
+
+    i {
+      font-size: 15px;
+      color: #013c3c;
+    }
+
+    img {
+      width: 20px;
+      vertical-align: middle;
+      border-style: none;
+      height: 34px;
+      margin-left: 1rem;
+      height: 1.7rem;
+    }
+  }
+}
+
+.defaultBlock {
+  height: 85vh;
+  display: table;
+  width: 100%;
+  border: 2px dashed #f69c55;
+
+  .errorBlock {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+select {
+  width: 8rem !important;
+  font-size: 12px;
+  margin-left: 1rem;
+  height: 35px !important;
+}
+
+.headerBlock {
+  position: absolute;
+  top: 9px;
+  right: 5%;
+  display: flex;
+  align-items: center;
+
+  .nopaddingleft {
+    padding-left: 0px;
+  }
+
+  .nopadding {
+    padding: 0px;
+  }
+
+  .modal-backdrop.am-fade.ng-leave,
+  .aside-backdrop.am-fade.ng-leave {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+  }
+
+  .container {
+    font-size: 14px; // margin-top: 15px;
+    margin: 10px 0px;
+    max-width: 100%;
+    // padding: 0rem 1rem !important;
+  }
+
+  .modal-content .close {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    color: #383535 !important;
+    font-size: 28px !important;
+    font-weight: 800 !important;
+  }
+
+  .modal-dialog {
+    max-width: 70rem !important;
+    margin: 0.60rem auto !important;
+  }
+
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .modal-content {
+      //margin-left: -25%;
+      width: auto !important;
+      text-align: center !important;
+      background: #fff !important;
+      cursor: pointer;
+
+      .modal-header {
+        padding: 1px !important;
+        padding-right: 5px !important;
+      }
+    }
+  }
+
+  .f-year {
+    line-height: 3;
+  }
+
+  .modal-open {
+    height: 90vh;
+    width: 98%;
+  }
+
+  .left-pad {
+    margin-left: 35%;
+  }
+
+  #test {
+    background-color: lightgray;
+    padding: 8px;
+  }
+
+  .table-responsive {
+    overflow-x: hidden !important;
+  }
+
+  .spinner {
+    height: 0px !important;
+  }
+
+  .row {
+    //   margin-top: 1.6%;
+  }
+
+  select {
+    width: 12rem;
+    font-size: 14px;
+  }
+
+  .content-wrapper {
+    padding-top: 4rem;
+  }
+
+  .card-view {
+    margin: 8px 0px; //   padding: 8px;
+
+    .padding-top-3 {
+      padding: .3rem 0rem;
+    }
+
+    .color-gray {
+      color: gray;
+    }
+  }
+
+  .travel-info {
+    border: none;
+
+    .card-block {
+      padding: .5rem 2rem;
+    }
+
+    .padding-top-3 {
+      padding: .3rem 2rem;
+    }
+
+    .red-color {
+      font-weight: bold;
+      color: #dd1b1c;
+    }
+  }
+
+  .center-select {
+    text-align: center
+  }
+
+  .year-div {
+    // margin-top: 10px;
+    // margin-bottom: 10px;
+    // margin-left: -9px;
+    // margin-right: 1.9px;
+    position: absolute;
+    right: 2rem;
+    top: .55rem;
+
+    select {
+      width: 8rem;
+      height: 2rem;
+      font-size: 13px !important;
+    }
+  }
+
+  .month-select {
+    line-height: 2; //  font-size: 1.1rem;
+    background-color: lightgray;
+  }
+
+  .margin-row {
+    margin: 0px 0px;
+
+    .detail-card:nth-child(4n+1) {
+      margin-left: 0;
+    }
+
+    .detail-card:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+
+  .right-border {
+    border-right: 1px solid lightgray;
+  }
+
+  .info-detail-table {
+    .info-table-header {
+      .sub-section-part1 {
+        background-color: #FEF200;
+        border-right: 1px solid #FEF200;
+        border-bottom: 1px solid #e0e2e7 !important;
+
+        .part0-th {
+          max-width: 4rem;
+        }
+
+        .part1-th {
+          //border-right: 1px solid #dd1b1c;
+          // font-size: 16px;
+          max-width: 4rem; //   text-align: right;
+          // .year {
+          //   // margin-left: 14.3rem;
+          //   left: 45%;
+          // }
+        }
+
+        .part2-th {
+          //font-size: 16px;
+          max-width: 4rem;
+
+          .year {
+            margin-left: -16rem;
+          }
+        }
+
+        .part3-th {
+          max-width: 4rem
+        }
+
+        height: 50px;
+        text-align: center; //font-size: 2rem;
+      }
+
+      .sub-section-part2 {
+        text-align: center;
+
+        .part0-th {
+          max-width: 4rem;
+        }
+
+        .part1-th {
+          max-width: 4rem;
+        }
+
+        .part2-th {
+          max-width: 4rem;
+        }
+
+        .part3-th {
+          max-width: 4rem
+        }
+
+        th {
+          // border-right: 1px solid #e0e2e7;
+          // border-left: 1px solid #e0e2e7;
+          // border-bottom: 1px solid #e0e2e7 !important;
+          border: 1px solid #eee;
+          padding: 10px;
+          text-align: left;
+        }
+
+        tr {
+          border-bottom: 1px solid #e0e2e7 !important;
+          padding-bottom: 0px;
+        }
+
+        .value {
+          // font-weight: 100 !important; // color: #585858;
+          // padding-top: 7px; // font-weight: 100; //font-size: 14px;
+          font-weight: 400 !important;
+          padding-top: 7px;
+          font-size: 11px;
+          color: #6b6767;
+        }
+      }
+    }
+
+    table {
+      th {
+        border-top: 0px;
+      }
+
+      tr {
+        border-bottom: 0px;
+      }
+
+      thead th {
+        border-bottom: 0px;
+      }
+
+      margin-bottom: 0px;
+      background: #fff;
+    }
+
+    // -webkit-box-shadow: 5px -1px 19px -8px rgba(128, 123, 128, 0.66);
+    // -moz-box-shadow: 5px -1px 19px -8px rgba(128, 123, 128, 0.66);
+    // box-shadow: 5px -1px 19px -8px rgba(128, 123, 128, 0.66);
+  }
+
+  .w-500 {
+    font-weight: 500 !important;
+  }
+
+  .lstick {
+    margin-left: -20px;
+    margin-right: 17px;
+
+  }
+
+  .document-list {
+    background: white;
+    padding: 10px;
+    margin-top: 5px;
+
+    .document-item {
+      cursor: pointer;
+      border: 1px solid #eee;
+      margin: 11px;
+      border-radius: 4px;
+      padding: 5px;
+    }
+  }
+
+  //******************************************************NEW SCSS***********************************
+  .modal-backdrop.am-fade.ng-leave,
+  .aside-backdrop.am-fade.ng-leave {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+  }
+
+  .container {
+    font-size: 14px; // margin-top: 15px;
+    margin: 10px 0px;
+    max-width: 100%;
+    // padding: 0rem 1rem !important;
+  }
+
+  .modal-content .close {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    color: #383535 !important;
+    font-size: 28px !important;
+    font-weight: 800 !important;
+  }
+
+  .modal-dialog {
+    max-width: 70rem !important;
+    margin: 0.60rem auto !important;
+  }
+
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .modal-content {
+      //margin-left: -25%;
+      width: auto !important;
+      text-align: center !important;
+      background: #fff !important;
+      cursor: pointer;
+
+      .modal-header {
+        padding: 1px !important;
+        padding-right: 5px !important;
+      }
+    }
+  }
+
+  .f-year {
+    line-height: 3;
+  }
+
+  .modal-open {
+    height: 90vh;
+    width: 98%;
+  }
+
+  .left-pad {
+    margin-left: 35%;
+  }
+
+  #test {
+    background-color: lightgray;
+    padding: 8px;
+  }
+
+  .table-responsive {
+    overflow-x: hidden !important;
+  }
+
+  .spinner {
+    height: 0px !important;
+  }
+
+  .row {
+    //   margin-top: 1.6%;
+  }
+
+  select {
+    width: 12rem;
+    font-size: 14px;
+  }
+
+  .content-wrapper {
+    padding-top: 4rem;
+  }
+
+  .card-view {
+    margin: 8px 0px; //   padding: 8px;
+
+    .padding-top-3 {
+      padding: .3rem 0rem;
+    }
+
+    .color-gray {
+      color: gray;
+    }
+  }
+
+  .travel-info {
+    border: none;
+
+    .card-block {
+      padding: .5rem 2rem;
+    }
+
+    .padding-top-3 {
+      padding: .3rem 2rem;
+    }
+
+    .red-color {
+      font-weight: bold;
+      color: #dd1b1c;
+    }
+  }
+
+  .center-select {
+    text-align: center
+  }
+
+  .detail-card {
+    background-color: #fff;
+    // border: 1px solid #e0e2e7;
+    box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
+    border-radius: 2px; // margin: 2px;
+    // margin-left: 1rem;
+    padding: 12px;
+    // margin-top: 25px; // font-size: 1rem;
+    //  font-weight: 500;
+    border-left: .2rem solid #fed700;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; // max-width: 17rem;
+    // margin: 5px;
+    cursor: pointer;
+    max-width: calc(25% - 0.38rem);
+    margin: 0 0.5rem 0.5rem 0;
+    font-size: 13px;
+  }
+
+  .year-div {
+    // margin-top: 10px;
+    // margin-bottom: 10px;
+    // margin-left: -9px;
+    // margin-right: 1.9px;
+    position: absolute;
+    right: 2rem;
+    top: .55rem;
+
+    select {
+      width: 8rem;
+      height: 2rem;
+      font-size: 13px !important;
+    }
+  }
+
+  .month-select {
+    line-height: 2; //  font-size: 1.1rem;
+    background-color: lightgray;
+  }
+
+  .margin-row {
+    margin: 0px 0px;
+
+    .detail-card:nth-child(4n+1) {
+      margin-left: 0;
+    }
+
+    .detail-card:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+
+  .right-border {
+    border-right: 1px solid lightgray;
+  }
+
+  .info-detail-table {
+    .info-table-header {
+      .sub-section-part1 {
+        background-color: #FEF200;
+        border-right: 1px solid #FEF200;
+        border-bottom: 1px solid #e0e2e7 !important;
+
+        .part0-th {
+          max-width: 4rem;
+        }
+
+        .part1-th {
+          //border-right: 1px solid #dd1b1c;
+          // font-size: 16px;
+          max-width: 4rem; //   text-align: right;
+          // .year {
+          //   // margin-left: 14.3rem;
+          //   left: 45%;
+          // }
+        }
+
+        .part2-th {
+          //font-size: 16px;
+          max-width: 4rem;
+
+          .year {
+            margin-left: -16rem;
+          }
+        }
+
+        .part3-th {
+          max-width: 4rem
+        }
+
+        height: 50px;
+        text-align: center; //font-size: 2rem;
+      }
+
+      .sub-section-part2 {
+        text-align: center;
+
+        .part0-th {
+          max-width: 4rem;
+        }
+
+        .part1-th {
+          max-width: 4rem;
+        }
+
+        .part2-th {
+          max-width: 4rem;
+        }
+
+        .part3-th {
+          max-width: 4rem
+        }
+
+        th {
+          // border-right: 1px solid #e0e2e7;
+          // border-left: 1px solid #e0e2e7;
+          // border-bottom: 1px solid #e0e2e7 !important;
+          border: 1px solid #eee;
+          padding: 10px;
+          text-align: left;
+        }
+
+        tr {
+          border-bottom: 1px solid #e0e2e7 !important;
+          padding-bottom: 0px;
+        }
+
+        .value {
+          // font-weight: 100 !important; // color: #585858;
+          // padding-top: 7px; // font-weight: 100; //font-size: 14px;
+          font-weight: 400 !important;
+          padding-top: 7px;
+          font-size: 11px;
+          color: #6b6767;
+        }
+      }
+    }
+
+    table {
+      th {
+        border-top: 0px;
+      }
+
+      tr {
+        border-bottom: 0px;
+      }
+
+      thead th {
+        border-bottom: 0px;
+      }
+
+      margin-bottom: 0px;
+      background: #fff;
+    }
+
+    // -webkit-box-shadow: 5px -1px 19px -8px rgba(128, 123, 128, 0.66);
+    // -moz-box-shadow: 5px -1px 19px -8px rgba(128, 123, 128, 0.66);
+    // box-shadow: 5px -1px 19px -8px rgba(128, 123, 128, 0.66);
+  }
+
+  .w-500 {
+    font-weight: 500 !important;
+  }
+
+  .lstick {
+    margin-left: -20px;
+    margin-right: 17px;
+
+  }
+
+  .document-list {
+    background: white;
+    padding: 10px;
+    margin-top: 5px;
+
+    .document-item {
+      cursor: pointer;
+      border: 1px solid #eee;
+      margin: 11px;
+      border-radius: 4px;
+      padding: 5px;
+    }
+  }
+
+
+}

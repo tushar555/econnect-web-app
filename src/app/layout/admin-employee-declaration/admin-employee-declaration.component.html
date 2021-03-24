@@ -1,0 +1,529 @@
+<div class="container tax-summary-page main-content" *ngIf="showInfo">
+  <app-modal *ngIf="flag" (CloseModalEvent)="closeModal($event)"></app-modal>
+
+  <!-- New Design Layout Start -->
+  <div class="info-header">{{empName}}</div>
+  <div class="tabButtonBlock">
+    <button (click)="confirmChange('new')" class="btn tabBtn" type="submit">Select New Regime</button> &nbsp;&nbsp;
+    <button (click)="confirmChange('old')" class="btn tabBtn" type="submit">Select Old Regime</button>
+  </div>
+
+  <div class="container incomeTaxMainPage">
+
+    <div class="col-md-12 padding0">
+      <div class="gird" id="tabs">
+
+        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+
+          <div class="tab-pane show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="col-md-2 floatLeft padding0">
+              <div class="card generalDetailCard">
+                <ul class="list-group list-group-flush"
+                  *ngFor="let scheme of schemedeclarationsList.Schemes;let i=index;">
+                  <li (click)='setSelectedCategory(scheme,i)' class="list-group-item"
+                    [ngClass]="{'activeLink':getIsSelected(scheme)}">{{scheme.Section}}
+                    <i class="fas fa-circle declared-scheme" *ngIf='scheme.declaredAmount!==0'></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-10 floatLeft paddingRight0">
+              <div class="card centerConatiner">
+                <div class="m-b-10" style="display: none;">
+                  <div class="col-md-4 padding0 floatLeft">
+                    <div class="card infoCard">
+                      <div class="card-body ">
+                        <h6 class="card-subtitle mb-1 text-muted">Section Limit</h6>
+                        <h5 class="card-title">{{selectedScheme.SectionLimit}}</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 padding0 floatLeft">
+                    <div class="card infoCard">
+                      <div class="card-body ">
+                        <h6 class="card-subtitle mb-1 text-muted">Amt. Considered</h6>
+                        <h5 class="card-title">{{selectedScheme.amountConsider}}</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 padding0 floatLeft">
+                    <div class="card infoCard">
+                      <div class="card-body ">
+                        <h6 class="card-subtitle mb-1 text-muted">Amt. Declared</h6>
+                        <h5 class="card-title">{{selectedScheme.declaredAmount}}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="scrollableContainer adminIT">
+
+
+                  <div class="paymentListing col-lg-12"
+                    *ngFor="let subScheme of this.schemedeclarationsList.Schemes[this.schemeNo]?.subSectiondetails; let i=index">
+                    <div class="floatLeft padding0 textBlock col-md-6">
+                      <div>
+                        <p class="title">{{subScheme.SchemeName}}</p>
+                        <p class="consider-actual"
+                          *ngIf="subScheme.Status !== 'Approved' && subScheme.Status !== null ">
+                          <label class="consider-label">
+                            <input type="checkbox"
+                            (change)="considerForActuals(subScheme,$event)"
+                            [checked]="checkboxConsiderActuals(subScheme.DeclarationId)">
+                            <b> Consider for actuals</b>
+                          </label>
+                        </p>
+                      </div>
+                    </div>
+                    <!-- (focusout)="saveAmount(subScheme)"  subScheme.Status=='Approved' || -->
+
+                    <div class="col-md-3 amount-container floatLeft padding0">
+                      <input type="text" maxlength="10" onkeyup="value=value.replace(/[^\d]/g,'')"
+                        id="{{'proof-amt'+subScheme.SchemeID}}" [disabled]="(subScheme.Status=='Rejected' || !amountInput[subScheme.SchemeID]?.enable) &&
+                         subScheme.Section !=='80U' || eightyValue== subScheme.SchemeID"
+                        (keyup)="checkValue($event?.target?.value, subScheme.SchemeID)" [(ngModel)]="subScheme.Amount"
+                        (focusin)="onInFocus(subScheme)" (focusout)="saveAmount(subScheme,'fromNormal')"
+                        class="form-control amount-inp">
+
+                    </div>
+                    <div class="col-md-3 actionBtnBlock">
+
+                      <span class="statusRemark" [ngClass]="{'status-approved':(subScheme.Status == 'Approved'),'status-rejected':(subScheme.Status == 'Rejected'),
+                          'status-pending':(subScheme.Status == 'Pending')}"
+                        style="position: relative;">{{subScheme.Status}}
+                        <span *ngIf="subScheme.Status == 'Rejected'" class="badge badge-light custBadge"
+                          (click)="openRejectionModal(subScheme.AdminRemarks)">!</span>
+                      </span>
+
+                      <span *ngIf="subScheme.Status ==='Pending' || subScheme.Status === 'Rejected' ">
+                        <img src="../assets/img/incometaxIcons/accepted.svg" data-toggle="tooltip" data-placement="top"
+                          title="Approve & Consider for actuals" (click)="adminConfirmation('approve',subScheme)"
+                          height="100%" width="100%">
+                      </span>
+                      <span *ngIf="subScheme.Status ==='Pending' || subScheme.Status === 'Approved'">
+                        <img src="../assets/img/incometaxIcons/rejected.svg" data-toggle="tooltip" data-placement="top"
+                          title="Reject" (click)="adminConfirmation('reject',subScheme)" height="100%" width="100%">
+                      </span>
+
+                      <span *ngIf="subScheme.ProofRequired && !subScheme.OfflineProof "
+                        (click)="openModalComponent(subScheme)" style="position: relative;">
+                        <img src="../assets/img/incometaxIcons/edit(1).svg" data-toggle="tooltip" data-placement="top"
+                          title="Upload" height="100%" width="100%">
+                      </span>
+                      <!--edit amout or proof-->
+                      <ng-container *ngIf="!subScheme.ProofRequired">
+                        <span class="icons"
+                          *ngIf="subScheme.Status!=='Rejected' && !amountInput[subScheme.SchemeID]?.enable"
+                          (click)="editDeclaration(subScheme.SchemeID,subScheme.Amount)">
+                          <img src="../assets/img/incometaxIcons/edit(1).svg" height="100%" width="100%">
+                        </span>
+                        <span class="icons" *ngIf="amountInput[subScheme.SchemeID]?.enable"
+                          (click)="saveDeclaration(subScheme)">
+                          <img src="../assets/img/incometaxIcons/save(1).svg" height="100%" width="100%">
+                        </span>
+                        <span class="icons" *ngIf="amountInput[subScheme.SchemeID]?.enable"
+                          (click)="cancelDeclaration(subScheme.SchemeID,i)">
+                          <img src="../assets/img/incometaxIcons/close(1).svg" height="100%" width="100%">
+                        </span>
+                      </ng-container>
+
+                    </div>
+
+                    <div class="col-md-3 padding0 iconBox" style="float: right;" style="display: none;">
+                      <div class="row" *ngIf="subScheme.Status !==null">
+                        <div class="col-md-3">
+                          <!-- asdf -->
+                          <span class="declaration-status">
+                            <span class="float-right" [ngClass]="{'status-approved':(subScheme.Status == 'Approved'),'status-rejected':(subScheme.Status == 'Rejected'),
+                                  'status-pending':(subScheme.Status == 'Pending')}">{{subScheme.Status}}
+                              <span *ngIf="subScheme.Status == 'Rejected'" class="badge badge-light badge2"
+                                (click)="openRejectionModal(subScheme.AdminRemarks)">!</span>
+                            </span>
+                          </span>
+                        </div>
+                        <div class="col-md-3">
+                          <!-- dfg -->
+                          <span
+                            *ngIf="subScheme.ProofRequired && !subScheme.OfflineProof && subScheme.Status !== 'Rejected'"
+                            (click)="openModalComponent(subScheme)"><img src="../assets/img/incometaxIcons/upload.svg"
+                              data-toggle="tooltip" data-placement="top" title="Upload">
+                            <span class="badge badge-light badge1">{{subScheme.ProofCount}}</span>
+                          </span>
+                        </div>
+                        <div class="col-md-3">
+                          <!-- xcv -->
+                          <span *ngIf="subScheme.Status ==='Pending'"><img
+                              src="../assets/img/incometaxIcons/accepted.svg" data-toggle="tooltip" data-placement="top"
+                              title="Approve & Consider for actuals" (click)="adminConfirmation('approve',subScheme)">
+                          </span>
+                        </div>
+                        <div class="col-md-3">
+                          <!-- xcv -->
+                          <span *ngIf="subScheme.Status ==='Pending' || subScheme.Status === 'Approved'"><img
+                              src="../assets/img/incometaxIcons/rejected.svg" data-toggle="tooltip" data-placement="top"
+                              title="Reject" (click)="adminConfirmation('reject',subScheme)">
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div *ngIf="withDisability && schemeNo === 2" class="required"> *Amount must
+                    be less than
+                    75000 for 'Deduction For Self Non-Severe Disability' </div>
+                  <div *ngIf="withSeverDisability && schemeNo === 2" class="required"> *Amount
+                    must be less
+                    than 125000 for 'Deduction For Self Severe Disability' </div>
+                </div>
+              </div>
+              <div class="row">
+                <button class="col-md-6 buttonBlock back-btn" routerLink="../../admin-IT">
+                  Back
+                </button>
+                <button class="col-md-6 buttonBlock approve-btn" [disabled]="declarationIdsApproval.length<1"
+                  (click)="confirmMultipleApprove()">
+                  Approve Selected Declarations
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="newFormatModal modal fade" id="successMessageModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Saved Successfully
+            </h5>
+
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+          </div>
+
+          <div class="modal-body rejectionModal">
+            Your Changes has been saved successfully.
+          </div>
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-yes" (click)="getEmployeeDeclarations()" data-dismiss="modal">OK</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="newFormatModal modal fade" id="finalsubmitMessageModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Confirm Submit
+            </h5>
+
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+          </div>
+
+          <div class="modal-body rejectionModal">
+            Are you sure you want to final submit these changes?
+          </div>
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-yes" (click)="sendToApproval('Pending',null)"
+              data-dismiss="modal">Submit</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- conformation box -->
+    <div class="newFormatModal modal fade" id="incomeTaxModal" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Income Tax Declaration</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <!-- <span aria-hidden="true">&times;</span> -->
+            </button>
+          </div>
+          <div class="modal-body">
+            Do you want to save income tax declaration?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-yes" data-dismiss="modal">Yes</button>
+            <button type="button" class="btn btn-deny">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end -->
+
+    <!-- conformation box -->
+    <div class="newFormatModal modal fade" id="deleteTaxModal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Income Tax Declaration</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <!-- <span aria-hidden="true">&times;</span> -->
+            </button>
+          </div>
+          <div class="modal-body">
+            Do you want to delete income tax declaration?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-yes" data-dismiss="modal" >Yes</button>
+            <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end -->
+
+    <div class="newFormatModal modal fade " id="successModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <!-- Modal content *ngIf="showMessage"-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <!-- <span>{{successMsg}}</span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- slabInfo -->
+    <div id="slabInfo" class="modal fade newFormatModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header" id="attendance_header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Income Tax slab Information</h4>
+          </div>
+          <div class="modal-body">
+            No tax for individuals with income less than ₹ 2.5 lakhs
+            <br /> 5% tax with income ₹ 2.5 lacs to 5 lacs for different age groups
+            <br /> 20% tax with income ₹ 5 lacs to 10 lacs
+            <br /> 30% tax with income ₹ 10 lacs and above
+            <br /> Cess 4% of total tax.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="offlineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Declaration Info</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Proof submitted offline.
+        </div>
+        <div class="modal-footer">
+          <div class="row">
+            <div class="col-12">
+              <textarea rows="3" cols="40" placeholder="Remarks" [(ngModel)]="adminRemark"
+                [disabled]="offlineObj?.Status!=='Pending'"></textarea>
+            </div>
+          </div>
+          <br>
+          <div class="row" *ngIf="offlineObj?.Status==='Pending'">
+            <div class="col-12" style=" margin-left: -19px;">
+              <button type="button" [disabled]="offlineObj?.Status==='Approved' || offlineObj?.Status==='Rejected' "
+                class="btn btn-danger" (click)="confirmationBox('reject')">Reject</button>
+              <button type="button" [disabled]="offlineObj?.Status==='Approved' || offlineObj?.Status==='Rejected' "
+                style="float: right" class="btn btn-success" (click)="confirmationBox('approve')">Approve</button>
+              <div *ngIf="errMsg" class="err-msg">Remarks is mandatory while rejecting.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="newFormatModal  modal fade" id="adminConformationModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Declaration {{actionType}}</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          Are you sure to {{actionType}} ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="adminApproveReject()">Yes</button>
+          <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="newFormatModal modal fade" id="rejectModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Declaration {{actionType | titlecase}}</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+        </div>
+        <div class="modal-body">
+          <textarea name="admin-remarks" class="form-control mandatory" placeholder="Remarks" [(ngModel)]="adminRemark"
+            rows="4" resize="none"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="adminApproveReject()"
+            [disabled]="!adminRemark">Reject</button>
+          <button type="button" class="btn btn-deny" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="newFormatModal modal fade" id="approveModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Declaration
+            {{actionType === 'approve' ? 'Approval' : actionType}}</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button> -->
+        </div>
+        <div class="modal-body">
+          Are you sure you want to approve?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="adminApproveReject()">Yes</button>
+          <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="newFormatModal modal fade" id="rejectionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Reason for Rejection</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body rejectionModal">
+          <p class="fw-600">{{adminRemarks}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="newFormatModal modal fade" id="okModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{okModalTitle}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{okModalBody}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="newFormatModal modal fade" id="adminMultiConformationModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Declarations Approval</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+        </div>
+        <div class="modal-body">
+          Are you sure you want to approve selected declarations?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-yes" data-dismiss="modal"
+            (click)="multipleConsiderForActuals()">Yes</button>
+          <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="newFormatModal modal fade" id="successMessage" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{titlemessage}}</h5>
+
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+        </div>
+        <div class="modal-body rejectionModal">
+          {{bodyMessage}}
+        </div>
+
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="getEmployeeDeclarations()">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="newFormatModal modal fade" id="RegimeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h5 class="modal-title" id="modal-title1">
+
+          </h5>
+        </div>
+
+        <div class="modal-body rejectionModal" id="modal-body1">
+
+        </div>
+        <div class="modal-footer" id="modal-footer1">
+          <button type="button" (click)="changeRegime()" class="btn btn-yes" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-deny" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Upload modal End -->

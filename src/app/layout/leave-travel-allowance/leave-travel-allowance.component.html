@@ -1,0 +1,226 @@
+<div class="container tax-summary-page main-content">
+  <!-- kavita code start-->
+  <div class="row">
+    <div class="col col-md-12 salarycardBlok">
+      <div class="col-md-3 p-l-0">
+        <div class="card">
+          <div class="card-header yearDetails">
+            <h5>
+              <span class="lstick" style="margin-left: -20px;"></span>Year :
+              {{ year }}
+            </h5>
+            <select
+              class="form-control select-div"
+              [(ngModel)]="year"
+              (change)="getLTAData()"
+            >
+              <option
+                *ngFor="let year of yearsArray; let i = index"
+                [value]="year"
+                >{{ yearsArray[i] }}</option
+              >
+            </select>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h5>
+              <span
+                class="lstick"
+                style="margin-left: -20px;margin-right: 17px;"
+              ></span
+              >Personal Details
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-user"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Name</p>
+                <p class="subContent">
+                  {{ userDetails.FirstName | titlecase }}
+                  {{ userDetails.LastName | titlecase }}
+                </p>
+              </div>
+            </div>
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-id-badge"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Employee ID</p>
+                <p class="subContent">{{ userDetails.TokenId }}</p>
+              </div>
+            </div>
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-briefcase"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Designation</p>
+                <p class="subContent">{{ userDetails.JobTitle }}</p>
+              </div>
+            </div>
+            <div class="personalDetailBlock">
+              <div class="iconBlock"><i class="fa fa-map-marker"></i></div>
+              <div class="mail-contnet">
+                <p class="description">Location</p>
+                <p class="subContent">
+                  {{ userDetails.LocationName | titlecase }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Neha Code Start -->
+      <div class="col-md-9 p-r-0 p-l-0 rightdiv">
+        <div
+          class="card col-md-5 p-l-0 p-r-0 no-padding"
+          *ngIf="deducatedTaxArray.length > 0"
+        >
+          <ul
+            class="list-group list-group-flush"
+            *ngFor="let item of deducatedTaxArray"
+          >
+            <li class="list-group-item">
+              Company Code:
+              <span class="float-right">{{ item.CompanyCode }}</span>
+            </li>
+            <li class="list-group-item">
+              LTA Block Period:
+              <span class="float-right">{{ item.LTABlockPeriod }}</span>
+            </li>
+            <li class="list-group-item">
+              Flexi Blocked Amount:<span class="float-right"> ₹ {{
+                item.FlexiBlockedAmount
+              }}</span>
+            </li>
+            <li class="list-group-item">
+              Claimed Amount:<span class="float-right">₹ {{ item.Claimed }}</span>
+            </li>
+            <li class="list-group-item">
+              Calendar Year:<span class="float-right">{{
+                item.CalenderYear
+              }}</span>
+            </li>
+            <li class="list-group-item">
+              Exemption Requested:<span class="float-right">₹ {{
+                item.ExempionReqested
+              }}</span>
+            </li>
+            <li class="list-group-item">
+              Exempted Amount:<span class="float-right">₹ {{
+                item.ExemptedAmount
+              }}</span>
+            </li>
+          </ul>
+          <div class="card-footer text-muted">
+             Total Amount: <span class="float-right">₹ {{totalTax}}
+            </span>
+          </div>
+        </div>
+       
+        <div class="card" *ngIf="deducatedTaxArray.length == 0">
+          <div>
+            <div class="text-center errorBlock">
+              <img
+                src="assets/img/no-record.png"
+                height="100px"
+                width="100px"
+              />
+              <div class="total-text">
+                No Records Found
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Neha Code End -->
+    </div>
+  </div>
+  <!-- kavita code stop -->
+  <div>
+    <div class="card text-center userInfo" style="display: none;">
+      <div class="card-block">
+        <div class="row financial-year">
+          <div class="col text-center  padding-top-3">
+            <span class="font-16-b">Financial Year: 2017-18</span>
+          </div>
+        </div>
+        <div class="row user_info">
+          <div class="col-sm-3 right-border">
+            <div class="font-14-b">Name:</div>
+            <div>
+              {{ userDetails.FirstName | titlecase }}
+              {{ userDetails.LastName | titlecase }}
+            </div>
+          </div>
+          <div class="col-sm-3 right-border ">
+            <div class="font-14-b">Employee ID:</div>
+            <div>{{ userDetails.TokenId }}</div>
+          </div>
+          <div class="col-sm-3 right-border">
+            <div class="font-14-b">Designation:</div>
+            <div>{{ userDetails.JobTitle }}</div>
+          </div>
+          <div class="col-sm-3 ">
+            <div class="font-14-b">Location:</div>
+            <div>{{ userDetails.LocationName | titlecase }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="no-record"
+      *ngIf="deducatedTaxArray.length == 0"
+      style="display: none;"
+    >
+      No Records Found
+    </div>
+
+    <div
+      *ngIf="deducatedTaxArray.length > 0"
+      class="income-tax-summery"
+      style="display: none;"
+    >
+      <table class="table table-striped table-fixed table-header">
+        <thead class="header-color font-14">
+          <tr>
+            <th scope="col" class="width-25">Description</th>
+            <th scope="col" class="width-25 text-center">Start Date</th>
+            <th scope="col" class="width-25 text-center">End Date</th>
+            <th scope="col" class="width-25 text-center">Deducted Amount</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="summary-table">
+        <table class="table table-fixed summary-info">
+          <tbody class="font-14">
+            <tr *ngFor="let item of deducatedTaxArray">
+              <td class="width-25">{{ item.WageTypeDescription }}</td>
+              <td class="width-25 text-center">
+                {{ item.PeriodStart | date: "dd-MM-yyyy" }}
+              </td>
+              <td class="width-25 text-center">
+                {{ item.PeriodEnd | date: "dd-MM-yyyy" }}
+              </td>
+              <td class="width-25 text-center">₹ {{ item.Amount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <table class="table table-striped table-fixed">
+        <thead class="header-color">
+          <tr>
+            <th
+              scope="col"
+              class="width-33"
+              style="border-right: 0px !important;"
+            ></th>
+            <th scope="col" class="width-33 text-right font-16-b">Total</th>
+            <th scope="col" class="width-33 text-center font-14">
+              ₹ {{ totalTax }}
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>

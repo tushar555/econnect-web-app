@@ -1,0 +1,4552 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Mahindra_Finance documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Mahindra_Finance documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>FilterDetails</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/services/commonArray.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#formControlField">formControlField</a>
+                            </li>
+                            <li>
+                                <a href="#http">http</a>
+                            </li>
+                            <li>
+                                <a href="#schemeId">schemeId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getFormControlFields">getFormControlFields</a>
+                            </li>
+                            <li>
+                                <a href="#getSchemeDetails">getSchemeDetails</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(schemeId, http)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="618" class="link-to-prism">src/app/services/commonArray.ts:618</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>schemeId</td>
+                                                  
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="formControlField"></a>
+                        <span class="name">
+                            <b>
+                            formControlField</b>
+                            <a href="#formControlField"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[{
+    schemeId: [25],
+    name: &quot;LIC&quot;,
+    fields: {
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      PaymentDate: [null],
+      PolicyDate: [&#x27;&#x27;],
+      PolicyNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      PolicyAmount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Premium: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [27],
+    name: &quot;ULIP&quot;,
+    field: {
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      PaymentDate: [null],
+      PolicyNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      PolicyAmount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Premium: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Remarks: [&#x27;&#x27;],
+      PolicyDate: [&#x27;&#x27;]
+    },
+  },
+  {
+    schemeId: [2],
+    name: &quot;HRA&quot;,
+    field: {
+      FromDate: [null, Validators.compose([Validators.required])],
+
+      ToDate: [null, Validators.compose([Validators.required])],
+
+      RentPerMonth: [null, Validators.compose([Validators.required])],
+
+      LandLordName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      // LandLordPanNo: [&#x27;&#x27;, Validators.compose([Validators.required, Validators.pattern(/[A-Z]{5}[0-9]{4}[A-Z]{1}/)])],
+      LandLordPanNo: [&#x27;&#x27;],
+
+      LandLordPincode: [
+        null,
+        Validators.compose([Validators.required, Validators.pattern(&#x27;^[0-9]{6,6}$&#x27;)])
+      ],
+
+      LandLordAddress: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      // Validators.pattern(&#x27;/[A-Z]{5}\d{4}[A-Z]{1}/i&#x27;)
+
+      Address: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Pincode: [
+        null,
+        Validators.compose([Validators.required, Validators.pattern(&#x27;^[0-9]{6,6}$&#x27;)])
+      ],
+
+      City: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      HousingType: [&#x27;Rent&#x27;],
+
+      IsMetroCity: [{
+        value: &#x27;&#x27;,
+        disabled: true
+      }, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [28],
+    name: &quot;PPF Declaration&quot;,
+    field: {
+      // tslint:disable-next-line: max-line-length
+
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      AccountHolderName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      PFAccountNo: [&#x27;&#x27;],
+
+      BankPostOfficeName: [&#x27;&#x27;],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [29],
+    name: &quot;NSC Declaration&quot;,
+    field: {
+      AccountHolderName: [&#x27;&#x27;],
+
+      CertificateNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DateOfIssue: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Denomination: [&#x27;&#x27;],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [35, 36],
+    name: &quot;Child Tuition Fee Declaration&quot;,
+    field: {
+      NameOfInstitution: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      ChildName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DateOfPayment: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      ReceiptNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [31],
+    name: &quot;Housing Loan Declaration&quot;,
+    field: {
+      LoanTakenDate: [null],
+
+      NameOfLender: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      RepaymentOfPrincipalAmount: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      StampDuty: [&#x27;&#x27;],
+
+      Total: [&#x27;&#x27;],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [20, 32],
+    name: &quot;Notified Mutual Fund Declaration&quot;,
+    field: {
+      DepositerName: [&#x27;&#x27;],
+
+      NameOfMutualFund: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DetailsOfPayment: [&#x27;&#x27;],
+
+      CertificateApplicationNo: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      DateOfPaymentBankDebit: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [37],
+    name: &quot;Sukanya Samiriddhi Scheme&quot;,
+    field: {
+      DepositerName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DaughterName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      CertificateNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [38],
+    name: &quot;Post Office Deposit Declaration&quot;,
+    field: {
+      InvestorName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PostOfficeName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      FDRNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      DateOfBankDebit: [null],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [39],
+    name: &quot;Scheduled Bank Fixed Deposit Declaration&quot;,
+    field: {
+      InvestorName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      BankName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      FDRNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      DateOfBankDebit: [null],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [19],
+    name: &quot;Certain Pension Fund Declaration&quot;,
+    field: {
+      CompanyName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      EmployeeName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      PRANNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      NPSAmount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [40],
+    name: &quot;Interest FirstTime Home Buyer Declaration&quot;,
+    field: {
+      SanctionDate: [null],
+
+      PossessionDate: [null],
+      ResiHomeValue: [&#x27;&#x27;, Validators.max(4500000)],
+
+      LoanSanctioned: [&#x27;&#x27;, Validators.max(3500000)],
+      InterestPaid: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(50000)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [12, 13],
+    name: &quot;Medical Eighty D Declaration&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      CompanyName: [&#x27;&#x27;],
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      PolicyNo: [&#x27;&#x27;],
+
+      PolicyAmount: [null],
+
+      Premium: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(5000)])
+      ],
+
+      Age: [&#x27;&#x27;, Validators.compose([Validators.min(1)])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [8],
+    name: &quot;MedicalEightyDSelfNonSenior&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      CompanyName: [&#x27;&#x27;],
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      PolicyNo: [&#x27;&#x27;],
+
+      PolicyAmount: [null],
+
+      Premium: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(25000)])
+      ],
+
+      Age: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.max(59), Validators.min(1)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [9],
+    name: &quot;MedicalEightyDSelfSenior&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      CompanyName: [&#x27;&#x27;],
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      PolicyNo: [&#x27;&#x27;],
+
+      PolicyAmount: [null],
+
+      Premium: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(50000)])
+      ],
+
+      Age: [&#x27;&#x27;, Validators.compose([Validators.min(60)])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [11],
+    name: &quot;MedicalEightyDParentSenior&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      CompanyName: [&#x27;&#x27;],
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      PolicyNo: [&#x27;&#x27;],
+
+      PolicyAmount: [null],
+
+      Premium: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(50000)])
+      ],
+
+      Age: [&#x27;&#x27;, Validators.compose([Validators.min(60)])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [10],
+    name: &quot;MedicalEightyDParentNonSenior&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      CompanyName: [&#x27;&#x27;],
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      PolicyNo: [&#x27;&#x27;],
+
+      PolicyAmount: [null],
+
+      Premium: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(25000)])
+      ],
+
+      Age: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.max(59), Validators.min(1)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [1],
+    name: &quot;Taxable Income From Previous Employer&#x27;&quot;,
+    field: {
+      SalaryUS17: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      ExemptionsUS10: [&#x27;&#x27;],
+
+      ProfessionalTax: [&#x27;&#x27;],
+
+      PF: [&#x27;&#x27;],
+
+      IncomeTaxDeducted: [&#x27;&#x27;],
+
+      MedicalExemption: [&#x27;&#x27;],
+
+      LTAExemptions: [&#x27;&#x27;],
+
+      LTACarriedForward: [&#x27;&#x27;],
+
+      LeaveEncashmentExmp: [&#x27;&#x27;],
+
+      GratuityExemption: [&#x27;&#x27;],
+
+      VRSExemption: [&#x27;&#x27;],
+
+      PerquisiteUS17: [&#x27;&#x27;],
+
+      SurchargeDeducted: [&#x27;&#x27;],
+
+      EduCessDeducted: [&#x27;&#x27;],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [7],
+    name: &quot;Income Other Sources  Declaration&quot;,
+    field: {
+      BusinessProfit: [&#x27;&#x27;],
+
+      LTNormal: [&#x27;&#x27;],
+
+      LTSpecial: [&#x27;&#x27;],
+
+      DividentIncome: [&#x27;&#x27;],
+
+      STGain: [&#x27;&#x27;],
+
+      OtherIncome: [&#x27;&#x27;],
+
+      TDSOnOtherIncome: [&#x27;&#x27;],
+
+      TotalInterestInc: [&#x27;&#x27;],
+
+      NCSInterest: [&#x27;&#x27;],
+
+      SAVBankInterest: [&#x27;&#x27;],
+
+      OtherInterest: [&#x27;&#x27;],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [16],
+    name: &quot;Dependent Disability  Declaration&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DependentName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      HospitalName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      HandicapCertNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(75000)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [17],
+    name: &quot;DependentSeverDisabilityformControlFields&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DependentName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      HospitalName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      HandicapCertNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(125000)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [21],
+    name: &quot;Medical Treatment Declaration senior&quot;,
+    field: {
+      Relation: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PatientName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Age: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.min(1)])
+      ],
+
+      SufferingFrom: [&#x27;&#x27;],
+
+      ReceiptDate: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(100000)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [22],
+    name: &quot;MedicalTreatmentNonSenior&quot;,
+    field: {
+      Relation: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PatientName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Age: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.min(1)])
+      ],
+
+      SufferingFrom: [&#x27;&#x27;],
+
+      ReceiptDate: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(40000)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [18],
+    name: &quot;Loan for higher education Declaration&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Name: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      NameofLender: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [6],
+    name: &quot;Income from House Property Declaration&quot;,
+    field: {
+      Type: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      HouseCoOwner: [false],
+      RentReceivedAnnually: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      MunicipalTaxes: [&#x27;&#x27;],
+
+      NetAnnualValue: [&#x27;&#x27;],
+
+      StatutoryDeduction: [&#x27;&#x27;],
+      AnnualLettableValueRentAmount: [&#x27;&#x27;],
+      InterestBorrowedCapital: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      PreEMIInterestValue: [&#x27;&#x27;],
+
+      NetIncomeHouseProperty: [&#x27;&#x27;],
+
+      LenderType: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      LendersName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      LendersPAN: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      LendersAddress: [&#x27;&#x27;],
+      PossessionDate: [&#x27;&#x27;],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  }
+  ]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/commonArray.ts:12</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="http"></a>
+                        <span class="name">
+                            <b>
+                            http</b>
+                            <a href="#http"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/commonArray.ts:11</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="schemeId"></a>
+                        <span class="name">
+                            <b>
+                            schemeId</b>
+                            <a href="#schemeId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/services/commonArray.ts:10</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFormControlFields"></a>
+                    <span class="name">
+                        <b>
+                            getFormControlFields
+                        </b>
+                        <a href="#getFormControlFields"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getFormControlFields()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="636"
+                            class="link-to-prism">src/app/services/commonArray.ts:636</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSchemeDetails"></a>
+                    <span class="name">
+                        <b>
+                            getSchemeDetails
+                        </b>
+                        <a href="#getSchemeDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSchemeDetails(callback)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="625"
+                            class="link-to-prism">src/app/services/commonArray.ts:625</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>callback</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Validators } from &#x27;@angular/forms&#x27;;
+import { CommonService } from &#x27;./common.service&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+export interface PincodeArray {
+  Pincode: any,
+  City: any,
+  Ismetro: boolean
+}
+export class FilterDetails {
+  schemeId: number;
+  http: any;
+  formControlField &#x3D; [{
+    schemeId: [25],
+    name: &quot;LIC&quot;,
+    fields: {
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      PaymentDate: [null],
+      PolicyDate: [&#x27;&#x27;],
+      PolicyNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      PolicyAmount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Premium: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [27],
+    name: &quot;ULIP&quot;,
+    field: {
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      PaymentDate: [null],
+      PolicyNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      PolicyAmount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Premium: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      Remarks: [&#x27;&#x27;],
+      PolicyDate: [&#x27;&#x27;]
+    },
+  },
+  {
+    schemeId: [2],
+    name: &quot;HRA&quot;,
+    field: {
+      FromDate: [null, Validators.compose([Validators.required])],
+
+      ToDate: [null, Validators.compose([Validators.required])],
+
+      RentPerMonth: [null, Validators.compose([Validators.required])],
+
+      LandLordName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      // LandLordPanNo: [&#x27;&#x27;, Validators.compose([Validators.required, Validators.pattern(/[A-Z]{5}[0-9]{4}[A-Z]{1}/)])],
+      LandLordPanNo: [&#x27;&#x27;],
+
+      LandLordPincode: [
+        null,
+        Validators.compose([Validators.required, Validators.pattern(&#x27;^[0-9]{6,6}$&#x27;)])
+      ],
+
+      LandLordAddress: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      // Validators.pattern(&#x27;/[A-Z]{5}\d{4}[A-Z]{1}/i&#x27;)
+
+      Address: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Pincode: [
+        null,
+        Validators.compose([Validators.required, Validators.pattern(&#x27;^[0-9]{6,6}$&#x27;)])
+      ],
+
+      City: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      HousingType: [&#x27;Rent&#x27;],
+
+      IsMetroCity: [{
+        value: &#x27;&#x27;,
+        disabled: true
+      }, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [28],
+    name: &quot;PPF Declaration&quot;,
+    field: {
+      // tslint:disable-next-line: max-line-length
+
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      AccountHolderName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      PFAccountNo: [&#x27;&#x27;],
+
+      BankPostOfficeName: [&#x27;&#x27;],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [29],
+    name: &quot;NSC Declaration&quot;,
+    field: {
+      AccountHolderName: [&#x27;&#x27;],
+
+      CertificateNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DateOfIssue: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Denomination: [&#x27;&#x27;],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [35, 36],
+    name: &quot;Child Tuition Fee Declaration&quot;,
+    field: {
+      NameOfInstitution: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      ChildName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DateOfPayment: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      ReceiptNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [31],
+    name: &quot;Housing Loan Declaration&quot;,
+    field: {
+      LoanTakenDate: [null],
+
+      NameOfLender: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      RepaymentOfPrincipalAmount: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      StampDuty: [&#x27;&#x27;],
+
+      Total: [&#x27;&#x27;],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [20, 32],
+    name: &quot;Notified Mutual Fund Declaration&quot;,
+    field: {
+      DepositerName: [&#x27;&#x27;],
+
+      NameOfMutualFund: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DetailsOfPayment: [&#x27;&#x27;],
+
+      CertificateApplicationNo: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      DateOfPaymentBankDebit: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [37],
+    name: &quot;Sukanya Samiriddhi Scheme&quot;,
+    field: {
+      DepositerName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DaughterName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      CertificateNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [38],
+    name: &quot;Post Office Deposit Declaration&quot;,
+    field: {
+      InvestorName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PostOfficeName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      FDRNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      DateOfBankDebit: [null],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [39],
+    name: &quot;Scheduled Bank Fixed Deposit Declaration&quot;,
+    field: {
+      InvestorName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      BankName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      FDRNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      DateOfBankDebit: [null],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [19],
+    name: &quot;Certain Pension Fund Declaration&quot;,
+    field: {
+      CompanyName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      EmployeeName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      PRANNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      NPSAmount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [40],
+    name: &quot;Interest FirstTime Home Buyer Declaration&quot;,
+    field: {
+      SanctionDate: [null],
+
+      PossessionDate: [null],
+      ResiHomeValue: [&#x27;&#x27;, Validators.max(4500000)],
+
+      LoanSanctioned: [&#x27;&#x27;, Validators.max(3500000)],
+      InterestPaid: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(50000)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [12, 13],
+    name: &quot;Medical Eighty D Declaration&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      CompanyName: [&#x27;&#x27;],
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      PolicyNo: [&#x27;&#x27;],
+
+      PolicyAmount: [null],
+
+      Premium: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(5000)])
+      ],
+
+      Age: [&#x27;&#x27;, Validators.compose([Validators.min(1)])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [8],
+    name: &quot;MedicalEightyDSelfNonSenior&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      CompanyName: [&#x27;&#x27;],
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      PolicyNo: [&#x27;&#x27;],
+
+      PolicyAmount: [null],
+
+      Premium: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(25000)])
+      ],
+
+      Age: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.max(59), Validators.min(1)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [9],
+    name: &quot;MedicalEightyDSelfSenior&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      CompanyName: [&#x27;&#x27;],
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      PolicyNo: [&#x27;&#x27;],
+
+      PolicyAmount: [null],
+
+      Premium: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(50000)])
+      ],
+
+      Age: [&#x27;&#x27;, Validators.compose([Validators.min(60)])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [11],
+    name: &quot;MedicalEightyDParentSenior&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      CompanyName: [&#x27;&#x27;],
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      PolicyNo: [&#x27;&#x27;],
+
+      PolicyAmount: [null],
+
+      Premium: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(50000)])
+      ],
+
+      Age: [&#x27;&#x27;, Validators.compose([Validators.min(60)])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [10],
+    name: &quot;MedicalEightyDParentNonSenior&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      CompanyName: [&#x27;&#x27;],
+      PaymentDate: [null, Validators.compose([Validators.required])],
+
+      ChequeNo: [&#x27;&#x27;],
+
+      PolicyNo: [&#x27;&#x27;],
+
+      PolicyAmount: [null],
+
+      Premium: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(25000)])
+      ],
+
+      Age: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.max(59), Validators.min(1)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [1],
+    name: &quot;Taxable Income From Previous Employer&#x27;&quot;,
+    field: {
+      SalaryUS17: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      ExemptionsUS10: [&#x27;&#x27;],
+
+      ProfessionalTax: [&#x27;&#x27;],
+
+      PF: [&#x27;&#x27;],
+
+      IncomeTaxDeducted: [&#x27;&#x27;],
+
+      MedicalExemption: [&#x27;&#x27;],
+
+      LTAExemptions: [&#x27;&#x27;],
+
+      LTACarriedForward: [&#x27;&#x27;],
+
+      LeaveEncashmentExmp: [&#x27;&#x27;],
+
+      GratuityExemption: [&#x27;&#x27;],
+
+      VRSExemption: [&#x27;&#x27;],
+
+      PerquisiteUS17: [&#x27;&#x27;],
+
+      SurchargeDeducted: [&#x27;&#x27;],
+
+      EduCessDeducted: [&#x27;&#x27;],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [7],
+    name: &quot;Income Other Sources  Declaration&quot;,
+    field: {
+      BusinessProfit: [&#x27;&#x27;],
+
+      LTNormal: [&#x27;&#x27;],
+
+      LTSpecial: [&#x27;&#x27;],
+
+      DividentIncome: [&#x27;&#x27;],
+
+      STGain: [&#x27;&#x27;],
+
+      OtherIncome: [&#x27;&#x27;],
+
+      TDSOnOtherIncome: [&#x27;&#x27;],
+
+      TotalInterestInc: [&#x27;&#x27;],
+
+      NCSInterest: [&#x27;&#x27;],
+
+      SAVBankInterest: [&#x27;&#x27;],
+
+      OtherInterest: [&#x27;&#x27;],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [16],
+    name: &quot;Dependent Disability  Declaration&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DependentName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      HospitalName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      HandicapCertNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(75000)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [17],
+    name: &quot;DependentSeverDisabilityformControlFields&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      DependentName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      HospitalName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      HandicapCertNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(125000)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [21],
+    name: &quot;Medical Treatment Declaration senior&quot;,
+    field: {
+      Relation: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PatientName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Age: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.min(1)])
+      ],
+
+      SufferingFrom: [&#x27;&#x27;],
+
+      ReceiptDate: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(100000)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [22],
+    name: &quot;MedicalTreatmentNonSenior&quot;,
+    field: {
+      Relation: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      PatientName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Age: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.min(1)])
+      ],
+
+      SufferingFrom: [&#x27;&#x27;],
+
+      ReceiptDate: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required, Validators.max(40000)])
+      ],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [18],
+    name: &quot;Loan for higher education Declaration&quot;,
+    field: {
+      Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Name: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      NameofLender: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  },
+  {
+    schemeId: [6],
+    name: &quot;Income from House Property Declaration&quot;,
+    field: {
+      Type: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      HouseCoOwner: [false],
+      RentReceivedAnnually: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      MunicipalTaxes: [&#x27;&#x27;],
+
+      NetAnnualValue: [&#x27;&#x27;],
+
+      StatutoryDeduction: [&#x27;&#x27;],
+      AnnualLettableValueRentAmount: [&#x27;&#x27;],
+      InterestBorrowedCapital: [
+        &#x27;&#x27;,
+        Validators.compose([Validators.required])
+      ],
+
+      PreEMIInterestValue: [&#x27;&#x27;],
+
+      NetIncomeHouseProperty: [&#x27;&#x27;],
+
+      LenderType: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+      LendersName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      LendersPAN: [&#x27;&#x27;, Validators.compose([Validators.required])],
+      LendersAddress: [&#x27;&#x27;],
+      PossessionDate: [&#x27;&#x27;],
+
+      Remarks: [&#x27;&#x27;]
+    }
+  }
+  ]
+
+  constructor(schemeId, http) {
+    this.schemeId &#x3D; schemeId;
+    this.http &#x3D; http;
+  }
+
+  getSchemeDetails(callback) {
+    this.http.get(&#x27;assets/data/form-details.json&#x27;).subscribe((data: any[])&#x3D;&gt;{
+
+       const schemeDetails &#x3D; data.slice();
+        const scheme &#x3D; schemeDetails.find((scheme) &#x3D;&gt; {
+          return scheme.schemeId.includes(this.schemeId);
+        });
+        callback(scheme || null);
+      });
+  }
+
+  getFormControlFields() {
+    const formFields &#x3D; this.formControlField.find(f &#x3D;&gt; {
+      return f.schemeId.includes(this.schemeId);
+    });
+    return formFields || null;
+  }
+}
+
+export class CommonArray {
+  public static LICmodalHeader &#x3D; &#x27;LIC Declaration&#x27;;
+  public static LIC &#x3D; [{
+    id: 1,
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;self&#x27;,
+      label: &#x27;Self&#x27;
+    },
+    {
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    }
+    ]
+  },
+  {
+    id: 2,
+    label: &#x27;Name Of Assured&#x27;,
+    name: &#x27;NameOfAssured&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    id: 3,
+    label: &#x27;Premium Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    id: 8,
+    label: &#x27;Policy Date&#x27;,
+    name: &#x27;PolicyDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    id: 4,
+    label: &#x27;Policy No&#x27;,
+    name: &#x27;PolicyNo&#x27;,
+    type: &#x27;text&#x27;,
+    isRequired: true
+  },
+  {
+    id: 5,
+    label: &#x27;Sum Assured&#x27;,
+    name: &#x27;PolicyAmount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    id: 6,
+    label: &#x27;Premium paid&#x27;,
+    name: &#x27;Premium&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    id: 7,
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static ULIP &#x3D; [{
+    id: 1,
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;self&#x27;,
+      label: &#x27;Self&#x27;
+    },
+    {
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    }
+    ]
+  },
+  {
+    id: 2,
+    label: &#x27;Name Of Assured&#x27;,
+    name: &#x27;NameOfAssured&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    id: 3,
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    id: 4,
+    label: &#x27;Policy No&#x27;,
+    name: &#x27;PolicyNo&#x27;,
+    type: &#x27;text&#x27;,
+    isRequired: true
+  },
+  {
+    id: 5,
+    label: &#x27;Sum Assured&#x27;,
+    name: &#x27;PolicyAmount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    id: 6,
+    label: &#x27;Premium Amount&#x27;,
+    name: &#x27;Premium&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    id: 7,
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static LICformControlFields &#x3D; {
+    NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    PaymentDate: [null, Validators.compose([Validators.required])],
+    PolicyDate: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    PolicyNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    PolicyAmount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    Premium: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static ULIPformControlFields &#x3D; {
+    NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    PaymentDate: [null],
+    PolicyNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    PolicyAmount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    Premium: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    Remarks: [&#x27;&#x27;],
+    PolicyDate: [&#x27;&#x27;]
+  };
+
+  public static HRAmodalHeader &#x3D; &#x27;HRA Declaration&#x27;;
+  public static HRA &#x3D; [{
+    id: 1,
+    label: &#x27;From Date&#x27;,
+    name: &#x27;FromDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    id: 2,
+    label: &#x27;To Date&#x27;,
+    name: &#x27;ToDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    id: 3,
+    label: &#x27;Monthly Rent Amount&#x27;,
+    name: &#x27;RentPerMonth&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    id: 4,
+    label: &#x27;Landlord Name&#x27;,
+    name: &#x27;LandLordName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    onlyChar: true,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    id: 5,
+    label: &#x27;LL PAN No&#x27;,
+    name: &#x27;LandLordPanNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    id: 6,
+    label: &#x27;Landlord Pincode&#x27;,
+    name: &#x27;LandLordPincode&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: true
+  },
+  {
+    id: 7,
+    label: &#x27;Landlord Address&#x27;,
+    name: &#x27;LandLordAddress&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    id: 8,
+    label: &#x27;Rental Address&#x27;,
+    name: &#x27;Address&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    id: 9,
+    label: &#x27;Rental Pincode&#x27;,
+    name: &#x27;Pincode&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: true
+  },
+  {
+    id: 10,
+    label: &#x27;Rental City&#x27;,
+    name: &#x27;City&#x27;,
+    type: &#x27;select&#x27;,
+    options: [{
+      value: &#x27;Mumbai&#x27;,
+      label: &#x27;Mumbai&#x27;
+    },
+    {
+      value: &#x27;Delhi&#x27;,
+      label: &#x27;Delhi&#x27;
+    },
+    {
+      value: &#x27;Kolkata&#x27;,
+      label: &#x27;Kolkata&#x27;
+    },
+    {
+      value: &#x27;Chennai&#x27;,
+      label: &#x27;Chennai&#x27;
+    },
+    {
+      value: &#x27;Other&#x27;,
+      label: &#x27;Other&#x27;
+    }
+    ],
+    isRequired: true
+  },
+  {
+    id: 11,
+    label: &#x27;Housing Type&#x27;,
+    name: &#x27;HousingType&#x27;,
+    type: &#x27;select&#x27;,
+    isRequired: false,
+    options: [{
+      value: &#x27;Rent&#x27;,
+      label: &#x27;Rented Accom.&#x27;
+    },
+    {
+      value: &#x27;Company_lease_old&#x27;,
+      label: &#x27;Company Leased(Old)&#x27;
+    },
+    {
+      value: &#x27;Company_owned_old&#x27;,
+      label: &#x27;Company Owned(Old)&#x27;
+    },
+    {
+      value: &#x27;Own&#x27;,
+      label: &#x27;Owned Accom(Old)&#x27;
+    }
+    ]
+  },
+  {
+    id: 12,
+    label: &#x27;City Category&#x27;,
+    name: &#x27;IsMetroCity&#x27;,
+    type: &#x27;select&#x27;,
+    isRequired: true,
+    options: [{
+      value: true,
+      label: &#x27;Metro&#x27;
+    },
+    {
+      value: false,
+      label: &#x27;Non Metro&#x27;
+    }
+    ]
+  },
+  {
+    id: 12,
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static HRAformControlFields &#x3D; {
+    FromDate: [null, Validators.compose([Validators.required])],
+
+    ToDate: [null, Validators.compose([Validators.required])],
+
+    RentPerMonth: [null, Validators.compose([Validators.required])],
+
+    LandLordName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    // LandLordPanNo: [&#x27;&#x27;, Validators.compose([Validators.required, Validators.pattern(/[A-Z]{5}[0-9]{4}[A-Z]{1}/)])],
+    LandLordPanNo: [&#x27;&#x27;],
+
+    LandLordPincode: [
+      null,
+      Validators.compose([Validators.required, Validators.pattern(&#x27;^[0-9]{6,6}$&#x27;)])
+    ],
+
+    LandLordAddress: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    // Validators.pattern(&#x27;/[A-Z]{5}\d{4}[A-Z]{1}/i&#x27;)
+
+    Address: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Pincode: [
+      null,
+      Validators.compose([Validators.required, Validators.pattern(&#x27;^[0-9]{6,6}$&#x27;)])
+    ],
+
+    City: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required])
+    ],
+
+    HousingType: [&#x27;Rent&#x27;],
+
+    IsMetroCity: [{
+      value: &#x27;&#x27;,
+      disabled: true
+    }, Validators.compose([Validators.required])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static PPFmodalHeader &#x3D; &#x27;PPF Declaration&#x27;;
+  public static PPF &#x3D; [{
+    id: 2,
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;self&#x27;,
+      label: &#x27;Self&#x27;
+    },
+    {
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    }
+    ]
+  },
+  {
+    id: 1,
+    label: &#x27;Account holder name &#x27;,
+    name: &#x27;AccountHolderName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    onlyChar: true,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    id: 3,
+    label: &#x27;Payment Date &#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    id: 4,
+    label: &#x27;PF Account No &#x27;,
+    name: &#x27;PFAccountNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 17,
+    isRequired: false
+  },
+  {
+    id: 5,
+    label: &#x27;Financial Intitution Type&#x27;,
+    name: &#x27;BankPostOfficeName&#x27;,
+    type: &#x27;select&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;Bank&#x27;,
+      label: &#x27;Bank&#x27;
+    },
+    {
+      value: &#x27;Post Office&#x27;,
+      label: &#x27;PO&#x27;
+    },
+    {
+      value: &#x27;Registered Transfer Agent&#x27;,
+      label: &#x27;RTA&#x27;
+    }
+    ]
+  },
+  {
+    id: 6,
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    id: 7,
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static PPFformControlFields &#x3D; {
+    // tslint:disable-next-line: max-line-length
+
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    AccountHolderName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    PaymentDate: [null, Validators.compose([Validators.required])],
+
+    PFAccountNo: [&#x27;&#x27;],
+
+    BankPostOfficeName: [&#x27;&#x27;],
+
+    Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static NSCmodalHeader &#x3D; &#x27;NSC Declaration&#x27;;
+  public static NSC &#x3D; [{
+    label: &#x27;Account holder name&#x27;,
+    name: &#x27;AccountHolderName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    onlyChar: true,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Certificate No&#x27;,
+    name: &#x27;CertificateNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Date Of Issue&#x27;,
+    name: &#x27;DateOfIssue&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Denomination&#x27;,
+    name: &#x27;Denomination&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static NSCformControlFields &#x3D; {
+    AccountHolderName: [&#x27;&#x27;],
+
+    CertificateNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    DateOfIssue: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Denomination: [&#x27;&#x27;],
+
+    Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static ChildTuitionFeemodalHeader &#x3D;
+    &#x27;Child Tuition Fee Declaration&#x27;;
+  public static ChildTuitionFee &#x3D; [{
+    label: &#x27;Name Of Institution&#x27;,
+    name: &#x27;NameOfInstitution&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Child Name&#x27;,
+    name: &#x27;ChildName&#x27;,
+    type: &#x27;select&#x27;,
+
+    isRequired: true,
+    options: []
+  },
+  {
+    label: &#x27;Date Of Payment&#x27;,
+    name: &#x27;DateOfPayment&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Receipt No&#x27;,
+    name: &#x27;ReceiptNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static ChildTuitionFeeformControlFields &#x3D; {
+    NameOfInstitution: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    ChildName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    DateOfPayment: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    ReceiptNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static HousingLoanmodalHeader &#x3D; &#x27;Housing Loan Declaration&#x27;;
+  public static HousingLoan &#x3D; [{
+    label: &#x27;Possession date&#x27;,
+    name: &#x27;LoanTakenDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: false
+  },
+  {
+    label: &#x27;Name Of Lender&#x27;,
+    name: &#x27;NameOfLender&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: true
+  },
+
+  {
+    label: &#x27;Repayment Of Principal Amount&#x27;,
+    name: &#x27;RepaymentOfPrincipalAmount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Registration Fees/Stamp Duty&#x27;,
+    name: &#x27;StampDuty&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Total&#x27;,
+    name: &#x27;Total&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static HousingLoanformControlFields &#x3D; {
+    LoanTakenDate: [null],
+
+    NameOfLender: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    RepaymentOfPrincipalAmount: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required])
+    ],
+
+    StampDuty: [&#x27;&#x27;],
+
+    Total: [&#x27;&#x27;],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static NotifiedMutualFundmodalHeader &#x3D;
+    &#x27;Mutual Fund Declaration&#x27;;
+  public static NotifiedMutualFund &#x3D; [{
+    label: &#x27;Depositer Name&#x27;,
+    name: &#x27;DepositerName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: false
+  },
+  {
+    label: &#x27;Name Of Mutual Fund&#x27;,
+    name: &#x27;NameOfMutualFund&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Details Of Payment&#x27;,
+    name: &#x27;DetailsOfPayment&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Certificate Application No&#x27;,
+    name: &#x27;CertificateApplicationNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Cheque No&#x27;,
+    name: &#x27;ChequeNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: false
+  },
+  {
+    label: &#x27;Date Of Payment/Debit date&#x27;,
+    name: &#x27;DateOfPaymentBankDebit&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static NotifiedPensionFund &#x3D; [{
+    label: &#x27;Depositer Name&#x27;,
+    name: &#x27;DepositerName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: false
+  },
+  {
+    label: &#x27;Name Of Pension Fund&#x27;,
+    name: &#x27;NameOfMutualFund&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Details Of Payment&#x27;,
+    name: &#x27;DetailsOfPayment&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Certificate Application No&#x27;,
+    name: &#x27;CertificateApplicationNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Cheque No&#x27;,
+    name: &#x27;ChequeNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: false
+  },
+  {
+    label: &#x27;Date Of Payment/Debit date&#x27;,
+    name: &#x27;DateOfPaymentBankDebit&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static NotifiedMutualFundformControlFields &#x3D; {
+    DepositerName: [&#x27;&#x27;],
+
+    NameOfMutualFund: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    DetailsOfPayment: [&#x27;&#x27;],
+
+    CertificateApplicationNo: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required])
+    ],
+
+    ChequeNo: [&#x27;&#x27;],
+
+    DateOfPaymentBankDebit: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required])
+    ],
+
+    Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static SukanyaSamriddhiSchememodalHeader &#x3D;
+    &#x27;Sukanya Samiriddhi Scheme&#x27;;
+  public static SukanyaSamriddhiScheme &#x3D; [{
+    label: &#x27;Depositer Name&#x27;,
+    name: &#x27;DepositerName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: true
+  },
+  {
+    label: &#x27;Daughter Name&#x27;,
+    name: &#x27;DaughterName&#x27;,
+    type: &#x27;select&#x27;,
+
+    isRequired: true,
+    options: []
+  },
+
+  {
+    label: &#x27;Certificate No&#x27;,
+    name: &#x27;CertificateNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static SukanyaSamriddhiSchemeformControlFields &#x3D; {
+    DepositerName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    DaughterName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    CertificateNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    PaymentDate: [null, Validators.compose([Validators.required])],
+
+    Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static PostOfficeDepositmodalHeader &#x3D;
+    &#x27;Post Office Deposit Declaration&#x27;;
+  public static PostOfficeDeposit &#x3D; [{
+    label: &#x27;Investor Name &#x27;,
+    name: &#x27;InvestorName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: false
+  },
+  {
+    label: &#x27;PostOffice Name&#x27;,
+    name: &#x27;PostOfficeName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;FDR No&#x27;,
+    name: &#x27;FDRNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Cheque No&#x27;,
+    name: &#x27;ChequeNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: false
+  },
+  {
+    label: &#x27;Date Of Bank Debit&#x27;,
+    name: &#x27;DateOfBankDebit&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: false
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static PostOfficeDepositformControlFields &#x3D; {
+    InvestorName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    PostOfficeName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    FDRNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    PaymentDate: [null, Validators.compose([Validators.required])],
+
+    ChequeNo: [&#x27;&#x27;],
+
+    DateOfBankDebit: [null],
+
+    Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static ScheduledBankDepositmodalHeader &#x3D;
+    &#x27;Scheduled Bank Fixed Deposit Declaration&#x27;;
+  public static ScheduledBankDeposit &#x3D; [{
+    label: &#x27;Investor Name &#x27;,
+    name: &#x27;InvestorName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: true
+  },
+  {
+    label: &#x27;Bank Name&#x27;,
+    name: &#x27;BankName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    onlyChar: true,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;FDR No&#x27;,
+    name: &#x27;FDRNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Cheque No&#x27;,
+    name: &#x27;ChequeNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: false
+  },
+  {
+    label: &#x27;Date Of Bank Debit&#x27;,
+    name: &#x27;DateOfBankDebit&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: false
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static ScheduledBankDepositformControlFields &#x3D; {
+    InvestorName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    BankName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    FDRNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    PaymentDate: [null, Validators.compose([Validators.required])],
+
+    ChequeNo: [&#x27;&#x27;],
+
+    DateOfBankDebit: [null],
+
+    Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static CertainPensionFundsmodalHeader &#x3D;
+    &#x27;Certain Pension Fund Declaration&#x27;;
+  public static CertainPensionFunds &#x3D; [{
+    label: &#x27;Company Name&#x27;,
+    name: &#x27;CompanyName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    onlyChar: true,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Employee Name&#x27;,
+    name: &#x27;EmployeeName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    onlyChar: true,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;PRAN No&#x27;,
+    name: &#x27;PRANNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;NPS Amount&#x27;,
+    name: &#x27;NPSAmount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static CertainPensionFundsformControlFields &#x3D; {
+    CompanyName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    EmployeeName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    PaymentDate: [null, Validators.compose([Validators.required])],
+
+    PRANNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    NPSAmount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static InterestFirstTimeHomeBuyermodalHeader &#x3D;
+    &#x27;Interest FirstTime Home Buyer Declaration&#x27;;
+  public static InterestFirstTimeHomeBuyer &#x3D; [{
+    label: &#x27;Sanction Date&#x27;,
+    name: &#x27;SanctionDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: false
+  },
+  {
+    label: &#x27;Possession Date&#x27;,
+    name: &#x27;PossessionDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: false
+  },
+  {
+    label: &#x27;Resi Home Value&#x27;,
+    name: &#x27;ResiHomeValue&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxValue: &#x27;45,00,000&#x27;,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Amount of loan sanctioned&#x27;,
+    name: &#x27;LoanSanctioned&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    maxValue: &#x27;35,00,000&#x27;,
+    isRequired: false
+  },
+  {
+    label: &#x27;Interest Paid&#x27;,
+    name: &#x27;InterestPaid&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    maxValue: &#x27;1,50,000&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static InterestFirstTimeHomeBuyerformControlFields &#x3D; {
+    SanctionDate: [null],
+
+    PossessionDate: [null],
+    ResiHomeValue: [&#x27;&#x27;, Validators.max(4500000)],
+
+    LoanSanctioned: [&#x27;&#x27;, Validators.max(3500000)],
+    InterestPaid: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.max(150000)])
+    ],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static MedicalEightyDmodalHeader &#x3D;
+    &#x27;Medical Eighty D Declaration&#x27;;
+  public static MedicalEightyDSelf &#x3D; [{
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;self&#x27;,
+      label: &#x27;Self&#x27;
+    },
+    {
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Name Of Assured&#x27;,
+    name: &#x27;NameOfAssured&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Company Name&#x27;,
+    name: &#x27;CompanyName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: false
+  },
+
+  {
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Cheque No&#x27;,
+    name: &#x27;ChequeNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: false
+  },
+  {
+    label: &#x27;Policy No&#x27;,
+    name: &#x27;PolicyNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Sum Assured&#x27;,
+    name: &#x27;PolicyAmount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Premium Amount&#x27;,
+    name: &#x27;Premium&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    maxValue: 5000,
+    isRequired: true
+  },
+  {
+    label: &#x27;Age&#x27;,
+    name: &#x27;Age&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 3,
+    minValue: 1,
+    isRequired: false
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+  public static MedicalEightyDParents &#x3D; [{
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;mother&#x27;,
+      label: &#x27;Mother&#x27;
+    },
+    {
+      value: &#x27;father&#x27;,
+      label: &#x27;Father&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Name Of Assured&#x27;,
+    name: &#x27;NameOfAssured&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Company Name&#x27;,
+    name: &#x27;CompanyName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: false
+  },
+
+  {
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Cheque No&#x27;,
+    name: &#x27;ChequeNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: false
+  },
+  {
+    label: &#x27;Policy No&#x27;,
+    name: &#x27;PolicyNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Sum Assured&#x27;,
+    name: &#x27;PolicyAmount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Premium Amount&#x27;,
+    name: &#x27;Premium&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    maxValue: 5000,
+    isRequired: true
+  },
+  {
+    label: &#x27;Age&#x27;,
+    name: &#x27;Age&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 3,
+    minValue: 1,
+    isRequired: false
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static MedicalEightyDSelfNonSenior &#x3D; [{
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;self&#x27;,
+      label: &#x27;Self&#x27;
+    },
+    {
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Name Of Assured&#x27;,
+    name: &#x27;NameOfAssured&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Company Name&#x27;,
+    name: &#x27;CompanyName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: false
+  },
+
+  {
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Cheque No&#x27;,
+    name: &#x27;ChequeNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: false
+  },
+  {
+    label: &#x27;Policy No&#x27;,
+    name: &#x27;PolicyNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Sum Assured&#x27;,
+    name: &#x27;PolicyAmount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Premium Amount&#x27;,
+    name: &#x27;Premium&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    maxValue: &#x27;25,000&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Age&#x27;,
+    name: &#x27;Age&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 3,
+    maxValue: 60,
+    minValue: 1,
+    isRequired: false
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static MedicalEightyDSelfSenior &#x3D; [{
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;self&#x27;,
+      label: &#x27;Self&#x27;
+    },
+    {
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Name Of Assured&#x27;,
+    name: &#x27;NameOfAssured&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Company Name&#x27;,
+    name: &#x27;CompanyName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: false
+  },
+
+  {
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Cheque No&#x27;,
+    name: &#x27;ChequeNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: false
+  },
+  {
+    label: &#x27;Policy No&#x27;,
+    name: &#x27;PolicyNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Sum Assured&#x27;,
+    name: &#x27;PolicyAmount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Premium Amount&#x27;,
+    name: &#x27;Premium&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    maxValue: 50000,
+    isRequired: true
+  },
+  {
+    label: &#x27;Age&#x27;,
+    name: &#x27;Age&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 3,
+    minValue: 60,
+    isRequired: false
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static MedicalEightyDParentSenior &#x3D; [{
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;mother&#x27;,
+      label: &#x27;Mother&#x27;
+    },
+    {
+      value: &#x27;father&#x27;,
+      label: &#x27;Father&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Name Of Assured&#x27;,
+    name: &#x27;NameOfAssured&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Company Name&#x27;,
+    name: &#x27;CompanyName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: false
+  },
+
+  {
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Cheque No&#x27;,
+    name: &#x27;ChequeNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: false
+  },
+  {
+    label: &#x27;Policy No&#x27;,
+    name: &#x27;PolicyNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Sum Assured&#x27;,
+    name: &#x27;PolicyAmount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Premium Amount&#x27;,
+    name: &#x27;Premium&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    maxValue: 50000,
+    isRequired: true
+  },
+  {
+    label: &#x27;Age&#x27;,
+    name: &#x27;Age&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 3,
+    minValue: 60,
+    isRequired: false
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static MedicalEightyDParentNonSenior &#x3D; [{
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;mother&#x27;,
+      label: &#x27;Mother&#x27;
+    },
+    {
+      value: &#x27;father&#x27;,
+      label: &#x27;Father&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Name Of Assured&#x27;,
+    name: &#x27;NameOfAssured&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Company Name&#x27;,
+    name: &#x27;CompanyName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: false
+  },
+
+  {
+    label: &#x27;Payment Date&#x27;,
+    name: &#x27;PaymentDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Cheque No&#x27;,
+    name: &#x27;ChequeNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 6,
+    isRequired: false
+  },
+  {
+    label: &#x27;Policy No&#x27;,
+    name: &#x27;PolicyNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Sum Assured&#x27;,
+    name: &#x27;PolicyAmount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Premium Amount&#x27;,
+    name: &#x27;Premium&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    maxValue: 25000,
+    isRequired: true
+  },
+  {
+    label: &#x27;Age&#x27;,
+    name: &#x27;Age&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 3,
+    maxValue: 60,
+    minValue: 1,
+    isRequired: false
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static MedicalEightyDformControlFields &#x3D; {
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    CompanyName: [&#x27;&#x27;],
+    PaymentDate: [null, Validators.compose([Validators.required])],
+
+    ChequeNo: [&#x27;&#x27;],
+
+    PolicyNo: [&#x27;&#x27;],
+
+    PolicyAmount: [null],
+
+    Premium: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.max(5000)])
+    ],
+
+    Age: [&#x27;&#x27;, Validators.compose([Validators.min(1)])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static MedicalEightyDformControlFieldsNonSeniorSelf &#x3D; {
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    CompanyName: [&#x27;&#x27;],
+    PaymentDate: [null, Validators.compose([Validators.required])],
+
+    ChequeNo: [&#x27;&#x27;],
+
+    PolicyNo: [&#x27;&#x27;],
+
+    PolicyAmount: [null],
+
+    Premium: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.max(25000)])
+    ],
+
+    Age: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.max(59), Validators.min(1)])
+    ],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static MedicalEightyDformControlFieldsSeniorSelf &#x3D; {
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    CompanyName: [&#x27;&#x27;],
+    PaymentDate: [null, Validators.compose([Validators.required])],
+
+    ChequeNo: [&#x27;&#x27;],
+
+    PolicyNo: [&#x27;&#x27;],
+
+    PolicyAmount: [null],
+
+    Premium: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.max(50000)])
+    ],
+
+    Age: [&#x27;&#x27;, Validators.compose([Validators.min(60)])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static MedicalEightyDformControlFieldsSeniorParent &#x3D; {
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    CompanyName: [&#x27;&#x27;],
+    PaymentDate: [null, Validators.compose([Validators.required])],
+
+    ChequeNo: [&#x27;&#x27;],
+
+    PolicyNo: [&#x27;&#x27;],
+
+    PolicyAmount: [null],
+
+    Premium: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.max(50000)])
+    ],
+
+    Age: [&#x27;&#x27;, Validators.compose([Validators.min(60)])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static MedicalEightyDformControlFieldsNonSeniorParent &#x3D; {
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    NameOfAssured: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    CompanyName: [&#x27;&#x27;],
+    PaymentDate: [null, Validators.compose([Validators.required])],
+
+    ChequeNo: [&#x27;&#x27;],
+
+    PolicyNo: [&#x27;&#x27;],
+
+    PolicyAmount: [null],
+
+    Premium: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.max(25000)])
+    ],
+
+    Age: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.max(59), Validators.min(1)])
+    ],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static PreviousEmployermodalHeader &#x3D;
+    &#x27;Taxable Income From Previous Employer&#x27;;
+  public static PreviousEmployer &#x3D; [{
+    label: &#x27;Salary US 17 (1)&#x27;,
+    name: &#x27;SalaryUS17&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Exemptions US 10&#x27;,
+    name: &#x27;ExemptionsUS10&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Professional Tax&#x27;,
+    name: &#x27;ProfessionalTax&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;PF&#x27;,
+    name: &#x27;PF&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Income Tax Deducted&#x27;,
+    name: &#x27;IncomeTaxDeducted&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Medical Exemption&#x27;,
+    name: &#x27;MedicalExemption&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;LTA Exemptions&#x27;,
+    name: &#x27;LTAExemptions&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;LTA Carried Forward&#x27;,
+    name: &#x27;LTACarriedForward&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Leave Encashment Exmp&#x27;,
+    name: &#x27;LeaveEncashmentExmp&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Gratuity Exemption&#x27;,
+    name: &#x27;GratuityExemption&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;VRS Exemption&#x27;,
+    name: &#x27;VRSExemption&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Perquisite US 17 (2)&#x27;,
+    name: &#x27;PerquisiteUS17&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Surcharge Deducted&#x27;,
+    name: &#x27;SurchargeDeducted&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;EduCess Deducted&#x27;,
+    name: &#x27;EduCessDeducted&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static PreviousEmployerformControlFields &#x3D; {
+    SalaryUS17: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    ExemptionsUS10: [&#x27;&#x27;],
+
+    ProfessionalTax: [&#x27;&#x27;],
+
+    PF: [&#x27;&#x27;],
+
+    IncomeTaxDeducted: [&#x27;&#x27;],
+
+    MedicalExemption: [&#x27;&#x27;],
+
+    LTAExemptions: [&#x27;&#x27;],
+
+    LTACarriedForward: [&#x27;&#x27;],
+
+    LeaveEncashmentExmp: [&#x27;&#x27;],
+
+    GratuityExemption: [&#x27;&#x27;],
+
+    VRSExemption: [&#x27;&#x27;],
+
+    PerquisiteUS17: [&#x27;&#x27;],
+
+    SurchargeDeducted: [&#x27;&#x27;],
+
+    EduCessDeducted: [&#x27;&#x27;],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static IncomeOtherSourcesmodalHeader &#x3D;
+    &#x27;Income Other Sources  Declaration&#x27;;
+  public static IncomeOtherSources &#x3D; [{
+    label: &#x27;Business Profit &#x27;,
+    name: &#x27;BusinessProfit&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Long Term Normal&#x27;,
+    name: &#x27;LTNormal&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Long Term Special&#x27;,
+    name: &#x27;LTSpecial&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Divident Income&#x27;,
+    name: &#x27;DividentIncome&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Short Term Gain&#x27;,
+    name: &#x27;STGain&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Other Income&#x27;,
+    name: &#x27;OtherIncome&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;TDS On Other Income&#x27;,
+    name: &#x27;TDSOnOtherIncome&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Total Interest Inc&#x27;,
+    name: &#x27;TotalInterestInc&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;NCS Interest&#x27;,
+    name: &#x27;NCSInterest&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Saving Bank Interest&#x27;,
+    name: &#x27;SAVBankInterest&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Other Interest&#x27;,
+    name: &#x27;OtherInterest&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static IncomeOtherSourcesformControlFields &#x3D; {
+    BusinessProfit: [&#x27;&#x27;],
+
+    LTNormal: [&#x27;&#x27;],
+
+    LTSpecial: [&#x27;&#x27;],
+
+    DividentIncome: [&#x27;&#x27;],
+
+    STGain: [&#x27;&#x27;],
+
+    OtherIncome: [&#x27;&#x27;],
+
+    TDSOnOtherIncome: [&#x27;&#x27;],
+
+    TotalInterestInc: [&#x27;&#x27;],
+
+    NCSInterest: [&#x27;&#x27;],
+
+    SAVBankInterest: [&#x27;&#x27;],
+
+    OtherInterest: [&#x27;&#x27;],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static DependentDisabilitymodalHeader &#x3D;
+    &#x27;Dependent Disability  Declaration&#x27;;
+  public static DependentDisability &#x3D; [{
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    },
+    {
+      value: &#x27;mother&#x27;,
+      label: &#x27;Mother&#x27;
+    },
+    {
+      value: &#x27;father&#x27;,
+      label: &#x27;Father&#x27;
+    },
+    {
+      value: &#x27;brother&#x27;,
+      label: &#x27;Brother&#x27;
+    },
+    {
+      value: &#x27;sister&#x27;,
+      label: &#x27;Sister&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Dependent Name &#x27;,
+    name: &#x27;DependentName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: true
+  },
+
+  {
+    label: &#x27;Hospital Name&#x27;,
+    name: &#x27;HospitalName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: false,
+    isRequired: true
+  },
+  {
+    label: &#x27;Handicap Certificate No&#x27;,
+    name: &#x27;HandicapCertNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    maxValue: &#x27;75,000&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static DependentSeverDisability &#x3D; [{
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    },
+    {
+      value: &#x27;mother&#x27;,
+      label: &#x27;Mother&#x27;
+    },
+    {
+      value: &#x27;father&#x27;,
+      label: &#x27;Father&#x27;
+    },
+    {
+      value: &#x27;brother&#x27;,
+      label: &#x27;Brother&#x27;
+    },
+    {
+      value: &#x27;sister&#x27;,
+      label: &#x27;Sister&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Dependent Name &#x27;,
+    name: &#x27;DependentName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: true
+  },
+
+  {
+    label: &#x27;Hospital Name&#x27;,
+    name: &#x27;HospitalName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: false,
+    isRequired: true
+  },
+  {
+    label: &#x27;Handicap Certificate No&#x27;,
+    name: &#x27;HandicapCertNo&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    maxValue: &#x27;1,25,000&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static DependentDisabilityformControlFields &#x3D; {
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    DependentName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    HospitalName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    HandicapCertNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Amount: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.max(75000)])
+    ],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static DependentSeverDisabilityformControlFields &#x3D; {
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    DependentName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    HospitalName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    HandicapCertNo: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Amount: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.max(125000)])
+    ],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static MedicalTreatmentmodalHeader &#x3D;
+    &#x27;Medical Treatment Declaration&#x27;;
+  public static MedicalTreatmentSenior &#x3D; [{
+    label: &#x27;Relation&#x27;,
+    name: &#x27;Relation&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    options: [{
+      value: &#x27;self&#x27;,
+      label: &#x27;Self&#x27;
+    },
+    {
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    },
+    {
+      value: &#x27;mother&#x27;,
+      label: &#x27;Mother&#x27;
+    },
+    {
+      value: &#x27;father&#x27;,
+      label: &#x27;Father&#x27;
+    },
+    {
+      value: &#x27;brother&#x27;,
+      label: &#x27;Brother&#x27;
+    },
+    {
+      value: &#x27;sister&#x27;,
+      label: &#x27;Sister&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Patient Name&#x27;,
+    name: &#x27;PatientName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: true
+  },
+  {
+    label: &#x27;Age&#x27;,
+    name: &#x27;Age&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 3,
+    minValue: 1,
+    isRequired: true
+  },
+
+  {
+    label: &#x27;Suffering From&#x27;,
+    name: &#x27;SufferingFrom&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Receipt Date&#x27;,
+    name: &#x27;ReceiptDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true,
+    maxValue: &#x27;1,00,000&#x27;
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static MedicalTreatmentformControlFieldsSenior &#x3D; {
+    Relation: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    PatientName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Age: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.min(1)])
+    ],
+
+    SufferingFrom: [&#x27;&#x27;],
+
+    ReceiptDate: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Amount: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.max(100000)])
+    ],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static MedicalTreatmentNonSenior &#x3D; [{
+    label: &#x27;Relation&#x27;,
+    name: &#x27;Relation&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    options: [{
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    },
+    {
+      value: &#x27;mother&#x27;,
+      label: &#x27;Mother&#x27;
+    },
+    {
+      value: &#x27;father&#x27;,
+      label: &#x27;Father&#x27;
+    },
+    {
+      value: &#x27;brother&#x27;,
+      label: &#x27;Brother&#x27;
+    },
+    {
+      value: &#x27;sister&#x27;,
+      label: &#x27;Sister&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Patient Name&#x27;,
+    name: &#x27;PatientName&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: true
+  },
+  {
+    label: &#x27;Age&#x27;,
+    name: &#x27;Age&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 3,
+    minValue: 1,
+    isRequired: true
+  },
+
+  {
+    label: &#x27;Suffering From&#x27;,
+    name: &#x27;SufferingFrom&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  },
+  {
+    label: &#x27;Receipt Date&#x27;,
+    name: &#x27;ReceiptDate&#x27;,
+    type: &#x27;date&#x27;,
+    isRequired: true
+  },
+  {
+    label: &#x27;Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true,
+    maxValue: &#x27;40,000&#x27;
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static MedicalTreatmentformControlFieldsNonSenior &#x3D; {
+    Relation: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    PatientName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Age: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.min(1)])
+    ],
+
+    SufferingFrom: [&#x27;&#x27;],
+
+    ReceiptDate: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Amount: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required, Validators.max(40000)])
+    ],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static LoanHigherEducationmodalHeader &#x3D;
+    &#x27;Loan for higher education Declaration&#x27;;
+  public static LoanHigherEducation &#x3D; [{
+    label: &#x27;Relationship&#x27;,
+    name: &#x27;Relationship&#x27;,
+    isRequired: true,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;Self&#x27;,
+      label: &#x27;Self&#x27;
+    },
+    {
+      value: &#x27;child&#x27;,
+      label: &#x27;Child&#x27;
+    },
+    {
+      value: &#x27;spouse&#x27;,
+      label: &#x27;Spouse&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Name&#x27;,
+    name: &#x27;Name&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    onlyChar: true,
+    isRequired: true
+  },
+  {
+    label: &#x27;Name of Lender&#x27;,
+    name: &#x27;NameofLender&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    onlyChar: true,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Interest Amount&#x27;,
+    name: &#x27;Amount&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static LoanHigherEducationformControlFields &#x3D; {
+    Relationship: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Name: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    NameofLender: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Amount: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+  public static IncomeHousePropertymodalHeader &#x3D;
+    &#x27;Income from House Property Declaration&#x27;;
+  public static IncomeHouseProperty &#x3D; [{
+    label: &#x27;Type&#x27;,
+    name: &#x27;Type&#x27;,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;self_property&#x27;,
+      label: &#x27;Self Occupied Property&#x27;
+    },
+    {
+      value: &#x27;letout_property&#x27;,
+      label: &#x27;Let Out Property&#x27;
+    }
+    ],
+    isRequired: true
+  },
+  {
+    label: &#x27;House Co-Owner&#x27;,
+    name: &#x27;HouseCoOwner&#x27;,
+    title: &#x27;Is House Co-Owner Present?&#x27;,
+    editable: &#x27;&#x27;,
+    isRequired: false,
+    type: &#x27;select&#x27;,
+    options: [{
+      value: true,
+      label: &#x27;Yes&#x27;
+    },
+    {
+      value: false,
+      label: &#x27;No&#x27;
+    }
+    ]
+  },
+  {
+    label: &#x27;Rent Received Annually&#x27;,
+    name: &#x27;RentReceivedAnnually&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;self_property&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+
+  {
+    label: &#x27;Municipal Taxes&#x27;,
+    name: &#x27;MunicipalTaxes&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;self_property&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Net Annual Value&#x27;,
+    name: &#x27;NetAnnualValue&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;self_property&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Statutory Deduction&#x27;,
+    name: &#x27;StatutoryDeduction&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;self_property&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Annual Lettable Value Rent Amount&#x27;,
+    name: &#x27;AnnualLettableValueRentAmount&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;self_property&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Interest paid on Borrowing&#x27;,
+    name: &#x27;InterestBorrowedCapital&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Pre EMI Interest Value&#x27;,
+    name: &#x27;PreEMIInterestValue&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;self_property&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Net Income House Property&#x27;,
+    name: &#x27;NetIncomeHouseProperty&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;self_property&#x27;,
+    isNumber: true,
+    maxLength: 10,
+    isRequired: false
+  },
+  {
+    label: &#x27;Lender Type&#x27;,
+    name: &#x27;LenderType&#x27;,
+    type: &#x27;select&#x27;,
+    editable: &#x27;&#x27;,
+    options: [{
+      value: &#x27;FinancialInstitution&#x27;,
+      label: &#x27;Financial Institution&#x27;
+    },
+    {
+      value: &#x27;Employer&#x27;,
+      label: &#x27;Employer&#x27;
+    },
+    {
+      value: &#x27;Others &#x27;,
+      label: &#x27;Others&#x27;
+    }
+    ],
+    isRequired: true
+  },
+  {
+    label: &#x27;Lender\&#x27;s Name&#x27;,
+    name: &#x27;LendersName&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;&#x27;,
+    isNumber: false,
+    onlyChar: true,
+    maxLength: 200,
+    isRequired: true
+  },
+  {
+    label: &#x27;Lender\&#x27;s PAN&#x27;,
+    name: &#x27;LendersPAN&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;&#x27;,
+    maxLength: 10,
+    isRequired: true
+  },
+  {
+    label: &#x27;Lender\&#x27;s Address&#x27;,
+    name: &#x27;LendersAddress&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;&#x27;,
+    isRequired: false
+  },
+  {
+    label: &#x27;Possession Date&#x27;,
+    name: &#x27;PossessionDate&#x27;,
+    type: &#x27;date&#x27;,
+    editable: &#x27;&#x27;,
+    isRequired: true
+  },
+
+  {
+    label: &#x27;Remarks&#x27;,
+    name: &#x27;Remarks&#x27;,
+    type: &#x27;text&#x27;,
+    editable: &#x27;&#x27;,
+    isNumber: false,
+    maxLength: 200,
+    isRequired: false
+  }
+  ];
+
+  public static IncomeHousePropertyformControlFields &#x3D; {
+    Type: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    HouseCoOwner: [false],
+    RentReceivedAnnually: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required])
+    ],
+
+    MunicipalTaxes: [&#x27;&#x27;],
+
+    NetAnnualValue: [&#x27;&#x27;],
+
+    StatutoryDeduction: [&#x27;&#x27;],
+    AnnualLettableValueRentAmount: [&#x27;&#x27;],
+    InterestBorrowedCapital: [
+      &#x27;&#x27;,
+      Validators.compose([Validators.required])
+    ],
+
+    PreEMIInterestValue: [&#x27;&#x27;],
+
+    NetIncomeHouseProperty: [&#x27;&#x27;],
+
+    LenderType: [&#x27;&#x27;, Validators.compose([Validators.required])],
+
+    LendersName: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    LendersPAN: [&#x27;&#x27;, Validators.compose([Validators.required])],
+    LendersAddress: [&#x27;&#x27;],
+    PossessionDate: [&#x27;&#x27;],
+
+    Remarks: [&#x27;&#x27;]
+  };
+
+
+
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'FilterDetails.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

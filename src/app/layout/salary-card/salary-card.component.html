@@ -1,0 +1,348 @@
+<div class="container main-content" *ngIf="showInfo">
+  <div class="main-detail-section">
+      <div class="headerBlock col-md-1" >
+          Year  <select class="form-control select-div" [(ngModel)]="year" (change)="getMonthwiseSalaryData()">
+                    <option *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}</option>
+              </select> 
+          </div>
+    <div class="row" style="display: none;">
+      <div class="container-block">
+            <select class="form-control select-div" [(ngModel)]="year" (change)="getMonthwiseSalaryData()">
+                      <option *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}</option>
+                </select>
+        <!-- <div (click)="downloadPDF()" class="div-box">
+         
+          <i class="fas fa-download"></i>
+        </div> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-12 salarycardBlok">
+        <!-- kavita code start -->
+        <div class="col-md-3 p-l-0" style="display: none;">
+            <div class="card">
+                <div class="card-header yearDetails">
+                    <h5><span class="lstick"></span>Year : {{year}}</h5>
+                    <select class="form-control select-div" [(ngModel)]="year" (change)="getMonthwiseSalaryData()">
+                        <option *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}</option>
+                  </select>
+                  </div>
+                  <!-- <div class="card-header yearDetails">
+                      <h5><span class="lstick"></span>Year : {{year}}</h5>
+                      <select class="form-control select-div" [(ngModel)]="year" (change)="getsalaryData()">
+                          <option *ngFor="let year of yearsArray;let i=index" [value]="year">{{yearsArray[i]}}</option>
+                    </select>
+                    </div> -->
+            </div>
+          <div class="card">
+            <div class="card-header">
+              <!-- <h5><span class="lstick"></span>Personal Details | Net Pay : ₹ {{totalEarnings-totalDeductions |inrFormat}} ({{year}})</h5> -->
+           <h5><span class="lstick"></span>Personal Details</h5> 
+            </div>
+            <div class="card-body">
+                <div class="personalDetailBlock">
+                    <div class="iconBlock"><i class="fa fa-user"></i></div>
+                   <div class="mail-contnet">
+                     <p class="description">Name</p>
+                    <p class="subContent">{{userDetails.FirstName | titlecase}} {{userDetails.LastName | titlecase}}</p>
+                    </div>
+               </div>
+               <div class="personalDetailBlock">
+                  <div class="iconBlock"><i class="fa fa-id-badge"></i></div>
+                  <div class="mail-contnet">
+                    <p class="description">Employee ID</p>
+                   <p class="subContent">{{userDetails.TokenId}}</p>
+                   </div>
+              </div>
+              <div class="personalDetailBlock">
+                  <div class="iconBlock"><i class="fa fa-briefcase"></i></div>
+                  <div class="mail-contnet">
+                    <p class="description">Designation</p>
+                   <p class="subContent">{{userDetails.JobTitle}}</p>
+                   </div>
+              </div>
+              <div class="personalDetailBlock">
+                  <div class="iconBlock"><i class="fa fa-map-marker"></i></div>
+                  <div class="mail-contnet">
+                    <p class="description">Location</p>
+                   <p class="subContent">{{userDetails.LocationName | titlecase}}</p>
+                   </div>
+              </div>
+              </div>
+          </div>
+        </div>
+        <!-- <div class="col-md-9 p-r-0 p-l-0"> -->
+            <div class="card detailData">
+                <div *ngIf="!shownorecord" >
+                  <!-- <div>
+                    <div class="width130">
+                      <div>Salary Components</div>
+                      <div *ngFor="let s of responseArr[0].Data">
+                          {{s.WageTypeDescription}}
+                      </div>
+                    </div>
+                    <div>
+                    <div class="width50" *ngFor="let r of responseArr" >
+                      <div>{{r.MonthName}}</div>
+                      <div *ngFor="let s of r.Data">
+                          {{s.Amount ? s.Amount : '-'}}
+                      </div>
+                    </div>
+                    </div>
+                  </div> -->
+                  <table >
+                    <thead>
+                      <tr>
+                        <th><div class="width130 text-left">Salary Components</div></th>
+                        <th *ngFor="let m of responseArr"><div class="width120">{{m.MonthName}}</div></th>
+                      </tr>
+                    </thead>
+                    <tbody  #widgetsContent>
+                      <tr *ngFor="let m of salaryCardList; let i = index;" [hidden]="i >= salaryCardList.length-1">
+                        <td *ngFor="let c of m | keyvalue" class="leftcol">
+                          <div class="width130 text-left">{{c.key | titlecase}}</div>
+                        </td>
+                        <div  *ngFor="let column of m | keyvalue" >
+                          <td *ngFor="let s of column.value" >
+                           <div class="width120">{{s}}</div> 
+                          </td>
+                        </div>
+                      </tr>
+                    </tbody>
+                    <thead>
+                        <tr *ngFor="let m of (salaryCardList | slice:salaryCardList.length - 1); let i = index;">
+                            <th *ngFor="let c of m | keyvalue" class="leftcol">
+                              <div class="width130 text-left">{{c.key | titlecase}}</div>
+                            </th>
+                            <div  *ngFor="let column of m | keyvalue"  class="footerBlock">
+                              <td *ngFor="let s of column.value" >
+                               <div class="width120">{{s}}</div> 
+                              </td>
+                            </div>
+                          </tr>
+                        <!-- <tr>
+                          <th><div class="width130 text-left">Net Pay</div></th>
+                          <th *ngFor="let m of totalArr"><div class="width120">{{m}}</div></th>
+                         </tr> -->
+                      </thead>
+                       
+                      <div (click)="scrollLeft()" class="ScrollBtn leftBtn">
+                          <!-- <button (click)="scrollLeft()">left</button> -->
+                          <i class="fa fa-angle-left" aria-hidden="true"></i>
+                      </div>
+                      <div  (click)="scrollRight()" class="ScrollBtn rightBtn">
+                          <!-- <button (click)="scrollRight()">right</button> -->
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        
+                      </div>
+                     <!-- <tfoot>
+                      <tr>
+                        <td><div class="width130">Total Amount</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                        <td><div class="width120">1</div></td>
+                      </tr>
+                    </tfoot>  -->
+                  </table>
+                
+                </div>
+                <div *ngIf="shownorecord">
+                        <div class="text-center errorBlock">
+                            <img src="assets/img/no-record.png" height="100vh" width="100vw;">
+                             <div class="total-text" >
+                           No Records Found
+                          </div>
+                        </div>
+                    </div>
+                  
+            </div>
+            <!-- my old code start -->
+            <div class="card " style="display: none" >
+                <div class="table-responsive "  *ngIf="empData?.length!==0" style="height: 520px; overflow-y: auto !important;">
+                        <table class="table m-b-20">
+                            <thead>
+                                <tr>
+                                    <th class="w-20">Description</th>
+                                    <th class="w-60 text-center">Earnings</th>
+                                    <th class="w-20 text-center">Deductions</th>
+                                 </tr>
+                            </thead>
+                            <tbody>
+                                   <tr  class="tableHover" *ngFor="let data of empData; let i=index">
+                                   <td class="w-20"> {{data.description }}</td>
+                                    <td class="w-60 text-center">
+                                        <span *ngIf="checkamountType(data.wageIdentifier)==='earn' else notE"> {{data.amount |inrFormat}} </span>
+                                        <ng-template #notE>-</ng-template>
+                                    </td>
+                                   <td class="w-20 text-center">
+                                      <span *ngIf="checkamountType(data.wageIdentifier)==='deduct'; else notD">{{data.amount |inrFormat}} </span>
+                                      <ng-template #notD>-</ng-template>
+                                   </td>
+                                   </tr>
+                                   </tbody>
+                                   <tfoot>
+                                     <tr>
+                                       <td class="w-20"> <b>Total</b></td>
+                                       <td class="w-20 text-center"> <b> ₹ {{totalEarnings|inrFormat}}</b></td>
+                                       <td class="w-20 text-center"><b>₹ {{totalDeductions|inrFormat}}</b> </td>
+                                     </tr>
+                                  
+                                   </tfoot>
+                        </table>
+                    </div>
+                    <div [hidden]="!shownorecord">
+                        <div class="text-center errorBlock">
+                            <img src="assets/img/no-record.png" height="100px" width="100px;">
+                             <div class="total-text" >
+                           No Records Found
+                          </div>
+                        </div>
+                    </div>
+                  
+            </div>
+            <div class="card" style="display: none">
+              <div class="row totalPay">
+                  <div class="col-3"><b>Total Net Pay</b></div>
+                  <div class="col-9 text-right"><b>1128591</b></div>
+              </div>
+              </div>
+            <!-- my old code syop -->
+          <!-- </div> -->
+       
+       
+          <!-- kavita code stop -->
+        
+        
+        
+        
+        
+        
+         <!-- old code start -->
+        
+        <div class="info-detail-table font-14" style="display: none;">
+          <table class="table">
+            <thead class="info-table-header ">
+              <tr class="sub-section-part1">
+                <th class="part0-th">
+                </th>
+                <th class="part1-th font-16">
+                  <span class="year"> Year: {{year}} </span>
+                </th>
+                <th class="part2-th font-16">
+                  <span class="year">  Total Net Pay: ₹ {{totalEarnings-totalDeductions |inrFormat}}</span>
+                </th>
+                <th class="part3-th">
+                </th>
+              </tr>
+              <tr class="sub-section-part2">
+                <th class="part0-th">
+
+                  <div class="font-14-b">Name:</div>
+                  <div class="value font-12"> {{userDetails.FirstName | titlecase}} {{userDetails.LastName | titlecase}}</div>
+
+                </th>
+                <th class="part1-th">
+
+                  <div class="font-14-b">Employee ID:</div>
+                  <div class="value font-12"> {{userDetails.TokenId}}</div>
+
+                </th>
+                <th class="part2-th">
+
+                  <div class="font-14-b">Designation:</div>
+                  <div class="value font-12"> {{userDetails.JobTitle}}</div>
+
+                </th>
+                <th class="part3-th">
+
+                  <div class="font-14-b">Location:</div>
+                  <div class="value font-12"> {{userDetails.LocationName | titlecase}}</div>
+
+                </th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="table-responsive detail-section-table" style="display: none">
+          <div class="total-net-pay" *ngIf="empData?.length!==0">
+            <table class="table font-14">
+              <thead>
+                <tr class="header header-color">
+                  <th class="desc-header-right">
+
+                    Description
+
+                  </th>
+                  <th class="header-right">
+
+                    Earnings
+
+                  </th>
+                  <th class="header-right">
+
+                    Deductions
+
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of empData; let i=index">
+                  <td class="td_text">
+                    {{data.description }}
+                  </td>
+                  <td class="td_text1">
+                    <span *ngIf="checkamountType(data.wageIdentifier)==='earn' else notE"> {{data.amount |inrFormat}} </span>
+                    <ng-template #notE>-</ng-template>
+                  </td>
+                  <td class="td_text1">
+                    <span *ngIf="checkamountType(data.wageIdentifier)==='deduct'; else notD">{{data.amount |inrFormat}} </span>
+                    <ng-template #notD>-</ng-template>
+                  </td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr class="header header-color  ">
+                  <th class="total-header-right">
+                    Total
+                  </th>
+                  <th class="header-right">
+                    ₹ {{totalEarnings|inrFormat}}
+                  </th>
+                  <th class="header-right">
+                    ₹ {{totalDeductions|inrFormat}}
+                  </th>
+                </tr>
+              </thead>
+            </table>
+            <!-- <div class="total-text">
+
+              <span *ngIf="empData?.length!==0"> Total Net Pay {{totalEarnings-totalDeductions | inrFormat}}</span>
+              <span *ngIf="empData?.length===0">No Records Found</span>
+            </div> -->
+          </div>
+          <div class="total-text" [hidden]="!shownorecord">
+            <b>No Records Found</b>
+          </div>
+          <!-- 
+          <div class="total-text">
+            <span *ngIf="empData?.length!==0"> Total Net Pay {{totalEarnings-totalDeductions | inrFormat}}</span>
+            <span *ngIf="empData?.length===0">No Records Found</span>
+          </div> -->
+        </div>
+            <!-- old code stoop -->
+      </div>
+    </div>
+  </div>
+
+
+</div>

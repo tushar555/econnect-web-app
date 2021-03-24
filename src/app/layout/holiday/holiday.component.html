@@ -1,0 +1,182 @@
+<div class="container attendance-page main-content" *ngIf="showInfo">
+  <div class="row horizontal-padding font-14">
+    <div class="attendance-section col col-7">
+      <div class="date-section" *ngIf="calendarDate">
+        <div class="row month  header-color">
+          <div class="col-5">
+            <div class="row">
+              <div>
+                <img class="img-thumbnail side-icon imageclick" src="assets/svgIcon/attendance.svg"
+                  style="padding: 0px 6px 4px 0;width: 21px;border:none;margin-left: 3px;" id="imageId1"
+                  name="Attendance">
+                <input type="text" name="startDate" id="startDate1" placeholder="month & year"
+                  class="startDateAll date-picker MonthYearCalendar" autocomplete="off" readonly />
+                <span><svg fill='black' class="imageclick" height='24' viewBox='0 0 24 24' width='24'
+                    xmlns='http://www.w3.org/2000/svg' style="margin: -8px 0 0 0px;">
+                    <path d='M7 10l5 5 5-5z' />
+                    <path d='M0 0h24v24H0z' fill='none' />
+                  </svg></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-4" style="display: none">
+            <div class="row">
+              <button class="col button-pointer no-padding max-width-10" (click)="previousMonth()"
+                [disabled]="!toggleButton">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+              </button>
+              <div class="col text-center no-padding date-format w-500">
+                {{serverCurrentdate | date : "MMMM yyyy"}}
+              </div>
+              <button class="col button-pointer no-padding max-width-10" (click)="nextMonth()"
+                [disabled]="!toggleButton">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+          <!-- <div class="col-md-1"></div> -->
+          <div class="col-7 text-right p-r-0 lagendPanelRow">
+            <div class="no-padding">
+              <span class="green-dot-circle"></span>
+              <span class="legends">Holiday</span>
+              <span class="orange-dot-circle"></span>
+              <span class="legends">Weekly Off (W)</span>
+              <span class="blue-dot-circle"></span>
+              <span class="legends">Optional (O)</span>
+            </div>
+          </div>
+        </div>
+        <!-- Calendar -->
+
+        <div class="row days">
+          <div class="col headcalendar" *ngFor="let day of weekArray">
+            {{day}}
+          </div>
+        </div>
+
+        <div class="row calendar-date" *ngFor="let weekdate of calendarDate">
+          <!-- //dsdcxx {{weekdate[0].attendance_date.IsHoliday|json}} -->
+          <!-- date.attendance_date.HolidayDescription !== null &&  -->
+          <div class="col" *ngFor="let date of weekdate; let i = index"
+            [ngClass]="[( date.attendance_date!==null && date.attendance_date.IsHoliday  ? 'holiday':'normal')]">
+
+            <div *ngIf="date.currentDate !=='muted'">
+              <!-- ,((  date.Status !=null && date.attendance_date.Status == 'H' )? 'weeklyoff':'normal') -->
+              {{date.cdate | date : 'dd'}} <span
+                *ngIf="date.attendance_date !=null && (date.attendance_date.isOptionalHoliday == true || date.attendance_date.Status ==='O' ||  date.attendance_date.Status ==='H' || date.attendance_date.Status ==='W')"
+                [ngClass]="(date.attendance_date.isOptionalHoliday == true) ? 'statusO' : 'status'+date.attendance_date.Status">{{(date.attendance_date.isOptionalHoliday == true) ? 'O' : date.attendance_date.Status}}</span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="table-responsive">
+          <table class="table m-b-20 holiday_Table">
+            <thead>
+              <tr *ngIf="monthWiseHolidays?.length >0 else noHoliday">
+                <th class="w-30">Date</th>
+                <th class="w-50">Description</th>
+
+              </tr>
+            </thead>
+            <tbody *ngIf="monthWiseHolidays?.length >0">
+              <tr class="tableHover" *ngFor="let holiday of  monthWiseHolidays">
+                <td class="w-30"> {{holiday.date  | date : 'dd-MMM-yyyy'}}</td>
+                <td class="w-50">{{holiday.holidaydesc}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+      <div>
+
+      </div>
+
+    </div>
+
+    <div class="col col-5 side-section">
+      <div class="holiday-section">
+        <div class="font-14-b header-section">
+          <span class="lstick"></span>
+          Holiday : Fiscal Year ({{this.year}})
+        </div>
+        <div class="col-12 holidayDataDetails">
+          <div class="row">
+            <div class="col-xs-12 col-md-12" id="tabs">
+              <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                    aria-selected="true" >Fixed Holidays</a>
+                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                    aria-selected="false" >Optional Holidays</a>
+                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                    aria-selected="false">Holidays on week off</a>
+                </div>
+              </nav>
+              <div class="tab-content px-sm-0" id="nav-tabContent">
+                <div class="row mainOuterHdr">
+                  <div class="col-3">
+                    <p>Date</p>
+                  </div>
+                  <div class="col-6">
+                    <p>Description</p>
+                  </div>
+                  <div class="col-3">
+                    <p>Day</p>
+                  </div>
+                </div>
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <div class="row" *ngFor="let holiday of FixedHolidays">
+                    <div class="col-3 font-12">{{holiday.HolidayDate | date : 'dd-MMM-yyyy'}}</div>
+                    <div class="col-6 font-12">{{holiday.HolidayDescription}}</div>
+                    <div class="col-3 font-12">{{getDay(holiday.HolidayDate)}}</div>
+                  </div>
+                  <ng-container *ngIf="!FixedHolidays?.length">
+                    <span *ngTemplateOutlet="noHoliday"></span>
+                  </ng-container>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                  <div class="row" *ngFor="let holiday of OptionalHolidays">
+                    <div class="col-3">{{holiday.HolidayDate | date : 'dd-MMM-yyyy'}}</div>
+                    <div class="col-6">{{holiday.HolidayDescription}}</div>
+                    <div class="col-3">{{getDay(holiday.HolidayDate)}}</div>
+                  </div>
+                  <ng-container *ngIf="!OptionalHolidays?.length">
+                    <span *ngTemplateOutlet="noHoliday"></span>
+                  </ng-container>
+                </div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                  <div class="row" *ngFor="let holiday of WeekoffHolidays">
+                    <div class="col-3">{{holiday.HolidayDate | date : 'dd-MMM-yyyy'}}</div>
+                    <div class="col-6">{{holiday.HolidayDescription}}</div>
+                    <div class="col-3">{{getDay(holiday.HolidayDate, holiday.HolidayDay)}}</div>
+                  </div>
+                  <ng-container *ngIf="!WeekoffHolidays?.length">
+                    <span *ngTemplateOutlet="noHoliday"></span>
+                  </ng-container>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <ng-template #noHoliday>
+          <div class="no-record font-12-b">
+            <div class="m-b-20">
+              <img src="assets/img/select-date.png" height="70px" width="70px">
+            </div>
+            No Holidays.
+          </div>
+        </ng-template>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

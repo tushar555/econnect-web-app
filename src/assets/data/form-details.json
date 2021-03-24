@@ -1,0 +1,2335 @@
+[
+  {
+    "schemeId": [25],
+    "header": "LIC Declaration",
+    "entryType": "multiple",
+    "details": [{
+      "id": 1,
+      "label": "Relationship",
+      "name": "Relationship",
+      "isRequired": true,
+      "type": "select",
+      "editable": "",
+      "options": [{
+          "value": "self",
+          "label": "Self"
+        },
+        {
+          "value": "child",
+          "label": "Child"
+        },
+        {
+          "value": "spouse",
+          "label": "Spouse"
+        }
+      ]
+    }]
+  },
+  {
+    "schemeId": [27],
+    "header": "ULIP Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "id": 1,
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "self",
+            "label": "Self"
+          },
+          {
+            "value": "child",
+            "label": "Child"
+          },
+          {
+            "value": "spouse",
+            "label": "Spouse"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "label": "Name Of Assured",
+        "name": "NameOfAssured",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "id": 3,
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "id": 4,
+        "label": "Policy No",
+        "name": "PolicyNo",
+        "type": "text",
+        "isRequired": true
+      },
+      {
+        "id": 5,
+        "label": "Sum Assured",
+        "name": "PolicyAmount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "id": 6,
+        "label": "Premium Amount",
+        "name": "Premium",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "id": 7,
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [2],
+    "header": "HRA Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "id": 1,
+        "label": "From Date",
+        "name": "FromDate",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "id": 2,
+        "label": "To Date",
+        "name": "ToDate",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "id": 3,
+        "label": "Monthly Rent Amount",
+        "name": "RentPerMonth",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "id": 4,
+        "label": "Landlord Name",
+        "name": "LandLordName",
+        "type": "text",
+        "isNumber": false,
+        "onlyChar": true,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "id": 5,
+        "label": "LL PAN No",
+        "name": "LandLordPanNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "id": 6,
+        "label": "Landlord Pincode",
+        "name": "LandLordPincode",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": true
+      },
+      {
+        "id": 7,
+        "label": "Landlord Address",
+        "name": "LandLordAddress",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "id": 8,
+        "label": "Rental Address",
+        "name": "Address",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "id": 9,
+        "label": "Rental Pincode",
+        "name": "Pincode",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": true
+      },
+      {
+        "id": 10,
+        "label": "Rental City",
+        "name": "City",
+        "type": "select",
+        "options": [{
+            "value": "Mumbai",
+            "label": "Mumbai"
+          },
+          {
+            "value": "Delhi",
+            "label": "Delhi"
+          },
+          {
+            "value": "Kolkata",
+            "label": "Kolkata"
+          },
+          {
+            "value": "Chennai",
+            "label": "Chennai"
+          },
+          {
+            "value": "Other",
+            "label": "Other"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "id": 11,
+        "label": "Housing Type",
+        "name": "HousingType",
+        "type": "select",
+        "isRequired": false,
+        "options": [{
+            "value": "Rent",
+            "label": "Rented Accom."
+          },
+          {
+            "value": "Company_lease_old",
+            "label": "Company Leased(Old)"
+          },
+          {
+            "value": "Company_owned_old",
+            "label": "Company Owned(Old)"
+          },
+          {
+            "value": "Own",
+            "label": "Owned Accom(Old)"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "label": "City Category",
+        "name": "IsMetroCity",
+        "type": "select",
+        "isRequired": true,
+        "options": [{
+            "value": true,
+            "label": "Metro"
+          },
+          {
+            "value": false,
+            "label": "Non Metro"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [28],
+    "header": "PPF Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "id": 2,
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "self",
+            "label": "Self"
+          },
+          {
+            "value": "child",
+            "label": "Child"
+          },
+          {
+            "value": "spouse",
+            "label": "Spouse"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "label": "Account holder name ",
+        "name": "AccountHolderName",
+        "type": "text",
+        "isNumber": false,
+        "onlyChar": true,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "id": 3,
+        "label": "Payment Date ",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "id": 4,
+        "label": "PF Account No ",
+        "name": "PFAccountNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 17,
+        "isRequired": false
+      },
+      {
+        "id": 5,
+        "label": "Financial Intitution Type",
+        "name": "BankPostOfficeName",
+        "type": "select",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false,
+        "editable": "",
+        "options": [{
+            "value": "Bank",
+            "label": "Bank"
+          },
+          {
+            "value": "Post Office",
+            "label": "PO"
+          },
+          {
+            "value": "Registered Transfer Agent",
+            "label": "RTA"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "id": 7,
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [29],
+    "header": "NSC Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Account holder name",
+        "name": "AccountHolderName",
+        "type": "text",
+        "isNumber": false,
+        "onlyChar": true,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Certificate No",
+        "name": "CertificateNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Date Of Issue",
+        "name": "DateOfIssue",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "label": "Denomination",
+        "name": "Denomination",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [35, 36],
+    "header": "Child Tuition Fee Declaration",
+    "entryType": "single",
+    "details": [{
+        "label": "Name Of Institution",
+        "name": "NameOfInstitution",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Child Name",
+        "name": "ChildName",
+        "type": "select",
+        "isRequired": true,
+        "options": [
+
+        ]
+      },
+      {
+        "label": "Date Of Payment",
+        "name": "DateOfPayment",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "label": "Receipt No",
+        "name": "ReceiptNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [31],
+    "header": "Housing Loan Declaration",
+    "entryType": "single",
+    "details": [{
+        "label": "Possession date",
+        "name": "LoanTakenDate",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Name Of Lender",
+        "name": "NameOfLender",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": true
+      },
+      {
+        "label": "Repayment Of Principal Amount",
+        "name": "RepaymentOfPrincipalAmount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Registration Fees/Stamp Duty",
+        "name": "StampDuty",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Total",
+        "name": "Total",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [32],
+    "header": "Notified Mutual Fund Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Depositer Name",
+        "name": "DepositerName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": false
+      },
+      {
+        "label": "Name Of Mutual Fund",
+        "name": "NameOfMutualFund",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Details Of Payment",
+        "name": "DetailsOfPayment",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Certificate Application No",
+        "name": "CertificateApplicationNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Cheque No",
+        "name": "ChequeNo",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": false
+      },
+      {
+        "label": "Date Of Payment/Debit date",
+        "name": "DateOfPaymentBankDebit",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [20],
+    "header": "Notified Pension Fund Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Depositer Name",
+        "name": "DepositerName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": false
+      },
+      {
+        "label": "Name Of Pension Fund",
+        "name": "NameOfMutualFund",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Details Of Payment",
+        "name": "DetailsOfPayment",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Certificate Application No",
+        "name": "CertificateApplicationNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Cheque No",
+        "name": "ChequeNo",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": false
+      },
+      {
+        "label": "Date Of Payment/Debit date",
+        "name": "DateOfPaymentBankDebit",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [37],
+    "header": "Sukanya Samiriddhi Scheme",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Depositer Name",
+        "name": "DepositerName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": true
+      },
+      {
+        "label": "Daughter Name",
+        "name": "DaughterName",
+        "type": "select",
+        "isRequired": true,
+        "options": [
+
+        ]
+      },
+      {
+        "label": "Certificate No",
+        "name": "CertificateNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [38],
+    "header": "Post Office Deposit Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Investor Name ",
+        "name": "InvestorName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": false
+      },
+      {
+        "label": "PostOffice Name",
+        "name": "PostOfficeName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "FDR No",
+        "name": "FDRNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "label": "Cheque No",
+        "name": "ChequeNo",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": false
+      },
+      {
+        "label": "Date Of Bank Debit",
+        "name": "DateOfBankDebit",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [39],
+    "header": "Scheduled Bank Fixed Deposit Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Investor Name ",
+        "name": "InvestorName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": true
+      },
+      {
+        "label": "Bank Name",
+        "name": "BankName",
+        "type": "text",
+        "isNumber": false,
+        "onlyChar": true,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "FDR No",
+        "name": "FDRNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "label": "Cheque No",
+        "name": "ChequeNo",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": false
+      },
+      {
+        "label": "Date Of Bank Debit",
+        "name": "DateOfBankDebit",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [19],
+    "header": "Certain Pension Fund Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Company Name",
+        "name": "CompanyName",
+        "type": "text",
+        "isNumber": false,
+        "onlyChar": true,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Employee Name",
+        "name": "EmployeeName",
+        "type": "text",
+        "isNumber": false,
+        "onlyChar": true,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "label": "PRAN No",
+        "name": "PRANNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "NPS Amount",
+        "name": "NPSAmount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [40],
+    "header": "Interest FirstTime Home Buyer Declaration",
+    "entryType": "single",
+    "details": [{
+        "label": "Sanction Date",
+        "name": "SanctionDate",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Possession Date",
+        "name": "PossessionDate",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Resi Home Value",
+        "name": "ResiHomeValue",
+        "type": "text",
+        "isNumber": true,
+        "maxValue": "50,00,000",
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Amount of loan sanctioned",
+        "name": "LoanSanctioned",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "maxValue": "35,00,000",
+        "isRequired": false
+      },
+      {
+        "label": "Interest Paid",
+        "name": "InterestPaid",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "maxValue": "50,000",
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [12],
+    "header": "Medical Eighty D Declaration self",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "self",
+            "label": "Self"
+          },
+          {
+            "value": "child",
+            "label": "Child"
+          },
+          {
+            "value": "spouse",
+            "label": "Spouse"
+          }
+        ]
+      },
+      {
+        "label": "Name Of Assured",
+        "name": "NameOfAssured",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Company Name",
+        "name": "CompanyName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": false
+      },
+      {
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Cheque No",
+        "name": "ChequeNo",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": false
+      },
+      {
+        "label": "Policy No",
+        "name": "PolicyNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Sum Assured",
+        "name": "PolicyAmount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Premium Amount",
+        "name": "Premium",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "maxValue": 5000,
+        "isRequired": true
+      },
+      {
+        "label": "Age",
+        "name": "Age",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 3,
+        "minValue": 1,
+        "isRequired": false
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [13],
+    "header": "Medical Eighty D Declaration parents",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "mother",
+            "label": "Mother"
+          },
+          {
+            "value": "father",
+            "label": "Father"
+          }
+        ]
+      },
+      {
+        "label": "Name Of Assured",
+        "name": "NameOfAssured",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Company Name",
+        "name": "CompanyName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": false
+      },
+      {
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Cheque No",
+        "name": "ChequeNo",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": false
+      },
+      {
+        "label": "Policy No",
+        "name": "PolicyNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Sum Assured",
+        "name": "PolicyAmount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Premium Amount",
+        "name": "Premium",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "maxValue": 5000,
+        "isRequired": true
+      },
+      {
+        "label": "Age",
+        "name": "Age",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 3,
+        "minValue": 1,
+        "isRequired": false
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [8],
+    "header": "MedicalEightyDSelfNonSenior",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "self",
+            "label": "Self"
+          },
+          {
+            "value": "child",
+            "label": "Child"
+          },
+          {
+            "value": "spouse",
+            "label": "Spouse"
+          }
+        ]
+      },
+      {
+        "label": "Name Of Assured",
+        "name": "NameOfAssured",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Company Name",
+        "name": "CompanyName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": false
+      },
+      {
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Cheque No",
+        "name": "ChequeNo",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": false
+      },
+      {
+        "label": "Policy No",
+        "name": "PolicyNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Sum Assured",
+        "name": "PolicyAmount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Premium Amount",
+        "name": "Premium",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "maxValue": "25,000",
+        "isRequired": true
+      },
+      {
+        "label": "Age",
+        "name": "Age",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 3,
+        "maxValue": 60,
+        "minValue": 1,
+        "isRequired": false
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [9],
+    "header": "MedicalEightyDSelfSenior",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "self",
+            "label": "Self"
+          },
+          {
+            "value": "child",
+            "label": "Child"
+          },
+          {
+            "value": "spouse",
+            "label": "Spouse"
+          }
+        ]
+      },
+      {
+        "label": "Name Of Assured",
+        "name": "NameOfAssured",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Company Name",
+        "name": "CompanyName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": false
+      },
+      {
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Cheque No",
+        "name": "ChequeNo",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": false
+      },
+      {
+        "label": "Policy No",
+        "name": "PolicyNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Sum Assured",
+        "name": "PolicyAmount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Premium Amount",
+        "name": "Premium",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "maxValue": 50000,
+        "isRequired": true
+      },
+      {
+        "label": "Age",
+        "name": "Age",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 3,
+        "minValue": 60,
+        "isRequired": false
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [11],
+    "header": "MedicalEightyDParentSenior",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "mother",
+            "label": "Mother"
+          },
+          {
+            "value": "father",
+            "label": "Father"
+          }
+        ]
+      },
+      {
+        "label": "Name Of Assured",
+        "name": "NameOfAssured",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Company Name",
+        "name": "CompanyName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": false
+      },
+      {
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Cheque No",
+        "name": "ChequeNo",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": false
+      },
+      {
+        "label": "Policy No",
+        "name": "PolicyNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Sum Assured",
+        "name": "PolicyAmount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Premium Amount",
+        "name": "Premium",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "maxValue": 50000,
+        "isRequired": true
+      },
+      {
+        "label": "Age",
+        "name": "Age",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 3,
+        "minValue": 60,
+        "isRequired": false
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [10],
+    "header": "MedicalEightyDParentNonSenior",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "mother",
+            "label": "Mother"
+          },
+          {
+            "value": "father",
+            "label": "Father"
+          }
+        ]
+      },
+      {
+        "label": "Name Of Assured",
+        "name": "NameOfAssured",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Company Name",
+        "name": "CompanyName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": false
+      },
+      {
+        "label": "Payment Date",
+        "name": "PaymentDate",
+        "type": "date",
+        "isRequired": false
+      },
+      {
+        "label": "Cheque No",
+        "name": "ChequeNo",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 6,
+        "isRequired": false
+      },
+      {
+        "label": "Policy No",
+        "name": "PolicyNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Sum Assured",
+        "name": "PolicyAmount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Premium Amount",
+        "name": "Premium",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "maxValue": 25000,
+        "isRequired": true
+      },
+      {
+        "label": "Age",
+        "name": "Age",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 3,
+        "maxValue": 60,
+        "minValue": 1,
+        "isRequired": false
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [1],
+    "entryType": "single",
+    "header": "Taxable Income From Previous Employer'",
+    "details": [{
+        "label": "Salary US 17 (1)",
+        "name": "SalaryUS17",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Exemptions US 10",
+        "name": "ExemptionsUS10",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Professional Tax",
+        "name": "ProfessionalTax",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "PF",
+        "name": "PF",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Income Tax Deducted",
+        "name": "IncomeTaxDeducted",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Medical Exemption",
+        "name": "MedicalExemption",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "LTA Exemptions",
+        "name": "LTAExemptions",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "LTA Carried Forward",
+        "name": "LTACarriedForward",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Leave Encashment Exmp",
+        "name": "LeaveEncashmentExmp",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Gratuity Exemption",
+        "name": "GratuityExemption",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "VRS Exemption",
+        "name": "VRSExemption",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Perquisite US 17 (2)",
+        "name": "PerquisiteUS17",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Surcharge Deducted",
+        "name": "SurchargeDeducted",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "EduCess Deducted",
+        "name": "EduCessDeducted",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [7],
+    "header": "Income Other Sources  Declaration",
+    "entryType": "single",
+    "details": [{
+        "label": "Business Profit ",
+        "name": "BusinessProfit",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Long Term Normal",
+        "name": "LTNormal",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Long Term Special",
+        "name": "LTSpecial",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Divident Income",
+        "name": "DividentIncome",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Short Term Gain",
+        "name": "STGain",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Other Income",
+        "name": "OtherIncome",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "TDS On Other Income",
+        "name": "TDSOnOtherIncome",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Total Interest Inc",
+        "name": "TotalInterestInc",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "NCS Interest",
+        "name": "NCSInterest",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Saving Bank Interest",
+        "name": "SAVBankInterest",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Other Interest",
+        "name": "OtherInterest",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [16],
+    "header": "Dependent Disability  Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "child",
+            "label": "Child"
+          },
+          {
+            "value": "spouse",
+            "label": "Spouse"
+          },
+          {
+            "value": "mother",
+            "label": "Mother"
+          },
+          {
+            "value": "father",
+            "label": "Father"
+          },
+          {
+            "value": "brother",
+            "label": "Brother"
+          },
+          {
+            "value": "sister",
+            "label": "Sister"
+          }
+        ]
+      },
+      {
+        "label": "Dependent Name ",
+        "name": "DependentName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": true
+      },
+      {
+        "label": "Hospital Name",
+        "name": "HospitalName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": false,
+        "isRequired": true
+      },
+      {
+        "label": "Handicap Certificate No",
+        "name": "HandicapCertNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "maxValue": "75,000",
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [17],
+    "header": "Sever Dependent Disability  Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "child",
+            "label": "Child"
+          },
+          {
+            "value": "spouse",
+            "label": "Spouse"
+          },
+          {
+            "value": "mother",
+            "label": "Mother"
+          },
+          {
+            "value": "father",
+            "label": "Father"
+          },
+          {
+            "value": "brother",
+            "label": "Brother"
+          },
+          {
+            "value": "sister",
+            "label": "Sister"
+          }
+        ]
+      },
+      {
+        "label": "Dependent Name ",
+        "name": "DependentName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": true
+      },
+      {
+        "label": "Hospital Name",
+        "name": "HospitalName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": false,
+        "isRequired": true
+      },
+      {
+        "label": "Handicap Certificate No",
+        "name": "HandicapCertNo",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "maxValue": "1,25,000",
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [21],
+    "header": "Medical Treatment Declaration Senior",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Relation",
+        "name": "Relation",
+        "isRequired": true,
+        "type": "select",
+        "options": [{
+            "value": "self",
+            "label": "Self"
+          },
+          {
+            "value": "child",
+            "label": "Child"
+          },
+          {
+            "value": "spouse",
+            "label": "Spouse"
+          },
+          {
+            "value": "mother",
+            "label": "Mother"
+          },
+          {
+            "value": "father",
+            "label": "Father"
+          },
+          {
+            "value": "brother",
+            "label": "Brother"
+          },
+          {
+            "value": "sister",
+            "label": "Sister"
+          }
+        ]
+      },
+      {
+        "label": "Patient Name",
+        "name": "PatientName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": true
+      },
+      {
+        "label": "Age",
+        "name": "Age",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 3,
+        "minValue": 1,
+        "isRequired": true
+      },
+      {
+        "label": "Suffering From",
+        "name": "SufferingFrom",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Receipt Date",
+        "name": "ReceiptDate",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true,
+        "maxValue": "1,00,000"
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [22],
+    "header": "MedicalTreatmentNonSenior",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Relation",
+        "name": "Relation",
+        "isRequired": true,
+        "type": "select",
+        "options": [{
+            "value": "child",
+            "label": "Child"
+          },
+          {
+            "value": "spouse",
+            "label": "Spouse"
+          },
+          {
+            "value": "mother",
+            "label": "Mother"
+          },
+          {
+            "value": "father",
+            "label": "Father"
+          },
+          {
+            "value": "brother",
+            "label": "Brother"
+          },
+          {
+            "value": "sister",
+            "label": "Sister"
+          }
+        ]
+      },
+      {
+        "label": "Patient Name",
+        "name": "PatientName",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": true
+      },
+      {
+        "label": "Age",
+        "name": "Age",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 3,
+        "minValue": 1,
+        "isRequired": true
+      },
+      {
+        "label": "Suffering From",
+        "name": "SufferingFrom",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      },
+      {
+        "label": "Receipt Date",
+        "name": "ReceiptDate",
+        "type": "date",
+        "isRequired": true
+      },
+      {
+        "label": "Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true,
+        "maxValue": "40,000"
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [18],
+    "header": "Loan for higher education Declaration",
+    "entryType": "single",
+    "details": [{
+        "label": "Relationship",
+        "name": "Relationship",
+        "isRequired": true,
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "Self",
+            "label": "Self"
+          },
+          {
+            "value": "child",
+            "label": "Child"
+          },
+          {
+            "value": "spouse",
+            "label": "Spouse"
+          }
+        ]
+      },
+      {
+        "label": "Name",
+        "name": "Name",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "onlyChar": true,
+        "isRequired": true
+      },
+      {
+        "label": "Name of Lender",
+        "name": "NameofLender",
+        "type": "text",
+        "isNumber": false,
+        "onlyChar": true,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Interest Amount",
+        "name": "Amount",
+        "type": "text",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  },
+  {
+    "schemeId": [6],
+    "header": "Income from House Property Declaration",
+    "entryType": "multiple",
+    "details": [{
+        "label": "Type",
+        "name": "Type",
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "self_property",
+            "label": "Self Occupied Property"
+          },
+          {
+            "value": "letout_property",
+            "label": "Let Out Property"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "label": "House Co-Owner",
+        "name": "HouseCoOwner",
+        "title": "Is House Co-Owner Present?",
+        "editable": "",
+        "isRequired": false,
+        "type": "select",
+        "options": [{
+            "value": true,
+            "label": "Yes"
+          },
+          {
+            "value": false,
+            "label": "No"
+          }
+        ]
+      },
+      {
+        "label": "Rent Received Annually",
+        "name": "RentReceivedAnnually",
+        "type": "text",
+        "editable": "self_property",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Municipal Taxes",
+        "name": "MunicipalTaxes",
+        "type": "text",
+        "editable": "self_property",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Net Annual Value",
+        "name": "NetAnnualValue",
+        "type": "text",
+        "editable": "self_property",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Statutory Deduction",
+        "name": "StatutoryDeduction",
+        "type": "text",
+        "editable": "self_property",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Annual Lettable Value Rent Amount",
+        "name": "AnnualLettableValueRentAmount",
+        "type": "text",
+        "editable": "self_property",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Interest paid on Borrowing",
+        "name": "InterestBorrowedCapital",
+        "type": "text",
+        "editable": "",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Pre EMI Interest Value",
+        "name": "PreEMIInterestValue",
+        "type": "text",
+        "editable": "self_property",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Net Income House Property",
+        "name": "NetIncomeHouseProperty",
+        "type": "text",
+        "editable": "self_property",
+        "isNumber": true,
+        "maxLength": 10,
+        "isRequired": false
+      },
+      {
+        "label": "Lender Type",
+        "name": "LenderType",
+        "type": "select",
+        "editable": "",
+        "options": [{
+            "value": "FinancialInstitution",
+            "label": "Financial Institution"
+          },
+          {
+            "value": "Employer",
+            "label": "Employer"
+          },
+          {
+            "value": "Others ",
+            "label": "Others"
+          }
+        ],
+        "isRequired": true
+      },
+      {
+        "label": "Lender\\'s Name",
+        "name": "LendersName",
+        "type": "text",
+        "editable": "",
+        "isNumber": false,
+        "onlyChar": true,
+        "maxLength": 200,
+        "isRequired": true
+      },
+      {
+        "label": "Lender\\'s PAN",
+        "name": "LendersPAN",
+        "type": "text",
+        "editable": "",
+        "maxLength": 10,
+        "isRequired": true
+      },
+      {
+        "label": "Lender\\'s Address",
+        "name": "LendersAddress",
+        "type": "text",
+        "editable": "",
+        "isRequired": false
+      },
+      {
+        "label": "Possession Date",
+        "name": "PossessionDate",
+        "type": "date",
+        "editable": "",
+        "isRequired": true
+      },
+      {
+        "label": "Remarks",
+        "name": "Remarks",
+        "type": "text",
+        "editable": "",
+        "isNumber": false,
+        "maxLength": 200,
+        "isRequired": false
+      }
+    ]
+  }
+]

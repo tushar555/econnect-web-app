@@ -1,0 +1,143 @@
+.regimeSelection{
+    background: #6d6e72;
+    font-size: 0.7rem;
+    color: #fff;
+    padding: 8px 10px;
+ margin-right: 5px;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.noFound-container {
+ // background: #ffffff;
+  padding: 15px;
+  height: 465px;
+  border-radius: 3px;
+  display: table;
+  width: 100%;
+
+  .innernoFound {
+    position: relative;
+    top: 41%;
+  }
+}
+
+.noDataBlock {
+  height: 100%;
+  vertical-align: middle;
+  display: table-cell;
+
+  .imgDataBlock,
+  .textDataBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    img {
+      height: 150px;
+    }
+  }
+}
+
+.input-size{
+      width: 20vh;
+}
+
+.section-name{
+     margin-left: 1rem !important;
+    border-top: 1px solid #e1e1e1;
+}
+.card-margin{
+    margin: -5px -9px 0px -18px;
+}
+  .scrollableContainer {
+    // height: 100vh;
+    overflow-y: auto;
+        overflow-x: hidden;
+    height: 92% !important;
+
+  }
+
+  .note{
+    font-size: 14px;
+    color: #c53a3a;
+    font-weight: 600;
+    li{
+      margin: 0 0 5px 0;
+    }
+  }
+  .section-title{
+   text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #565151;
+  }
+
+  .paymentListing {
+    margin: 2px 0px 0px 15px;
+    // height: 45px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+
+    .title {
+      margin-bottom: 5px;
+      font-size: 13px;
+      color: #565151;
+    }
+
+    .subtitle {
+      margin-bottom: 5px;
+      font-size: 12px;
+      font-weight: 400;
+      color: gray;
+
+      input {
+        position: relative;
+        top: 2px;
+      }
+
+      span {
+        margin-left: 6px;
+      }
+    }
+
+    .iconBox {
+      .statusTag {
+        width: 30% !important;
+        height: 25px !important;
+        padding: 0px 6px;
+        margin: 3px;
+        text-align: center;
+        line-height: 25px;
+      }
+
+      span {
+        // display: block;
+        // float: left;
+        // text-align: center;
+        // height: 30px;
+        // float: right;
+        // padding: 5px;
+        // position: relative;
+        // width: 30px;
+        padding: 3px 3px;
+
+        img {
+          height: 16px;
+          width: 16px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .floatLeft {
+  float: left;
+}

@@ -1,0 +1,260 @@
+<div class="container attendance-page font-14">
+  <div class="attendance-section">
+    <div class="table-header list-table">
+      <div class="headerBlock col-md-6">
+        <!-- *ngIf="totalPages" -->
+        <div class="col-md-6 nopaddingleft">
+          <!-- <div class="outerMainBlock">
+            <div class="block1" (click)="clickOnPagination('p')" [ngClass]="{ disabled: curPage == 1 }">
+              \\
+            </div>
+            <div class="block2">
+              {{ curPage }}
+            </div>
+            <div class="block3" (click)="clickOnPagination('n')"
+              [ngClass]="{ disabled: curPage == totalPages || totalPages == 0 }">
+              >>
+            </div>
+            <div class="block4" (click)="resetHospitalList()"> <i class="fa fa-repeat f-10 ">
+              </i>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="col-12 no-padding">
+        <div class="colorListAdjust row">
+          <div class="col col-md-1">
+            <ng-multiselect-dropdown id="token" (click)="setSelectedDropDown('emptoken')"
+              class="font-13 multiselect-dropdown" [ngClass]="{'custom-dropdownList': !isEmpListData}" [placeholder]="'Search
+              Employee'" [data]="empdropdownList" [(ngModel)]="selectedItemsEmp" [settings]="empdropdownSettings"
+              (onFilterChange)="getdataSearch($event, null, null)" (onSelect)="onSelectAll($event, 'fromToken')">
+            </ng-multiselect-dropdown>
+          </div>
+
+          <div class="col col-md-1">
+
+            <ng-multiselect-dropdown id="location" (click)="setSelectedDropDown('emplocation')"
+              class="font-13 multiselect-dropdown" [ngClass]="{'custom-dropdownList': !isLocationdata}" [placeholder]="'Search
+              Location'" [data]="locdropdownList" [(ngModel)]="selectedItemsLoc" [settings]="LocdropdownSettings"
+              (onFilterChange)="getdataSearch(null,$event, null)" (onSelect)="onSelectAll($event, 'fromLoc')">
+            </ng-multiselect-dropdown>
+          </div>
+          <!-- <div class="col col-md-2">
+            <ng-multiselect-dropdown [placeholder]="'Search Dept'" [data]="dropdownList" [(ngModel)]="selectedItemsEmp"
+            [settings]="dropdownSettings" (click)="onItemSelectEmp($event)" (onFilterChange)="getCompName($event)"
+            (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+
+            </div> -->
+          <div class="col col-md-1">
+            <ng-multiselect-dropdown id="company" (click)="setSelectedDropDown('empCompany')" class="font-13"
+              [placeholder]="'Search Company'" [ngClass]="{'custom-dropdownList': !isCompanydata}"
+              [data]="compdropdownList" [(ngModel)]="selectedItemsComp" [settings]="compdropdownSettings"
+              (onFilterChange)="getdataSearch( null,null,$event)" (onSelect)="onSelectAll($event, 'fromComp')">
+            </ng-multiselect-dropdown>
+          </div>
+          <div class="col col-md-1">
+            <!-- <select  class="form-control font-13 select2" [(ngModel)]="month" >
+               <ng-container *ngFor="let mon of monthsArray;let i=index">
+                   <option   class="font-13"  [value]="i">{{mon}}</option>
+                 </ng-container>
+               </select> -->
+            <!-- <div class="input-group-append"> -->
+            <input class="form-control date-picker" placeholder="Select From Date" name="dp1" [(ngModel)]="fromDate"
+              ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
+            <!-- </div> -->
+          </div>
+          <div class="col col-md-1">
+            <input class="form-control date-picker" placeholder="Select To Date" name="dp2" [(ngModel)]="toDate"
+              ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()">
+            <!--
+               -->
+          </div>
+
+          <div class="col col-md-3">
+            <!-- <div class="outerMainBlock"> -->
+            <!-- <div class="block1" (click)="clickOnPagination('p')" [ngClass]="{ disabled: curPage == 1 }"> << </div>
+                  <div class="block2">{{ curPage }}</div>
+                  <div class="block3" (click)="clickOnPagination('n')" [ngClass]="{ disabled: curPage == totalPages || totalPages == 0 }"> >> </div>
+                  <div class="block4" (click)="resetHospitalList()"> <i class="fa fa-repeat f-10 "></i></div>
+                  </div> -->
+
+            <button (click)="search(1,'')" class="btn searchBtn m-r-5"
+              [disabled]="!selectedItemsEmp && !selectedItemsLoc && !selectedItemsComp && !fromDate && !toDate"
+              type="submit">Search</button>
+            <button (click)="search(-1,'fromExcel')" style="background: transparent;" class="excelicon btn m-r-5"
+              type="submit">
+              <img *ngIf="selectedItemsEmp || selectedItemsLoc || selectedItemsComp" style="height: 38px;width: 38px;"
+                src="assets/img/excel.png">
+            </button>
+
+            <!-- </div> -->
+          </div>
+
+          <div style=" width: 100%;" class="colorListAdjust row">
+            <div class="no-padding legendsec">
+              <div class="legendDiv">
+                <span class="green-dot-circle"></span>
+                <span class="legends">Present (P)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="red-dot-circle"></span>
+                <span class="legends">Absent (A)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="yellow-dot-circle"></span>
+                <span class="legends">Time Off (T)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="grey-dot-circle"></span>
+                <span class="legends">Holiday (H)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="orange-dot-circle"></span>
+                <span class="legends">Weekly Off (W)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="blue-dot-circle"></span>
+                <span class="legends">Optional (O)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="robinBlue-dot-circle"></span>
+                <span class="legends">Regularize (R)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <table *ngIf="weeklyDataList?.length>0" class="table table-striped table-fixed">
+
+        </table> -->
+
+      </div>
+
+      <!--  -->
+
+
+      <div *ngIf="weeklyDataList?.length>0" class="list-view table-responsive">
+        <table class="table table-fixed attlistdiv">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 16%;" class="ListThAdjust">Date</th>
+              <th scope="col" style="width: 9%;" class="ListThAdjust"> Day</th>
+              <th scope="col" style="width: 10%;" class="ListThAdjust"> Week</th>
+              <th scope="col" style="width: 11%" class="ListThAdjust">Token </th>
+              <th scope="col" style="width: 13%" class="ListThAdjust">Name</th>
+              <th scope="col" style="width: 6%" class="ListThAdjust">Description</th>
+              <th scope="col" class="ListThAdjust">System Punch In</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">System Punch Out</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Time In Source</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Time Out Source</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Calculated Time in</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Calculated Time out</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Clocked Hours</th>
+              <!-- <th scope="col" style="width: 10%" class="ListThAdjust">Total Hours Worked </th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <ng-container *ngFor="let week of weeklyDataList; let i = index;"> -->
+            <!-- <tr class="darkRow">
+              <td colspan="10">
+                <i class="far fa-clock  m-r-5"></i>
+
+              </td>
+            </tr> -->
+            <tr class="tablecontent" scope="row" *ngFor="let dt of weeklyDataList; let j = index;"
+              [ngClass]="{'notcurmonth': checkDateCurMonth(dt.AttendanceDate) , 'typecurrentDate': dt.currentDate }">
+              <!-- <td style="width: 1%"> <div class="triangle" [ngClass]="'triangle'+dt.Status"></div></td> -->
+              <td style=" width: 10%; padding-top: 4vh !important">
+                <!-- <div class="triangle" [ngClass]="'triangle'+dt.Status"></div>
+                <div class="triangle triangleR" *ngIf="dt.SFRegularized"></div> -->
+                <span class="vertical_Align">{{dt.AttendanceDate}}</span>
+              </td>
+              <td style="padding-top: 2.5vh;">
+                <span class="vertical_Align">{{dt.Day ? dt.Day : "-"}}</span>
+              </td>
+              <td style="width: 6%;padding-top: 2.5vh;">
+                <span class="vertical_Align">{{dt.Week ? dt.Week : "-"}}</span>
+              </td>
+
+              <td style="padding-top: 2.5vh;">
+                <span class="vertical_Align">{{dt.TokenId ? dt.TokenId : "-"}}</span>
+              </td>
+              <td style="width: 13%;padding-top:3vh;">
+                <span class="vertical_Align">{{dt.Name ? dt.Name : "-"}}</span>
+              </td>
+              <ng-container *ngIf="dt.Status!=='W'">
+                <!-- <td style="width: 10%">{{dt.tokenid ? dt.tokenid : "-"}}</td> -->
+
+                <td style="width: 5%">{{dt.StatusDescription ? dt.StatusDescription : "-"}}</td>
+                <td style="width: 8%">{{(dt.TimeIn) ? (dt.TimeIn) : '-'}}</td>
+                <td style="width: 10%">{{(dt.TimeOut) ? (dt.TimeOut) : "-"}}</td>
+                <td style="width: 8%">{{(dt.TimeInSource) ? (dt.TimeInSource) : "-"}}</td>
+                <td style="width: 9%">{{(dt.TimeOutSource) ? (dt.TimeOutSource) : "-"}}</td>
+                <td style="width: 10%">{{(dt.TimeInConsidered) ? (dt.TimeInConsidered ) : "-"}}</td>
+                <td style="width: 8%">{{(dt.TimeOutConsidered) ? (dt.TimeOutConsidered) : "-"}}</td>
+                <!-- <td style="width: 10%" *ngIf="localUserData.isHOEmp != true">{{(list.TimeOut) ? (list.TimeOut | timeDiff:list.TimeIn) : "-"}}</td> -->
+                <!-- <td style="width: 10%">{{(dt.MinutesConsidered) ? MinutesConsidered(dt.MinutesConsidered) : "-"}}</td> -->
+                <td style="width: 4%">{{(dt.TotalHoursWorked) ? dt.TotalHoursWorked: "-"}}</td>
+                <!-- <td style="width: 10%" >{{(dt.MinutesConsidered) ? (dt.MinutesConsidered | date: 'HH:mm') : "-"}}</td> -->
+              </ng-container>
+              <td *ngIf="dt.Status=='W'" colspan="8" class="weekOff">
+                Weekly Off
+              </td>
+            </tr>
+            <!-- </ng-container> -->
+          </tbody>
+        </table>
+      </div>
+
+
+      <div *ngIf="weeklyDataList?.length>0" class="outerMainBlock col-md-2">
+        <div class="block1" (click)="clickOnPagination('p')" [ngClass]="{ disabled: curPage == 1 }">
+          << </div> <div class="block2">{{ curPage }}
+        </div>
+        <div class="block3" (click)="clickOnPagination('n')"
+          [ngClass]="{ disabled: curPage == totalPages || totalPages == 0 }"> >>
+        </div>
+        <div class="block4" (click)="resetHospitalList()"> <i class="fa fa-repeat f-10 "></i></div>
+      </div>
+    </div>
+
+    <div class="list-view table-responsive" *ngIf="weeklyDataList?.length <= 0 && totalPages !== null">
+      <div class="noFound-container">
+        <div class="innernoFound">
+          <img class="noFound" src='assets/img/filter.png'>
+          <div class="noFound-text">No records found </div>
+        </div>
+      </div>
+    </div>
+    <div class="list-view table-responsive" *ngIf="totalPages == null">
+      <div class="noFound-container">
+        <div class="innernoFound">
+          <img class="noFound" src='assets/img/filter.png'>
+          <div class="noFound-text">Please select filters to view report </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="newFormatModal modal fade" id="toggleConfirmation" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Sorry! No record found.
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-deny" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,259 @@
+<div class="container">
+  <app-modal *ngIf="flag"></app-modal>
+  <nav class="navClass">
+    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Rule Master</a>
+    </div>
+  </nav>
+
+  <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+    <div class="form-inline search-field input-container">
+      <input [(ngModel)]="searchItem" class="form-control mr-sm-2 search-input input-field" (keyup)="getsearch()" type="search" placeholder="Search Company / Rule Id."
+             aria-label="Search">
+      <!--<i class="fa fa-search icon" (click)="getRecords('bload')"></i>-->
+      <!-- <i class="fa fa-search icon" ></i> -->
+      <i class="fas fa-times" style="position: absolute; right: 17px;top: 11px;cursor: pointer;" *ngIf="showCross == true" (click)="resetsearch()"></i>
+    </div>
+  <div class="count-container tab-pane fade show active"  id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+    <div class="AllRow">
+      <div class="accordion-header accordionhdiv">
+        <div class="row">
+          <!--<div class="col-md-1">Sr.no</div>-->
+          <div class="col col-md-1 text-center">Rule Id</div>
+          <div class="col col-md-2">Year</div>
+          <div class="col col-md-2">Quarter</div>
+          <div class="col col-md-5">Company Name</div>
+          <div class="col col-md-1 text-center">Archive</div>
+          <div class="col col-md-1 text-center">Action</div>
+        </div>
+      </div>
+      <div id="accordion" *ngIf="flexiShow?.length>0" class="acc-list" infiniteScroll (scrolled)="getRecords('scroll')" [scrollWindow]="false">
+        <div class="card acc-container borderBotm" *ngFor="let e of flexiShow; let i = index;">
+          <a class="card-link" *ngIf="e.RuleType == 'Master'">
+            <div class="card-header">
+              <div class="row">
+                  <!--<div class="col-md-1">{{i+1}}</div>-->
+                <div class="col col-md-1 text-center">{{e.RuleId}}</div>
+                <div class="col col-md-2">FY {{e.FiscalYear - 1}}-{{e.FiscalYear.toString().substr(2,2)}}</div>
+                <div class="col col-md-2">
+                  <span *ngIf="e.Quarter1">Q1 </span>
+                  <span *ngIf="e.Quarter2">,Q2 </span>
+                  <span *ngIf="e.Quarter3">,Q3 </span>
+                  <span *ngIf="e.Quarter4">,Q4 </span>
+                </div>
+                <div class="col col-md-5">{{e.CompanyName}}</div>
+                <div class="col col-md-1 text-center">
+                      <div class="box">
+                          <div class="checkbox">
+                            <label>
+                              <input  data-toggle="tooltip" title="Active" type="checkbox" *ngIf="e.IsActive == true" [checked]="e.IsActive" [disabled]="false" (change)="confirmationBox(e,'Active');$event.target.checked = true" />
+                              <input  data-toggle="tooltip" title="InActive" type="checkbox" *ngIf="e.IsActive == false" [checked]="e.IsActive" [disabled]="false" (change)="confirmationBox(e,'NotActive');$event.target.checked = false" />
+
+                              <i class="input-helper"></i>
+                              <!-- <span>Maecenas faucibus mollis interdum.</span> -->
+                            </label>
+                          </div>
+                       </div>
+                </div>
+                <div class="col col-md-1 text-center col-action">
+                  <i class="fa fa-eye" (click)="sendDataUser(e)"></i>
+                    <!--<span class="accordion-toggle addArrow" (click)="sendDataUser(e)"></span>-->
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="flexiShow?.length<1">
+      <div class="no-records">
+        <img [src]='recordnotfound'>
+      </div>
+    </div>
+  </div>
+
+    <!--
+    //
+    //
+    // Start
+    //
+    //
+    -->
+
+  <div class="count-container tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <div class="row" (ngSubmit)="createNewException()">
+      <div class="col-md-12 exception-form">
+      <form class="row">
+      <div class="col-md-4" style="padding: 10px 15px;">
+        Rule For:
+        <label class="radio-group">MIBL
+          <input type="radio" checked="checked" name="rule">
+          <span class="checkmark"></span>
+        </label>
+        <label class="radio-group">MRHFL, MAMC, MMFCSL
+          <input type="radio" name="rule">
+          <span class="checkmark"></span>
+        </label>
+
+
+        <!--<input id="tab1" type="radio" name="rule" class="radio">
+        <label for="tab1" >Rule 1</label>
+
+        <input id="tab2" type="radio" name="rule" class="radio">
+        <label for="tab2" >Rule 2</label>-->
+      </div>
+
+      <div class="col-md-5" style="padding: 10px 15px;">
+        Exception Case:
+        <label class="radio-group">Include Employee
+          <input type="radio" checked="checked" name="exclusion">
+          <span class="checkmark"></span>
+        </label>
+        <label class="radio-group">Exclude Employee
+          <input type="radio" name="exclusion">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div class="col-md-3" style="text-align: right;">
+        <button class="theme-button">Add New Exception</button>
+      </div>
+      </form>
+      </div>
+      <!--<div class="col-md-3">
+        <div class="form-inline search-field input-container">
+          <input [(ngModel)]="searchItem" class="form-control mr-sm-2 search-input input-field" type="search" placeholder="Search by Company name.."
+                 aria-label="Search">
+          <i class="fa fa-search icon"></i>
+        </div>
+      </div>-->
+    </div>
+    <hr>
+    <!--<div class="row  no-margin">
+      <div class="col-md-8">
+      </div>
+      <div class="col-md-4">
+        <div class="form-inline search-form input-container">
+          <input [(ngModel)]="searchItem" class="form-control mr-sm-2 search-input input-field" type="search" placeholder="Search by Company name.."
+            aria-label="Search">
+          <i class="fa fa-search icon" (click)="getRecords('bload')"></i>
+        </div>
+      </div>
+    </div>-->
+    <div class="AllRow">
+        <div class="accordion-header accordionhdiv">
+          <div class="row">
+            <div class="col col-md-1">Sr.no</div>
+            <div class="col col-md-4">Date Range</div>
+            <div class="col col-md-4">Company Name</div>
+            <div class="col col-md-2 text-center">Grade</div>
+            <div class="col col-md-1 text-center">Archive</div>
+            <!-- <div class="col-md-2 status-container">
+              <select class="form-control" [(ngModel)]="status" (change)="getRecords('bload')">
+                <option style="padding:20px" *ngFor="let type of statusTypes;let i=index" [value]="type">{{type | titlecase}}</option>
+              </select>
+            </div> -->
+          </div>
+        </div>
+        <div id="accordion" *ngIf="FlexiDeactive?.length>0" class="acc-list" infiniteScroll (scrolled)="getRecords('scroll')" [scrollWindow]="false">
+          <div class="card acc-container borderBotm" *ngFor="let e of FlexiDeactive; let i = index;">
+            <a class="card-link">
+              <div class="card-header">
+                <div class="row">
+                    <div class="col col-md-1">{{i+1}}</div>
+                    <div class="col col-md-4">{{e.StartDate| date: 'dd.MMM.yyy'}} - {{e.EndDate| date: 'dd.MMM.yyy'}}</div>
+                    <div class="col col-md-4">{{e.CompanyName}}</div>
+                    <div class="col col-md-2 text-center"><!--Grade--></div>
+                    <div class="col col-md-1 text-center">
+                        <div class="box">
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox"  [checked]="e.IsActive" [disabled]="false" (change)="confirmationBox('NotActive',e);$event.target.checked = false" />
+                                <i class="input-helper"></i>
+                                <!-- <span>Maecenas faucibus mollis interdum.</span> -->
+                              </label>
+                            </div>
+                         </div>
+                    </div>
+                  <span class=" accordion-toggle addArrow" (click)="sendDataUser(e)"></span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    <div *ngIf="FlexiDeactive?.length<1">
+      <div class="no-records">
+        <img [src]='recordnotfound'>
+      </div>
+    </div>
+  </div>
+<!--
+//
+//
+// End
+//
+//
+-->
+
+
+
+</div>
+  <div class="modal fade" id="offlineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Declaration Info</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Proof submitted offline. Please verify.
+        </div>
+        <div class="modal-footer">
+          <div class="row">
+            <div class="col-12">
+              <textarea rows="3" cols="40" placeholder="Remarks" [(ngModel)]="adminRemark"></textarea>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12" style=" margin-left: -19px;">
+              <button type="button" [disabled]="offlineObj?.offlineObj.Status==='Approved' || offlineObj?.offlineObj.Status==='Rejected' "
+                class="btn btn-danger" (click)="confirmationBox('reject','')">Reject</button>
+              <button type="button" [disabled]="offlineObj?.offlineObj.Status==='Approved' || offlineObj?.offlineObj.Status==='Rejected' "
+                style="float: right" class="btn btn-success" (click)="confirmationBox('approve','')">Approve</button>
+              <div *ngIf="errMsg" class="err-msg">Remarks is mandatory while rejecting.</div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="conformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Action</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         {{ShowText}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="adminApproveReject()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>

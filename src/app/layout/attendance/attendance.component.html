@@ -1,0 +1,1138 @@
+<div class="container attendance-page font-14" *ngIf="showCaleInfo">
+  <!--  <nav aria-label="breadcrumb" class="breadcrum-padding col-md-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/dashboard">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Attendance</li>
+      </ol>
+    </nav> -->
+
+
+  <div>
+
+    <span class="pull-right img-icon icon-list">
+      <span class="search-icon" data-toggle="tooltip" title="Leave" style="display: none;" (click)="leaveViewFun()">
+        <i class="fas fa-suitcase-rolling f-15"></i>
+      </span>
+      <span class="search-icon" *ngIf="IsManager" data-toggle="tooltip" title="User" style="display: none;"
+        (click)="attendanceRegularize()">
+        <i class="fas fa-user f-15"></i>
+      </span>
+      <span class="search-icon" data-toggle="tooltip" title="Attendance Policies" (click)="openInfoModal()"
+        *ngIf='isHOEmp'>
+        <i class="fas fa-info-circle f-15" data-toggle="modal"></i>
+      </span>
+      <span class="search-icon" data-toggle="tooltip" title="Calendar View" (click)="calendarview()">
+        <i class="far fa-calendar-alt f-15"></i>
+      </span>
+      <span class="search-icon" data-toggle="tooltip" title="List View" (click)="listview()">
+        <i class="fas fa-bars f-15"></i>
+      </span>
+    </span>
+  </div>
+
+  <div class="row horizontal-padding">
+    <div class="attendance-section" [ngClass]="(calendarView || regularizeView) ? 'col col-8' : 'col col-12'">
+      <div *ngIf="regularizeView">
+        <div class="card-body accmultibody">
+          <div *ngIf="pendingAttendance.length !==0; else noRecords">
+
+            <div class="panel-group" id="accordion">
+              <div class="accordian" *ngFor="let obj of pendingAttendance  ; let i = index;">
+                <div class="row ">
+                  <div class=" accordianheader col col-md-12 pf1" style="text-transform: uppercase;" id="{{'title'+i}}"
+                    (click)="toggle(i)">
+                    <div>
+                      <div class="col-md-4 font-14-b sectionnamestyle sectionname">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>{{obj.FirstName}} {{obj.LastName}}
+                      </div>
+                      <div class="token">
+                        {{obj.TokenId}}
+                      </div>
+                      <i class="fa fa-chevron-right arrow" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="row proof" id="{{'poof'+i}}" style="display: none;">
+                  <div class="table-responsive attendanceUserList">
+                    <table class="table m-b-20">
+                      <thead>
+                        <tr>
+                          <th> Attendance ID</th>
+                          <th>Attendance Date</th>
+                          <th>Time In</th>
+                          <th>Time Out</th>
+                          <th>Leave Type</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="tableHover" *ngFor="let innerobj of obj.PendingEntries; let j = index;">
+                          <td>{{innerobj.AttendanceID}}</td>
+                          <td>{{innerobj.AttendanceDate | date: 'dd-MMM-yyyy'}}</td>
+                          <td>{{ innerobj.TimeIn | date: 'h:mm:ss a'}}</td>
+                          <td>{{ innerobj.TimeOut | date: 'h:mm:ss a'}}</td>
+                          <td>{{innerobj.LeaveType}}</td>
+                          <td>
+                            <span class="actionBtn m-r-5">
+                              <i class="fa fa-check-circle" aria-hidden="true"
+                                (click)="openConfirmation('Approved',obj, innerobj)"></i>
+                            </span>
+                            <span class="actionBtn">
+                              <i class="fa fa-times" aria-hidden="true"
+                                (click)="openConfirmation('Rejected',obj, innerobj)"></i>
+                            </span>
+                          </td>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- <div class="col col-md-3 row-title">
+                    Attendance ID
+                  </div>
+                  <div class="col col-md-2  row-title">
+                    Attendance Date
+                  </div>
+                  <div class="col col-md-2  row-title">
+                    Time In
+                  </div>
+                  <div class="col col-md-2  row-title">
+                    TimeOut
+                  </div>
+                  <div class="col col-md-3  row-title">
+                    Leave Type
+                  </div> -->
+
+                  <!-- <div class="col col-md-12 accdiv" *ngFor="let innerobj of obj.PendingEntries; let j = index;">
+                    <div class="row" style='background-color: #f9f9f9'>
+                      <div class="col col-md-3">
+                        {{innerobj.AttendanceID}}
+                      </div>
+                      <div class="col col-md-2">
+                        {{innerobj.AttendanceDate | date: 'dd-MMM-yyyy'}}
+                      </div>
+                      <div class="col col-md-2">
+                        {{ innerobj.TimeIn | date: 'h:mm:ss a'}}
+                      </div>
+                      <div class="col col-md-2">
+                        {{ innerobj.TimeOut | date: 'h:mm:ss a'}}
+                      </div>
+                      <div class="col col-md-3">
+                        {{innerobj.LeaveType}}
+                      </div>
+                    </div>
+                    <div class="row" style='margin-top: 9px;'>
+                      <div class="col col-md-12 action-btn">
+
+                        <button class="btn btn-primary submit-button sub-3 btn-md" (click)="openConfirmation('Approved',obj, innerobj)">
+                          <i class="fa fa-check-circle" aria-hidden="true"></i> &nbsp;Approve
+                        </button>
+                        <button class="btn btn-primary submit-button sub-3 btn-md" (click)="openConfirmation('Rejected',obj, innerobj)">
+                          <i class="fa fa-times" aria-hidden="true"></i>&nbsp;Reject</button>
+
+                      </div>
+                    </div>
+               </div> -->
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row" *ngFor="let obj of pendingAttendance">
+
+                <div class="col-6">
+                  {{obj.FirstName}} {{obj.LastName}}
+                </div>
+                <div class="col-6">
+                  {{obj.TokenId}}
+                </div>
+
+              </div> -->
+          </div>
+          <ng-template #noRecords>
+            No Records found.
+          </ng-template>
+        </div>
+
+      </div>
+      <div class="calendar-view" *ngIf="calendarView">
+        <div id="attendance-header">
+          <div class="row" id="calendar_day">
+            <div class="col col-md-5">
+              <span class="lstick"></span>
+              <span class="f-12 heighlightedDay"> {{currentServerDate | date : "EEEE"}}
+                &nbsp;|&nbsp;{{currentServerDate | date : "dd"}} . {{currentServerDate
+                | date : "MMM"}} . {{currentServerDate | date : "yyyy"}}</span>
+            </div>
+            <div class="col-md-7 weekViewButton" *ngIf='isHOEmp'>
+              <!-- <div class="col-md-1 weekBox" [class.selectedGrid]="i == selectedGrid" (click)="showWeekDetails(i)" *ngFor="let week of arrayOne() ; let i=index">
+                <span> W{{i+1}}</span>
+              </div> -->
+              <div class="col-md-3 custBtn">
+                <div data-toggle="modal" (click)="openMap()">{{attendanceType}}</div>
+              </div>
+            </div>
+            <div class="col-md-8 weekViewButton" *ngIf='!isHOEmp'>
+              <div class="col-md-3 custBtn">
+                <div data-toggle="modal" (click)="openMap()">{{attendanceType}}</div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="tst">
+            <div class="row">
+              <div class="col text-center smallDateDetails">
+                {{currentServerDate | date : "MMM" | uppercase}}
+                <span id="highlight"> {{currentServerDate | date : "dd"}}</span> {{currentServerDate | date : "yyyy"}}
+              </div>
+            </div>
+            <div class="row map-button">
+              <div class="col text-center">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <button type="button" class="btn btn-yes" data-toggle="modal" (click)="openMap()">
+                      <span>{{attendanceType}}</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="row margin-top " *ngIf='isHOEmp'>
+                  <div class="col-sm-12">
+                    <span class="weeks" [class.selectedGrid]="i == selectedGrid" (click)="showWeekDetails(i)" *ngFor="let week of arrayOne() ; let i=index">
+                      W{{i+1}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+        </div>
+
+        <div class="date-section" *ngIf="showCaleInfo">
+          <div class="row month">
+            <!-- <div class="row">
+                  <label for="startDate">Date :</label>
+                  <input name="startDate" id="startDate1" class="date-picker" />
+              </div> -->
+            <div class="col-5">
+              <div class="row">
+                <div>
+                  <img _ngcontent-c3="" class="img-thumbnail side-icon imageclick" src="assets/svgIcon/attendance.svg"
+                    style="padding: 0px 6px 4px 0;width: 21px;border:none;margin-left: 3px;" id="imageId1"
+                    name="Attendance">
+                  <input type="text" name="startDate" id="startDate1" placeholder="month & year"
+                    class="startDateAll date-picker MonthYearCalendar" autocomplete="off" readonly />
+                  <span><svg fill='black' class="imageclick" height='24' viewBox='0 0 24 24' width='24'
+                      xmlns='http://www.w3.org/2000/svg' style="margin: -8px 0 0 0px;">
+                      <path d='M7 10l5 5 5-5z' />
+                      <path d='M0 0h24v24H0z' fill='none' />
+                    </svg></span>
+                </div>
+                <!-- <button class="col button-pointer no-padding max-width-10" (click)="previousYear()" [disabled]="!toggleButton">
+                      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="col text-center no-padding date-format w-500" >
+                        {{selectedYear}}
+                    </div>
+                    <button class="col button-pointer  no-padding max-width-10" (click)="nextYear()" [disabled]="!toggleButton">
+                      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </button> -->
+
+              </div>
+            </div>
+            <!-- <div class="col-1 p-b-10">
+
+                    <select class="form-control" (change)="onMonthChange(ddMonth,selectedYear)" [(ngModel)]="ddMonth" >
+                        <option value="0">January</option>
+                        <option value="1">February</option>
+                        <option value="2">March</option>
+                        <option value="3">April</option>
+                        <option value="4">May</option>
+                        <option value="5">June</option>
+                        <option value="6">July</option>
+                        <option value="7">August</option>
+                        <option value="8">September</option>
+                        <option value="9">October</option>
+                        <option value="10">November</option>
+                        <option value="11">December</option>
+                      </select>
+                </div>-->
+            <div class="col-7 text-right p-r-0" *ngIf='isHOEmp'>
+              <div class="col-md-1 weekBox" [class.selectedGrid]="i == selectedGrid" (click)="showWeekDetails(i)"
+                *ngFor="let week of weeklyDataList; let i=index">
+                <span> W{{i+1}}</span>
+              </div>
+            </div>
+            <div class="col-12 no-padding borderLight alignMargin">
+              <div class="row">
+                <div class="no-padding">
+                  <span class="green-dot-circle"></span>
+                  <span class="legends">Present (P)</span>
+                  <span class="red-dot-circle"></span>
+                  <span class="legends">Absent (A)</span>
+                  <span class="yellow-dot-circle"></span>
+                  <span class="legends">Time Off (T)</span>
+                  <span class="grey-dot-circle"></span>
+                  <span class="legends">Holiday (H)</span>
+                  <span class="orange-dot-circle"></span>
+                  <span class="legends">Weekly Off (W)</span>
+                  <span class="blue-dot-circle"></span>
+                  <span class="legends">Optional (O)</span>
+                  <span class="robinBlue-dot-circle"></span>
+                  <span class="legends">Regularize (R)</span>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- Calendar -->
+
+          <div class="row days">
+            <div class="col headcalendar" *ngFor="let day of weekArray ">
+              {{day}}
+            </div>
+          </div>
+          <div class="row calendar-date" id="shadowID"
+            [ngClass]="[((checkWeekActive(weekdate[i]) == true && isHOEmp) ? 'shadow': '')]"
+            *ngFor="let weekdate of calendarDate; let i=index ">
+            <!-- <div class="col button " *ngFor="let date of weekdate; let i = index" [ngClass]="[((date.attendance_date !=null && date.monthData === currentMonth && date.dateflag===true) ? 'type'+ date.attendance_date.Status : 'normal'),((date.currentDate && date.dateflag===true) ? 'type'+ date.currentDate : 'type-normal-date'),(date.dateflag===true ? 'button-pointer': ''),(checkDate(date)===true ? 'applyBorder': '')]" -->
+            <div class="col button " *ngFor="let date of weekdate; let i = index"
+              [ngClass]="[((date.currentDate && date.dateflag===true) ? 'type'+ date.currentDate : 'type-normal-date'),(checkWeekActive(date)===true && isHOEmp ? 'applyBorder ': '')]"
+              (click)="date.dateflag===true ? showInfo(date.attendance_date) : false">
+              <!-- <span style="font-size: 8px; color: yellow">{{date.currentDate}}</span> -->
+
+
+              <!-- <span *ngIf="date.dateflag===true"> -->
+              <div *ngIf="date.dateflag" class="text-center date-status" [ngClass]="[((date.attendance_date !=null &&
+                date.monthData == currentMonth &&
+                 date.dateflag===true) ? 'abcd status'+ date.attendance_date.Status : 'myst normal'),
+                ((date.currentDate && date.dateflag===true) ? 'type'+ date.currentDate : 'type-normal-date'),
+                (date.dateflag===true ? 'button-pointer': '')]">
+                {{(date.attendance_date !=null) ? date.attendance_date.Status: ''}}
+              </div>
+              <div class="text-center date-status statusR" *ngIf="date.attendance_date.SFRegularized == true">R</div>
+              <div
+                [ngClass]="[((date.currentDate) ? date.currentDate : 'normal-date'),(date.attendance_date.Status == '' ? 'no-status-date':''),(!date.dateflag ? 'mute-date':'')]">
+                <span> {{date.cdate | date : 'dd'}} </span>
+              </div>
+              <!-- </span> -->
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="table-header list-table" *ngIf="listView">
+
+        <div class="row month-name" style="display: none;">
+          <!--"previousMonth('list')"-->
+          <button class="col button-pointer max-width-10" (click)="changeAttendanceList('prev')"
+            [disabled]="!toggleButton">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <div class="col text-center no-padding date-format">
+            {{listheaderDate | date : "MMMM yyyy" | uppercase}}
+          </div>
+          <!--"nextMonth('list')"-->
+          <button class="col button-pointer max-width-10" (click)="changeAttendanceList('next')"
+            [disabled]="!toggleButton">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-12 no-padding">
+
+          <!-- <div class="row">
+                <input name="startDate" id="startDateList" placeholder="months & year" class="date-picker" autocomplete="off"  style="text-align: center"/>
+            </div> -->
+
+          <div class="colorListAdjust row">
+            <div style="width: 20%;margin:-3px 0 0 0;background-color: #cbcdd2">
+              <img _ngcontent-c3="" class="img-thumbnail side-icon imageclick" src="assets/svgIcon/attendance.svg"
+                style="padding: 0px 6px 1px 0;width: 24px;border:none;background-color: #cbcdd2" id="imageId1"
+                name="Attendance">
+              <input type="text" name="startDate" placeholder="month & year"
+                class="startDateAll date-picker MonthYearCalendar" autocomplete="off" style="background-color: #cbcdd2;"
+                readonly />
+              <svg fill='black' height='24' class="imageclick" viewBox='0 0 24 24' width='24'
+                xmlns='http://www.w3.org/2000/svg' style="margin: -8px 0 0 0;">
+                <path d='M7 10l5 5 5-5z' />
+                <path d='M0 0h24v24H0z' fill='none' />
+              </svg>
+            </div>
+            <div class="no-padding" style="display:flex;width: 80%;font-size: 13px;">
+              <div class="legendDiv">
+                <span class="green-dot-circle"></span>
+                <span class="legends">Present (P)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="red-dot-circle"></span>
+                <span class="legends">Absent (A)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="yellow-dot-circle"></span>
+                <span class="legends">Time Off (T)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="grey-dot-circle"></span>
+                <span class="legends">Holiday (H)</span>
+              </div>
+              <div class="legendDiv">
+
+                <span class="orange-dot-circle"></span>
+                <span class="legends">Weekly Off (W)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="blue-dot-circle"></span>
+                <span class="legends">Optional (O)</span>
+              </div>
+              <div class="legendDiv">
+                <span class="robinBlue-dot-circle"></span>
+                <span class="legends">Regularize (R)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-fixed">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 12%;" class="ListThAdjust">Attendance Date</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Description</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">System <br>Punch In</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">System <br>Punch Out</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Time In Source</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Time Out Source</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Calculated <br>Time in</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Calculated <br>Time out</th>
+              <th scope="col" style="width: 10%" class="ListThAdjust">Clocked Hours</th>
+
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div *ngIf="leaveView">
+        <div class="table-header list-table">
+          <ul class="nav nav-tabs">
+            <li [ngClass]="{'active':leaveListClassActive}">
+              <a data-toggle="tab" href="#leaveList" (click)="activeClassChange('leaveList')">List of Leaves</a>
+            </li>
+            <li [ngClass]="{'active':leaveReqClassActive}">
+              <a data-toggle="tab" href="#leaveReq" (click)="activeClassChange('leaveReq')">Leave Request</a>
+            </li>
+            <li [ngClass]="{'active':leaveCardClassActive}">
+              <a data-toggle="tab" href="#leaveCard" (click)="activeClassChange('leaveCard')">Leave Card</a>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-content">
+
+          <div id="leaveList" class="tab-pane fade in active show">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-6">
+                    jj
+                  </div>
+                  <div class="col-md-6">
+                    hh
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="leaveReq" class="tab-pane fade">
+            <form class="leave-form" [formGroup]="leaveRequest" (ngSubmit)="requestLeave()">
+              <div class="container">
+                <div class="row">
+                  <div class="col col-6">
+                    <div class="form-group">
+                      <p for="exampleInputEmail1">From Date</p>
+                      <!-- <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> -->
+                      <input type="date" formControlName="startDate" class="form-control mydatepicker">
+                      <span class="form-error"
+                        *ngIf="formCntrl('startDate').touched && formCntrl('startDate').hasError('required')">This field
+                        is mandatory</span>
+                      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                    </div>
+                    <div class="form-group">
+                      <p for="exampleInputPassword1">To Date</p>
+                      <input type="date" formControlName="endDate" class="form-control mydatepicker">
+                      <span class="form-error"
+                        *ngIf="formCntrl('endDate').touched && formCntrl('endDate').hasError('required')">This field is
+                        mandatory</span>
+                    </div>
+                    <div class="form-group">
+                      <p for="exampleFormControlSelect1">Leave Type</p>
+                      <select class="form-control" formControlName="leaveType" id="exampleFormControlSelect1">
+                        <option>Privilege Leave</option>
+                        <option>Sick Leave</option>
+                      </select>
+                      <span class="form-error"
+                        *ngIf="formCntrl('leaveType').touched && formCntrl('leaveType').hasError('required')">This field
+                        is mandatory</span>
+                    </div>
+                  </div>
+                  <div class="col col-6">
+                    <div class="form-group">
+                      <p for="exampleFormControlSelect1">Leave Period</p>
+                      <select class="form-control" formControlName="period" id="exampleFormControlSelect1">
+                        <option>Full Day</option>
+                        <option>Half Day</option>
+                        <option>Short Leave</option>
+                      </select>
+                      <span class="form-error"
+                        *ngIf="formCntrl('period').touched && formCntrl('period').hasError('required')">This field is
+                        mandatory</span>
+                    </div>
+                    <div class="form-group">
+                      <p for="exampleFormControlTextarea1">Comments</p>
+                      <textarea class="form-control" formControlName="comments" id="exampleFormControlTextarea1"
+                        rows="3"></textarea>
+                      <span class="form-error"
+                        *ngIf="formCntrl('comments').touched && formCntrl('comments').hasError('required')">This field
+                        is mandatory</span>
+
+                    </div>
+                  </div>
+                  <hr>
+
+                  <div class="col col-12">
+                    <button type="submit" [disabled]="!leaveRequest.valid" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div id="leaveCard" class="tab-pane fade">
+            <!-- <div class="table-header list-table">
+              <table class="table ">
+                <thead>
+                  <tr>
+                    <th>Leave</th>
+                    <th>PL</th>
+                    <th>EL</th>
+                    <th>ML</th>
+                  </tr>
+                </thead>
+              </table>
+            </div> -->
+            <div class="table-responsive table-bordered">
+              <table class="table atttable">
+                <thead>
+                  <tr>
+                    <th>Leave</th>
+                    <th>PL</th>
+                    <th>EL</th>
+                    <th>ML</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let tableData of leaveCard; let i=index;" [ngClass]="{'leave-table-row-even':i%2==0}">
+                    <td>{{tableData.leaveName}}</td>
+                    <td>{{tableData.PL}}</td>
+                    <td>{{tableData.EL}}</td>
+                    <td>{{tableData.ML}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-view table-responsive" *ngIf="listView">
+        <table class="table table-fixed attlistdiv">
+          <tbody>
+            <ng-container *ngFor="let week of weeklyDataList; let i = index;">
+              <tr class="darkRow" *ngIf='isHOEmp'>
+                <td colspan="10"> <i class="far fa-clock  m-r-5"></i>
+                  <!-- W2 Hours :  44hrs & 50min -->
+                  W{{i+1}} Hours : {{calculateWeeklyTime(i).hours}}hrs & {{calculateWeeklyTime(i).minutes}}min
+                </td>
+              </tr>
+              <tr scope="row" *ngFor="let dt of week; let j = index;"
+                [ngClass]="{'notcurmonth': checkDateCurMonth(dt.AttendanceDate) , 'typecurrentDate': dt.currentDate }">
+                <!-- <td style="width: 1%"> <div class="triangle" [ngClass]="'triangle'+dt.Status"></div></td> -->
+                <td style="padding-left: 1.5rem; width: 12%;">
+                  <div class="triangle" [ngClass]="'triangle'+dt.Status"></div>
+                  <div class="triangle triangleR" *ngIf="dt.SFRegularized"></div>
+                  <span class="vertical_Align">{{dt.AttendanceDate | date: 'dd-MMM-yyyy'}}</span>
+                </td>
+                <ng-container *ngIf="dt.Status!=='W'">
+                  <td style="width: 10%">{{dt.StatusDescription ? dt.StatusDescription : "-"}}</td>
+                  <td style="width: 10%">{{(dt.TimeIn) ? (dt.TimeIn | date: 'HH:mm') : '-'}}</td>
+                  <td style="width: 10%">{{(dt.TimeOut) ? (dt.TimeOut | date: 'HH:mm') : "-"}}</td>
+                  <td style="width: 10%">{{(dt.TimeInSource) ? (dt.TimeInSource) : "-"}}</td>
+                  <td style="width: 10%">{{(dt.TimeOutSource) ? (dt.TimeOutSource) : "-"}}</td>
+                  <td style="width: 10%">{{(dt.TimeInConsidered) ? (dt.TimeInConsidered | date: 'HH:mm') : "-"}}</td>
+                  <td style="width: 10%">{{(dt.TimeOutConsidered) ? (dt.TimeOutConsidered | date: 'HH:mm') : "-"}}</td>
+                  <!-- <td style="width: 10%" *ngIf="localUserData.isHOEmp != true">{{(list.TimeOut) ? (list.TimeOut | timeDiff:list.TimeIn) : "-"}}</td> -->
+                  <td style="width: 10%">{{(dt.MinutesConsidered) ? MinutesConsidered(dt.MinutesConsidered) : "-"}}</td>
+                  <!-- <td style="width: 10%" >{{(dt.MinutesConsidered) ? (dt.MinutesConsidered | date: 'HH:mm') : "-"}}</td> -->
+                </ng-container>
+                <td *ngIf="dt.Status=='W'" colspan="8" class="weekOff">
+                  Weekly Off
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="col col-4 side-section">
+      <div class="holiday-section rightfirstdiv">
+        <div class="font-14-b header-section">
+          <span class="lstick"></span> Holiday
+        </div>
+        <div class="table-responsive customTblScroll">
+          <table class="table m-b-20 holiday_Table">
+            <thead>
+              <tr *ngIf="monthWiseHolidays.length >0 else noHoliday">
+                <th class="w-30">Date</th>
+                <th class="w-50">Description</th>
+                <th class="w-20">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="tableHover" *ngFor="let holiday of monthWiseHolidays">
+                <td class="w-30">{{holiday.date | date : 'dd-MMM-yyyy'}}</td>
+                <td class="w-50"> {{holiday.holidaydesc}}</td>
+                <td class="w-20">
+                  <span *ngIf='holiday.holidayType === "O" || holiday.holidayType === "o" ;else noOptional'>
+                    Optional</span>
+                  <ng-template #noOptional>
+                    <span class="font-12">General</span>
+                  </ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #noHoliday>
+          <div class="no-record font-14">
+            <div class="m-b-30">
+              <img src="assets/img/no-holiday.png" height="50px" width="50px">
+            </div>
+            No holiday
+          </div>
+        </ng-template>
+
+      </div>
+
+      <div class="date-info-section" *ngIf="attendanceInfo !=null" style="margin-top:10px;">
+        <div class=" font-14-b header-section">
+          <span class="lstick"></span> Attendance Summary
+          <!-- <span class="buttonBlock" *ngIf="attendanceInfo.SFRegularized == false">
+            <button type="button" class="btn btn-yes"  (click)="openTimeOffDialog(attendanceInfo)">Regularize</button>
+          </span> -->
+          <span class="buttonBlock">
+            <button type="button" class="btn btn-yes" (click)="showMap('IN')" data-toggle="modal">Details</button>
+          </span>
+          <!-- <img  (click)="showMap('IN')" class="head" data-toggle="modal" src="../assets/img/profile-mobile/location.svg" /> -->
+          <!-- <i style="float: right;" class="fas fa-info-circle f-15" data-toggle="modal"></i> -->
+        </div>
+        <div *ngIf="attendanceInfo !== null" class="detailGrid">
+          <div class="row">
+            <div class="col col-5 font-14-b">Attendance Date </div>
+            <div class="col col-7 font-12">{{attendanceInfo.AttendanceDate | date: 'dd-MMM-yyyy'}}</div>
+          </div>
+          <div class="row">
+            <div class="col col-5 font-14-b">Status</div>
+            <div class="col col-7 font-12"> {{attendanceInfo.StatusDescription}}</div>
+          </div>
+          <div class="row">
+            <div class="col col-5 font-14-b">Time In Source</div>
+            <div class="col col-7 font-12">{{attendanceInfo.TimeInSource}}</div>
+          </div>
+          <div class="row">
+            <div class="col col-5 font-14-b">Time Out Source </div>
+            <div class="col col-7 font-12"> {{attendanceInfo.TimeOutSource}}</div>
+          </div>
+          <div class="row">
+            <div class="col col-5 font-14-b">System Punch In</div>
+            <div class="col col-7 font-12">{{attendanceInfo.TimeIn | date: 'HH:mm:SS'}}</div>
+          </div>
+          <div class="row">
+            <div class="col col-5 font-14-b">Calculated Time In</div>
+            <div class="col col-7 font-12">{{attendanceInfo.TimeInConsidered | date: 'HH:mm:SS'}}</div>
+          </div>
+          <div class="row">
+            <div class="col col-5 font-14-b">System Punch Out</div>
+            <div class="col col-7 font-12">{{attendanceInfo.TimeOut | date: 'HH:mm:SS'}}</div>
+          </div>
+          <div class="row">
+            <div class="col col-5 font-14-b">Calculated Time Out</div>
+            <div class="col col-7 font-12">{{attendanceInfo.TimeOutConsidered | date: 'HH:mm:SS'}}</div>
+          </div>
+          <div class="row">
+            <div class="col col-5 font-14-b">Clocked Hours</div>
+            <div class="col col-7 font-12"> {{attendanceInfo.clockedHours}}</div>
+          </div>
+          <div class="row">
+            <div class="col col-5 font-14-b">Remarks </div>
+            <div class="col col-7 font-12">{{attendanceInfo.Remarks}}</div>
+            <!-- <div class="col col-7 font-12" *ngIf="attendanceInfo.SFRegularized == true">Regularized</div> -->
+          </div>
+
+
+
+
+
+
+
+
+          <!-- <div class="row">
+            <div class="buttonBlock">
+              <button type="button" class="btn btn-yes" (click)="openTimeOffDialog(attendanceInfo)">Regularize</button>
+            </div>
+          </div> -->
+        </div>
+
+      </div>
+
+      <div class="holiday-section" *ngIf="!noRecord">
+        <div class="header-section font-15">
+          <span class="lstick"></span> Attendance Summary
+        </div>
+
+        <div class="no-record font-15">
+          <div class="m-b-30">
+            <img [src]="detailsIcon" height="50px" width="50px">
+          </div>
+          {{defaultMsg}}
+        </div>
+      </div>
+
+      <div class="holiday-section" style="margin-top: 10px">
+        <div class="header-section font-15">
+          <span class="lstick"></span> Manager Reviews
+        </div>
+
+        <div class="no-record font-15">
+          No Reviews.
+          <!-- <div class="m-b-30">
+              <img [src]="detailsIcon" height="50px" width="50px">
+            </div>
+            {{defaultMsg}} -->
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+<!-- Modal -->
+<div class="newFormatModal modal fade mark-attendance-modal" id="mapModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header" id="attendance_header">
+        <h5>Mark Attendance - {{attendanceType}} | {{startDate | date : 'dd-MMM-yyyy , HH:mm:ss'}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <!-- <div>
+          <span class="clock-icon">
+              <img src="assets/svgIcon/time.svg">
+            </span>
+          <span class="time-Info">{{startDate | date : 'MMM d, y h:mm:ss a'}}</span>
+        </div> -->
+      </div>
+      <div class="modal-body" id="modal-body">
+        <div id="map" style="height:22rem;min-width: 500px;"></div>
+      </div>
+      <!-- <div class="modal-footer" id="map-footer" style="    padding: 0px !important;">
+         <button type="button" class="btn btn-yes" data-toggle="modal" data-target="#conformationModal">Submit</button>
+       <div class="text-right" style="    position: relative;
+       height: 13%;
+       border: 1px solid;
+       padding: 12px;">
+        <button type="button" class="btn btn-yes " (click)="checkMarkAttendance()" [ngClass]="(openFooter == true) ? 'slidingButton' : ''">{{attendanceType}}</button>
+        <div class=" confirmPannel" [ngClass]="(openFooter == true) ? 'visibleBlock' : ''">
+          <div class="row">
+         <div class="col-md-8">Are you sure to {{attendanceType}} ?</div>
+          <div class="col-md-4">
+           <button type="button" class="btn btn-deny" (click)="closePanel()"  [ngClass]="(openFooter == true) ? 'closingPanel' : ''">No</button>
+           <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="markAttendance()">Yes</button>
+         </div>
+        </div>
+       </div>
+       </div>
+
+      </div> -->
+      <div class="modal-footer" id="">
+        <div class="row outerConatiner" [ngClass]=" openStatus ? 'slidePanel' : ''">
+          <div class="col-md-2">
+            <button type="button" class="btn btn-yes markAttendaceModalBtn" [disabled]="openStatus"
+              (click)="checkMarkAttendance()">{{attendanceType}}</button>
+          </div>
+          <div class="col-md-10">
+            <div class="card confirmCardBox">
+              <div class="row">
+                <div class="col-md-7">
+                  <p>Are you sure want to {{attendanceType}} ?</p>
+                </div>
+                <div class="col-md-5 text-right">
+                  <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="markAttendance()">Yes</button>
+                  <button type="button" class="btn btn-deny" (click)="closePanel()">No</button>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="modal-body">
+      <div id="map" style="width:100%; height:22rem;"></div>
+    </div>
+    <div class="modal-footer" id="map-footer">
+      <button type="button" class="btn btn-yes" (click)="checkMarkAttendance()">Submit</button>
+    </div> -->
+  </div>
+</div>
+<div class="newFormatModal modal fade" id="attaendancemapModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header" id="attendance_header">
+          <div style="width: 50%;" (click)= 'showMap("IN")'> Punch IN </div>   <div style="width: 50%;" (click)= 'showMap("OUT")'> Punch Out </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div> -->
+      <div class="modal-header" id="attendance_header1">
+        <div class="punch" (click)='showMap("IN")' [ngClass]="punchingFlag === 'IN' ? 'punchactive' : ''"> Punch IN
+        </div>
+        <div class="punch" [ngClass]="punchingFlag === 'OUT' ? 'punchactive' : ''" (click)='showMap("OUT")'> Punch Out
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <div *ngIf="isMapAvailable" id="attendancemap" style="height:22rem;min-width: 100%;width: 100%;"></div>
+        <div *ngIf="!isMapAvailable" style="height:22rem;min-width: 100%;width: 100%;">
+          No Map Data Available.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" *ngIf="attendanceInfo !== null">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" *ngIf="attendanceInfo !== null">
+      <div class="modal-header" id="attendance_header">
+        <span>Attendance details</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Attendance Date : {{attendanceInfo.AttendanceDate | date: 'dd-MMM-yyyy'}}</p>
+        <p>Status : {{attendanceInfo.Status}}</p>
+        <p>Time In : {{attendanceInfo.TimeIn | date: 'HH:mm:SS'}}</p>
+        <p>Time In Source : {{attendanceInfo.TimeInSource}}</p>
+        <p>Time Out : {{attendanceInfo.TimeOut | date: 'HH:mm:SS'}}</p>
+        <p>Time Out Source : {{attendanceInfo.TimeOutSource}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- conformation box -->
+
+<div class="newFormatModal modal fade" id="conformationModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mark {{attendanceType}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Are you sure to {{attendanceType}} ? -->
+        Would you like to mark attendance now?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="markAttendance()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- check user check in again -->
+<!-- conformation box -->
+<div class="newFormatModal modal fade" id="checkLoginModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mark {{attendanceType}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want Punch IN again?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="checkMarkAttendance()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end -->
+
+<div class="newFormatModal modal fade" id="successModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Punch Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{successMessage}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="newFormatModal modal fade" id="confirmationAttendance" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm {{status}}</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"  *ngIf="status=='Approval'">
+        Do you want to continue?
+      </div>
+      <div class="modal-body"  *ngIf="status=='Rejection'">
+        <input class="reason-input"  type="text"  [(ngModel)]="reasonText"  name="reason"
+           placeholder="Enter the reason">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="approveReject()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- </div> -->
+<!-- Time offf Modal -->
+<div class="newFormatModal modal fade" id="timeoffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-lg" role="document">
+
+    <div class="modal-content ">
+
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">Regularize Attendance</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+      <div class="modalDivider"></div>
+      <div class="modal-body">
+
+        <div class="row">
+
+          <div class="col-md-4">
+
+            <div class="form-group">
+
+              <label>Date</label>
+
+              <input class="form-control mydatepicker" [ngModel]="getDate(regularizeData.date)" type="date" value="">
+
+            </div>
+
+          </div>
+
+          <div class="col-md-4">
+
+            <div class="form-group">
+
+              <label>Shift Begin(hh:mm am/pm)</label>
+
+              <input class="form-control" type="time" [ngModel]="getTime(regularizeData.shiftBegin)"
+                placeholder="hh:mm am/pm" disabled value="">
+
+            </div>
+
+          </div>
+
+          <div class="col-md-4">
+
+            <div class="form-group">
+
+              <label>Shift End(hh:mm am/pm)</label>
+
+              <input class="form-control" type="time" [ngModel]="getTime(regularizeData.shiftEnd)"
+                placeholder="hh:mm am/pm" disabled value="">
+
+            </div>
+
+          </div>
+
+          <div class="col-md-4">
+
+            <div class="form-group">
+
+              <label>In Time(hh:mm am/pm)</label>
+
+              <input class="form-control" placeholder="hh:mm am/pm" [(ngModel)]="regularizeData.inTime" type="time"
+                value="">
+
+            </div>
+
+          </div>
+
+          <div class="col-md-4">
+
+            <div class="form-group">
+
+              <label>Out Time(hh:mm am/pm)</label>
+
+              <input class="form-control" placeholder="hh:mm am/pm" [(ngModel)]="regularizeData.outTime" type="time"
+                value="">
+
+            </div>
+
+          </div>
+
+          <div class="col-md-12">
+
+            <div class="form-group">
+
+              <label>Remarks</label>
+
+              <textarea class="form-control" placeholder="Your remarks" [(ngModel)]="regularizeData.remarks"
+                rows="4"></textarea>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="modal-footer" id="map-footer">
+
+        <button type="button" class="btn btn-yes" [disabled]="validateRegularize()"
+          (click)="regularizeSubmit()">Submit</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div class="newFormatModal modal fade attendacePolicyModal " id="informationModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5><i class="far fa-clock m-r-5"></i>Attendance Policies</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modalDivider"></div>
+      <div class="modal-body contentBody">
+        <div class="contentScroll">
+          <ul *ngIf="usertype=='HO'">
+            <li>The time span of availing flexi hours will be from 8:00 a.m. to 7:00 p.m. It is necessary that employee
+              completes 8 hours on a daily basis or 40 hours in a week. Employee is required to report to office daily.
+            </li>
+            <li>Timings for any meetings called for by Reporting Managers will have to be adhered to.
+            </li>
+            <li>It is necessary that the customer servicing sections, and Reception should be functional during regular
+              office timings.
+            </li>
+            <li>Department Head/Product Head/Business Head will decide the office timings for his/her function.
+            </li>
+            <li>Employee needs to apply Local duty/Seminars/Training/Business Tour in advance and it should be approved
+              by the Reporting Manager on or before 18th of the month.
+            </li>
+            <li>In case, employees wish to avail leave, it is required to be applied & approved by Reporting Manager in
+              the system.
+            </li>
+            <li>In case leave balance is not available with the employee, Employee/Reporting Manager should inform Time
+              Administrator Process Owner & leave will be marked as Loss of Pay.
+            </li>
+            <li>If an employee does not apply for leave, or regularize attendance in the system for any particular
+              day(s) where Clock-in-Time & Clock-in-Time has not been recorded, the employee will be deemed to be
+              “PRESENT” on that day(s). However, it is the responsibility of the employee to record Leave/Optional
+              holiday/Local duty/ Seminar/Training/Business Tour & get it approved by Reporting Manager.
+            </li>
+            <li>Regularization & corresponding approvals of attendance will be allowed for current and last month
+              attendance cycle only. Any regularization or approvals beyond the set limit will not be considered.
+            </li>
+          </ul>
+          <ul *ngIf="usertype=='RO'">
+            <li>Office Timing: 09:30 AM to 5:30 PM</li>
+            <li>All Employees to Complete 8 Hrs every day</li>
+            <li>Late Coming – Clock In time between 09:45:00 AM to 11:30:00 AM –Flag as Deviation</li>
+            <li>Early Leaving – 1 Hrs early going is allowed, if an employee came at 9:45 AM he can leave by 5:45 PM –
+              Flag as Deviation</li>
+            <li>2 Deviations are allowed in 1 attendance cycle. For every 3rd Deviation 0.5 Day EL to be deducted. If EL
+              Balance is exhausted LOP to be marked</li>
+            <li>Single Swipe – (Where Only Clock In Time or Clock Out Time is available) – 1 Day EL to be deducted. If
+              EL Balance is exhausted LOP to be marked</li>
+            <li>Clock in Time after 11:30:00 AM – 0.5 Day LOP to be marked</li>
+            <li>Clock In Time after 1:30:00 PM – 1 Day LOP to be marked</li>
+            <li>Clock In Time is within Flexi Time & Total Working Hours Less than 7 Hrs – 0.5 Days LOP to be marked
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

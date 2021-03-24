@@ -1,0 +1,142 @@
+<div class="container img-fluid"  *ngIf="loginFrom == 'normal'">
+  <div class="login-header">
+    <img src="assets/mfss/mahindra-ridge.png" />
+    <!-- <span>Mahindra Finance</span> -->
+  </div>
+  <div class="form-section">
+    <div class="card card-container">
+      <div [innerHTML]="content"></div>
+      <img id="profile-img" class="profile-img-card" src="assets/mfss/we-connect-logo.png" />
+
+      <form class="form-signin no_margin" #ngForm="ngForm" [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="row">
+          <div class="col-sm-12 col-md-12  col-md-offset-1 ">
+            <div class="form-group addonInput">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <img src="../assets/svgIcon/user.svg" />
+                </span>
+                <input autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control"
+                  placeholder="Token ID" type="text" (click)="onUnameClick()" formControlName="username"
+                  (keypress)="numberOnly($event)" autocomplete="new-password" />
+              </div>
+              <div *ngIf="
+                  (loginForm.controls.username.value == null &&
+                    ngForm.submitted) ||
+                  (loginForm.controls.username.dirty &&
+                    loginForm.controls.username.errors)
+                " class="error-msg">
+                <span class="error"> Please enter Token Id </span>
+              </div>
+            </div>
+
+            <div class="form-group addonInput">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <img src="../assets/svgIcon/lock.svg" />
+                </span>
+                <input class="form-control" autocomplete="new-password" autocomplete="no"
+                  style="padding: 0 25px 0 9px;" placeholder="Password" formControlName="password"
+                  [type]="showPassword ? 'text' : 'password'" autocomplete="off" />
+
+                <button type="button" class="iconImg" item-end
+                  (click)="showPassword = !showPassword">
+                  <img style="font-size: 24px;height: 100%;width: 20;" src="../assets/img/{{
+                      showPassword ? 'eye' : 'eye-slash'
+                    }}.svg" />
+                </button>
+              </div>
+              <div *ngIf="
+                  ((loginForm.controls?.password?.value == null &&
+                    ngForm.submitted) ||
+                    (loginForm.controls?.password?.dirty &&
+                      loginForm.controls?.password?.errors))
+                " class="error-msg">
+                <span class="error"> Please enter Password </span>
+              </div>
+            </div>
+            <div class="form-actions submit-button clear-both">
+              <button [ngStyle]="{ cursor: auth.processing ? 'not-allowed' : 'pointer' }" [disabled]="auth.processing"
+                type="submit" class="btn uppercase col-md-12 border10" id="loginBtn" class="login-btn">
+                <i class="fa fa-spinner fa-spin" *ngIf="auth.processing"></i>
+                <span>
+                  {{ auth.processing ? 'Loggin in...' : 'Login' }}
+                 </span>
+              </button>
+            </div>
+            <div [ngStyle]="{ display: invalid }" class="clear-both submit-error-msg">
+              <span class="error"> Login Failed! Invalid credentials </span>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- /form -->
+    </div>
+    <!-- /card-container -->
+  </div>
+</div>
+
+<div class="newFormatModal modal" id="confirmationModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="alert-image">
+          <img height="100%" width="100%" src="assets/img/danger.svg" />
+        </div>
+
+        <div class="alert-message">
+          Alert
+        </div>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body font-14">
+        <p>
+          Seems like you have already logged in from another device. Are you
+          sure you want to continue?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" data-dismiss="modal">
+          No
+        </button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="login(true)">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="newFormatModal modal" id="warningModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="alert-image">
+          <img height="100%" width="100%" src="assets/img/danger.svg" />
+        </div>
+        <div class="alert-message">
+          Alert
+        </div>
+      </div>
+      <div class="modal-body font-14">
+        <p>
+          Seems like you are not logged in from SSO. <br/>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deny" (click)="loginSSO()">
+         Login To SSO
+        </button>
+        <button type="button" class="btn btn-yes" data-dismiss="modal" (click)="this.loginFrom = 'normal'">
+          Normal Login
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- /container -->

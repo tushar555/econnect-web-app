@@ -1,0 +1,238 @@
+<div class="container emergency-page main-content" *ngIf='showInfo'>
+  <!-- <app-header [parentTitle]="title"></app-header> -->
+  <!-- <nav aria-label="breadcrumb" class="breadcrum-padding col-md-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/dashboard">Home</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Emergency Contact</li>
+      <li class="logout-button" (click)="Userlogout()">
+        <img class="logout search-icon" src="../assets/mfss/shutdown.png">
+      </li>
+    </ol>
+  </nav> -->
+  <div class="headerBlock col-md-3" >
+
+    <div class="col-md-12 nopadding">
+      <input [(ngModel)]="searchItem" id="search-employee" class="form-control mr-sm-2 search-input someinput" type="search" (keyup)="searchContact($event)"
+      placeholder="Search emergency contact..." aria-label="Search">
+    <i class="fas fa-times search-cross" *ngIf="searchItem.length>0" (click)="reset()"></i>
+    <img src="../../../assets/img/throbber.gif" *ngIf="loaderSearch" class="loader-search">
+    </div>
+  </div>
+  <!-- <div class="year-div form-inline search-form" style="display: none;">
+
+      <input [(ngModel)]="searchItem" id="search-employee" class="form-control mr-sm-2 search-input someinput" type="search" (keyup)="searchContact($event)"
+      placeholder="Search emergency contact..." aria-label="Search">
+    <i class="fas fa-times search-cross" *ngIf="searchItem.length>0 && browser!=='msei'" (click)="reset()"></i>
+    <img src="../../../assets/img/throbber.gif" *ngIf="loaderSearch" class="loader-search">
+  </div> -->
+  <!-- <div class="search-section">
+    <nav class="navbar navbar-light">
+      <div font-16>Emergency Contact</div>
+      <!-- <div class="form-inline search-form">
+        <input [(ngModel)]="searchItem" class="form-control mr-sm-2 search-input" type="search" (ngModelChange)="searchContact($event)"
+          placeholder="Search" aria-label="Search">
+      </div> -->
+  <!-- <div>
+        <img src="assets/img/grid.png" class="search-icon">
+        <img src="assets/img/bullet.png" class="search-icon">
+      </div>
+    </nav>
+  </div> -->
+
+  <div class="contact-div">
+  <ng-container *ngIf='contactDetails.length !==0 && showDetails; else showSearchData'>
+          <div class="col-md-12 nopadding">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="noPadding emergencyTableFixHead">
+                          <table  class="table">
+                            <thead>
+                              <tr>
+                                <th><b>Contact Name</b></th>
+                                <th class="text-center"><b>Contact Number</b></th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let contact of contactDetails" class="tableHover">
+                                <td class="w-60">
+                                    <img src="assets/img/avatar.png" class="icon-img">
+                                    <span *ngIf="contact.ContactName!=='NA';else noName" class="font-15 w-500 m-l-10">{{ contact.ContactName | titlecase}}</span>
+                                    <ng-template #noName>
+                                      Not Available
+                                    </ng-template>
+                                </td>
+                                <td class="w-20 text-center" style="vertical-align: middle;">
+                                    <span *ngIf="contact.MobileNo!==null;else noMobile"> {{contact.MobileNo}} </span>
+                                    <ng-template #noMobile>
+                                      Not Available
+                                    </ng-template>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                  </div>
+                </div>
+                </div>
+
+      <div class="card" style="display: none;">
+          <div class="row" >
+              <div class="col col-4 text-left">
+                <span class="font-15 w-500 m-l-10"> Contact Name</span>
+             </div>
+              <div class="col col-4">
+                <!-- <i class="fa fa-ellipsis-v to-do"></i> -->
+              </div>
+              <div class="col col-4">
+                <span class="font-15 w-500 m-l-10">Contact Number </span>
+              </div>
+         </div>
+        <div class="row" *ngFor="let contact of contactDetails">
+          <div class="col col-4 text-left">
+            <img src="assets/img/avatar.png" class="icon-img">
+            <span *ngIf="contact.ContactName!=='NA';else noName" class="font-15 w-500 m-l-10">{{ contact.ContactName | titlecase}}</span>
+            <ng-template #noName>
+              Not Available
+            </ng-template>
+          </div>
+          <div class="col col-4">
+            <!-- <i class="fa fa-ellipsis-v to-do"></i> -->
+          </div>
+          <div class="col col-4">
+            <span *ngIf="contact.MobileNo!==null;else noMobile"> {{contact.MobileNo}} </span>
+            <ng-template #noMobile>
+              Not Available
+            </ng-template>
+          </div>
+
+        </div>
+      </div>
+    </ng-container>
+
+    <div *ngIf="contactList.length===0 && contactDetails.length ===0 ">
+      <div class="no-records">
+        <img [src]='datanotfound'>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #showSearchData>
+
+    <!-- <ng-container *ngIf="(contactDetails.length !== 0 && contactDetails[0].MobileNo !==''); else showNoDetails">
+      <div *ngFor="let contact of contactDetails">
+        <div class="row">
+          <div class="col-4">
+            <span style="font-size:12px;"> Contact No </span>
+          </div>
+          <div class="col-8">
+            <span *ngIf="contact.MobileNo!=='';else mobile" style="font-size:12px;"> {{ contact.MobileNo }}</span>
+            <ng-template #mobile style="padding:9px;">Not Available</ng-template>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+     -->
+    <div *ngIf="contactList.length !==0; else showNoDetails">
+      <div class="card">
+        <div class="card-body nopadding">
+            <div class="noPadding emergencyTableFixHead searchTbl">
+                <table  class="table">
+                  <thead>
+                    <tr>
+                      <th><b>Contact Name</b></th>
+                      <th class="text-center"><b>Contact Number</b></th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let contact of contactList" (click)="showContacts(contact)" class="tableHover">
+                      <td class="w-60">
+                          <img src="assets/img/avatar.png" class="icon-img">
+                            <span *ngIf="contact.Name!==null;else noNamefound" class="font-15 w-500 m-l-10">{{ contact.Name | titlecase}}</span>
+                            <ng-template #noNamefound>
+                              Not Available
+                            </ng-template>
+                      </td>
+                      <td class="w-20 text-center" style="vertical-align: middle;">
+                          <span *ngIf="contact.ContactNumber!==null;else noContactNumber"> {{contact.ContactNumber}} </span>
+                            <ng-template #noContactNumber>
+                              Not Available
+                            </ng-template>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+        </div>
+        <div class="row" *ngFor="let contact of contactList" (click)="showContacts(contact)" style="display: none;">
+          <div class="col col-4 text-left">
+            <img src="assets/img/avatar.png" class="icon-img">
+            <span *ngIf="contact.Name!==null;else noNamefound" class="font-15 w-500 m-l-10">{{ contact.Name | titlecase}}</span>
+            <ng-template #noNamefound>
+              Not Available
+            </ng-template>
+          </div>
+          <div class="col col-4">
+            <!-- <i class="fa fa-ellipsis-v to-do"></i> -->
+          </div>
+          <div class="col col-4">
+            <span *ngIf="contact.ContactNumber!==null;else noContactNumber"> {{contact.ContactNumber}} </span>
+            <ng-template #noContactNumber>
+              Not Available
+            </ng-template>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
+  <ng-template #showNoDetails>
+    <div class="no-records" *ngIf="contactList.length===0 && contactDetails.length !==0 ">
+      <img [src]='recordnotfound'>
+    </div>
+
+  </ng-template>
+
+  <div class="newFormatModal modal fade" id="employeeContacts" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{selectedEmployee.name}} (Emergency Contacts)</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row contactBlock" *ngFor="let contact of selectedEmployee.contacts; let i=index" >
+            <div class="col-md-6">
+              {{contact.ContactName}}
+            </div>
+            <div class="col-md-4">
+              {{contact.MobileNo}}
+            </div>
+            <a class="col-md-2 phone-icon" href="tel:{{contact.MobileNo}}">
+              <i class="fas fa-phone"></i>
+            </a>
+          </div>
+          <div class="no-contacts" *ngIf="selectedEmployee.contacts.length<1">
+            No Emergency Contacts Available
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-deny" data-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="emergency-section col col-6">
+      <p>Emergency section</p>
+    </div>
+    <div class="col col-6 detail-section">
+      <p>Detail section</p>
+    </div>
+  </div> -->
